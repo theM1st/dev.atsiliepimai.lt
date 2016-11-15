@@ -1,0 +1,114 @@
+body {
+    padding-top: 30px;
+}
+h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.navbar-admin {
+    height: 30px;
+    min-height: 30px;
+}
+.navbar-admin .navbar-brand {
+    font-size: 16px;
+    height: 30px;
+    padding: 5px 20px;
+}
+.navbar-admin button.navbar-toggle {
+    border: none;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 7px 10px;
+}
+.navbar-admin .navbar-nav li {
+    margin: 0 10px;
+}
+.navbar-admin .navbar-nav li a {
+    background-color: transparent !important;
+    color: #9d9d9d;
+    display: inline-block;
+    font-size: 14px;
+    padding: 5px 2px;
+}
+.navbar-admin .navbar-nav li a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.navbar-admin .navbar-nav li .dropdown-menu {
+    margin-top: 0;
+}
+.navbar-admin .dropdown-menu {
+    background-color: #222;
+    border-color: #080808;
+    border-top: none;
+    border-radius: 0;
+}
+.navbar-admin .dropdown-menu > li > a {
+    color: #9d9d9d;
+    font-size: 13px;
+}
+.navbar-admin .dropdown-menu > li > a:focus, .navbar-admin .dropdown-menu > li > a:hover {
+    background-color: #080808;
+    color: #ffffff;
+}
+
+.categories-index ul {
+    list-style-type: none;
+}
+.categories-index .category-list {
+    list-style-type: none;
+    padding: 0;
+}
+.categories-index .category-list li {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.categories-index .category-name {
+    line-height: 30px;
+}
+.categories-index .category-name .btn-group {
+    float: right;
+}
+
+.countries-index .country-list > li {
+    border-bottom: 1px solid #ccc;
+    line-height: 30px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+.countries-index .country-name .btn-group {
+    float: right;
+}
+
+.sortable .ui-sortable-handle {
+    cursor: move;
+}
+.sortable .ui-sortable-helper {
+    background-color: #e6e6e6;
+    border: 1px solid #ccc;
+    padding-left: 5px;
+}
+.sortable .ui-sortable-helper .btn-group {
+    visibility: hidden;
+}
+.sortable .ui-sortable-placeholder {
+    border: 1px dotted #080808;
+    visibility: visible !important;
+}
+
+table.dataTable thead .actions {
+    width: 30px;
+}
+table.dataTable thead .sorting::after,
+table.dataTable thead .sorting_asc::after,
+table.dataTable thead .sorting_desc::after {
+    font-size: 12px;
+    font-weight: normal;
+}
+.form-control.birth-year,
+.form-control.birth-month,
+.form-control.birth-day,
+.form-control.gender {
+    display: inline-block;
+    width: auto;
+}
