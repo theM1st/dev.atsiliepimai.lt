@@ -56,10 +56,16 @@ class UsersController extends AdminController
         if ($request->get('user_role') === '' && User::whereUserRole('admin')->count() == 1) {
             return $this->redirectRoutePath('edit', 'admin.users.admin.update.fail', [$user->id]);
         }
-dd($request);
+
+        $data = $request->all();
+
+        if ($request->hasFile('picture')) {
+            $data['picture'] = $user->upload($request->file('picture'));
+        }
+
         $user->setBirthday($request);
 
-        return $this->saveAlertRedirect($user, $request->all(), 'edit', [$user->id]);
+        return $this->saveAlertRedirect($user, $data, 'edit', [$user->id]);
     }
 
     public function delete(User $user)

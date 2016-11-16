@@ -4,18 +4,20 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Traits\Uploader;
 use Carbon\Carbon;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use Uploader;
 
     /**
      * The attributes that are not mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id', 'year', 'month', 'day'];
+    protected $guarded = ['id', 'year', 'month', 'day', 'MAX_FILE_SIZE'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -50,6 +52,11 @@ class User extends Authenticatable
                 $request->get('day')
             );
         }
+    }
+    
+    public function getPicture()
+    {
+        $this->getUploadPath();
     }
 
     /**

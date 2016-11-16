@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
             $table->string('city', 25)->nullable();
             $table->integer('country_id')->unsigned()->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
+            $table->string('picture')->nullable();
             $table->enum('user_role', ['admin'])->nullable();
             $table->boolean('verified')->default(true);
             $table->string('token')->nullable();
