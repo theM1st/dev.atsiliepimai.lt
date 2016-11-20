@@ -34,19 +34,13 @@ class UsersController extends AdminController
         return $this->createAlertRedirect(User::class, $request->all());
     }
 
-    public function edit(User $user, $section='about')
+    public function edit(User $user, $section='About')
     {
-        $sections = ['about', 'photo', 'address', 'email', 'password'];
-        
-        if (!in_array($section, $sections)) {
-            abort(404);
-        }
-
         \Former::populate($user);
         
         return $this->display($this->viewPath('edit'), [
             'user' => $user,
-            'sections' => $sections,
+            'sections' => User::getProfileSections(),
             'section' => $section,
         ]);
     }

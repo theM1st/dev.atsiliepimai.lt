@@ -1,8 +1,22 @@
+@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500);
 body {
+  color: #3c3e40;
   font-family: "Raleway", sans-serif;
   font-size: 16px;
   font-weight: 400; }
+
+form .help-block {
+  color: #cacdd1;
+  font-size: 14px;
+  padding-left: 20px; }
+
+.h, .main .main-section h2, .main .main-section h5 {
+  border-bottom: 5px solid #f2f1f1;
+  font-weight: 700; }
+
+.a-decoration-none:hover, .header .nav .nav-link:hover, .header .nav .user-login-form a:hover, .main .main-section .profile-nav ul > li > a:hover, .a-decoration-none:focus, .header .nav .nav-link:focus, .header .nav .user-login-form a:focus, .main .main-section .profile-nav ul > li > a:focus, .a-decoration-none:active, .header .nav .nav-link:active, .header .nav .user-login-form a:active, .main .main-section .profile-nav ul > li > a:active {
+  text-decoration: none; }
 
 .header {
   background-color: #1b9d48; }
@@ -50,8 +64,7 @@ body {
       font-size: 18px;
       margin-left: 2px; }
     .header .nav .nav-link:hover {
-      background-color: #1b9044;
-      text-decoration: none; }
+      background-color: #1b9044; }
     @media only screen and (min-width: 768px) {
       .header .nav .nav-link {
         padding-left: 12px;
@@ -75,7 +88,7 @@ body {
     padding: 10px 0 5px 0; }
     .header .nav .dropdown-menu > li > a {
       color: #ffffff;
-      font-size: 16px;
+      font-size: 14px;
       font-weight: 500;
       padding: 6px 30px; }
       .header .nav .dropdown-menu > li > a:hover, .header .nav .dropdown-menu > li > a:focus {
@@ -93,8 +106,6 @@ body {
     color: #ffffff;
     text-align: center;
     text-decoration: underline; }
-    .header .nav .user-login-form a:hover, .header .nav .user-login-form a:focus {
-      text-decoration: none; }
   .header .nav .user-login-form .form-group {
     color: #ffffff;
     margin-left: 35px;
@@ -105,7 +116,7 @@ body {
     border: medium none;
     border-radius: 30px;
     color: #fff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     height: auto;
     padding: 15px 20px;
@@ -126,11 +137,62 @@ body {
       padding-right: 45px;
       text-transform: uppercase; }
 
-.btn {
-  border-radius: 30px;
+.main .main-section h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  padding-bottom: 20px; }
+
+.main .main-section h5 {
   font-size: 16px;
-  -webkit-transition: all 0.3s ease-in-out 0s;
-  transition: all 0.3s ease-in-out 0s; }
+  margin: 0 0 10px 0; }
+  .main .main-section h5 span {
+    background-color: #ffffff;
+    bottom: -10px;
+    margin: 0;
+    padding: 0 12px 0 0;
+    position: relative; }
+
+.main .main-section .profile-nav ul {
+  padding: 0;
+  margin: 0; }
+  .main .main-section .profile-nav ul > li {
+    list-style: none;
+    margin-top: 20px; }
+    .main .main-section .profile-nav ul > li > a {
+      color: #3c3e40;
+      display: block;
+      font-size: 15px; }
+      .main .main-section .profile-nav ul > li > a.active:before {
+        color: #1b9d48;
+        content: "";
+        font-family: FontAwesome;
+        font-size: 10px;
+        padding-right: 5px;
+        position: relative;
+        top: -1px; }
+
+.main .profile-edit .control-label {
+  display: none; }
+
+.main .profile-edit .form-control {
+  background-color: white;
+  border: 2px solid #f2f1f1;
+  border-radius: 26px;
+  font-size: 16px;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 25px; }
+  .main .profile-edit .form-control::-webkit-input-placeholder {
+    color: #cacdd1; }
+  .main .profile-edit .form-control:-moz-placeholder {
+    /* Firefox 18- */
+    color: #cacdd1; }
+  .main .profile-edit .form-control::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #cacdd1; }
+  .main .profile-edit .form-control:-ms-input-placeholder {
+    color: #cacdd1; }
 
 .btn-lg {
   line-height: 1;
@@ -138,8 +200,12 @@ body {
 
 .btn-first {
   background-color: #ffcc00;
+  border-radius: 30px;
   color: #ffffff;
-  font-weight: 500; }
+  font-size: 16px;
+  font-weight: 500;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s; }
   .btn-first:hover, .btn-first:focus, .btn-first:active {
     background-color: #e6b800;
     color: #ffffff; }
@@ -147,16 +213,18 @@ body {
 .form-group {
   margin-bottom: 10px; }
 
-::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5) !important; }
+.form-control::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5); }
 
-:-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5) !important; }
+.form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: rgba(255, 255, 255, 0.5); }
 
-::-moz-placeholder {
-  color: rgba(255, 255, 255, 0.5) !important; }
+.form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.5); }
 
-:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5) !important; }
+.form-control:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5); }
 
 /*# sourceMappingURL=app.css.map */

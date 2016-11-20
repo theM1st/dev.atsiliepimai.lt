@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')</title>
+    <title>@yield('title') - {{ config('app.name') }}</title>
 
     @include('styles')
     <script>
@@ -20,9 +20,11 @@
         @endif
 
         @include('header')
-        @include('alert')
 
-        @yield('content')
+        <main class="main">
+            @include('alert')
+            @yield('content')
+        </main>
     </div>
     @include('scripts')
 </body>

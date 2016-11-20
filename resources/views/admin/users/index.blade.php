@@ -31,7 +31,7 @@
                     '{{ $u->last_name }}',
                     '{{ $u->birthday }}',
                     '{!! Form::actions([
-                            'edit' => route('users.edit', $u->id),
+                            'edit' => route('users.edit', [$u->id, 'About']),
                             'delete' => route('users.delete', $u->id)
                         ])
                     !!}'

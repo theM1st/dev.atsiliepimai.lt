@@ -1,6 +1,11 @@
 $font-base-family: 'Raleway', sans-serif;
-$font-base-size: 16px;
-$font-standart-size: 16px;
+$font-standart-size: 14px;
+$font-base-size: $font-standart-size + 2;
+$font-xs-size: $font-standart-size - 4;
+
+$font-awesome: FontAwesome;
+
+$text-color: #3c3e40;
 
 $primary-green: #1b9d48;
 $secondary-green: #1b9044;
@@ -8,6 +13,9 @@ $third-green: #127735;
 $fourth-green: #15853c;
 
 $yellow: #ffcc00;
+
+$grey: #cacdd1;
+$light-grey: #f2f1f1;
 
 $screen-sm-min: 768px;
 $screen-md-min: 992px;

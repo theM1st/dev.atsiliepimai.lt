@@ -18,4 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 //Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
 
+/*
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
+    Route::get('editAbout', 'ProfileController@editAbout')
+        ->name('profile.editAbout');
+});
+*/
+Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
+    Route::get('edit{section}', 'ProfileController@edit')
+        ->name('profile.edit')->where('section', '(About|Photo|Address|Email|Password)');
+
+    Route::put('{user}', 'ProfileController@update')->name('profile.update');
+});
+
 Route::get('/home', 'HomeController@index');

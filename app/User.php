@@ -89,4 +89,9 @@ class User extends Authenticatable
 
         return false;
     }
+
+    public static function getProfileSections()
+    {
+        return ['About', 'Photo', 'Address', 'Email', 'Password'];
+    }
 }

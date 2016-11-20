@@ -6,14 +6,8 @@
 
 @import "mixins";
 
-// Global styles
-body {
-    font: {
-        family: $font-base-family;
-        size: $font-base-size;
-        weight: 400;
-    }
-}
+// Global styles & classes
+@import "global";
 
 // Header element
 .header {
@@ -64,6 +58,7 @@ body {
     }
     .nav {
         .nav-link {
+            @extend .a-decoration-none;
             color: #ffffff;
             display: block;
             padding: 35px 30px;
@@ -73,7 +68,6 @@ body {
             }
             &:hover {
               background-color: $secondary-green;
-              text-decoration: none;
             }
             @include respond-to(sm) {
                 padding-left: 12px;
@@ -105,7 +99,7 @@ body {
                     font-weight: 500;
                     padding: 6px 30px;
                     &:hover, &:focus {
-                      background-color: $third-green;
+                        background-color: $third-green;
                     }
                 }
             }
@@ -127,9 +121,7 @@ body {
                 color: #ffffff;
                 text-align: center;
                 text-decoration: underline;
-                &:hover, &:focus {
-                    text-decoration: none;
-                }
+                @extend .a-decoration-none;
             }
             .form-group {
                 color: #ffffff;
@@ -170,13 +162,77 @@ body {
     }
 }
 
-// Buttons
-.btn {
-    border-radius: 30px;
-    font-size: $font-base-size;
-    transition: all 0.3s ease-in-out 0s;
+// Main element
+.main {
+    .main-section {
+        h2 {
+            @extend .h;
+            font-size: 36px;
+            margin-bottom: 30px;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+        h5 {
+            @extend .h;
+            font-size: $font-base-size;
+            margin: 0 0 10px 0;
+            span {
+                background-color: #ffffff;
+                bottom: -10px;
+                margin: 0;
+                padding: 0 12px 0 0;
+                position: relative;
+            }
+        }
+        .profile-nav {
+            ul {
+                padding: 0;
+                margin: 0;
+                > li {
+                    list-style: none;
+                    margin-top: 20px;
+                    > a {
+                        @extend .a-decoration-none;
+                        color: $text-color;
+                        display: block;
+                        font-size: $font-base-size - 1;
+                        &.active {
+                            &:before {
+                                color: $primary-green;
+                                content: "";
+                                font-family: $font-awesome;
+                                font-size: $font-xs-size;
+                                padding-right: 5px;
+                                position: relative;
+                                top: -1px;
+                            }
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+    .profile-edit {
+        .control-label {
+            display: none;
+        }
+        .form-control {
+            background-color: white;
+            border: 2px solid $light-grey;
+            border-radius: 26px;
+            font-size: $font-base-size;
+            height: 50px;
+            padding-left: 25px;
+            padding-right: 25px;
+            @include placeholder {
+                color: $grey;
+            }
+        }
+    }
 }
 
+// Buttons
 .btn-lg {
     line-height: 1;
     padding: 15px 24px;
@@ -193,6 +249,6 @@ body {
 
 .form-control {
     @include placeholder {
-        color: rgba(255, 255, 255, 0.5) !important;
+        color: rgba(255, 255, 255, 0.5);
     }
 }

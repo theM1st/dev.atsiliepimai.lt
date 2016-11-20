@@ -17,7 +17,7 @@ return [
         'first_name' => 'Vardas',
         'last_name' => 'Pavardė',
         'birthday' => 'Gimimo data',
-        'telephone' => 'Telefonas',
+        'telephone' => 'Telefono numeris',
         'address' => 'Gatvės adresas',
         'city' => 'Miestas',
         'country' => 'Šalis',
@@ -38,13 +38,14 @@ return [
         'name' => 'Pavadinimas',
     ],
     'profile' => [
+        'name' => 'Profilis',
         'settings' => 'Nustatymai',
         'sections' => [
-            'about' => 'Keisti aprašą',
-            'photo' => 'Keisti nuotrauką',
-            'address' => 'Keisti adresą',
-            'email' => 'El. paštas ir vartotojo slapyvardis',
-            'password' => 'Keisti slaptažodį',
+            'About' => 'Keisti aprašą',
+            'Photo' => 'Keisti nuotrauką',
+            'Address' => 'Keisti adresą',
+            'Email' => 'El. paštas ir vartotojo slapyvardis',
+            'Password' => 'Keisti slaptažodį',
         ],
     ],
 ];

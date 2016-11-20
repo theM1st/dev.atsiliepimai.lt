@@ -1,99 +1,74 @@
-$().ready(function(){
-    $('.action-modal').each(function() {
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
 
-        $(this).bind('click', function(e) {
-            e.preventDefault();
-            actionModal(this);
-        });
-    });
-});
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 
 
-function actionModal(o) {
-    var o = $(o);
-    var data = null;
-    var url = o.attr('href');
-    var dataForm = (o.attr('data-form'));
-    var dataMethod = (o.attr('data-method') || 'post');
-    var size = (o.attr('data-size') || 'modal-lg');
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
 
-    var popup = new bsModal(size);
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
 
-    if (dataForm) {
-        //data = $(dataForm).serialize();
-        //data = new FormData($(dataForm)[0]);
-    }
+/******/ 	// identity function for calling harmory imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
 
-    popup.show();
+/******/ 	// define getter function for harmory exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		Object.defineProperty(exports, name, {
+/******/ 			configurable: false,
+/******/ 			enumerable: true,
+/******/ 			get: getter
+/******/ 		});
+/******/ 	};
 
-    ajax(url, dataMethod).done(function(response) {
-        popup.setContent(response.html);
-        $('.ajax-form').bind('submit', function (e) {
-            e.preventDefault();
-            ajaxForm(this, true);
-        });
-    });
-/*
-    $.ajax({
-        type: dataMethod,
-        url: url,
-        data: data,
-        dataType: 'json',
-        processData: false,
-        contentType: false,
-        error: function(response){
-            var errors = response.responseJSON;
-            var errorsHtml = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">Klaida</h4></div><div class="modal-body"><div class="alert alert-danger">';
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
 
-            $.each(errors, function( key, value ) {
-                errorsHtml += '<div>' + value[0] + '</div>'; //showing only the first error.
-            });
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
-            errorsHtml += '</div></div>';
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
 
-            modal.setContent(errorsHtml);
-        }
-    }).success(function(response){
-        modal.setContent(response.html);
-        $('.ajax-form').bind('submit', function(e) {
-            e.preventDefault();
-            ajaxForm(this, true);
-        });
-    });*/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ function(module, exports) {
 
-    return false;
-}
+eval("//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiMC5qcyIsInNvdXJjZXMiOltdLCJtYXBwaW5ncyI6IiIsInNvdXJjZVJvb3QiOiIifQ==");
 
-function ajax(url, type) {
-    this.url = url;
-    this.type = type;
-
-    return $.ajax({
-        url: this.url,
-        type: this.type,
-        dataType: 'json'
-    });
-}
-
-function bsModal(size) {
-    this.id = guidGenerator();
-    this.size = (size || 'modal-lg');
-
-    var $html = $('<div class="modal fade" id="'+this.id+'" tabindex="-1" role="dialog"><div class="modal-dialog '+this.size+'"><div class="modal-content"></div></div></div>');
-    $html.appendTo('body');
-
-    this.show = function(){
-        $('#'+this.id).modal();
-    };
-
-    this.setContent = function(content){
-        $('#'+this.id+' .modal-content').html(content);
-    };
-}
-
-function guidGenerator() {
-    var S4 = function() {
-        return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-}
+/***/ }
+/******/ ]);

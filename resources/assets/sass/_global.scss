@@ -1,0 +1,25 @@
+body {
+  color: $text-color;
+  font: {
+    family: $font-base-family;
+    size: $font-base-size;
+    weight: 400;
+  }
+}
+
+form .help-block {
+  color: $grey;
+  font-size: $font-standart-size;
+  padding-left: 20px;
+}
+
+.h {
+  border-bottom: 5px solid $light-grey;
+  font-weight: 700;
+}
+
+.a-decoration-none {
+  &:hover, &:focus, &:active {
+    text-decoration: none;
+  }
+}

@@ -6,7 +6,8 @@ Route::get('categories/{category}/move/{position}', 'CategoriesController@move')
     ->name('categories.move')->where(['position' => '[0-9]+']);
 
 Route::resource('users', 'UsersController');
-Route::get('users/{user}/edit/{section?}', 'UsersController@edit')->name('users.edit');
+Route::get('users/{user}/edit{section}', 'UsersController@edit')
+    ->name('users.edit')->where('section', '(About|Photo|Address|Email|Password)');
 Route::get('users/{user}/delete', 'UsersController@delete')->name('users.delete');
 
 Route::resource('countries', 'CountriesController');

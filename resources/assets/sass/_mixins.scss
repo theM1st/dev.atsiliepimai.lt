@@ -1,31 +1,28 @@
-@mixin optional-at-root($sel) {
-  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
-    @content;
-  }
-}
-
 @mixin placeholder {
-  @include optional-at-root('::-webkit-input-placeholder') {
+  &::-webkit-input-placeholder {
     @content;
   }
 
-  @include optional-at-root(':-moz-placeholder') {
+  &:-moz-placeholder { /* Firefox 18- */
     @content;
   }
 
-  @include optional-at-root('::-moz-placeholder') {
+  &::-moz-placeholder {  /* Firefox 19+ */
     @content;
   }
 
-  @include optional-at-root(':-ms-input-placeholder') {
+  &:-ms-input-placeholder {
     @content;
   }
 }
 
 @mixin button ($text, $background) {
   background-color: $background;
+  border-radius: 30px;
   color: $text;
+  font-size: $font-base-size;
   font-weight: 500;
+  transition: all 0.3s ease-in-out 0s;
   &:hover, &:focus, &:active {
     background-color: darken($background, 5%);
     color: $text;
