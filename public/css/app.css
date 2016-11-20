@@ -1,0 +1,162 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500);
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  font-weight: 400; }
+
+.header {
+  background-color: #1b9d48; }
+  .header .logo {
+    display: block;
+    padding: 24px 0;
+    text-align: center; }
+    .header .logo img {
+      width: 220px; }
+  .header .search {
+    padding: 28px 0; }
+    .header .search .input-group {
+      width: 100%; }
+    .header .search .form-control {
+      background-color: #1b9044;
+      border: none;
+      border-radius: 20px;
+      color: rgba(255, 255, 255, 0.3);
+      font-weight: 300;
+      height: 36px;
+      padding-left: 20px;
+      padding-right: 65px;
+      vertical-align: middle;
+      width: 100%; }
+    .header .search .input-group-btn {
+      position: absolute;
+      right: 55px;
+      top: 4px;
+      z-index: 10; }
+      .header .search .input-group-btn .btn {
+        background-color: #1b9d48;
+        border-radius: 20px;
+        color: #ffffff;
+        font-size: 16px;
+        padding: 2px 18px 1px 18px; }
+  .header .create-review {
+    padding-bottom: 22px;
+    padding-top: 22px;
+    text-align: center; }
+  .header .nav .nav-link {
+    color: #ffffff;
+    display: block;
+    padding: 35px 30px; }
+    .header .nav .nav-link .fa-caret-down {
+      font-size: 18px;
+      margin-left: 2px; }
+    .header .nav .nav-link:hover {
+      background-color: #1b9044;
+      text-decoration: none; }
+    @media only screen and (min-width: 768px) {
+      .header .nav .nav-link {
+        padding-left: 12px;
+        padding-right: 12px; } }
+    @media only screen and (min-width: 992px) {
+      .header .nav .nav-link {
+        padding-left: 10px;
+        padding-right: 10px; } }
+    @media only screen and (min-width: 1200px) {
+      .header .nav .nav-link {
+        padding-left: 22px;
+        padding-right: 22px; } }
+  .header .nav .dropdown.open > .nav-link {
+    background-color: #1b9044;
+    text-decoration: none; }
+  .header .nav .dropdown-menu {
+    background-color: #1b9044;
+    border: none;
+    border-radius: 0;
+    margin: 0;
+    padding: 10px 0 5px 0; }
+    .header .nav .dropdown-menu > li > a {
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 6px 30px; }
+      .header .nav .dropdown-menu > li > a:hover, .header .nav .dropdown-menu > li > a:focus {
+        background-color: #127735; }
+    .header .nav .dropdown-menu .divider {
+      background-color: #82c285;
+      margin: 5px 0; }
+    @media only screen and (min-width: 768px) {
+      .header .nav .dropdown-menu {
+        min-width: 350px; } }
+  @media only screen and (min-width: 768px) {
+    .header .nav .user-dropdown-menu {
+      min-width: 200px; } }
+  .header .nav .user-login-form a {
+    color: #ffffff;
+    text-align: center;
+    text-decoration: underline; }
+    .header .nav .user-login-form a:hover, .header .nav .user-login-form a:focus {
+      text-decoration: none; }
+  .header .nav .user-login-form .form-group {
+    color: #ffffff;
+    margin-left: 35px;
+    margin-right: 35px;
+    text-align: center; }
+  .header .nav .user-login-form .form-control {
+    background-color: #1b9d48;
+    border: medium none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    height: auto;
+    padding: 15px 20px;
+    text-align: center; }
+  .header .nav .user-login-form .password-reset {
+    display: block;
+    padding: 4px 0;
+    text-align: center; }
+  .header .nav .user-login-form .login-button {
+    background-color: #15853c;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 0;
+    text-align: center; }
+    .header .nav .user-login-form .login-button .btn {
+      font-weight: 700;
+      padding-left: 45px;
+      padding-right: 45px;
+      text-transform: uppercase; }
+
+.btn {
+  border-radius: 30px;
+  font-size: 16px;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s; }
+
+.btn-lg {
+  line-height: 1;
+  padding: 15px 24px; }
+
+.btn-first {
+  background-color: #ffcc00;
+  color: #ffffff;
+  font-weight: 500; }
+  .btn-first:hover, .btn-first:focus, .btn-first:active {
+    background-color: #e6b800;
+    color: #ffffff; }
+
+.form-group {
+  margin-bottom: 10px; }
+
+::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important; }
+
+:-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important; }
+
+::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important; }
+
+:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5) !important; }
+
+/*# sourceMappingURL=app.css.map */

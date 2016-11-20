@@ -7,6 +7,7 @@ return [
     'edit' => 'Redaguoti',
     'delete' => 'Trinti',
     'cancel' => 'Atšaukti',
+    'logout' => 'Atsijungti',
     'user' => [
         'email' => 'El. paštas',
         'username' => 'Slapyvardis',
@@ -37,6 +38,7 @@ return [
         'name' => 'Pavadinimas',
     ],
     'profile' => [
+        'settings' => 'Nustatymai',
         'sections' => [
             'about' => 'Keisti aprašą',
             'photo' => 'Keisti nuotrauką',

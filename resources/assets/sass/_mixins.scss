@@ -1,0 +1,45 @@
+@mixin optional-at-root($sel) {
+  @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+    @content;
+  }
+}
+
+@mixin placeholder {
+  @include optional-at-root('::-webkit-input-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root('::-moz-placeholder') {
+    @content;
+  }
+
+  @include optional-at-root(':-ms-input-placeholder') {
+    @content;
+  }
+}
+
+@mixin button ($text, $background) {
+  background-color: $background;
+  color: $text;
+  font-weight: 500;
+  &:hover, &:focus, &:active {
+    background-color: darken($background, 5%);
+    color: $text;
+  }
+}
+
+@mixin respond-to($media) {
+  @if $media == sm {
+    @media only screen and (min-width: $screen-sm-min) { @content; }
+  }
+  @else if $media == md {
+    @media only screen and (min-width: $screen-md-min) { @content; }
+  }
+  @else if $media == lg {
+    @media only screen and (min-width: $screen-lg-min) { @content; }
+  }
+}
