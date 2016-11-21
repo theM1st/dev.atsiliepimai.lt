@@ -62,6 +62,11 @@
                     </form>
                 </div>
             </div>
+            <select class="selectpicker">
+                <option>Mustard</option>
+                <option>Ketchup</option>
+                <option>Relish</option>
+            </select>
         </div>
     </div>
 </div>

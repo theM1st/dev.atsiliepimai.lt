@@ -4,6 +4,12 @@
 // Variables
 @import "variables";
 
+// Bootstrap
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+// Select bootstrap
+@import "node_modules/bootstrap-select/sass/bootstrap-select";
+
 @import "mixins";
 
 // Global styles & classes

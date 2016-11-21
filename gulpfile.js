@@ -15,13 +15,24 @@ require('laravel-elixir-vue-2');
 
 elixir(function(mix) {
     mix.copy(
+        'node_modules/jquery-ui-dist/jquery-ui.min.css',
+        'public/css'
+    ).copy([
         'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
+        'node_modules/jquery-ui-dist/jquery-ui.min.js',
+        'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
+    ],
         'resources/assets/js'
     );
+
     mix.sass([
         'app.scss'
-    ]).webpack([
+    ]).scripts([
         'jquery.min.js',
+        'bootstrap.min.js',
+        'jquery-ui.min.js',
+        'bootstrap-select.min.js',
         'app.js',
-    ]);
+    ], 'public/js/app.js');
 });
