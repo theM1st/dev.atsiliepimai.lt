@@ -15,6 +15,14 @@ class AppServiceProvider extends ServiceProvider
     {
         \Form::component('birthday', 'components.form.birthday', ['value']);
         \Form::component('actions', 'components.form.actions', ['actions']);
+
+        \Validator::extend('foo', function ($attribute, $value, $parameters, $validator) {
+            //dd(\Auth::user()->password);
+            //if (Hash::check("param1", "param2")) {
+                //add logic here
+            //}
+            return $value == 'foo';
+        });
     }
 
     /**

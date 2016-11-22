@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'email' => 'sometimes|required|email|max:255|unique:users,email,'.$this->segment(3),
-            'username' => 'sometimes|required|max:255',
+            'username' => 'sometimes|required|foo|max:255',
             'password' => 'sometimes|required|min:6|max:50|confirmed',
             'telephone' => 'regex:/[0-9\-\+]{6,}/',
             'city' => 'alpha',

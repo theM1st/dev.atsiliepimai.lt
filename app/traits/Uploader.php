@@ -41,6 +41,9 @@ trait Uploader
 
     public function upload($file, $imageConfig=null)
     {
+        // don't forget upload_max_filesize and post_max_size
+        // memory_limit minimum 256M if file size ~3MB
+
         $imageConfig = ($imageConfig ? $imageConfig : $this->imageConfig);
 
         $filename = $this->slugFilename($file);

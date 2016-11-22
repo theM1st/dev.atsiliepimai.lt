@@ -121,6 +121,10 @@ abstract class AdminController extends Controller
             alert(trans($error), 'danger');
         }
 
+        if ($path == 'back') {
+            return back();
+        }
+
         return redirect($this->urlRoutePath($path, $args));
     }
 

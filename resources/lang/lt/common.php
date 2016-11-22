@@ -3,6 +3,7 @@
 return [
     'ok' => 'Gerai',
     'create' => 'Sukurti',
+    'update' => 'Atnaujinti',
     'save' => 'Išsaugoti',
     'edit' => 'Redaguoti',
     'delete' => 'Trinti',
@@ -22,7 +23,7 @@ return [
         'city' => 'Miestas',
         'country' => 'Šalis',
         'picture' => 'Nuotrauka',
-        'picture_rules' => 'Nuotrauka turi būti .jpg, .gif arba .png formatu, mažiau nei 5MB.',
+        'picture_rules' => 'Nuotrauka turi būti .jpg, .gif arba .png formatu, mažiau nei 3MB.',
         'gender' => 'Lytis',
         'male' => 'Vyras',
         'female' => 'Moteris',
@@ -46,6 +47,10 @@ return [
             'Address' => 'Keisti adresą',
             'Email' => 'El. paštas ir vartotojo slapyvardis',
             'Password' => 'Keisti slaptažodį',
+        ],
+        'update' => [
+            'success' => 'Jūsų nustatymai sėkmingai pakeisti',
+            'fail' => 'Nepavyko pakeisti nustatymus'
         ],
     ],
 ];

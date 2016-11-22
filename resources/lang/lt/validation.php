@@ -12,6 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+    "foo" => "Your input was invalid!",
 
     'accepted'             => 'The :attribute must be accepted.',
     'active_url'           => 'The :attribute is not a valid URL.',
@@ -103,7 +104,7 @@ return [
             'confirmed' => 'Slaptažodžiai nesutampa.',
         ],
         'picture' => [
-            'uploaded' => 'Nuotrauka turi būti mažiau nei 5MB.'
+            'uploaded' => trans('common.user.picture_rules')
         ],
     ],
 

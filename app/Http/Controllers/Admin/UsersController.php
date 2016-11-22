@@ -59,7 +59,7 @@ class UsersController extends AdminController
 
         $user->setBirthday($request);
 
-        return $this->saveAlertRedirect($user, $data, 'edit', [$user->id]);
+        return $this->saveAlertRedirect($user, $data, 'back');
     }
 
     public function delete(User $user)

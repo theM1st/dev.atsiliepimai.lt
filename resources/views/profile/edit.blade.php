@@ -15,7 +15,7 @@
 
                         @include("profile.partials.$section")
 
-                        {!! Former::actions()->primary_submit('common.save') !!}
+                        {!! Former::actions()->primary_submit('common.update') !!}
 
                     {!! Former::close() !!}
                 </div>
