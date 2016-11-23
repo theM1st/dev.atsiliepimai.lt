@@ -17,6 +17,9 @@ elixir(function(mix) {
     mix.copy(
         'node_modules/jquery-ui-dist/jquery-ui.min.css',
         'public/css'
+    ).copy(
+        'node_modules/bootstrap-sass/assets/fonts',
+        'public/fonts'
     ).copy([
         'node_modules/jquery/dist/jquery.min.js',
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',

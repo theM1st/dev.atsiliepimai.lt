@@ -52,6 +52,10 @@ h2 {
     background-color: #080808;
     color: #ffffff;
 }
+.navbar-admin .navbar-collapse {
+    background-color: #222;
+    border-color: none;
+}
 
 .categories-index ul {
     list-style-type: none;
@@ -97,6 +101,10 @@ h2 {
     visibility: visible !important;
 }
 
+.form-horizontal .control-label {
+    padding-top: 12px;
+}
+
 table.dataTable thead .actions {
     width: 30px;
 }
@@ -105,11 +113,4 @@ table.dataTable thead .sorting_asc::after,
 table.dataTable thead .sorting_desc::after {
     font-size: 12px;
     font-weight: normal;
-}
-.form-control.birth-year,
-.form-control.birth-month,
-.form-control.birth-day,
-.form-control.gender {
-    display: inline-block;
-    width: auto;
 }

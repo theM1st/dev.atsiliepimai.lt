@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400);
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -6016,6 +6017,9 @@ body {
   font-size: 16px;
   font-weight: 400; }
 
+hr {
+  border: 1px dashed #dfe2e6; }
+
 form .help-block {
   color: #cacdd1;
   font-size: 14px;
@@ -6032,12 +6036,18 @@ form .help-block {
   background-color: #1b9d48; }
   .header .logo {
     display: block;
-    padding: 24px 0;
+    padding: 10px 0;
     text-align: center; }
     .header .logo img {
       width: 220px; }
   .header .search {
     padding: 28px 0; }
+    @media only screen and (min-width: 768px) {
+      .header .search {
+        padding: 14px 0; } }
+    @media only screen and (min-width: 992px) {
+      .header .search {
+        padding: 28px 0px; } }
     .header .search .input-group {
       width: 100%; }
     .header .search .form-control {
@@ -6063,13 +6073,18 @@ form .help-block {
         font-size: 16px;
         padding: 2px 18px 1px 18px; }
   .header .create-review {
-    padding-bottom: 22px;
-    padding-top: 22px;
+    padding: 5px 0;
     text-align: center; }
+    @media only screen and (min-width: 768px) {
+      .header .create-review {
+        padding: 8px 0; } }
+    @media only screen and (min-width: 992px) {
+      .header .create-review {
+        padding: 22px 0; } }
   .header .nav .nav-link {
     color: #ffffff;
     display: block;
-    padding: 35px 30px; }
+    padding: 10px 30px; }
     .header .nav .nav-link .fa-caret-down {
       font-size: 18px;
       margin-left: 2px; }
@@ -6077,16 +6092,13 @@ form .help-block {
       background-color: #1b9044; }
     @media only screen and (min-width: 768px) {
       .header .nav .nav-link {
-        padding-left: 12px;
-        padding-right: 12px; } }
+        padding: 20px 12px; } }
     @media only screen and (min-width: 992px) {
       .header .nav .nav-link {
-        padding-left: 10px;
-        padding-right: 10px; } }
+        padding: 35px 16px; } }
     @media only screen and (min-width: 1200px) {
       .header .nav .nav-link {
-        padding-left: 22px;
-        padding-right: 22px; } }
+        padding: 35px 22px; } }
   .header .nav .dropdown.open > .nav-link {
     background-color: #1b9044;
     text-decoration: none; }
@@ -6182,27 +6194,34 @@ form .help-block {
         position: relative;
         top: -1px; }
 
+.main .profile-edit .form-horizontal {
+  margin-top: 40px; }
+  @media only screen and (min-width: 768px) {
+    .main .profile-edit .form-horizontal {
+      margin-top: 0; } }
+
 .main .profile-edit .control-label {
   display: none; }
 
-.main .profile-edit .form-control {
-  background-color: white;
-  border: 2px solid #f2f1f1;
-  border-radius: 26px;
-  font-size: 16px;
-  height: 50px;
-  padding-left: 25px;
-  padding-right: 25px; }
-  .main .profile-edit .form-control::-webkit-input-placeholder {
-    color: #cacdd1; }
-  .main .profile-edit .form-control:-moz-placeholder {
-    /* Firefox 18- */
-    color: #cacdd1; }
-  .main .profile-edit .form-control::-moz-placeholder {
-    /* Firefox 19+ */
-    color: #cacdd1; }
-  .main .profile-edit .form-control:-ms-input-placeholder {
-    color: #cacdd1; }
+.main .profile-edit .form-label {
+  font-weight: 600; }
+
+.main .profile-edit .form-control.birth-year .filter-option, .main .profile-edit .form-control.birth-month .filter-option, .main .profile-edit .form-control.birth-day .filter-option {
+  text-align: center; }
+
+.main .profile-edit .form-control::-webkit-input-placeholder {
+  color: #cacdd1; }
+
+.main .profile-edit .form-control:-moz-placeholder {
+  /* Firefox 18- */
+  color: #cacdd1; }
+
+.main .profile-edit .form-control::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #cacdd1; }
+
+.main .profile-edit .form-control:-ms-input-placeholder {
+  color: #cacdd1; }
 
 .btn-lg, .btn-group-lg > .btn {
   line-height: 1;
@@ -6223,18 +6242,55 @@ form .help-block {
 .form-group {
   margin-bottom: 10px; }
 
-.form-control::-webkit-input-placeholder {
-  color: rgba(255, 255, 255, 0.5); }
+.app-form-control, input.form-control, .bootstrap-select > .dropdown-toggle {
+  background-color: white;
+  border: 2px solid #f2f1f1;
+  border-radius: 26px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 25px; }
+  .app-form-control::-webkit-input-placeholder, input.form-control::-webkit-input-placeholder, .bootstrap-select > .dropdown-toggle::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5); }
+  .app-form-control:-moz-placeholder, input.form-control:-moz-placeholder, .bootstrap-select > .dropdown-toggle:-moz-placeholder {
+    /* Firefox 18- */
+    color: rgba(255, 255, 255, 0.5); }
+  .app-form-control::-moz-placeholder, input.form-control::-moz-placeholder, .bootstrap-select > .dropdown-toggle::-moz-placeholder {
+    /* Firefox 19+ */
+    color: rgba(255, 255, 255, 0.5); }
+  .app-form-control:-ms-input-placeholder, input.form-control:-ms-input-placeholder, .bootstrap-select > .dropdown-toggle:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5); }
 
-.form-control:-moz-placeholder {
-  /* Firefox 18- */
-  color: rgba(255, 255, 255, 0.5); }
+.file-control {
+  margin-top: 10px; }
 
-.form-control::-moz-placeholder {
-  /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.5); }
+.bootstrap-select.form-control {
+  box-shadow: none;
+  min-width: 100px !important;
+  height: auto;
+  width: auto !important; }
 
-.form-control:-ms-input-placeholder {
-  color: rgba(255, 255, 255, 0.5); }
+.bootstrap-select > .dropdown-toggle {
+  background-color: transparent !important;
+  padding-left: 15px; }
+  .bootstrap-select > .dropdown-toggle.bs-placeholder {
+    color: #cacdd1 !important; }
+  .bootstrap-select > .dropdown-toggle .bs-caret {
+    background: #ffcc00;
+    border-radius: 50%;
+    display: inline-block;
+    height: 16px;
+    position: relative;
+    right: 2px;
+    top: 2px;
+    width: 16px; }
+    .bootstrap-select > .dropdown-toggle .bs-caret .caret {
+      border-bottom: none;
+      border-top: 4px dashed;
+      color: #ffffff !important;
+      margin-top: -1px !important;
+      right: 4px !important; }
 
 /*# sourceMappingURL=app.css.map */

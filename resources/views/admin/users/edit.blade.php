@@ -20,7 +20,9 @@
 
                     @include("admin.users.partials.$section")
 
-                    {!! Former::actions()->primary_submit('common.save') !!}
+                    <hr>
+
+                    {!! Former::actions()->first_lg_submit('common.save') !!}
 
                 {!! Former::close() !!}
             </div>

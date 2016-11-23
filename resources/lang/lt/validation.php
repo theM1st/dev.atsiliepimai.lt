@@ -12,7 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
-    "foo" => "Your input was invalid!",
+    "check_password" => "Neteisingas dabartinis slaptažodis",
 
     'accepted'             => 'The :attribute must be accepted.',
     'active_url'           => 'The :attribute is not a valid URL.',
@@ -122,6 +122,7 @@ return [
     'attributes' => [
         'email' => trans('common.user.email'),
         'password' => trans('common.user.password'),
+        'current_password' => trans('common.user.current_password'),
         'telephone' => trans('common.user.telephone'),
         'city' => trans('common.user.city'),
     ],

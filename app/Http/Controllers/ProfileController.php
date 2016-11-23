@@ -31,6 +31,12 @@ class ProfileController extends Controller
             $data['picture'] = $user->upload($request->file('picture'));
         }
 
+        $user->setBirthday($request);
+
+        if ($request->get('password')) {
+            $data['password'] = bcrypt($request->get('password'));
+        }
+
         $user->fill($data);
 
         ($saved = $user->save()) ?

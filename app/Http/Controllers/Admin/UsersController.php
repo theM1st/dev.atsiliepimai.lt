@@ -59,6 +59,10 @@ class UsersController extends AdminController
 
         $user->setBirthday($request);
 
+        if ($request->get('password')) {
+            $data['password'] = bcrypt($request->get('password'));
+        }
+
         return $this->saveAlertRedirect($user, $data, 'back');
     }
 

@@ -10,13 +10,18 @@
                 <div class="col-sm-3">
                     @include('profile.partials.navigation')
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-offset-1 col-sm-8">
                     {!! Former::open_for_files()->route('profile.update', $user->id)->method('put') !!}
 
                         @include("profile.partials.$section")
 
-                        {!! Former::actions()->primary_submit('common.update') !!}
+                        <hr>
 
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                            {!! Form::submit(trans('common.profile.update.button'), ['class' => 'btn btn-first btn-lg']) !!}
+                            </div>
+                        </div>
                     {!! Former::close() !!}
                 </div>
             </div>

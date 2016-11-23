@@ -49,6 +49,11 @@ class EventServiceProvider extends ServiceProvider
             return true;
         });
 
+        // Only fire if something changed
+        User::updated(function($user) {
+            //dd($user);
+        });
+
         Country::creating(function($country) {
             $position = Country::max('position')+1;
 

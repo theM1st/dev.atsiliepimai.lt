@@ -17,7 +17,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $guarded = ['id', 'year', 'month', 'day', 'MAX_FILE_SIZE'];
+    protected $guarded = [
+        'id', 'password_confirmation', 'current_password', 'year', 'month', 'day', 'MAX_FILE_SIZE'
+    ];
 
     /**
      * The attributes that should be hidden for arrays.

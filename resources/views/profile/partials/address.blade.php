@@ -4,4 +4,6 @@
     Former::select('country_id')
     ->options(App\Country::lists('name'))
     ->label('common.user.country')
+    ->title(trans('common.form.select'))
+    ->class('form-control selectpicker')
 !!}

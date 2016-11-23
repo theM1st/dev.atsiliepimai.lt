@@ -7,6 +7,10 @@ body {
   }
 }
 
+hr {
+  border: 1px dashed #dfe2e6;
+}
+
 form .help-block {
   color: $grey;
   font-size: $font-standart-size;

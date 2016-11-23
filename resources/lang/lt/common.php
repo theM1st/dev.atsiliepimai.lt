@@ -9,12 +9,17 @@ return [
     'delete' => 'Trinti',
     'cancel' => 'Atšaukti',
     'logout' => 'Atsijungti',
+    'form' => [
+        'select' => 'Pasirinkite',
+    ],
     'user' => [
         'email' => 'El. paštas',
         'username' => 'Slapyvardis',
         'password' => 'Slaptažodis',
         'new_password' => 'Naujas slaptažodis',
         'repeat_password' => 'Pakartoti slaptažodį',
+        'current_password' => 'Dabartinis slaptažodis',
+        'current_password_help' => 'Prašom, įvesti dabartinį slaptažodį duomenų atnaujinimui',
         'first_name' => 'Vardas',
         'last_name' => 'Pavardė',
         'birthday' => 'Gimimo data',
@@ -49,6 +54,7 @@ return [
             'Password' => 'Keisti slaptažodį',
         ],
         'update' => [
+            'button' => 'Atnaujinti profilį',
             'success' => 'Jūsų nustatymai sėkmingai pakeisti',
             'fail' => 'Nepavyko pakeisti nustatymus'
         ],
