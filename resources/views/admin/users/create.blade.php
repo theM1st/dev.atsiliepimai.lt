@@ -15,7 +15,9 @@
                     {!! Former::password('password')->label('common.user.password') !!}
                     {!! Former::password('password_confirmation')->label('common.user.repeat_password') !!}
 
-                    {!! Former::actions()->primary_submit('common.create') !!}
+                    <hr>
+
+                    {!! Former::actions()->first_lg_submit('common.create') !!}
 
                 {!! Former::close() !!}
             </div>

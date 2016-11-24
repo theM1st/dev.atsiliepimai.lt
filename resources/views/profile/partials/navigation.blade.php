@@ -1,3 +1,8 @@
+<div class="profile-user">
+    <img src="{{ $user->getPicture() }}" alt="{{ $user->username }}" class="img-responsive img-circle img-border-grey">
+    <div class="username">{{ $user->username }}</div>
+    <div class="join-date">{{ $user->created_at->format('Y-m-d') }}</div>
+</div>
 <div class="profile-nav">
     <h5>
         <span>{{ trans('common.profile.name') }}</span>

@@ -52,7 +52,7 @@
                             @else
                                 <div class="dropdown">
                                     <a href="" class="nav-link" data-toggle="dropdown" id="user-menu">
-                                        {{ \Auth::user()->username }}
+                                        <span class="username">{{ \Auth::user()->username }}</span>
                                         <span class="fa fa-caret-down" aria-hidden="true"></span>
                                     </a>
                                     <ul class="dropdown-menu user-dropdown-menu" aria-labelledby="user-menu">

@@ -21,19 +21,22 @@
     background-color: $primary-green;
     .logo {
         display: block;
-        padding: 10px 0;
+        padding: 5px 0;
         text-align: center;
+        @include respond-to(md) {
+            padding: 22px 0;
+        }
         img {
             width: 220px;
         }
     }
     .search {
-        padding: 28px 0;
+        padding: 26px 0;
         @include respond-to(sm) {
             padding: 14px 0;
         }
         @include respond-to(md) {
-            padding: 28px 0px;
+            padding: 26px 0px;
         }
         .input-group {
             width: 100%;
@@ -65,13 +68,10 @@
         }
     }
     .create-review {
-        padding: 5px 0;
+        padding: 6px 0;
         text-align: center;
-        @include respond-to(sm) {
-            padding: 8px 0;
-        }
         @include respond-to(md) {
-            padding: 22px 0;
+            padding: 20px 0;
         }
     }
     .nav {
@@ -80,6 +80,17 @@
             color: #ffffff;
             display: block;
             padding: 10px 30px;
+            .username {
+                display: inline-block;
+                width: auto;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                vertical-align: top;
+                white-space: nowrap;
+                @include respond-to(sm) {
+                    width: 80px;
+                }
+            }
             .fa-caret-down {
                 font-size: 18px;
                 margin-left: 2px;
@@ -88,13 +99,13 @@
               background-color: $secondary-green;
             }
             @include respond-to(sm) {
-                padding: 20px 12px;
+                padding: 20px 8px;
             }
             @include respond-to(md) {
-                padding: 35px 16px;
+                padding: 35px 6px;
             }
             @include respond-to(lg) {
-                padding: 35px 22px;
+                padding: 35px 18px;
             }
         }
         .dropdown.open > .nav-link {
@@ -180,9 +191,9 @@
 // Main element
 .main {
     .main-section {
+        position: relative;
         h2 {
             @extend .h;
-            font-size: 36px;
             margin-bottom: 30px;
             margin-top: 30px;
             padding-bottom: 20px;
@@ -199,7 +210,69 @@
                 position: relative;
             }
         }
+        &.auth-login {
+            hr {
+                border: 3px solid $light-grey;
+            }
+            .col-sm-6 {
+                z-index: 2;
+            }
+            .login-form {
+                @include respond-to(sm) {
+                    margin-top: 90px;
+                }
+                .btn-first {
+                    text-transform: uppercase;
+                    width: 100%;
+                    span {
+                        padding-left: 10px;
+                    }
+                }
+                .forgot-password {
+                    color: $secondary-color;
+                    font-size: $font-standart-size;
+                    text-decoration: underline;
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+            }
+            .social-login {
+                .title {
+                    color: $secondary-color;
+                    font-size: 18px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                .btn-third {
+                    text-align: left;
+                    width: 100%;
+                }
+            }
+            .motorbike {
+                @include respond-to(sm) {
+                    opacity: 0.2;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    z-index: 1;
+                }
+                img {
+                    max-width: 600px;
+                }
+            }
+        }
+        .profile-user {
+            .username {
+                font-weight: 700;
+                padding: 2px 5px;
+            }
+            .join-date {
+                padding: 2px 5px;
+            }
+        }
         .profile-nav {
+            margin-top: 30px;
             ul {
                 padding: 0;
                 margin: 0;
@@ -255,43 +328,41 @@
 }
 
 // Forms & Buttons
+form .control-label {
+    color: $secondary-color;
+}
 .btn-lg {
     line-height: 1;
     padding: 15px 24px;
 }
-
 .btn-first {
     @include button(#ffffff, $yellow);
 }
-
-// Bootstrap overrides
-.form-group {
-  margin-bottom: 10px;
-}
-
-.app-form-control {
-    background-color: white;
-    border: 2px solid $light-grey;
-    border-radius: 26px;
-    font-family: $font-roboto;
-    font-size: $font-base-size;
-    font-weight: 400;
-    height: 50px;
-    padding-left: 25px;
-    padding-right: 25px;
-    @include placeholder {
-        color: rgba(255, 255, 255, 0.5);
+.btn-third {
+    @include button($text-color, $light-grey);
+    &.empty {
+        border: 3px solid $light-grey;
     }
 }
-
+.btn-social {
+    @extend .btn-third;
+    position: relative;
+    .fa {
+        font-size: 22px;
+        position: absolute;
+        top: 12px;
+    }
+    .text {
+        font-size: $font-standart-size + 1;
+        padding-left: 50px;
+    }
+}
 input.form-control {
     @extend .app-form-control;
 }
-
 .file-control {
     margin-top: 10px;
 }
-
 .bootstrap-select {
     &.form-control {
         box-shadow: none;
@@ -326,4 +397,14 @@ input.form-control {
             }
         }
     }
+}
+
+// Bootstrap overrides
+.alert {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.form-group {
+    margin-bottom: 10px;
 }

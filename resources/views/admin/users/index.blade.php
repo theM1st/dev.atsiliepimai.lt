@@ -29,7 +29,7 @@
                     '{{ $u->email }}',
                     '{{ $u->first_name }}',
                     '{{ $u->last_name }}',
-                    '{{ $u->birthday }}',
+                    '{{ $u->birthday->format('Y-m-d') }}',
                     '{!! Form::actions([
                             'edit' => route('users.edit', [$u->id, 'About']),
                             'delete' => route('users.delete', $u->id)

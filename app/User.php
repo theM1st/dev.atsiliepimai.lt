@@ -56,9 +56,13 @@ class User extends Authenticatable
         }
     }
     
-    public function getPicture()
+    public function getPicture($size='sm')
     {
-        $this->getUploadPath();
+        if (!$this->picture) {
+            return null;
+        }
+
+        return '/' . $this->getUploadPath($size) . $this->picture;
     }
 
     /**

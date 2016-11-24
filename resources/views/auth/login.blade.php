@@ -1,6 +1,60 @@
 @extends('layouts.app')
 
+@section('title', getTitle(trans('common.sign_in')))
+
 @section('content')
+    <section class="main-section auth-login">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="login-form">
+                        <h2>{{ trans('common.sign_in') }}</h2>
+                        {!! Former::open()->action(url('/login'))->method('post') !!}
+                            {!! Former::email('email')->label('common.user.email') !!}
+                            {!! Former::password('password')->label('common.user.password') !!}
+                            {!! Former::checkbox('remember')->text('common.user.remember_me') !!}
+
+                            <div class="form-group">
+                                {{ Form::button(trans('common.form.sign_in') . '<span class="fa fa-chevron-right"></span>',
+                                    array('type' => 'submit', 'class' => 'btn btn-first btn-lg')) }}
+                            </div>
+                            <div class="form-group">
+                                <a href="{{ url('/password/reset') }}" class="forgot-password">{{ trans('common.forgot_password') }}?</a>
+                            </div>
+                        {!! Former::close() !!}
+                    </div>
+                    <hr>
+                    <div class="social-login">
+                        <div class="title">Arba prisijunkite per soc.tinklus:</div>
+                        <div class="form-group">
+                            <a href="" class="btn btn-lg btn-social">
+                                <span class="fa fa-facebook" aria-hidden="true"></span>
+                                <span class="text">Prisijungti su Facebook</span>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <a href="" class="btn btn-lg btn-social">
+                                <span class="fa fa-google-plus" aria-hidden="true"></span>
+                                <span class="text">Prisijungti su Google+</span>
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <a href="" class="btn btn-lg btn-social">
+                                <span class="fa fa-linkedin" aria-hidden="true"></span>
+                                <span class="text">Prisijungti su Linkedin+</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-8 hidden-sm hidden-xs">
+                    <img src="{{ asset('assets/images/motorbike.png') }}" class="img-responsive">
+                </div>
+            </div>
+        </div>
+        <div class="motorbike visible-sm"><img src="{{ asset('assets/images/motorbike.png') }}" class="img-responsive"></div>
+    </section>
+    {{--
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -62,12 +116,7 @@
                     </form>
                 </div>
             </div>
-            <select class="selectpicker">
-                <option>Mustard</option>
-                <option>Ketchup</option>
-                <option>Relish</option>
-            </select>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

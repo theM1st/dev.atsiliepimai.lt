@@ -8,9 +8,12 @@ return [
     'edit' => 'Redaguoti',
     'delete' => 'Trinti',
     'cancel' => 'Atšaukti',
+    'sign_in' => 'Prisijungimas',
     'logout' => 'Atsijungti',
+    'forgot_password' => 'Pamiršote slaptažodį',
     'form' => [
         'select' => 'Pasirinkite',
+        'sign_in' => 'Prisijungti',
     ],
     'user' => [
         'email' => 'El. paštas',
@@ -35,6 +38,7 @@ return [
         'registration' => 'Registracija',
         'user_role' => 'Teisės',
         'admin' => 'Administratorius',
+        'remember_me' => 'Prisiminti jūsų prisijungimo duomenis',
     ],
     'category' => [
         'name' => 'Pavadinimas',

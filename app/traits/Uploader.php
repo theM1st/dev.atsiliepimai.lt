@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
 
@@ -29,17 +30,17 @@ trait Uploader
      */
     public function getUploadPath($suffix=null)
     {
-        $suffix = (isset($this->id) ? $this->id . DIRECTORY_SEPARATOR : '') . $suffix;
+        $suffix = (isset($this->id) ? $this->id . '/' : '') . $suffix;
 
         $class = $this->getClass();
 
-        $dir = $this->uploadPath . DIRECTORY_SEPARATOR .
-            str_plural($class) . ($suffix ? DIRECTORY_SEPARATOR . $suffix : '') . DIRECTORY_SEPARATOR;
+        $dir = $this->uploadPath . '/' .
+            str_plural($class) . ($suffix ? '/' . $suffix : '') . '/';
 
         return $dir;
     }
 
-    public function upload($file, $imageConfig=null)
+    public function upload($file, $imageConfig=null, $remove=true)
     {
         // don't forget upload_max_filesize and post_max_size
         // memory_limit minimum 256M if file size ~3MB
@@ -51,11 +52,13 @@ trait Uploader
         $img = \Image::make($file->getRealPath());
 
         foreach ($imageConfig as $size => $c) {
-
             $dir = public_path($this->getUploadPath($size));
 
             if (!file_exists($dir)) {
                 mkdir($dir, 0755, true);
+            } elseif ($remove) {
+                $files = Storage::files($this->getUploadPath($size));
+                Storage::delete($files);
             }
 
             $img->fit($c['width'])->save($dir . $filename);

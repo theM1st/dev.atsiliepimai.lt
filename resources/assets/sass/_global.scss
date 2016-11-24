@@ -19,11 +19,39 @@ form .help-block {
 
 .h {
   border-bottom: 5px solid $light-grey;
+  font-size: 26px;
   font-weight: 700;
+  @include respond-to(sm) {
+    font-size: 36px;
+  }
 }
 
 .a-decoration-none {
   &:hover, &:focus, &:active {
     text-decoration: none;
+  }
+}
+
+.img-circle {
+  border-radius: 50%;
+}
+
+.img-border-grey {
+  border: 2px solid $grey;
+  padding: 2px;
+}
+
+.app-form-control {
+  background-color: white;
+  border: 2px solid $light-grey;
+  border-radius: 26px;
+  font-family: $font-roboto;
+  font-size: $font-base-size;
+  font-weight: 400;
+  height: 50px;
+  padding-left: 25px;
+  padding-right: 25px;
+  @include placeholder {
+    color: rgba(255, 255, 255, 0.5);
   }
 }

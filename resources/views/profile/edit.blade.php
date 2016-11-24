@@ -8,6 +8,7 @@
             <h2>{{ trans("common.profile.sections.$section") }}</h2>
             <div class="row">
                 <div class="col-sm-3">
+
                     @include('profile.partials.navigation')
                 </div>
                 <div class="col-sm-offset-1 col-sm-8">

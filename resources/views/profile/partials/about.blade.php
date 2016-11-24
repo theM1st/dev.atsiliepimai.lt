@@ -13,7 +13,7 @@
 </div>
 <div class="form-group">
     <label for="first_name" class="control-label col-lg-4 col-sm-4">{{ trans('common.user.birthday') }}</label>
-    <div class="col-lg-5 col-sm-7">
+    <div class="col-lg-8 col-sm-8">
         {{ Form::birthday($user->birthday) }}
     </div>
 </div>

@@ -24,16 +24,19 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        $user = \Auth::user();
-        //dd($this->segment(3));
+        if ($this->segment(2)) {
+            $emailUniqueRule = Rule::unique('users')->ignore($this->segment(2));
+        } else {
+            $emailUniqueRule = Rule::unique('users');
+        }
 
         return [
             'email' => [
                 'sometimes',
                 'required',
                 'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
+                'max:50',
+                $emailUniqueRule,
             ],
             'username' => 'sometimes|required|max:255',
             'password' => 'sometimes|required|min:6|max:50|confirmed',
