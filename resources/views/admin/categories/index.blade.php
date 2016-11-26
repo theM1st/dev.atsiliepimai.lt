@@ -3,15 +3,25 @@
 @section('title', getTitle($title))
 
 @section('content')
-    <div class="container categories-index">
-        {!! adminHeaderTitle() !!}
-        <div class="row">
-            <div class="col-sm-6">
-                <ul class="sortable category-list">
-                @foreach($categories as $node)
-                    {!! adminRenderNode($node) !!}
-                @endforeach
-                </ul>
+    <div class="container">
+        <div class="admin-block categories-index">
+            {!! adminHeaderTitle() !!}
+
+            <div class="admin-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <ul class="category-list">
+                            <li>
+                                {{ trans('common.category.main') }}
+                                <ul class="sortable">
+                                    @foreach($categories as $node)
+                                        {!! adminRenderNode($node) !!}
+                                    @endforeach
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

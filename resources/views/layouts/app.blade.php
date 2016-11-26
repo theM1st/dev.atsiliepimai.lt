@@ -21,7 +21,7 @@
 
         @include('header')
 
-        <main class="main">
+        <main class="main{{ (Request::segment(1) == 'admin' ? ' admin-container' : '') }}">
             @include('alert')
             @yield('content')
         </main>

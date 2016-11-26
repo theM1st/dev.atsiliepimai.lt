@@ -6054,6 +6054,18 @@ form .help-block {
   padding-left: 25px;
   padding-right: 25px; }
 
+.alert-global {
+  border-top-width: 3px; }
+  .alert-global.alert-success {
+    border-color: #00a65a;
+    color: #00a65a; }
+  .alert-global.alert-danger {
+    border-color: #dd4b39;
+    color: #dd4b39; }
+  .alert-global.alert-info {
+    border-color: #009abf;
+    color: #009abf; }
+
 .header {
   background-color: #1b9d48; }
   .header .logo {
@@ -6319,6 +6331,15 @@ form .control-label {
   line-height: 1;
   padding: 15px 24px; }
 
+.btn-sm, .btn-group-sm > .btn {
+  font-size: 14px !important;
+  line-height: 1;
+  padding: 8px 15px !important; }
+
+.btn-empty {
+  background-color: transparent !important;
+  color: #3c3e40 !important; }
+
 .btn-first {
   background-color: #ffcc00;
   border-radius: 30px;
@@ -6330,6 +6351,8 @@ form .control-label {
   .btn-first:hover, .btn-first:focus, .btn-first:active {
     background-color: #e6b800;
     color: #ffffff; }
+  .btn-first.btn-empty {
+    border: 3px solid #ffcc00; }
 
 .btn-third, .btn-social {
   background-color: #f2f1f1;
@@ -6342,7 +6365,7 @@ form .control-label {
   .btn-third:hover, .btn-social:hover, .btn-third:focus, .btn-social:focus, .btn-third:active, .btn-social:active {
     background-color: #e6e4e4;
     color: #3c3e40; }
-  .btn-third.empty, .empty.btn-social {
+  .btn-third.btn-empty, .btn-empty.btn-social {
     border: 3px solid #f2f1f1; }
 
 .btn-social {

@@ -15,6 +15,7 @@ return [
     'logout' => 'Atsijungti',
     'forgot_password' => 'Pamiršote slaptažodį?',
     'your_email' => 'Jūsų el. paštas',
+    'description' => 'Aprašymas',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
@@ -48,8 +49,9 @@ return [
         'remember_me' => 'Prisiminti jūsų prisijungimo duomenis',
     ],
     'category' => [
+        'main' => 'Pagrindinė',
         'name' => 'Pavadinimas',
-        'parent' => 'Į kategoriją',
+        'parent' => 'Priklauso kategorijai',
     ],
     'country' => [
         'name' => 'Pavadinimas',

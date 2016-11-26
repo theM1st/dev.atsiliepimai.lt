@@ -32,8 +32,8 @@ class CategoriesController extends AdminController
     {
         $category = Category::find($request->get('parent_id'));
 
-        if ($category) {
-            if ($model = $this->createAlert(Category::class, $request->all())) {
+        if ($model = $this->createAlert(Category::class, $request->all())) {
+            if ($category) {
                 $model->makeChildOf($category);
             }
         }

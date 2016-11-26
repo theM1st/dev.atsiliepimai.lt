@@ -3,19 +3,22 @@
 @section('title', getTitle($title))
 
 @section('content')
-    <div class="container categories-edit">
-        {!! adminHeaderTitle() !!}
+    <div class="container">
+        <div class="admin-block categories-edit">
+            {!! adminHeaderTitle() !!}
 
-        <div class="row">
-            <div class="col-md-6">
-                {!! Former::open()->route('categories.update', $category->id)->method('put') !!}
+            <div class="admin-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        {!! Former::open()->route('categories.update', $category->id)->method('put') !!}
 
-                    {!! Former::text('name')->label('common.category.name') !!}
-                    {!! Former::select('parent_id')->options(collect($categories)->prepend('', ''))->label('common.category.parent') !!}
+                            @include('admin.categories.form.elements')
 
-                    {!! Former::actions()->primary_submit('common.edit') !!}
+                            {!! Former::actions()->first_lg_submit('common.update') !!}
 
-                {!! Former::close() !!}
+                        {!! Former::close() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -3,19 +3,22 @@
 @section('title', getTitle($title))
 
 @section('content')
-    <div class="container categories-create">
-        {!! adminHeaderTitle() !!}
+    <div class="container">
+        <div class="admin-block categories-create">
+            {!! adminHeaderTitle() !!}
 
-        <div class="row">
-            <div class="col-md-6">
-                {!! Former::open()->route('categories.store')->method('post') !!}
+            <div class="admin-body">
+                <div class="row">
+                    <div class="col-md-7">
+                        {!! Former::open()->route('categories.store')->method('post') !!}
 
-                    {!! Former::text('name')->label('common.category.name') !!}
-                    {!! Former::select('parent_id')->options(collect($categories)->prepend('', ''))->label('common.category.parent') !!}
+                            @include('admin.categories.form.elements')
 
-                    {!! Former::actions()->primary_submit('common.create') !!}
+                            {!! Former::actions()->first_lg_submit('common.create') !!}
 
-                {!! Former::close() !!}
+                        {!! Former::close() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

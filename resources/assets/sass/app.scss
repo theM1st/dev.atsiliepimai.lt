@@ -348,12 +348,24 @@ form .control-label {
     padding: 15px 24px;
 
 }
+.btn-sm {
+    font-size: 14px !important;
+    line-height: 1;
+    padding: 8px 15px !important;
+}
+.btn-empty {
+    background-color: transparent !important;
+    color: $text-color !important;
+}
 .btn-first {
     @include button(#ffffff, $yellow);
+    &.btn-empty {
+        border: 3px solid $yellow;
+    }
 }
 .btn-third {
     @include button($text-color, $light-grey);
-    &.empty {
+    &.btn-empty {
         border: 3px solid $light-grey;
     }
 }

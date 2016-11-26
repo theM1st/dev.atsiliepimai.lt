@@ -52,3 +52,19 @@ form .help-block {
   padding-left: 25px;
   padding-right: 25px;
 }
+
+.alert-global {
+  border-top-width: 3px;
+  &.alert-success {
+    border-color: #00a65a;
+    color: #00a65a;
+  }
+  &.alert-danger {
+    border-color: #dd4b39;
+    color: #dd4b39;
+  }
+  &.alert-info {
+    border-color: #009abf;
+    color: #009abf;
+  }
+}

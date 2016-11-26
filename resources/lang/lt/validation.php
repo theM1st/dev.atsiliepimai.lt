@@ -58,7 +58,7 @@ return [
     'min'                  => [
         'numeric' => 'The :attribute must be at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => ':attribute turi būti netrumpesnis nei :min simboliai.',
+        'string'  => ':attribute turi būti ne trumpesnis nei :min simboliai.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
@@ -81,7 +81,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'Jau egzistuoja',
+    'unique'               => 'Turi būti unikalus',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
 
@@ -128,6 +128,7 @@ return [
         'current_password' => trans('common.user.current_password'),
         'telephone' => trans('common.user.telephone'),
         'city' => trans('common.user.city'),
+        'description' => trans('common.description'),
     ],
 
 ];

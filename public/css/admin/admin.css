@@ -17,6 +17,7 @@ a:hover {
 }
 .admin-container .admin-block {
     background-color: #ffffff;
+    border-radius: 3px;
     border-top: 3px solid #00c0ef;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     margin: 20px 0;
@@ -24,15 +25,15 @@ a:hover {
 .admin-container .admin-block .admin-header {
     border-bottom: 1px solid #f4f4f4;
     color: #444;
-    padding: 15px;
+    padding: 20px;
 }
 .admin-container .admin-block .admin-header h2 {
     display: inline-block;
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
 }
 .admin-container .admin-block .admin-body {
-    padding: 15px;
+    padding: 20px;
 }
 .navbar-admin {
     height: 30px;
@@ -105,12 +106,10 @@ a:hover {
     list-style-type: none;
     padding: 0;
 }
-.categories-index .category-list li {
+.categories-index .category-list .category-name {
+    line-height: 30px;
     padding-bottom: 5px;
     padding-top: 5px;
-}
-.categories-index .category-name {
-    line-height: 30px;
 }
 .categories-index .category-name .btn-group {
     float: right;
