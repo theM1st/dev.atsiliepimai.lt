@@ -6,23 +6,7 @@
     ->label('common.user.telephone')
     ->inlineHelp('Jūsų telefonu nebus dalinamasi su trečiosiomis šalimis.')
 !!}
-<div class="form-group">
-    <div class="col-sm-12">
-        <div class="form-label">{{ trans('common.user.birthday') }}</div>
-    </div>
-</div>
-<div class="form-group">
-    <label for="first_name" class="control-label col-lg-4 col-sm-4">{{ trans('common.user.birthday') }}</label>
-    <div class="col-lg-8 col-sm-8">
-        {{ Form::birthday($user->birthday) }}
-    </div>
-</div>
-
-<div class="form-group">
-    <div class="col-sm-12">
-        <div class="form-label">{{ trans('common.user.gender') }}</div>
-    </div>
-</div>
+{{ Form::birthday($user->birthday) }}
 {!!
     Former::select('gender')
     ->options(['male' => trans('common.user.male'), 'female' => trans('common.user.female')])

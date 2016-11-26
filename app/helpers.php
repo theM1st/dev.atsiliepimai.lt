@@ -42,9 +42,9 @@ if (!function_exists('adminHeaderTitle')) {
      */
     function adminHeaderTitle()
     {
-        $title = '<h2>';
+        $title = '<div class="admin-header"><h2>';
         $title .= trans('admin.'.Route::getCurrentRoute()->getName());
-        $title .= '</h2>';
+        $title .= '</h2></div>';
 
         return $title;
     }

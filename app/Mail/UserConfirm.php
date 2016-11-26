@@ -39,6 +39,6 @@ class UserConfirm extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.users.confirm');
+        return $this->view('notifications.users.confirm');
     }
 }

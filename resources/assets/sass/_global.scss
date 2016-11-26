@@ -51,7 +51,4 @@ form .help-block {
   height: 50px;
   padding-left: 25px;
   padding-right: 25px;
-  @include placeholder {
-    color: rgba(255, 255, 255, 0.5);
-  }
 }

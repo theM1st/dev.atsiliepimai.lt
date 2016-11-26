@@ -6053,16 +6053,6 @@ form .help-block {
   height: 50px;
   padding-left: 25px;
   padding-right: 25px; }
-  .app-form-control::-webkit-input-placeholder, input.form-control::-webkit-input-placeholder, .bootstrap-select > .dropdown-toggle::-webkit-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
-  .app-form-control:-moz-placeholder, input.form-control:-moz-placeholder, .bootstrap-select > .dropdown-toggle:-moz-placeholder {
-    /* Firefox 18- */
-    color: rgba(255, 255, 255, 0.5); }
-  .app-form-control::-moz-placeholder, input.form-control::-moz-placeholder, .bootstrap-select > .dropdown-toggle::-moz-placeholder {
-    /* Firefox 19+ */
-    color: rgba(255, 255, 255, 0.5); }
-  .app-form-control:-ms-input-placeholder, input.form-control:-ms-input-placeholder, .bootstrap-select > .dropdown-toggle:-ms-input-placeholder {
-    color: rgba(255, 255, 255, 0.5); }
 
 .header {
   background-color: #1b9d48; }
@@ -6096,6 +6086,16 @@ form .help-block {
       padding-right: 65px;
       vertical-align: middle;
       width: 100%; }
+      .header .search .form-control::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.5); }
+      .header .search .form-control:-moz-placeholder {
+        /* Firefox 18- */
+        color: rgba(255, 255, 255, 0.5); }
+      .header .search .form-control::-moz-placeholder {
+        /* Firefox 19+ */
+        color: rgba(255, 255, 255, 0.5); }
+      .header .search .form-control:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.5); }
     .header .search .input-group-btn {
       position: absolute;
       right: 55px;
@@ -6126,7 +6126,8 @@ form .help-block {
       white-space: nowrap; }
       @media only screen and (min-width: 768px) {
         .header .nav .nav-link .username {
-          width: 80px; } }
+          text-align: center;
+          width: 72px; } }
     .header .nav .nav-link .fa-caret-down {
       font-size: 18px;
       margin-left: 2px; }
@@ -6134,13 +6135,13 @@ form .help-block {
       background-color: #1b9044; }
     @media only screen and (min-width: 768px) {
       .header .nav .nav-link {
-        padding: 20px 8px; } }
+        padding: 20px 16px; } }
     @media only screen and (min-width: 992px) {
       .header .nav .nav-link {
-        padding: 35px 6px; } }
+        padding: 35px 14px; } }
     @media only screen and (min-width: 1200px) {
       .header .nav .nav-link {
-        padding: 35px 18px; } }
+        padding: 35px 26px; } }
   .header .nav .dropdown.open > .nav-link {
     background-color: #1b9044;
     text-decoration: none; }
@@ -6216,40 +6217,46 @@ form .help-block {
       margin: 0;
       padding: 0 12px 0 0;
       position: relative; }
-  .main .main-section.auth-login hr {
+  .main .main-section.auth-login hr, .main .main-section.auth-register hr {
     border: 3px solid #f2f1f1; }
-  .main .main-section.auth-login .col-sm-6 {
+  .main .main-section.auth-login .col-sm-6, .main .main-section.auth-register .col-sm-6 {
     z-index: 2; }
   @media only screen and (min-width: 768px) {
-    .main .main-section.auth-login .login-form {
+    .main .main-section.auth-login .auth-form, .main .main-section.auth-register .auth-form {
       margin-top: 90px; } }
-  .main .main-section.auth-login .login-form .btn-first {
+  .main .main-section.auth-login .auth-form .btn-first, .main .main-section.auth-register .auth-form .btn-first {
     text-transform: uppercase;
     width: 100%; }
-    .main .main-section.auth-login .login-form .btn-first span {
+    .main .main-section.auth-login .auth-form .btn-first span, .main .main-section.auth-register .auth-form .btn-first span {
       padding-left: 10px; }
-  .main .main-section.auth-login .login-form .forgot-password {
+  .main .main-section.auth-login .auth-form .forgot-password, .main .main-section.auth-register .auth-form .forgot-password {
     color: #293f54;
     font-size: 14px;
     text-decoration: underline; }
-    .main .main-section.auth-login .login-form .forgot-password:hover {
+    .main .main-section.auth-login .auth-form .forgot-password:hover, .main .main-section.auth-register .auth-form .forgot-password:hover {
       text-decoration: none; }
-  .main .main-section.auth-login .social-login .title {
+  .main .main-section.auth-login .auth-form .checkbox-container, .main .main-section.auth-register .auth-form .checkbox-container {
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-left: 10px; }
+    .main .main-section.auth-login .auth-form .checkbox-container .control-label, .main .main-section.auth-register .auth-form .checkbox-container .control-label {
+      display: none; }
+  .main .main-section.auth-login .social-login .title, .main .main-section.auth-register .social-login .title {
     color: #293f54;
     font-size: 18px;
     font-weight: bold;
     margin-bottom: 10px; }
-  .main .main-section.auth-login .social-login .btn-third, .main .main-section.auth-login .social-login .btn-social {
+  .main .main-section.auth-login .social-login .btn-third, .main .main-section.auth-login .social-login .btn-social, .main .main-section.auth-register .social-login .btn-third, .main .main-section.auth-register .social-login .btn-social {
     text-align: left;
     width: 100%; }
   @media only screen and (min-width: 768px) {
-    .main .main-section.auth-login .motorbike {
+    .main .main-section.auth-login .motorbike, .main .main-section.auth-register .motorbike {
       opacity: 0.2;
       position: absolute;
       top: 0;
       right: 0;
       z-index: 1; } }
-  .main .main-section.auth-login .motorbike img {
+  .main .main-section.auth-login .motorbike img, .main .main-section.auth-register .motorbike img {
     max-width: 600px; }
   .main .main-section .profile-user .username {
     font-weight: 700;
@@ -6285,9 +6292,8 @@ form .help-block {
 
 .main .profile-edit .control-label {
   display: none; }
-
-.main .profile-edit .form-label {
-  font-weight: 600; }
+  .main .profile-edit .control-label[for=birthday], .main .profile-edit .control-label[for=gender] {
+    display: block !important; }
 
 .main .profile-edit .form-control.birth-year .filter-option, .main .profile-edit .form-control.birth-month .filter-option, .main .profile-edit .form-control.birth-day .filter-option {
   text-align: center; }

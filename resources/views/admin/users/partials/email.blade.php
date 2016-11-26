@@ -1,5 +1,4 @@
-{!! Former::email('email')->label('common.user.email') !!}
-{!! Former::text('username')->label('common.user.username') !!}
+@include("profile.partials.$section")
 {!!
     Former::select('user_role')
     ->options([''=>'', 'admin' => trans('common.user.admin')])

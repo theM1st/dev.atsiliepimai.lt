@@ -1,7 +1,35 @@
 @extends('layouts.app')
 
+@section('title', getTitle(trans('common.forgot_password')))
+
 <!-- Main Content -->
 @section('content')
+    <section class="main-section auth-reset">
+        <div class="container">
+            <h2>{{ trans('common.forgot_password') }}</h2>
+
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <div class="alert alert-info">
+                        Nurodykite savo prisijungimo el paštas ir mes atsiųsime instrukcijos, kaip atstatyti slaptažodį.
+                    </div>
+
+                    {!! Former::open()->action(url('/password/email'))->method('post') !!}
+                        {!! Former::email('email')->label('common.your_email') !!}
+
+                        {!! Former::actions()->first_lg_submit('common.form.reset_password') !!}
+                    {!! Former::close() !!}
+                </div>
+            </div>
+        </div>
+    </section>
+    {{--
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -44,4 +72,5 @@
         </div>
     </div>
 </div>
+--}}
 @endsection

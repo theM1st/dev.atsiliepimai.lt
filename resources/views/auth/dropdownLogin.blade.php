@@ -9,7 +9,7 @@
         <input type="password" name="password" class="form-control" id="password" placeholder="{{ trans('common.user.password') }}">
     </div>
     <div class="form-group">
-        <a href="{{ url('/password/reset') }}" class="password-reset">{{ trans('common.forgot_password') }}?</a>
+        <a href="{{ url('/password/reset') }}" class="password-reset">{{ trans('common.forgot_password') }}</a>
     </div>
     <div class="form-group login-button">
         <button class="btn btn-first btn-lg">{{ trans('common.form.sign_in') }}</button>

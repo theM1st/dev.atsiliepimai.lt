@@ -1,6 +1,28 @@
 @extends('layouts.app')
 
+@section('title', getTitle(trans('notifications.reset_password.subject')))
+
 @section('content')
+    <section class="main-section auth-reset">
+        <div class="container">
+            <h2>{{ trans('notifications.reset_password.subject') }}</h2>
+
+            <div class="row">
+                <div class="col-sm-offset-2 col-sm-8">
+                    {!! Former::open()->action(url('/password/reset'))->method('post') !!}
+                        {!! Former::hidden('token')->value($token) !!}
+
+                        {!! Former::email('email')->label('common.your_email') !!}
+                        {!! Former::password('password')->label('common.user.password') !!}
+                        {!! Former::password('password_confirmation')->label('common.user.repeat_password') !!}
+
+                        {!! Former::actions()->first_lg_submit('common.form.change_password') !!}
+                    {!! Former::close() !!}
+                </div>
+            </div>
+        </div>
+    </section>
+    {{--
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -67,4 +89,5 @@
         </div>
     </div>
 </div>
+--}}
 @endsection

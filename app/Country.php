@@ -41,8 +41,7 @@ class Country extends Model
     public static function lists($title, $key = 'id')
     {
         return Country::getCountries()
-            ->pluck($title, $key)
-            ->prepend('', '');
+            ->pluck($title, $key);
     }
 
     public function setPosition($position)

@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-4">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav" style="margin: 0 -10px">
                         <li>
                             <div class="dropdown">
                                 <a href="" class="nav-link" data-toggle="dropdown" id="categories-menu">

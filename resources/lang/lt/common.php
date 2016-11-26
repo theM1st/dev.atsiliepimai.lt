@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'hello' => 'Sveiki',
+    'all_rights_reserved' => 'Visos teisės saugomos',
     'ok' => 'Gerai',
     'create' => 'Sukurti',
     'update' => 'Atnaujinti',
@@ -9,11 +11,16 @@ return [
     'delete' => 'Trinti',
     'cancel' => 'Atšaukti',
     'sign_in' => 'Prisijungimas',
+    'sign_up' => 'Registracija',
     'logout' => 'Atsijungti',
-    'forgot_password' => 'Pamiršote slaptažodį',
+    'forgot_password' => 'Pamiršote slaptažodį?',
+    'your_email' => 'Jūsų el. paštas',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
+        'sign_up' => 'Registruotis',
+        'reset_password' => 'Atstatyti slaptažodį',
+        'change_password' => 'Pakeisti slaptažodį',
     ],
     'user' => [
         'email' => 'El. paštas',

@@ -11,7 +11,7 @@
 
                     @include('profile.partials.navigation')
                 </div>
-                <div class="col-sm-offset-1 col-sm-8">
+                <div class="col-sm-8">
                     {!! Former::open_for_files()->route('profile.update', $user->id)->method('put') !!}
 
                         @include("profile.partials.$section")

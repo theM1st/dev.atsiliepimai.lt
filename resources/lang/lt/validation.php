@@ -106,6 +106,9 @@ return [
         'picture' => [
             'uploaded' => trans('common.user.picture_rules')
         ],
+        'page_rules' => [
+            'accepted' => 'Privaloma sutikti su puslapio taisyklėmis'
+        ]
     ],
 
     /*
