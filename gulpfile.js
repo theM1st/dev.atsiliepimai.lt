@@ -25,9 +25,10 @@ elixir(function(mix) {
         'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js',
         'node_modules/jquery-ui-dist/jquery-ui.min.js',
         'node_modules/bootstrap-select/dist/js/bootstrap-select.min.js',
-    ],
-        'resources/assets/js'
-    );
+    ], 'resources/assets/js'
+    ).copy([
+        'node_modules/bootstrap-select/dist/js/i18n/defaults-lt_LT.js',
+    ], 'resources/assets/js/bootstrap-select/i18n');
 
     mix.sass([
         'app.scss'
@@ -36,6 +37,7 @@ elixir(function(mix) {
         'bootstrap.min.js',
         'jquery-ui.min.js',
         'bootstrap-select.min.js',
+        'bootstrap-select/i18n/defaults-lt_LT.js',
         'app.js',
     ], 'public/js/app.js');
 });

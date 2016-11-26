@@ -82,9 +82,14 @@ if (!function_exists('adminRenderNode')) {
         ]);
 
         if( $node->isLeaf() ) {
-            return '<li class="clearfix category-name" data-id="' . $node->id . '">' . $node->name . $actions . '</li>';
+            return '<li class="clearfix category-name" data-id="' . $node->id . '">' .
+                '<span class="sort-handle ui-sortable-handle"><i class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i></span>' .
+                $node->name . $actions .
+                '</li>';
         } else {
-            $html = '<li class="clearfix category-name" data-id="' . $node->id . '">' . $node->name . $actions;
+            $html = '<li class="clearfix category-name" data-id="' . $node->id . '">' .
+                '<span class="sort-handle ui-sortable-handle"><i class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i></span>' .
+                $node->name . $actions;
 
             $html .= '<ul class="sortable">';
 

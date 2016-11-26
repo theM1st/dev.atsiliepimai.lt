@@ -8,6 +8,7 @@
         ->class('form-control selectpicker')
         ->title(trans('common.category.main'))
         ->label('common.category.parent')
+        ->data_live_search('true')
 !!}
 
 {!!

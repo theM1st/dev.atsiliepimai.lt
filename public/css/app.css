@@ -6066,6 +6066,11 @@ form .help-block {
     border-color: #009abf;
     color: #009abf; }
 
+.bs-searchbox .form-control {
+  font-size: 14px;
+  height: 40px;
+  padding: 5px 20px; }
+
 .header {
   background-color: #1b9d48; }
   .header .logo {
@@ -6336,10 +6341,6 @@ form .control-label {
   line-height: 1;
   padding: 8px 15px !important; }
 
-.btn-empty {
-  background-color: transparent !important;
-  color: #3c3e40 !important; }
-
 .btn-first {
   background-color: #ffcc00;
   border-radius: 30px;
@@ -6352,7 +6353,12 @@ form .control-label {
     background-color: #e6b800;
     color: #ffffff; }
   .btn-first.btn-empty {
-    border: 3px solid #ffcc00; }
+    background-color: transparent;
+    border: 3px solid #ffcc00;
+    color: #3c3e40; }
+    .btn-first.btn-empty:hover, .btn-first.btn-empty:focus, .btn-first.btn-empty:active {
+      background-color: #ffcc00;
+      color: #ffffff; }
 
 .btn-third, .btn-social {
   background-color: #f2f1f1;
@@ -6366,7 +6372,12 @@ form .control-label {
     background-color: #e6e4e4;
     color: #3c3e40; }
   .btn-third.btn-empty, .btn-empty.btn-social {
-    border: 3px solid #f2f1f1; }
+    background-color: transparent;
+    border: 3px solid #f2f1f1;
+    color: #3c3e40; }
+    .btn-third.btn-empty:hover, .btn-empty.btn-social:hover, .btn-third.btn-empty:focus, .btn-empty.btn-social:focus, .btn-third.btn-empty:active, .btn-empty.btn-social:active {
+      background-color: #f2f1f1;
+      color: #3c3e40; }
 
 .btn-social {
   position: relative; }

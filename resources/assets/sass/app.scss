@@ -353,21 +353,12 @@ form .control-label {
     line-height: 1;
     padding: 8px 15px !important;
 }
-.btn-empty {
-    background-color: transparent !important;
-    color: $text-color !important;
-}
 .btn-first {
     @include button(#ffffff, $yellow);
-    &.btn-empty {
-        border: 3px solid $yellow;
-    }
 }
 .btn-third {
     @include button($text-color, $light-grey);
-    &.btn-empty {
-        border: 3px solid $light-grey;
-    }
+
 }
 .btn-social {
     @extend .btn-third;

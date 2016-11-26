@@ -107,7 +107,7 @@ a:hover {
     padding: 0;
 }
 .categories-index .category-list .category-name {
-    line-height: 30px;
+    line-height: 34px;
     padding-bottom: 5px;
     padding-top: 5px;
 }
@@ -129,7 +129,7 @@ a:hover {
     cursor: move;
 }
 .sortable .ui-sortable-helper {
-    background-color: #e6e6e6;
+    background-color: #f2f1f1;
     border: 1px solid #ccc;
     padding-left: 5px;
 }
@@ -139,6 +139,9 @@ a:hover {
 .sortable .ui-sortable-placeholder {
     border: 1px dotted #080808;
     visibility: visible !important;
+}
+.sortable .sort-handle {
+    padding: 0 8px;
 }
 
 .form-horizontal .control-label {

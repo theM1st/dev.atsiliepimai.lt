@@ -27,6 +27,15 @@
     background-color: darken($background, 5%);
     color: $text;
   }
+  &.btn-empty {
+    background-color: transparent;
+    border: 3px solid $background;
+    color: $text-color;
+    &:hover, &:focus, &:active {
+      background-color: $background;
+      color: $text;
+    }
+  }
 }
 
 @mixin respond-to($media) {

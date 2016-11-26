@@ -9,7 +9,7 @@
 
             <div class="admin-body">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-md-7">
                         <ul class="category-list">
                             <li>
                                 {{ trans('common.category.main') }}
@@ -31,6 +31,7 @@
     <script>
         (function(){
             $('.sortable').sortable({
+                handle: '.sort-handle',
                 update: function(event, ui) {
                     var url = '{{ route('categories.move', [':id', ':position']) }}';
                     url = url.replace(':id', ui.item.data('id')).replace(':position', ui.item.index());
