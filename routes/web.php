@@ -25,6 +25,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
 });
 */
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
+    Route::get('/{section}', 'ProfileController@show')
+        ->name('profile.show')->where('section', '(me|reviews)');
+
     Route::get('edit{section}', 'ProfileController@edit')
         ->name('profile.edit')->where('section', '(About|Photo|Address|Email|Password)');
 

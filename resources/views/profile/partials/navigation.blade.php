@@ -7,6 +7,17 @@
     <h5>
         <span>{{ trans('common.profile.name') }}</span>
     </h5>
+    <nav>
+        <ul>
+            @foreach(App\User::getProfileSections()['profile'] as $s)
+            <li>
+                <a href="{{ route('profile.show', $s) }}"@if(isset($section) && $section == $s) class="active"@endif>
+                    {{ trans("common.profile.sections.$s") }}
+                </a>
+            </li>
+            @endforeach
+        </ul>
+    </nav>
 </div>
 <div class="profile-nav settings-nav">
     <h5>
@@ -14,9 +25,9 @@
     </h5>
     <nav>
         <ul>
-            @foreach($sections as $s)
+            @foreach(App\User::getProfileSections()['settings'] as $s)
                 <li>
-                    <a href="{{ route('profile.edit', $s) }}"@if($section == $s) class="active"@endif>
+                    <a href="{{ route('profile.edit', $s) }}"@if(isset($section) && $section == $s) class="active"@endif>
                         {{ trans("common.profile.sections.$s") }}
                     </a>
                 </li>

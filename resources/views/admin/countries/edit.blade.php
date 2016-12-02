@@ -3,18 +3,23 @@
 @section('title', getTitle($title))
 
 @section('content')
-    <div class="container categories-create">
-        {!! adminHeaderTitle() !!}
+    <div class="container">
+        <div class="admin-block countries-edit">
+            {!! adminHeaderTitle() !!}
 
-        <div class="row">
-            <div class="col-md-6">
-                {!! Former::open()->route('countries.update', $country->id)->method('put') !!}
+            <div class="admin-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        {!! Former::open()->route('countries.update', $country->id)->method('put') !!}
 
-                    {!! Former::text('name')->label('common.country.name') !!}
+                            {!! Former::text('name')->label('common.country.name') !!}
 
-                    {!! Former::actions()->primary_submit('common.edit') !!}
+                            <hr>
+                            {!! Former::actions()->first_lg_submit('common.update') !!}
 
-                {!! Former::close() !!}
+                        {!! Former::close() !!}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

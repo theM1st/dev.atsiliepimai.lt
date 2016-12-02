@@ -74,3 +74,16 @@ form .help-block {
   height: 40px;
   padding: 5px 20px;
 }
+
+.checkbox-container, .radio-container {
+  font-size: $font-standart-size;
+  margin-bottom: 10px;
+  .control-label {
+    display: none;
+  }
+}
+
+.icheckbox_square-green {
+  margin-right: 8px;
+  margin-top: -4px;
+}

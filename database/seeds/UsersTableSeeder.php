@@ -11,6 +11,15 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = factory(App\User::class, 50)->create();
+        App\User::create([
+            'username' => 'demo',
+            'password' => bcrypt('demo'),
+            'email' => 'demo@atsiliepimai.lt',
+            'first_name' => 'Demo',
+            'user_role' => 'admin',
+            'verified' => true,
+        ]);
+
+        factory(App\User::class, 50)->create();
     }
 }

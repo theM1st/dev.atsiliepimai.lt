@@ -18,6 +18,9 @@ elixir(function(mix) {
         'node_modules/jquery-ui-dist/jquery-ui.min.css',
         'public/css'
     ).copy(
+        'resources/assets/css/icheck',
+        'public/css/icheck'
+    ).copy(
         'node_modules/bootstrap-sass/assets/fonts',
         'public/fonts'
     ).copy([
@@ -38,6 +41,7 @@ elixir(function(mix) {
         'jquery-ui.min.js',
         'bootstrap-select.min.js',
         'bootstrap-select/i18n/defaults-lt_LT.js',
+        'icheck.js',
         'app.js',
     ], 'public/js/app.js');
 });

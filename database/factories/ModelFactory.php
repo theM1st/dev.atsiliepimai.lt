@@ -26,3 +26,20 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         //'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Listing::class, function (Faker\Generator $faker) {
+    $c = App\Category::allLeaves()->pluck('id')->toArray();
+
+    return [
+        'title' => str_limit($faker->sentence, 75),
+        'user_id' => 1,
+        'category_id' => $c[mt_rand(0, count($c) - 1)],
+        'active' => true,
+    ];
+});
+
+$factory->define(App\Review::class, function ($faker) {
+    return [
+        'title' => str_limit($faker->sentence, 75),
+    ];
+});

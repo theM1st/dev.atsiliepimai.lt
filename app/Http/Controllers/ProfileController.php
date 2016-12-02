@@ -9,6 +9,17 @@ use Auth;
 
 class ProfileController extends Controller
 {
+    public function show($section)
+    {
+        $user = Auth::user();
+
+        return $this->display('profile.show', [
+            'title' => trans('common.profile.sections.'.$section),
+            'user' => $user,
+            'section' => $section,
+        ]);
+    }
+
     public function edit($section)
     {
         $user = Auth::user();
@@ -19,7 +30,6 @@ class ProfileController extends Controller
             'title' => trans('common.profile.sections.'.$section),
             'user' => $user,
             'section' => $section,
-            'sections' => User::getProfileSections(),
         ]);
     }
 

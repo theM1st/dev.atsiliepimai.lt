@@ -18,3 +18,8 @@
         ->autofocus()
         ->inlineHelp('Aprašymas reikalingas paieškos sistemoms pvz. Google ir t.t. Ilgis ne mažiau 50 ir ne daugiau nei 160 simbolių, idealiai kiekviena kategorija turi turėti unikalų aprašymą (meta description).')
 !!}
+
+<div class="checkbox-container">
+{!! Former::checkbox('active')->text('common.category.active') !!}
+</div>
+<hr>

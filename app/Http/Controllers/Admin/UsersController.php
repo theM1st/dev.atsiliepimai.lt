@@ -37,7 +37,7 @@ class UsersController extends AdminController
     public function edit(User $user, $section='About')
     {
         \Former::populate($user);
-        
+
         return $this->display($this->viewPath('edit'), [
             'user' => $user,
             'sections' => User::getProfileSections(),

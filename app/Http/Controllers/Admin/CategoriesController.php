@@ -32,6 +32,8 @@ class CategoriesController extends AdminController
     {
         $category = Category::find($request->get('parent_id'));
 
+        $request->merge(['active' => $request->get('active', 0)]);
+
         if ($model = $this->createAlert(Category::class, $request->all())) {
             if ($category) {
                 $model->makeChildOf($category);
@@ -55,11 +57,13 @@ class CategoriesController extends AdminController
     {
         $parent = Category::find($request->get('parent_id'));
 
+        $request->merge(['active' => $request->get('active', 0)]);
+
         $this->saveAlert($category, $request->all());
 
-        if (!$parent) {
+        if (!$parent && !$category->isRoot()) {
             $category->makeRoot();
-        } else {
+        } elseif ($parent) {
             $category->makeChildOf($parent);
         }
 

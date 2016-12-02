@@ -5,10 +5,9 @@
 @section('content')
     <section class="main-section profile-edit">
         <div class="container">
-            <h2>{{ trans("common.profile.sections.$section") }}</h2>
+            <h2>{{ $title }}</h2>
             <div class="row">
                 <div class="col-sm-3">
-
                     @include('profile.partials.navigation')
                 </div>
                 <div class="col-sm-8">
@@ -20,7 +19,7 @@
 
                         <div class="form-group">
                             <div class="col-sm-12">
-                            {!! Form::submit(trans('common.profile.update.button'), ['class' => 'btn btn-first btn-lg']) !!}
+                            {!! Form::submit(trans('common.profile.form.update'), ['class' => 'btn btn-first btn-lg']) !!}
                             </div>
                         </div>
                     {!! Former::close() !!}

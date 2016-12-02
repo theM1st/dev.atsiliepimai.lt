@@ -76,20 +76,20 @@ if (!function_exists('adminRenderNode2')) {
 if (!function_exists('adminRenderNode')) {
     function adminRenderNode($node)
     {
-        $actions = Form::actions([
+        $actions = Form::tools([
             'edit' => route('categories.edit', $node->id),
             'delete' => route('categories.delete', $node->id)
         ]);
 
+        $element = '<div class="category-name">' .
+            '<span class="sort-handle ui-sortable-handle"><i class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i></span>' .
+            '<span class="text">' . $node->name . '</span>' . $actions .
+            '</div>';
+
         if( $node->isLeaf() ) {
-            return '<li class="clearfix category-name" data-id="' . $node->id . '">' .
-                '<span class="sort-handle ui-sortable-handle"><i class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i></span>' .
-                $node->name . $actions .
-                '</li>';
+            return '<li'.(!$node->active ? ' class="inactive"': '').' data-id="' . $node->id . '">' . $element . '</li>';
         } else {
-            $html = '<li class="clearfix category-name" data-id="' . $node->id . '">' .
-                '<span class="sort-handle ui-sortable-handle"><i class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i></span>' .
-                $node->name . $actions;
+            $html = '<li'.(!$node->active ? ' class="inactive"': '').' data-id="' . $node->id . '">' . $element;
 
             $html .= '<ul class="sortable">';
 
@@ -99,6 +99,37 @@ if (!function_exists('adminRenderNode')) {
             $html .= '</ul>';
 
             $html .= '</li>';
+        }
+
+        return $html;
+    }
+}
+
+if (!function_exists('categoriesHierarchyOptions')) {
+    function categoriesHierarchyOptions($node, $value=null)
+    {
+        if ($node->isLeaf()) {
+            $ancestors = $node->getAncestors();
+            $ancestors->shift();
+            $text = $ancestors->implode('name', ' > ');
+
+            $selected = ($node->id == $value ? ' selected="selected"' : '');
+
+            return '<option value="'.$node->id.'" data-subtext="'.$text.'"'.$selected.'>' . $node->name . '</option>';
+        } else {
+            if ($node->getLevel() == 0) {
+                $html = '<optgroup label="'.$node->name.'">';
+            } else {
+                $html = '';
+            }
+
+            foreach($node->children as $child) {
+                $html .= categoriesHierarchyOptions($child, $value);
+            }
+
+            if ($node->getLevel() == 0) {
+                $html .= '</optgroup>';
+            }
         }
 
         return $html;

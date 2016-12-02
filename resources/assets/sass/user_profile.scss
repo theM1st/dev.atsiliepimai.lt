@@ -1,0 +1,95 @@
+.profile-user {
+  .username {
+    font-weight: 700;
+    padding: 2px 5px;
+  }
+  .join-date {
+    padding: 2px 5px;
+  }
+}
+.profile-nav {
+  margin-top: 30px;
+  ul {
+    padding: 0;
+    margin: 0;
+    > li {
+      list-style: none;
+      margin-top: 20px;
+      > a {
+        @extend .a-decoration-none;
+        color: $text-color;
+        display: block;
+        font-size: $font-base-size - 1;
+        &.active {
+          &:before {
+            color: $primary-green;
+            content: "";
+            font-family: $font-awesome;
+            font-size: $font-xs-size;
+            padding-right: 5px;
+            position: relative;
+            top: -1px;
+          }
+        }
+      }
+    }
+  }
+}
+.profile-show {
+  dl.dl-horizontal {
+    dt {
+      text-align: left;
+    }
+    dd {
+      color: $primary-green;
+      margin-bottom: 10px;
+      margin-left: 160px;
+      word-break: break-all;
+      a {
+        color: $primary-green;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .widget-activity {
+    dl.dl-horizontal {
+      margin-top: 20px;
+      dt {
+        font-weight: 500;
+        text-align: left;
+      }
+      dd {
+        color: $text-color;
+      }
+    }
+  }
+}
+.profile-edit {
+  .form-horizontal {
+    margin-top: 40px;
+    @include respond-to(sm) {
+      margin-top: 0;
+    }
+  }
+  .control-label {
+    display: none;
+    &[for=birthday], &[for=gender] {
+      display: block !important;
+    }
+  }
+  .form-control {
+    &.birth-year, &.birth-month, &.birth-day {
+      .dropdown-toggle {
+        padding-left: 15px;
+      }
+      .filter-option {
+        text-align: center;
+      }
+    }
+    @include placeholder {
+      color: $grey;
+    }
+  }
+}

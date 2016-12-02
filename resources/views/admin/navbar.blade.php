@@ -12,6 +12,22 @@
         <ul class="nav navbar-nav">
             <li class="dropdown">
                 <div class="btn-group">
+                    <a href="{{ route('listings.index') }}">
+                        <span class="fa fa-product-hunt" aria-hidden="true"></span>
+                        {{ trans('admin.listings.index') }}
+                    </a>
+                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('listings.create') }}">{{ trans('admin.listings.create') }}</a></li>
+                        <li><a href="{{ route('listings.index') }}">{{ trans('admin.listings.index') }}</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <div class="btn-group">
                     <a href="{{ route('categories.index') }}">
                         <span class="fa fa-list" aria-hidden="true"></span>
                         {{ trans('admin.categories.index') }}

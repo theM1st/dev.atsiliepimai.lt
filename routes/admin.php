@@ -1,5 +1,7 @@
 <?php
 
+Route::resource('listings', 'ListingsController');
+
 Route::resource('categories', 'CategoriesController');
 Route::get('categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
 Route::get('categories/{category}/move/{position}', 'CategoriesController@move')

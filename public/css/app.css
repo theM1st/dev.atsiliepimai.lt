@@ -6033,7 +6033,7 @@ form .help-block {
     .h, .main .main-section h2, .main .main-section h5 {
       font-size: 36px; } }
 
-.a-decoration-none:hover, .header .nav .nav-link:hover, .header .nav .user-login-form a:hover, .main .main-section .profile-nav ul > li > a:hover, .a-decoration-none:focus, .header .nav .nav-link:focus, .header .nav .user-login-form a:focus, .main .main-section .profile-nav ul > li > a:focus, .a-decoration-none:active, .header .nav .nav-link:active, .header .nav .user-login-form a:active, .main .main-section .profile-nav ul > li > a:active {
+.a-decoration-none:hover, .header .nav .nav-link:hover, .header .nav .user-login-form a:hover, .profile-nav ul > li > a:hover, .a-decoration-none:focus, .header .nav .nav-link:focus, .header .nav .user-login-form a:focus, .profile-nav ul > li > a:focus, .a-decoration-none:active, .header .nav .nav-link:active, .header .nav .user-login-form a:active, .profile-nav ul > li > a:active {
   text-decoration: none; }
 
 .img-circle {
@@ -6043,7 +6043,7 @@ form .help-block {
   border: 2px solid #cacdd1;
   padding: 2px; }
 
-.app-form-control, input.form-control, .bootstrap-select > .dropdown-toggle {
+.app-form-control, input.form-control, textarea.form-control, .bootstrap-select > .dropdown-toggle {
   background-color: white;
   border: 2px solid #f2f1f1;
   border-radius: 26px;
@@ -6071,6 +6071,16 @@ form .help-block {
   height: 40px;
   padding: 5px 20px; }
 
+.checkbox-container, .radio-container {
+  font-size: 14px;
+  margin-bottom: 10px; }
+  .checkbox-container .control-label, .radio-container .control-label {
+    display: none; }
+
+.icheckbox_square-green {
+  margin-right: 8px;
+  margin-top: -4px; }
+
 .header {
   background-color: #1b9d48; }
   .header .logo {
@@ -6096,7 +6106,8 @@ form .help-block {
       background-color: #1b9044;
       border: none;
       border-radius: 20px;
-      color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      font-size: 14px;
       font-weight: 300;
       height: 36px;
       padding-left: 20px;
@@ -6152,13 +6163,13 @@ form .help-block {
       background-color: #1b9044; }
     @media only screen and (min-width: 768px) {
       .header .nav .nav-link {
-        padding: 20px 16px; } }
+        padding: 20px 13px; } }
     @media only screen and (min-width: 992px) {
       .header .nav .nav-link {
-        padding: 35px 14px; } }
+        padding: 35px 11px; } }
     @media only screen and (min-width: 1200px) {
       .header .nav .nav-link {
-        padding: 35px 26px; } }
+        padding: 35px 23px; } }
   .header .nav .dropdown.open > .nav-link {
     background-color: #1b9044;
     text-decoration: none; }
@@ -6198,11 +6209,20 @@ form .help-block {
     border: medium none;
     border-radius: 30px;
     color: #fff;
-    font-size: 14px;
     font-weight: 500;
     height: auto;
     padding: 15px 20px;
     text-align: center; }
+    .header .nav .user-login-form .form-control::-webkit-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
+    .header .nav .user-login-form .form-control:-moz-placeholder {
+      /* Firefox 18- */
+      color: rgba(255, 255, 255, 0.5); }
+    .header .nav .user-login-form .form-control::-moz-placeholder {
+      /* Firefox 19+ */
+      color: rgba(255, 255, 255, 0.5); }
+    .header .nav .user-login-form .form-control:-ms-input-placeholder {
+      color: rgba(255, 255, 255, 0.5); }
   .header .nav .user-login-form .password-reset {
     display: block;
     padding: 4px 0;
@@ -6214,7 +6234,6 @@ form .help-block {
     padding: 20px 0;
     text-align: center; }
     .header .nav .user-login-form .login-button .btn {
-      font-weight: 700;
       padding-left: 45px;
       padding-right: 45px;
       text-transform: uppercase; }
@@ -6227,7 +6246,7 @@ form .help-block {
     padding-bottom: 20px; }
   .main .main-section h5 {
     font-size: 16px;
-    margin: 0 0 10px 0; }
+    margin: -10px 0 10px; }
     .main .main-section h5 span {
       background-color: #ffffff;
       bottom: -10px;
@@ -6252,12 +6271,6 @@ form .help-block {
     text-decoration: underline; }
     .main .main-section.auth-login .auth-form .forgot-password:hover, .main .main-section.auth-register .auth-form .forgot-password:hover {
       text-decoration: none; }
-  .main .main-section.auth-login .auth-form .checkbox-container, .main .main-section.auth-register .auth-form .checkbox-container {
-    font-size: 14px;
-    margin-bottom: 20px;
-    margin-left: 10px; }
-    .main .main-section.auth-login .auth-form .checkbox-container .control-label, .main .main-section.auth-register .auth-form .checkbox-container .control-label {
-      display: none; }
   .main .main-section.auth-login .social-login .title, .main .main-section.auth-register .social-login .title {
     color: #293f54;
     font-size: 18px;
@@ -6275,58 +6288,85 @@ form .help-block {
       z-index: 1; } }
   .main .main-section.auth-login .motorbike img, .main .main-section.auth-register .motorbike img {
     max-width: 600px; }
-  .main .main-section .profile-user .username {
-    font-weight: 700;
-    padding: 2px 5px; }
-  .main .main-section .profile-user .join-date {
-    padding: 2px 5px; }
-  .main .main-section .profile-nav {
-    margin-top: 30px; }
-    .main .main-section .profile-nav ul {
-      padding: 0;
-      margin: 0; }
-      .main .main-section .profile-nav ul > li {
-        list-style: none;
-        margin-top: 20px; }
-        .main .main-section .profile-nav ul > li > a {
-          color: #3c3e40;
-          display: block;
-          font-size: 15px; }
-          .main .main-section .profile-nav ul > li > a.active:before {
-            color: #1b9d48;
-            content: "";
-            font-family: FontAwesome;
-            font-size: 10px;
-            padding-right: 5px;
-            position: relative;
-            top: -1px; }
 
-.main .profile-edit .form-horizontal {
+.profile-user .username {
+  font-weight: 700;
+  padding: 2px 5px; }
+
+.profile-user .join-date {
+  padding: 2px 5px; }
+
+.profile-nav {
+  margin-top: 30px; }
+  .profile-nav ul {
+    padding: 0;
+    margin: 0; }
+    .profile-nav ul > li {
+      list-style: none;
+      margin-top: 20px; }
+      .profile-nav ul > li > a {
+        color: #3c3e40;
+        display: block;
+        font-size: 15px; }
+        .profile-nav ul > li > a.active:before {
+          color: #1b9d48;
+          content: "";
+          font-family: FontAwesome;
+          font-size: 10px;
+          padding-right: 5px;
+          position: relative;
+          top: -1px; }
+
+.profile-show dl.dl-horizontal dt {
+  text-align: left; }
+
+.profile-show dl.dl-horizontal dd {
+  color: #1b9d48;
+  margin-bottom: 10px;
+  margin-left: 160px;
+  word-break: break-all; }
+  .profile-show dl.dl-horizontal dd a {
+    color: #1b9d48; }
+    .profile-show dl.dl-horizontal dd a:hover {
+      text-decoration: underline; }
+
+.profile-show .widget-activity dl.dl-horizontal {
+  margin-top: 20px; }
+  .profile-show .widget-activity dl.dl-horizontal dt {
+    font-weight: 500;
+    text-align: left; }
+  .profile-show .widget-activity dl.dl-horizontal dd {
+    color: #3c3e40; }
+
+.profile-edit .form-horizontal {
   margin-top: 40px; }
   @media only screen and (min-width: 768px) {
-    .main .profile-edit .form-horizontal {
+    .profile-edit .form-horizontal {
       margin-top: 0; } }
 
-.main .profile-edit .control-label {
+.profile-edit .control-label {
   display: none; }
-  .main .profile-edit .control-label[for=birthday], .main .profile-edit .control-label[for=gender] {
+  .profile-edit .control-label[for=birthday], .profile-edit .control-label[for=gender] {
     display: block !important; }
 
-.main .profile-edit .form-control.birth-year .filter-option, .main .profile-edit .form-control.birth-month .filter-option, .main .profile-edit .form-control.birth-day .filter-option {
+.profile-edit .form-control.birth-year .dropdown-toggle, .profile-edit .form-control.birth-month .dropdown-toggle, .profile-edit .form-control.birth-day .dropdown-toggle {
+  padding-left: 15px; }
+
+.profile-edit .form-control.birth-year .filter-option, .profile-edit .form-control.birth-month .filter-option, .profile-edit .form-control.birth-day .filter-option {
   text-align: center; }
 
-.main .profile-edit .form-control::-webkit-input-placeholder {
+.profile-edit .form-control::-webkit-input-placeholder {
   color: #cacdd1; }
 
-.main .profile-edit .form-control:-moz-placeholder {
+.profile-edit .form-control:-moz-placeholder {
   /* Firefox 18- */
   color: #cacdd1; }
 
-.main .profile-edit .form-control::-moz-placeholder {
+.profile-edit .form-control::-moz-placeholder {
   /* Firefox 19+ */
   color: #cacdd1; }
 
-.main .profile-edit .form-control:-ms-input-placeholder {
+.profile-edit .form-control:-ms-input-placeholder {
   color: #cacdd1; }
 
 form .control-label {
@@ -6360,6 +6400,25 @@ form .control-label {
       background-color: #ffcc00;
       color: #ffffff; }
 
+.btn-second {
+  background-color: #1b9d48;
+  border-radius: 30px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s; }
+  .btn-second:hover, .btn-second:focus, .btn-second:active {
+    background-color: #17873e;
+    color: #ffffff; }
+  .btn-second.btn-empty {
+    background-color: transparent;
+    border: 3px solid #1b9d48;
+    color: #3c3e40; }
+    .btn-second.btn-empty:hover, .btn-second.btn-empty:focus, .btn-second.btn-empty:active {
+      background-color: #1b9d48;
+      color: #ffffff; }
+
 .btn-third, .btn-social {
   background-color: #f2f1f1;
   border-radius: 30px;
@@ -6389,6 +6448,11 @@ form .control-label {
     font-size: 15px;
     padding-left: 50px; }
 
+textarea.form-control {
+  height: auto;
+  padding-bottom: 10px;
+  padding-top: 10px; }
+
 .file-control {
   margin-top: 10px; }
 
@@ -6399,8 +6463,7 @@ form .control-label {
   width: auto !important; }
 
 .bootstrap-select > .dropdown-toggle {
-  background-color: transparent !important;
-  padding-left: 15px; }
+  background-color: transparent !important; }
   .bootstrap-select > .dropdown-toggle.bs-placeholder {
     color: #cacdd1 !important; }
   .bootstrap-select > .dropdown-toggle .bs-caret {
@@ -6423,7 +6486,10 @@ form .control-label {
   margin-bottom: 10px;
   margin-top: 10px; }
 
-.form-group {
-  margin-bottom: 10px; }
+.checkbox {
+  margin: 20px 0 20px 10px; }
+
+.checkbox label {
+  padding-left: 0; }
 
 /*# sourceMappingURL=app.css.map */

@@ -60,10 +60,24 @@ class User extends Authenticatable
     public function getPicture($size='sm')
     {
         if (!$this->picture) {
-            return null;
+            return asset(
+                'assets/images/profile/'.($this->gender ? $this->gender : 'male').'/'.$size.'.png'
+            );
         }
 
         return '/' . $this->getUploadPath($size) . $this->picture;
+    }
+
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPasswordNotification($token));
     }
 
     /**
@@ -88,6 +102,16 @@ class User extends Authenticatable
         $this->attributes['country_id'] = ($value?$value:null);
     }
 
+    public function getNameAttribute()
+    {
+        return trim($this->first_name . ' ' . $this->last_name);
+    }
+
+    public function getPlaceAttribute()
+    {
+        return $this->city . ($this->country ? ', ' . $this->country->name : '');
+    }
+
     public function getAdminAttribute()
     {
         if ($this->user_role == 'admin') {
@@ -99,17 +123,9 @@ class User extends Authenticatable
 
     public static function getProfileSections()
     {
-        return ['About', 'Photo', 'Address', 'Email', 'Password'];
-    }
-
-    /**
-     * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        $this->notify(new ResetPasswordNotification($token));
+        return [
+            'profile' => ['me', 'reviews'],
+            'settings' => ['About', 'Photo', 'Address', 'Email', 'Password'],
+        ];
     }
 }

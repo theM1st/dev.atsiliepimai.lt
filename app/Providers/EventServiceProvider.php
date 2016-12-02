@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Mail;
 use App\User;
 use App\Category;
 use App\Country;
+use App\Listing;
 use App\Mail\UserConfirm;
 
 class EventServiceProvider extends ServiceProvider
@@ -41,7 +42,6 @@ class EventServiceProvider extends ServiceProvider
         });
 
         User::created(function($user) {
-
             if ($user->email && !$user->provider_uid) {
                 //Mail::to($user->email)->send(new UserConfirm($user));
             }
@@ -52,6 +52,10 @@ class EventServiceProvider extends ServiceProvider
         // Only fire if something changed
         User::updated(function($user) {
             //dd($user);
+        });
+
+        User::deleted(function($user) {
+            $user->deleteDirectory($user->getUploadPath());
         });
 
         Country::creating(function($country) {
@@ -66,6 +70,15 @@ class EventServiceProvider extends ServiceProvider
 
         Country::deleted(function($country) {
             Country::rebuild();
+        });
+
+        Listing::saved(function($listing) {
+            $slug = str_slug($listing->title).'-'.$listing->id;
+
+            if ($slug != $listing->slug) {
+                $listing->slug = $slug;
+                $listing->save();
+            }
         });
     }
 }

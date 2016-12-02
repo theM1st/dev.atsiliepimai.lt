@@ -37,7 +37,7 @@ trait Uploader
         $dir = $this->uploadPath . '/' .
             str_plural($class) . ($suffix ? '/' . $suffix : '') . '/';
 
-        return $dir;
+        return trim($dir, '/') . '/';
     }
 
     public function upload($file, $imageConfig=null, $remove=true)
@@ -57,14 +57,25 @@ trait Uploader
             if (!file_exists($dir)) {
                 mkdir($dir, 0755, true);
             } elseif ($remove) {
-                $files = Storage::files($this->getUploadPath($size));
-                Storage::delete($files);
+                $this->deleteFiles($this->getUploadPath($size));
             }
 
             $img->fit($c['width'])->save($dir . $filename);
         }
 
         return $filename;
+    }
+
+    public function deleteDirectory($dir)
+    {
+        Storage::deleteDirectory($dir);
+    }
+
+    public function deleteFiles($dir)
+    {
+        $files = Storage::files($dir);
+
+        Storage::delete($files);
     }
 
     private function slugFilename($file)

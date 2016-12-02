@@ -14,7 +14,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         \Form::component('birthday', 'components.form.birthday', ['value']);
-        \Form::component('actions', 'components.form.actions', ['actions']);
+        \Form::component('tools', 'components.form.tools', ['tools']);
+        \Form::component('categoriesHierarchy', 'components.form.categoriesHierarchy', ['name', 'categories', 'value']);
 
         \Validator::extend('check_password', function ($attribute, $value, $parameters, $validator) {
             return \Hash::check($value, \Auth::user()->password);

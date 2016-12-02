@@ -38,4 +38,9 @@ return [
         'create' => 'Nauja šalis',
         'edit' => 'Šalies redagavimas',
     ],
+    'listings' => [
+        'index' => 'Atsiliepimų subjektai',
+        'create' => 'Naujas atsiliepimų subjektas',
+        'edit' => 'Atsiliepimų subjekto redagavimas',
+    ],
 ];

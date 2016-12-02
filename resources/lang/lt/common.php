@@ -16,12 +16,24 @@ return [
     'forgot_password' => 'Pamiršote slaptažodį?',
     'your_email' => 'Jūsų el. paštas',
     'description' => 'Aprašymas',
+    'product' => 'Produktas',
+    'service' => 'Paslauga',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
         'sign_up' => 'Registruotis',
         'reset_password' => 'Atstatyti slaptažodį',
         'change_password' => 'Pakeisti slaptažodį',
+        'country' => [
+            'name' => 'Pavadinimas',
+
+        ],
+        'listing' => [
+            'name' => 'Pavadinimas',
+            'suitable_category' => 'Tinkama kategorija',
+            'select_category' => 'Pasirinkite tinkamą kategoriją',
+            'listing_type' => 'Apie ką jūsų atsiliepimas?',
+        ],
     ],
     'user' => [
         'email' => 'El. paštas',
@@ -31,6 +43,7 @@ return [
         'repeat_password' => 'Pakartoti slaptažodį',
         'current_password' => 'Dabartinis slaptažodis',
         'current_password_help' => 'Prašom, įvesti dabartinį slaptažodį duomenų atnaujinimui',
+        'name' => 'Vardas pavardė',
         'first_name' => 'Vardas',
         'last_name' => 'Pavardė',
         'birthday' => 'Gimimo data',
@@ -38,6 +51,7 @@ return [
         'address' => 'Gatvės adresas',
         'city' => 'Miestas',
         'country' => 'Šalis',
+        'place' => 'Vieta',
         'picture' => 'Nuotrauka',
         'picture_rules' => 'Nuotrauka turi būti .jpg, .gif arba .png formatu, mažiau nei 3MB.',
         'gender' => 'Lytis',
@@ -52,24 +66,27 @@ return [
         'main' => 'Pagrindinė',
         'name' => 'Pavadinimas',
         'parent' => 'Priklauso kategorijai',
-    ],
-    'country' => [
-        'name' => 'Pavadinimas',
+        'active' => 'Aktyvuota',
     ],
     'profile' => [
         'name' => 'Profilis',
         'settings' => 'Nustatymai',
         'sections' => [
+            'me' => 'Mano profilis',
             'About' => 'Keisti aprašą',
             'Photo' => 'Keisti nuotrauką',
             'Address' => 'Keisti adresą',
             'Email' => 'El. paštas ir vartotojo slapyvardis',
             'Password' => 'Keisti slaptažodį',
         ],
+        'form' => [
+            'edit' => 'Redaguoti profilį',
+            'update' => 'Atnaujinti profilį',
+        ],
         'update' => [
-            'button' => 'Atnaujinti profilį',
             'success' => 'Jūsų nustatymai sėkmingai pakeisti',
             'fail' => 'Nepavyko pakeisti nustatymus'
         ],
     ],
+
 ];

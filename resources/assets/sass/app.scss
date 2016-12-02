@@ -45,7 +45,8 @@
             background-color: $secondary-green;
             border: none;
             border-radius: 20px;
-            color: rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            font-size: $font-standart-size;
             font-weight: 300;
             height: 36px;
             padding-left: 20px;
@@ -103,13 +104,13 @@
               background-color: $secondary-green;
             }
             @include respond-to(sm) {
-                padding: 20px 16px;
+                padding: 20px 13px;
             }
             @include respond-to(md) {
-                padding: 35px 14px;
+                padding: 35px 11px;
             }
             @include respond-to(lg) {
-                padding: 35px 26px;
+                padding: 35px 23px;
             }
         }
         .dropdown.open > .nav-link {
@@ -164,11 +165,13 @@
                 border: medium none;
                 border-radius: 30px;
                 color: #fff;
-                font-size: $font-standart-size;
                 font-weight: 500;
                 height: auto;
                 padding: 15px 20px;
                 text-align: center;
+                @include placeholder {
+                    color: rgba(255, 255, 255, 0.5);
+                }
             }
             .password-reset {
                 display: block;
@@ -182,7 +185,6 @@
                 padding: 20px 0;
                 text-align: center;
                 .btn {
-                    font-weight: 700;
                     padding-left: 45px;
                     padding-right: 45px;
                     text-transform: uppercase;
@@ -205,7 +207,7 @@
         h5 {
             @extend .h;
             font-size: $font-base-size;
-            margin: 0 0 10px 0;
+            margin: -10px 0 10px;
             span {
                 background-color: #ffffff;
                 bottom: -10px;
@@ -240,14 +242,6 @@
                         text-decoration: none;
                     }
                 }
-                .checkbox-container {
-                    font-size: $font-standart-size;
-                    margin-bottom: 20px;
-                    margin-left: 10px;
-                    .control-label {
-                        display: none;
-                    }
-                }
             }
             .social-login {
                 .title {
@@ -274,70 +268,10 @@
                 }
             }
         }
-        .profile-user {
-            .username {
-                font-weight: 700;
-                padding: 2px 5px;
-            }
-            .join-date {
-                padding: 2px 5px;
-            }
-        }
-        .profile-nav {
-            margin-top: 30px;
-            ul {
-                padding: 0;
-                margin: 0;
-                > li {
-                    list-style: none;
-                    margin-top: 20px;
-                    > a {
-                        @extend .a-decoration-none;
-                        color: $text-color;
-                        display: block;
-                        font-size: $font-base-size - 1;
-                        &.active {
-                            &:before {
-                                color: $primary-green;
-                                content: "";
-                                font-family: $font-awesome;
-                                font-size: $font-xs-size;
-                                padding-right: 5px;
-                                position: relative;
-                                top: -1px;
-                            }
-                        }
-                    }
-                }
-            }
-
-        }
-    }
-    .profile-edit {
-        .form-horizontal {
-            margin-top: 40px;
-            @include respond-to(sm) {
-                margin-top: 0;
-            }
-        }
-        .control-label {
-            display: none;
-            &[for=birthday], &[for=gender] {
-                display: block !important;
-            }
-        }
-        .form-control {
-            &.birth-year, &.birth-month, &.birth-day {
-                .filter-option {
-                    text-align: center;
-                }
-            }
-            @include placeholder {
-                color: $grey;
-            }
-        }
     }
 }
+
+@import "user_profile";
 
 // Forms & Buttons
 form .control-label {
@@ -356,9 +290,11 @@ form .control-label {
 .btn-first {
     @include button(#ffffff, $yellow);
 }
+.btn-second {
+    @include button(#ffffff, $primary-green);
+}
 .btn-third {
     @include button($text-color, $light-grey);
-
 }
 .btn-social {
     @extend .btn-third;
@@ -376,6 +312,12 @@ form .control-label {
 input.form-control {
     @extend .app-form-control;
 }
+textarea.form-control {
+    @extend .app-form-control;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
 .file-control {
     margin-top: 10px;
 }
@@ -389,7 +331,6 @@ input.form-control {
     > .dropdown-toggle {
         @extend .app-form-control;
         background-color: transparent !important;
-        padding-left: 15px;
         &.bs-placeholder {
             color: $grey !important;
         }
@@ -421,6 +362,10 @@ input.form-control {
     margin-top: 10px;
 }
 
-.form-group {
-    margin-bottom: 10px;
+.checkbox {
+    margin: 20px 0 20px 10px;
+}
+
+.checkbox label {
+    padding-left: 0;
 }

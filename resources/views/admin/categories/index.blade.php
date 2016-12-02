@@ -10,16 +10,19 @@
             <div class="admin-body">
                 <div class="row">
                     <div class="col-md-7">
-                        <ul class="category-list">
-                            <li>
-                                {{ trans('common.category.main') }}
-                                <ul class="sortable">
-                                    @foreach($categories as $node)
-                                        {!! adminRenderNode($node) !!}
-                                    @endforeach
-                                </ul>
-                            </li>
-                        </ul>
+
+                        <div class="category-list sortable-list">
+                            <ul>
+                                <li>
+                                    <div class="category-name">{{ trans('common.category.main') }}</div>
+                                    <ul class="sortable">
+                                        @foreach($categories as $node)
+                                            {!! adminRenderNode($node) !!}
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,8 @@ use Baum\Node;
 /**
 * Category
 */
-class Category extends Node {
+class Category extends Node
+{
 
     /**
     * Table name.
@@ -15,6 +16,16 @@ class Category extends Node {
     * @var string
     */
     protected $table = 'categories';
+
+    public function listings()
+    {
+        return $this->hasMany('App\Listing');
+    }
+
+    public function reviews()
+    {
+        return $this->hasManyThrough('App\Review', 'App\Listing');
+    }
 
     //////////////////////////////////////////////////////////////////////////////
 
