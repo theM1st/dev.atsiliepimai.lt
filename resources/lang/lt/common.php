@@ -29,11 +29,22 @@ return [
 
         ],
         'listing' => [
-            'name' => 'Pavadinimas',
+            'title' => 'Pavadinimas',
+            'title_help' => 'Ne daugiau nei 80 simbolių',
             'suitable_category' => 'Tinkama kategorija',
             'select_category' => 'Pasirinkite tinkamą kategoriją',
             'listing_type' => 'Apie ką jūsų atsiliepimas?',
+            'active' => 'Aktyvus',
         ],
+        'review' => [
+            'title' => 'Atsiliepimo antraštė',
+            'title_placeholder' => 'Pavyzdys: Labai geras daiktas, negaliu be jo gyventi!',
+            'title_help' => 'Ne daugiau nei 80 simbolių',
+            'description' => 'Jūsų atsiliepimas',
+            'description_placeholder' => 'Kuo įmanoma objektyviai ir aiškiai aprašykite savo naudojimo patirtį, nenaudokite agresyvią leksika ir nerašykite asmeninių duomenų.',
+            'description_help' => 'Minimaliai 50 simbolių',
+            'rating' => 'Kiek vertinate produktą/paslaugą?'
+        ]
     ],
     'user' => [
         'email' => 'El. paštas',

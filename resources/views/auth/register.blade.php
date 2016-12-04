@@ -16,7 +16,7 @@
                             {!! Former::password('password_confirmation')->label('common.user.repeat_password') !!}
 
                             <div class="checkbox-container">
-                                {!! Former::checkbox('page_rules')->text('- Su puslapio taisyklėmis susipažinau ir sutinku') !!}
+                                {!! Former::checkbox('page_rules')->class('icheck')->text('- Su puslapio taisyklėmis susipažinau ir sutinku') !!}
                             </div>
                             <div class="form-group">
                                 {{ Form::button(trans('common.form.sign_up') . '<span class="fa fa-chevron-right"></span>',

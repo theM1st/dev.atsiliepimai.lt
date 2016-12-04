@@ -50,7 +50,7 @@ return [
     'max'                  => [
         'numeric' => 'The :attribute may not be greater than :max.',
         'file'    => 'The :attribute may not be greater than :max kilobytes.',
-        'string'  => 'The :attribute may not be greater than :max characters.',
+        'string'  => 'Tekstas turi būti ne trumpesnis nei :max simbolių.',
         'array'   => 'The :attribute may not have more than :max items.',
     ],
     'mimes'                => 'The :attribute must be a file of type: :values.',
@@ -58,7 +58,7 @@ return [
     'min'                  => [
         'numeric' => 'The :attribute must be at least :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => ':attribute turi būti ne trumpesnis nei :min simboliai.',
+        'string'  => 'Tekstas turi būti ne trumpesnis nei :min simbolių.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
@@ -68,7 +68,7 @@ return [
     'required'             => 'Laukas privalomas.',
     'required_if'          => 'The :attribute field is required when :other is :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
-    'required_with'        => 'The :attribute field is required when :values is present.',
+    'required_with'        => '„:attribute“ laukas privalomas, jei „:values“ lauko reikšmė nurodyta.',
     'required_with_all'    => 'The :attribute field is required when :values is present.',
     'required_without'     => 'The :attribute field is required when :values is not present.',
     'required_without_all' => 'The :attribute field is required when none of :values are present.',
@@ -129,6 +129,8 @@ return [
         'telephone' => trans('common.user.telephone'),
         'city' => trans('common.user.city'),
         'description' => trans('common.description'),
+        'review_title' => trans('common.form.review.title'),
+        'review_description' => trans('common.form.review.description'),
     ],
 
 ];

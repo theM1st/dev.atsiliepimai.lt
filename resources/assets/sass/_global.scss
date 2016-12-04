@@ -51,6 +51,9 @@ form .help-block {
   height: 50px;
   padding-left: 25px;
   padding-right: 25px;
+  @include placeholder {
+    color: $grey;
+  }
 }
 
 .alert-global {
@@ -83,7 +86,7 @@ form .help-block {
   }
 }
 
-.icheckbox_square-green {
+.icheckbox_square-green, .iradio_square-green {
   margin-right: 8px;
-  margin-top: -4px;
+  margin-top: -2px;
 }

@@ -15,7 +15,7 @@ class ListingsTableSeeder extends Seeder
             ->create()->each(function ($l) {
                 $l->reviews()->save(factory(App\Review::class)->create([
                     'user_id' => 1,
-                    'listing_id' => 0
+                    'listing_id' => $l->id
                 ]));
             });
     }

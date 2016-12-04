@@ -40,6 +40,8 @@ $factory->define(App\Listing::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Review::class, function ($faker) {
     return [
-        'title' => str_limit($faker->sentence, 75),
+        'review_title' => str_limit($faker->sentence, 75),
+        'review_description' => $faker->paragraph,
+        'rating' => rand(1, 5),
     ];
 });

@@ -24,8 +24,13 @@ class ListingRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:60',
-            'category_id' => 'required',
+            'title' => 'required|min:5|max:80',
+            'listing_type' => 'required|in:product,service',
+            'review_title' => 'required_with:review_description|min:10|max:80',
+            'review_description' => 'required_with:review_title|min:50',
+            //'rating' => 'required_with:review_title,review_description|integer',
+            'category_id' => 'required|integer',
+            'user_id' => 'required|integer',
         ];
     }
 }

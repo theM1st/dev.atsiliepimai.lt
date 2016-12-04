@@ -20,6 +20,6 @@
 !!}
 
 <div class="checkbox-container">
-{!! Former::checkbox('active')->text('common.category.active') !!}
+{!! Former::checkbox('active')->class('icheck')->text('common.category.active') !!}
 </div>
 <hr>

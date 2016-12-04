@@ -6053,6 +6053,16 @@ form .help-block {
   height: 50px;
   padding-left: 25px;
   padding-right: 25px; }
+  .app-form-control::-webkit-input-placeholder, input.form-control::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder, .bootstrap-select > .dropdown-toggle::-webkit-input-placeholder {
+    color: #cacdd1; }
+  .app-form-control:-moz-placeholder, input.form-control:-moz-placeholder, textarea.form-control:-moz-placeholder, .bootstrap-select > .dropdown-toggle:-moz-placeholder {
+    /* Firefox 18- */
+    color: #cacdd1; }
+  .app-form-control::-moz-placeholder, input.form-control::-moz-placeholder, textarea.form-control::-moz-placeholder, .bootstrap-select > .dropdown-toggle::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #cacdd1; }
+  .app-form-control:-ms-input-placeholder, input.form-control:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder, .bootstrap-select > .dropdown-toggle:-ms-input-placeholder {
+    color: #cacdd1; }
 
 .alert-global {
   border-top-width: 3px; }
@@ -6077,9 +6087,9 @@ form .help-block {
   .checkbox-container .control-label, .radio-container .control-label {
     display: none; }
 
-.icheckbox_square-green {
+.icheckbox_square-green, .iradio_square-green {
   margin-right: 8px;
-  margin-top: -4px; }
+  margin-top: -2px; }
 
 .header {
   background-color: #1b9d48; }
@@ -6489,7 +6499,8 @@ textarea.form-control {
 .checkbox {
   margin: 20px 0 20px 10px; }
 
-.checkbox label {
+.checkbox label, .radio-inline {
+  line-height: 26px;
   padding-left: 0; }
 
 /*# sourceMappingURL=app.css.map */

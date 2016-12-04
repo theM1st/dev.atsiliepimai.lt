@@ -14,6 +14,7 @@
 
                             @include('admin.listings.form.elements')
 
+                            {{ Form::hidden('user_id', Auth::user()->id) }}
                             {!! Former::actions()->first_lg_submit('common.create') !!}
 
                         {!! Former::close() !!}
@@ -22,4 +23,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('styles')
+    <link href="{{ asset('css/star-rating/star-rating.css') }}" rel="stylesheet">
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/star-rating.js') }}"></script>
+
+    <script>
+        starRating($(".listings-create #rating"));
+    </script>
 @endsection

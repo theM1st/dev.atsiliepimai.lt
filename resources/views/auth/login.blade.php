@@ -14,7 +14,7 @@
                             {!! Former::password('password')->label('common.user.password') !!}
 
                             <div class="checkbox-container">
-                                {!! Former::checkbox('remember')->text('common.user.remember_me') !!}
+                                {!! Former::checkbox('remember')->class('icheck')->text('common.user.remember_me') !!}
                             </div>
 
                             <div class="form-group">

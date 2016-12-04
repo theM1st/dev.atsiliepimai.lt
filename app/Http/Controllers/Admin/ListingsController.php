@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ListingRequest;
 use App\Category;
 use App\Listing;
+use App\Review;
 
 class ListingsController extends AdminController
 {
@@ -20,11 +21,18 @@ class ListingsController extends AdminController
         //dd($products);
 
         //$c = Category::allLeaves()->pluck('id')->toArray();
-
+/*
         $count = Category::withCount('reviews')->get();
         $reviews = Category::find(11)->reviews;
-dd($reviews);
-dd($count[0]->reviews_count);
+        dd($reviews);
+        dd($count[0]->reviews_count);
+
+
+        $review = Review::find(50);
+        $r = $review->listing->reviews()->where('active', 1)->avg('rating');
+        $review->listing->avg_rating = $r;
+        $review->listing->save();
+        */
         $categories = Category::all()->toHierarchy();
 
         return $this->display($this->viewPath('create'), [
@@ -34,6 +42,6 @@ dd($count[0]->reviews_count);
 
     public function store(ListingRequest $request)
     {
-        //return $this->createAlertRedirect(Country::class, $request->all());
+        return $this->createAlertRedirect(Listing::class, $request->all());
     }
 }

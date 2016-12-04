@@ -6,7 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listing extends Model
 {
-    public function categories()
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['title', 'listing_type', 'active', 'user_id', 'category_id'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+    
+    public function category()
     {
         return $this->belongsTo('App\Category');
     }

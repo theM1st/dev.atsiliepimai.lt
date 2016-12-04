@@ -5,10 +5,12 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Mail;
+use Request;
 use App\User;
 use App\Category;
 use App\Country;
 use App\Listing;
+use App\Review;
 use App\Mail\UserConfirm;
 
 class EventServiceProvider extends ServiceProvider
@@ -72,12 +74,36 @@ class EventServiceProvider extends ServiceProvider
             Country::rebuild();
         });
 
+        Listing::saving(function($listing) {
+            $listing->active = (Request::get('active', 0));
+        });
+
+        Listing::created(function($listing) {
+
+            if (Request::get('review_title')) {
+                $review = new Review([
+                    'review_title' => Request::get('review_title'),
+                    'review_description' => Request::get('review_description'),
+                    'rating' => Request::get('rating'),
+                    'user_id' => \Auth::user()->id,
+                ]);
+                $listing->reviews()->save($review);
+            }
+        });
+
         Listing::saved(function($listing) {
             $slug = str_slug($listing->title).'-'.$listing->id;
 
             if ($slug != $listing->slug) {
                 $listing->slug = $slug;
                 $listing->save();
+            }
+        });
+
+        Review::saved(function($review) {
+            if ($review->listing) {
+                $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
+                $review->listing->save();
             }
         });
     }

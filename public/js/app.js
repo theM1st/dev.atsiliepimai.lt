@@ -97,7 +97,7 @@ $().ready(function(){
         });
     });
 
-    $('.checkbox input').iCheck({
+    $('.icheck').iCheck({
         checkboxClass: 'icheckbox_square-green',
         radioClass: 'iradio_square-green',
         increaseArea: '20%'
@@ -185,6 +185,23 @@ function bsModal(size) {
         this.setContent = function(content){
             $('#'+this.id+' .modal-content').html(content);
         };
+}
+
+function starRating(obj, options) {
+    var options = options || {};
+
+    obj.rating($.extend({
+        theme: 'krajee-fa',
+        language: 'lt',
+        showClear: false,
+        min: 0,
+        max: 5,
+        step: 1,
+        size: 'xs',
+        starCaptionClasses: function() {
+            return 'label label-default';
+        }
+    }, options));
 }
 
 function guidGenerator() {
