@@ -13,7 +13,7 @@
             <li class="dropdown">
                 <div class="btn-group">
                     <a href="{{ route('listings.index') }}">
-                        <span class="fa fa-product-hunt" aria-hidden="true"></span>
+                        <span class="fa fa-commenting" aria-hidden="true"></span>
                         {{ trans('admin.listings.index') }}
                     </a>
                     <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">

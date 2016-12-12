@@ -1,6 +1,6 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500);
-@import url(https://fonts.googleapis.com/css?family=Roboto:400);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
 
 // Variables
 @import "variables";
@@ -272,6 +272,49 @@
 }
 
 @import "user_profile";
+@import "listing_reviews";
+
+.pagination {
+    & > li {
+        display: inline-block;
+        margin-left: 3px;
+        margin-right: 3px;
+        & > span, & > a {
+            border: 2px solid #edebeb;
+            border-radius: 50% !important;
+            color: #7f7f7f;
+            display: block;
+            font-family: "Arial", sans-serif;
+            font-size: 14px;
+            height: 26px;
+            line-height: 22px;
+            padding: 0;
+            text-align: center;
+            width: 26px;
+        }
+        &.active > span {
+            background-color: $primary-green;
+            border: 2px solid $primary-green;
+            color: #fff;
+        }
+        &.active > span, a {
+            &:hover, &:focus {
+                background-color: $primary-green;
+                border: 2px solid $primary-green;
+                color: #fff;
+            }
+        }
+        &:first-child a, &:first-child > span, &:last-child > a, &:last-child > span {
+            border: none;
+            font-size: 22px;
+            line-height: 24px;
+            margin-right: 10px;
+        }
+        &:last-child > a, &:last-child > span {
+            margin-left: 10px;
+        }
+    }
+}
 
 // Forms & Buttons
 form .control-label {

@@ -213,4 +213,26 @@
     top: 0;
     width: 0;
 }
+
+.rating-container .empty-stars {
+    color: #dbdbdb;
+}
+
+.rating-container .filled-stars {
+    color: #ffcc00;
+    text-shadow: none;
+    -webkit-text-stroke: 1px #ffcc00;
+}
+
+.rating-xs {
+    font-size: 14px;
+}
+
+.rating-sm {
+    font-size: 18px;
+}
+
+.rating-md {
+    font-size: 28px;
+}
 /*# sourceMappingURL=star-rating.css.map */

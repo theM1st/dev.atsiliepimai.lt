@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Scopes\ActiveScope;
 
 class Listing extends Model
 {
@@ -11,11 +12,15 @@ class Listing extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'listing_type', 'active', 'user_id', 'category_id'];
+    protected $fillable = ['title', 'listing_type', 'active', 'category_id'];
 
-    public function user()
+    protected static function boot()
     {
-        return $this->belongsTo('App\User');
+        parent::boot();
+
+        if (\Request::segment(1) != 'admin') {
+            static::addGlobalScope(new ActiveScope);
+        }
     }
     
     public function category()
@@ -28,14 +33,19 @@ class Listing extends Model
         return $this->hasMany('App\Review');
     }
 
+    public function lastReview()
+    {
+        return $this->reviews()->orderBy('created_at', 'desc')->first();
+    }
+
     public function scopeCategorized($query, Category $category = null)
     {
         if (is_null($category)) {
-            return $query->with('categories');
+            return $query->with('category');
         }
 
         $categoryIds = $category->getDescendantsAndSelf()->pluck('id');
 
-        return $query->with('categories')->whereIn('category_id', $categoryIds);
+        return $query->with('category')->whereIn('category_id', $categoryIds);
     }
 }

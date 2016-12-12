@@ -16,7 +16,7 @@
                             <div class="join-date">{{ $user->created_at->format('Y-m-d') }}</div>
                         </div>
                         <ul class="sidebar-menu list-unstyled">
-                            @foreach($sections as $s)
+                            @foreach(App\User::getProfileSections()['settings'] as $s)
                                 <li>
                                     <a href="{{ route('users.edit', [$user->id, $s]) }}" class="@if($section == $s) active @endif">
                                         <span class="fa @if($section == $s) fa-circle @else fa-circle-o @endif text-aqua"></span>

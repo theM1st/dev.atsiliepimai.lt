@@ -9,7 +9,7 @@
 
             <div class="admin-body">
                 <div class="row">
-                    <div class="col-md-7">
+                    <div class="col-md-8">
 
                         <div class="category-list sortable-list">
                             <ul>

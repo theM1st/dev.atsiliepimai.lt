@@ -198,6 +198,7 @@ function starRating(obj, options) {
         max: 5,
         step: 1,
         size: 'xs',
+        emptyStar: '<i class="fa fa-star"></i>',
         starCaptionClasses: function() {
             return 'label label-default';
         }

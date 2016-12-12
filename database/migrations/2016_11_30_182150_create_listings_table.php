@@ -19,7 +19,6 @@ class CreateListingsTable extends Migration
             $table->string('slug', 100)->nullable()->unique();
             $table->enum('listing_type', ['product', 'service'])->default('product');
             $table->float('avg_rating', 5, 2)->nullable();
-            $table->integer('user_id')->unsigned()->nullable();
             $table->integer('category_id')->unsigned();
             $table->boolean('active')->default(false);
             $table->timestamps();

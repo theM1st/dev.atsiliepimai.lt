@@ -1,0 +1,98 @@
+.listing-reviews {
+  .review {
+    border-bottom: 1px dashed #dfe2e6;
+    padding-bottom: 25px;
+    padding-top: 30px;
+    .review-author-info {
+      text-align: center;
+      ul {
+        margin-top: 15px;
+        padding-left: 20px;
+        &> li {
+          color: $secondary-color;
+          font-family: $font-roboto;
+          font-size: $font-standart-size;
+          list-style: none;
+          margin: 4px 0;
+          text-align: left;
+          span {
+            color: $secondary-yellow;
+            font-size: 20px;
+            padding-right: 5px;
+            text-align: center;
+            width: 30px;
+          }
+        }
+      }
+    }
+    .review-rating {
+      margin-bottom: 15px;
+    }
+    .review-text {
+      color: $secondary-color;
+      font-size: $font-base-size;
+      font-family: $font-roboto;
+      font-weight: 300;
+      line-height: 1.5em;
+    }
+    .review-info {
+      font-family: $font-roboto;
+      margin-top: 20px;
+      p {
+        color: $secondary-color;
+        display: inline-block;
+        font-size: $font-standart-size;
+        font-weight: 400;
+        &.review-created, &.review-author-name {
+           span {
+             color: $primary-green;
+             font-weight: 700;
+           }
+        }
+        &.review-created {
+          border-right: 1px solid $secondary-color;
+          padding-right: 18px;
+        }
+        &.review-author-name {
+          padding-left: 18px;
+        }
+        &.review-report {
+          display: block;
+          a {
+            color: $secondary-color;
+            span {
+              color: $secondary-yellow;
+              font-size: $font-base-size;
+              padding-left: 5px;
+            }
+          }
+        }
+      }
+    .review-like {
+      margin-top: 30px;
+      a {
+        display: inline-block;
+        font-size: $font-standart-size;
+        font-weight: 700;
+        span {
+          font-size: $font-base-size;
+          padding-right: 5px;
+        }
+        &.like {
+           color: $primary-green;
+           padding-right: 30px;
+        }
+        &.dislike {
+            color: $primary-red;
+        }
+      }
+    }
+    }
+    h3 {
+      color: $secondary-color;
+      font-size: 18px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
+    }
+  }
+}

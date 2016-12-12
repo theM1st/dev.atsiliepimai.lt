@@ -14,11 +14,11 @@
     $.fn.ratingLocales['lt'] = {
         defaultCaption: '{rating}',
         starCaptions: {
-            1: 'Baisiai',
+            1: 'Baisu',
             2: 'Blogai',
-            3: 'Vidutiniškai',
+            3: 'Normalu',
             4: 'Gerai',
-            5: 'Puikiai'
+            5: 'Puiku'
         },
         clearButtonTitle: 'Clear',
         clearCaption: 'Paspauskite, kad įvertinti'

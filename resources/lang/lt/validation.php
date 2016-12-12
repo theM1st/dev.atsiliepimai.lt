@@ -108,6 +108,9 @@ return [
         ],
         'page_rules' => [
             'accepted' => 'Privaloma sutikti su puslapio taisyklėmis'
+        ],
+        'rating' => [
+            'min' => 'Įvertinkite produktą/paslaugą'
         ]
     ],
 

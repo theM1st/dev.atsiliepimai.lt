@@ -74,10 +74,6 @@ class EventServiceProvider extends ServiceProvider
             Country::rebuild();
         });
 
-        Listing::saving(function($listing) {
-            $listing->active = (Request::get('active', 0));
-        });
-
         Listing::created(function($listing) {
 
             if (Request::get('review_title')) {
@@ -85,6 +81,7 @@ class EventServiceProvider extends ServiceProvider
                     'review_title' => Request::get('review_title'),
                     'review_description' => Request::get('review_description'),
                     'rating' => Request::get('rating'),
+                    'active' => $listing->active,
                     'user_id' => \Auth::user()->id,
                 ]);
                 $listing->reviews()->save($review);
@@ -100,7 +97,18 @@ class EventServiceProvider extends ServiceProvider
             }
         });
 
+        Listing::deleted(function($listing) {
+            $listing->reviews()->delete();
+        });
+
         Review::saved(function($review) {
+            if ($review->listing) {
+                $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
+                $review->listing->save();
+            }
+        });
+
+        Review::deleted(function($review) {
             if ($review->listing) {
                 $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
                 $review->listing->save();

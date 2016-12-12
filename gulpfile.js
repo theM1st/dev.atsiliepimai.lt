@@ -26,7 +26,7 @@ elixir(function(mix) {
         ], 'resources/assets/css/bootstrap-star-rating'
     ).copy(
         'vendor/kartik-v/bootstrap-star-rating/img',
-        'public/css/star-rating/img'
+        'public/css/img'
     ).copy([
             'vendor/kartik-v/bootstrap-star-rating/js/star-rating.min.js',
             'vendor/kartik-v/bootstrap-star-rating/themes/krajee-fa/theme.min.js'

@@ -22,7 +22,9 @@ abstract class AdminController extends Controller
 
     public function display($path, $data = array())
     {
-        $data['title'] = trim(strip_tags(adminHeaderTitle()) . ' - ' . trans('admin.control_management_system'), '- ');
+        if (!isset($data['title'])) {
+            $data['title'] = trim(strip_tags(adminHeaderTitle()) . ' - ' . trans('admin.control_management_system'), '- ');
+        }
 
         return view($path, $data);
     }

@@ -1,4 +1,5 @@
 @section('styles')
+    @parent
     <link href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" rel="stylesheet">
 @endsection
 @section('scripts')
@@ -9,15 +10,6 @@
     <script>
         $(function() {
             var options = {
-                "columnDefs": [{
-                    'orderable': false,
-                    'searchable': false,
-                    'targets': -1,
-                    'data': null,
-                    'render': function ( data, type, row, meta ) {
-                        return row[row.length-1];
-                    }
-                }],
                 pageLength: 50,
                 stateSave: true,
                 language: {
@@ -31,11 +23,40 @@
                         last: "Paskutinis",
                         next: "Senesnis",
                         previous: "Naujesnis"
-                    },
+                    }
                 }
             };
 
-            if (typeof dataTableOptions !== 'undefined') {
+            options.columnDefs = [{
+                'orderable': false,
+                'searchable': false,
+                'targets': -1,
+                'data': null,
+                'render': function ( data, type, row, meta ) {
+                    return row[row.length-1];
+                }
+            }];
+
+            if (dataTableOptions.cellObject !== undefined) {
+
+                for (var key in dataTableOptions.cellObject) {
+                    var num = dataTableOptions.cellObject[key];
+                    options.columnDefs.push({
+                        data: num,
+                        targets: num,
+                        render: function (data, type, row, meta) {
+                            if (type == 'display') {
+                                return data.display;
+                            }
+
+                            return data.value;
+                        }
+                    });
+
+                }
+            }
+
+            if (dataTableOptions !== undefined) {
                 $.extend(options, dataTableOptions);
             }
 

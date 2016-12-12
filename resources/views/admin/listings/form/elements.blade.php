@@ -11,24 +11,8 @@
         ->help('common.form.listing.title_help')
 !!}
 
-{{ Form::categoriesHierarchy('category_id', $categories, old('category_id')) }}
+{{ Form::categoriesHierarchy('category_id', $categories, old('category_id', $listing->category_id)) }}
 
-{!!
-    Former::text('rating')->label('common.form.review.rating')
-!!}
-
-{!!
-    Former::text('review_title')->label('common.form.review.title')
-        ->placeholder('common.form.review.title_placeholder')
-        ->help('common.form.review.title_help')
-!!}
-
-{!!
-    Former::textarea('review_description')
-        ->placeholder('common.form.review.description_placeholder')
-        ->label('common.form.review.description')
-        ->help('common.form.review.description_help')
-!!}
 <div class="checkbox-container">
     {!! Former::checkbox('active')->class('icheck')->text('common.form.listing.active')->check() !!}
 </div>

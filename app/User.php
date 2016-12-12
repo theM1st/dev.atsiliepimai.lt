@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->belongsTo('App\Country');
     }
 
+    public function reviews()
+    {
+        return $this->hasMany('App\Review');
+    }
+
     /**
      * Set User birthday from request
      *

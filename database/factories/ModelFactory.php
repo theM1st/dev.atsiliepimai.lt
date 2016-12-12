@@ -32,16 +32,20 @@ $factory->define(App\Listing::class, function (Faker\Generator $faker) {
 
     return [
         'title' => str_limit($faker->sentence, 75),
-        'user_id' => 1,
         'category_id' => $c[mt_rand(0, count($c) - 1)],
         'active' => true,
     ];
 });
 
 $factory->define(App\Review::class, function ($faker) {
+    $users = App\User::all()->pluck('id')->toArray();
+    $listings = App\Listing::all()->pluck('id')->toArray();
+
     return [
         'review_title' => str_limit($faker->sentence, 75),
         'review_description' => $faker->paragraph,
         'rating' => rand(1, 5),
+        'listing_id' => $listings[mt_rand(0, count($listings) - 1)],
+        'user_id' => $users[mt_rand(0, count($users) - 1)],
     ];
 });

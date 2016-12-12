@@ -14,7 +14,26 @@
 
                             @include('admin.listings.form.elements')
 
-                            {{ Form::hidden('user_id', Auth::user()->id) }}
+                            {!!
+                                Former::text('rating')
+                                    ->label(trans('common.form.review.rating', ['name' => 'produktą/paslaugą']))
+                            !!}
+
+                            {!!
+                                Former::text('review_title')->label('common.form.review.title')
+                                    ->placeholder('common.form.review.title_placeholder')
+                                    ->help('common.form.review.title_help')
+                            !!}
+
+                            {!!
+                                Former::textarea('review_description')
+                                    ->placeholder('common.form.review.description_placeholder')
+                                    ->label('common.form.review.description')
+                                    ->help('common.form.review.description_help')
+                            !!}
+
+                            <hr>
+
                             {!! Former::actions()->first_lg_submit('common.create') !!}
 
                         {!! Former::close() !!}
@@ -33,6 +52,6 @@
     <script src="{{ asset('js/star-rating.js') }}"></script>
 
     <script>
-        starRating($(".listings-create #rating"));
+        starRating($(".listings-create #rating"), { size: 'md' });
     </script>
 @endsection

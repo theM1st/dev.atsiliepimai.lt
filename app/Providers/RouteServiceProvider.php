@@ -7,6 +7,8 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 use App\User;
 use App\Category;
 use App\Country;
+use App\Listing;
+use App\Review;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('user', User::class);
         Route::model('category', Category::class);
         Route::model('country', Country::class);
+        Route::model('listing', Listing::class);
+        Route::model('review', Review::class);
     }
 
     /**

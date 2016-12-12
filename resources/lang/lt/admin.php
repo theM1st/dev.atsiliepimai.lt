@@ -39,8 +39,8 @@ return [
         'edit' => 'Šalies redagavimas',
     ],
     'listings' => [
-        'index' => 'Atsiliepimų subjektai',
-        'create' => 'Naujas atsiliepimų subjektas',
-        'edit' => 'Atsiliepimų subjekto redagavimas',
+        'index' => 'Atsiliepimai',
+        'create' => 'Parašyti atsiliepimą',
+        'edit' => 'Produkto/Paslaugos redagavimas',
     ],
 ];

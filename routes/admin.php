@@ -1,6 +1,11 @@
 <?php
 
 Route::resource('listings', 'ListingsController');
+Route::get('listings/{listing}/delete', 'ListingsController@delete')->name('listings.delete');
+Route::get('listings/{listing}/reviews', 'ListingsController@reviews')->name('listings.reviews');
+
+Route::resource('reviews', 'ReviewsController');
+Route::get('reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
 
 Route::resource('categories', 'CategoriesController');
 Route::get('categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');

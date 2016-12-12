@@ -24,7 +24,17 @@ class Category extends Node
 
     public function reviews()
     {
-        return $this->hasManyThrough('App\Review', 'App\Listing');
+        $reviews = collect([]);
+        $listings = Listing::categorized($this)->get();
+        $listings->each(function ($item, $key) use ($reviews) {
+            if ($item->reviews) {
+                foreach ($item->reviews as $r) {
+                    $reviews->push($r);
+                }
+            }
+        });
+
+        return $reviews;
     }
 
     //////////////////////////////////////////////////////////////////////////////

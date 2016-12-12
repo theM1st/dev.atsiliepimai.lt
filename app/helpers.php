@@ -38,15 +38,19 @@ if (!function_exists('adminHeaderTitle')) {
     /**
      * Return the header title for each page
      *
+     * @param string $title
+     *
      * @return string
      */
-    function adminHeaderTitle()
+    function adminHeaderTitle($title=null)
     {
-        $title = '<div class="admin-header"><h2>';
-        $title .= trans('admin.'.Route::getCurrentRoute()->getName());
-        $title .= '</h2></div>';
+        $title = $title ? $title : trans('admin.'.Route::getCurrentRoute()->getName());
 
-        return $title;
+        $return = '<div class="admin-header"><h2>';
+        $return .= $title;
+        $return .= '</h2></div>';
+
+        return $return;
     }
 }
 
@@ -83,13 +87,16 @@ if (!function_exists('adminRenderNode')) {
 
         $element = '<div class="category-name">' .
             '<span class="sort-handle ui-sortable-handle"><i class="fa fa-ellipsis-v"></i> <i class="fa fa-ellipsis-v"></i></span>' .
-            '<span class="text">' . $node->name . '</span>' . $actions .
+            ($node->active ? '<i class="fa fa-circle text-green"></i> ': '<i class="fa fa-circle text-red"></i> ') .
+            '<span class="text">' . $node->name . '</span>' .
+            '<small class="label label-default"><i class="fa fa-commenting"></i> ' . $node->reviews()->count() . '</small>' .
+            $actions .
             '</div>';
 
         if( $node->isLeaf() ) {
-            return '<li'.(!$node->active ? ' class="inactive"': '').' data-id="' . $node->id . '">' . $element . '</li>';
+            return '<li data-id="' . $node->id . '">' . $element . '</li>';
         } else {
-            $html = '<li'.(!$node->active ? ' class="inactive"': '').' data-id="' . $node->id . '">' . $element;
+            $html = '<li data-id="' . $node->id . '">' . $element;
 
             $html .= '<ul class="sortable">';
 
@@ -133,5 +140,45 @@ if (!function_exists('categoriesHierarchyOptions')) {
         }
 
         return $html;
+    }
+}
+
+if (!function_exists('starRating')) {
+    function starRating($rate=0, $size='sm') {
+        $html = '<span class="empty-stars">';
+
+        for ($i = 0; $i < 5; ++$i) {
+            $html .= '<span class="star"><i class="fa fa-star"></i></span>';
+        }
+
+        $html .= '</span>';
+
+        if ($rate) {
+            $width = ceil(20 * $rate);
+            $html .= '<span class="filled-stars" style="width: '.$width.'%">';
+
+            for ($i = 0; $i < 5; ++$i) {
+                $html .= '<span class="star"><i class="fa fa-star"></i></span>';
+            }
+
+            $html .= '</span>';
+        }
+
+        return '<div class="rating-container theme-krajee-fa rating-'.$size.'">'.
+            '<div class="rating">'.$html.'</div>'.
+            '</div>';
+    }
+}
+
+if (!function_exists('transPlural')) {
+    function transPlural($text, $count=1)
+    {
+        if ($count%10 == 1 && $count%100 != 11) {
+            $plural = 0;
+        } else {
+            $plural = ($count%10 >= 2 && ($count%100 < 10 || $count%100 >= 20) ? 1 : 2);
+        }
+
+        return trans_choice($text, $plural);
     }
 }

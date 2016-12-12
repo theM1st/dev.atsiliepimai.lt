@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'created_date' => 'Sukūrimo data',
     'hello' => 'Sveiki',
     'all_rights_reserved' => 'Visos teisės saugomos',
     'ok' => 'Gerai',
@@ -18,6 +19,12 @@ return [
     'description' => 'Aprašymas',
     'product' => 'Produktas',
     'service' => 'Paslauga',
+    'product_service' => 'Produktas/Paslauga',
+    'review' => 'Atsiliepimas',
+    'reviews' => 'Atsiliepimai',
+    'reviews_plural' => '{0} atsiliepimas|{1} atsiliepimai|{2} atsiliepimų',
+    'last_review' => 'Paskutinis atsiliepimas',
+    'rating' => 'Įvertinimas',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
@@ -41,9 +48,9 @@ return [
             'title_placeholder' => 'Pavyzdys: Labai geras daiktas, negaliu be jo gyventi!',
             'title_help' => 'Ne daugiau nei 80 simbolių',
             'description' => 'Jūsų atsiliepimas',
-            'description_placeholder' => 'Kuo įmanoma objektyviai ir aiškiai aprašykite savo naudojimo patirtį, nenaudokite agresyvią leksika ir nerašykite asmeninių duomenų.',
+            'description_placeholder' => 'Kuo įmanoma objektyviai ir aiškiai aprašykite savo naudojimo patirtį, nenaudokite agresyvios leksikos ir nerašykite asmeninių duomenų.',
             'description_help' => 'Minimaliai 50 simbolių',
-            'rating' => 'Kiek vertinate produktą/paslaugą?'
+            'rating' => 'Kaip įvertintumėte :name?'
         ]
     ],
     'user' => [
