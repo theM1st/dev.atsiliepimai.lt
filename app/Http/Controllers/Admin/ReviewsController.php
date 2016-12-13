@@ -40,7 +40,7 @@ class ReviewsController extends AdminController
     {
         $request->merge(['active' => $request->get('active', 0)]);
 
-        return $this->saveAlertRedirect($review, $request->all());
+        return $this->saveAlertRedirect($review, $request->all(), 'back');
     }
 
     public function delete(Review $review)
@@ -55,6 +55,6 @@ class ReviewsController extends AdminController
 
     public function destroy(Review $review)
     {
-        return $this->destroyAlertRedirect($review);
+        return $this->destroyAlertRedirect($review, 'back');
     }
 }

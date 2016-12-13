@@ -68,22 +68,25 @@
           }
         }
       }
-    .review-like {
+    .review-voting {
+      font-size: $font-standart-size;
       margin-top: 30px;
-      a {
+      button {
         display: inline-block;
-        font-size: $font-standart-size;
+
         font-weight: 700;
         span {
           font-size: $font-base-size;
           padding-right: 5px;
         }
-        &.like {
+        &.btn-like {
            color: $primary-green;
-           padding-right: 30px;
         }
-        &.dislike {
+        &.btn-dislike {
             color: $primary-red;
+        }
+        &:hover, &:focus {
+          text-decoration: none;
         }
       }
     }

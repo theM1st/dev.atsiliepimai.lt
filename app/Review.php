@@ -14,6 +14,11 @@ class Review extends Model
      */
     protected $fillable = ['review_title', 'review_description', 'rating', 'active', 'user_id'];
 
+    public function votes()
+    {
+        return $this->hasMany('App\UserReviewVote');
+    }
+
     protected static function boot()
     {
         parent::boot();

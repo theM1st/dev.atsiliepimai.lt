@@ -43,4 +43,8 @@ return [
         'create' => 'Parašyti atsiliepimą',
         'edit' => 'Produkto/Paslaugos redagavimas',
     ],
+    'reviews' => [
+        'index' => 'Atsiliepimai',
+        'edit' => 'Atsiliepimo redagavimas',
+    ],
 ];

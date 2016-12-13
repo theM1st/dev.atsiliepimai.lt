@@ -164,7 +164,7 @@ if (!function_exists('starRating')) {
             $html .= '</span>';
         }
 
-        return '<div class="rating-container theme-krajee-fa rating-'.$size.'">'.
+        return '<div class="rating-container theme-krajee-fa rating-'.$size.'" title="'.$rate.' iš 5">'.
             '<div class="rating">'.$html.'</div>'.
             '</div>';
     }

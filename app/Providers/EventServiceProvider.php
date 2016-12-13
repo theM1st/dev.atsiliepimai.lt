@@ -11,6 +11,7 @@ use App\Category;
 use App\Country;
 use App\Listing;
 use App\Review;
+use App\UserReviewVote;
 use App\Mail\UserConfirm;
 
 class EventServiceProvider extends ServiceProvider
@@ -102,17 +103,31 @@ class EventServiceProvider extends ServiceProvider
         });
 
         Review::saved(function($review) {
-            if ($review->listing) {
-                $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
-                $review->listing->save();
-            }
+            $this->listingAvgRating($review);
         });
 
         Review::deleted(function($review) {
-            if ($review->listing) {
-                $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
-                $review->listing->save();
-            }
+            $this->listingAvgRating($review);
         });
+
+        UserReviewVote::created(function($reviewVote) {
+            $this->reviewAvgVotes($reviewVote);
+        });
+    }
+
+    private function listingAvgRating($review)
+    {
+        if ($review->listing) {
+            $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
+            $review->listing->save();
+        }
+    }
+
+    private function reviewAvgVotes($reviewVote)
+    {
+        if ($reviewVote->review) {
+            $reviewVote->review->avg_votes = $reviewVote->review->votes()->avg('vote');
+            $reviewVote->review->save();
+        }
     }
 }

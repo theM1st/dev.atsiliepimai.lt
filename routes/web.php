@@ -34,4 +34,8 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::put('{user}', 'ProfileController@update')->name('profile.update');
 });
 
+Route::post('reviews/{review}/vote', 'ReviewsController@vote')
+    ->middleware('auth')
+    ->name('reviews.vote');
+
 Route::get('/home', 'HomeController@index');

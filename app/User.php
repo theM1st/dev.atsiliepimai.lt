@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Review');
     }
 
+    public function reviewVotes()
+    {
+        return $this->hasMany('App\UserReviewVote');
+    }
+
     /**
      * Set User birthday from request
      *
@@ -73,6 +78,10 @@ class User extends Authenticatable
         return '/' . $this->getUploadPath($size) . $this->picture;
     }
 
+    public function reviewVoted($reviewId)
+    {
+        return $this->reviewVotes()->where('review_id', $reviewId)->exists();
+    }
 
     /**
      * Send the password reset notification.

@@ -5554,11 +5554,11 @@ button.close {
   .carousel-indicators {
     bottom: 20px; } }
 
-.clearfix:before, .clearfix:after {
+.clearfix:before, .main .inner-header:before, .clearfix:after, .main .inner-header:after {
   content: " ";
   display: table; }
 
-.clearfix:after {
+.clearfix:after, .main .inner-header:after {
   clear: both; }
 
 .center-block {
@@ -6025,12 +6025,12 @@ form .help-block {
   font-size: 14px;
   padding-left: 20px; }
 
-.h, .main .main-section h2, .main .main-section h5 {
+.h, .main .inner-header, .main .main-section h2, .main .main-section h5 {
   border-bottom: 5px solid #f2f1f1;
   font-size: 26px;
   font-weight: 700; }
   @media only screen and (min-width: 768px) {
-    .h, .main .main-section h2, .main .main-section h5 {
+    .h, .main .inner-header, .main .main-section h2, .main .main-section h5 {
       font-size: 36px; } }
 
 .a-decoration-none:hover, .header .nav .nav-link:hover, .header .nav .user-login-form a:hover, .profile-nav ul > li > a:hover, .a-decoration-none:focus, .header .nav .nav-link:focus, .header .nav .user-login-form a:focus, .profile-nav ul > li > a:focus, .a-decoration-none:active, .header .nav .nav-link:active, .header .nav .user-login-form a:active, .profile-nav ul > li > a:active {
@@ -6248,6 +6248,18 @@ form .help-block {
       padding-right: 45px;
       text-transform: uppercase; }
 
+.main .inner-header h3 {
+  float: left;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 25px; }
+
+.main .inner-header .filter-holder {
+  float: right;
+  margin-top: 10px; }
+  .main .inner-header .filter-holder .bootstrap-select .btn {
+    height: 40px; }
+
 .main .main-section {
   position: relative; }
   .main .main-section h2 {
@@ -6433,20 +6445,21 @@ form .help-block {
             color: #f3c903;
             font-size: 16px;
             padding-left: 5px; }
-    .listing-reviews .review .review-info .review-like {
+    .listing-reviews .review .review-info .review-voting {
+      font-size: 14px;
       margin-top: 30px; }
-      .listing-reviews .review .review-info .review-like a {
+      .listing-reviews .review .review-info .review-voting button {
         display: inline-block;
-        font-size: 14px;
         font-weight: 700; }
-        .listing-reviews .review .review-info .review-like a span {
+        .listing-reviews .review .review-info .review-voting button span {
           font-size: 16px;
           padding-right: 5px; }
-        .listing-reviews .review .review-info .review-like a.like {
-          color: #1b9d48;
-          padding-right: 30px; }
-        .listing-reviews .review .review-info .review-like a.dislike {
+        .listing-reviews .review .review-info .review-voting button.btn-like {
+          color: #1b9d48; }
+        .listing-reviews .review .review-info .review-voting button.btn-dislike {
           color: #f10028; }
+        .listing-reviews .review .review-info .review-voting button:hover, .listing-reviews .review .review-info .review-voting button:focus {
+          text-decoration: none; }
   .listing-reviews .review h3 {
     color: #293f54;
     font-size: 18px;
@@ -6553,6 +6566,25 @@ form .control-label {
     .btn-third.btn-empty:hover, .btn-empty.btn-social:hover, .btn-third.btn-empty:focus, .btn-empty.btn-social:focus, .btn-third.btn-empty:active, .btn-empty.btn-social:active {
       background-color: #f2f1f1;
       color: #3c3e40; }
+
+.btn-red {
+  background-color: #f10028;
+  border-radius: 30px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s; }
+  .btn-red:hover, .btn-red:focus, .btn-red:active {
+    background-color: #d80024;
+    color: #ffffff; }
+  .btn-red.btn-empty {
+    background-color: transparent;
+    border: 3px solid #f10028;
+    color: #3c3e40; }
+    .btn-red.btn-empty:hover, .btn-red.btn-empty:focus, .btn-red.btn-empty:active {
+      background-color: #f10028;
+      color: #ffffff; }
 
 .btn-social {
   position: relative; }

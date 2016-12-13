@@ -196,6 +196,25 @@
 
 // Main element
 .main {
+    .inner-header {
+        @extend .clearfix;
+        @extend .h;
+        h3 {
+            float: left;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+        .filter-holder {
+            float: right;
+            margin-top: 10px;
+            .bootstrap-select {
+                .btn {
+                    height: 40px;
+                }
+            }
+        }
+    }
     .main-section {
         position: relative;
         h2 {
@@ -338,6 +357,9 @@ form .control-label {
 }
 .btn-third {
     @include button($text-color, $light-grey);
+}
+.btn-red {
+    @include button(#ffffff, $primary-red);
 }
 .btn-social {
     @extend .btn-third;

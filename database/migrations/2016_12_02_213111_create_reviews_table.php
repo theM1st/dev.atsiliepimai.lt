@@ -18,6 +18,7 @@ class CreateReviewsTable extends Migration
             $table->string('review_title', 80);
             $table->text('review_description');
             $table->smallInteger('rating')->nullable();
+            $table->float('avg_votes', 5, 2)->nullable();
             $table->integer('listing_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->boolean('active')->default(true);

@@ -4,15 +4,13 @@
 
 @section('content')
     <div class="container">
-        <div class="admin-block listings-create">
+        <div class="admin-block review-edit">
             {!! adminHeaderTitle() !!}
 
             <div class="admin-body">
                 <div class="row">
-                    <div class="col-md-7">
-                        {!! Former::open()->route('listings.store')->method('post') !!}
-
-                            @include('admin.listings.form.elements')
+                    <div class="col-md-6">
+                        {!! Former::open()->route('reviews.update', $review->id)->method('put') !!}
 
                             {!!
                                 Former::text('rating')
@@ -33,9 +31,12 @@
                                     ->help('common.form.review.description_help')
                             !!}
 
-                            <hr>
+                            <div class="checkbox-container">
+                                {!! Former::checkbox('active')->class('icheck')->text('common.form.review.active') !!}
+                            </div>
 
-                            {!! Former::actions()->first_lg_submit('common.create') !!}
+                            <hr>
+                            {!! Former::actions()->first_lg_submit('common.update') !!}
 
                         {!! Former::close() !!}
                     </div>
@@ -44,7 +45,6 @@
         </div>
     </div>
 @endsection
-
 @section('styles')
     <link href="{{ asset('css/star-rating/star-rating.css') }}" rel="stylesheet">
 @endsection
@@ -53,6 +53,6 @@
     <script src="{{ asset('js/star-rating.js') }}"></script>
 
     <script>
-        starRating($(".listings-create #rating"), { size: 'md' });
+        starRating($(".review-edit #rating"), { size: 'md' });
     </script>
 @endsection

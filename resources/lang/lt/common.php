@@ -25,6 +25,7 @@ return [
     'reviews_plural' => '{0} atsiliepimas|{1} atsiliepimai|{2} atsiliepimų',
     'last_review' => 'Paskutinis atsiliepimas',
     'rating' => 'Įvertinimas',
+    'fail' => 'Atsiprašome, įvyko klaida. Bandykite vėliau',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
@@ -50,7 +51,8 @@ return [
             'description' => 'Jūsų atsiliepimas',
             'description_placeholder' => 'Kuo įmanoma objektyviai ir aiškiai aprašykite savo naudojimo patirtį, nenaudokite agresyvios leksikos ir nerašykite asmeninių duomenų.',
             'description_help' => 'Minimaliai 50 simbolių',
-            'rating' => 'Kaip įvertintumėte :name?'
+            'rating' => 'Kaip įvertintumėte :name?',
+            'active' => 'Aktyvus atsiliepimas',
         ]
     ],
     'user' => [
@@ -106,5 +108,7 @@ return [
             'fail' => 'Nepavyko pakeisti nustatymus'
         ],
     ],
-
+    'review_vote' => [
+        'success' => 'Ačiū, jūsų balsas priimtas',
+    ]
 ];
