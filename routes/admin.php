@@ -2,10 +2,11 @@
 
 Route::resource('listings', 'ListingsController');
 Route::get('listings/{listing}/delete', 'ListingsController@delete')->name('listings.delete');
-Route::get('listings/{listing}/reviews', 'ListingsController@reviews')->name('listings.reviews');
+Route::get('listings/{listing}/reviews/{attribute_option_slug?}', 'ListingsController@reviews')->name('listings.reviews');
 
 Route::resource('reviews', 'ReviewsController');
 Route::get('reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
+Route::get('reviews/{review}/option/{attribute_id}/{status}', 'ReviewsController@toggleOption')->name('reviews.toggleOption');
 
 Route::resource('categories', 'CategoriesController');
 Route::get('categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
@@ -21,3 +22,9 @@ Route::resource('countries', 'CountriesController');
 Route::get('countries/{country}/delete', 'CountriesController@delete')->name('countries.delete');
 Route::get('countries/{country}/move/{position}', 'CountriesController@move')
     ->name('countries.move')->where(['position' => '[0-9]+']);
+
+Route::resource('attributes', 'AttributesController');
+Route::get('attributes/{attribute}/delete', 'AttributesController@delete')->name('attributes.delete');
+
+Route::resource('attribute_options', 'AttributeOptionsController');
+Route::get('attribute_options/{attribute_option}/delete', 'AttributeOptionsController@delete')->name('attribute_options.delete');

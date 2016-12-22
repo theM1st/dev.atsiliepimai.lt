@@ -49,3 +49,18 @@ $factory->define(App\Review::class, function ($faker) {
         'user_id' => $users[mt_rand(0, count($users) - 1)],
     ];
 });
+
+
+$factory->define(App\Attribute::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'title' => $faker->word,
+        'main' => rand(0, 1),
+    ];
+});
+
+$factory->define(App\AttributeOption::class, function (Faker\Generator $faker) {
+    return [
+        'option_name' => $faker->word,
+    ];
+});

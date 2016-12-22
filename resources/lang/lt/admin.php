@@ -19,6 +19,9 @@ return [
         'index' => 'Kategorijos',
         'create' => 'Nauja kategorija',
         'edit' => 'Kategorijos redagavimas',
+        'destroy' => [
+            'fail' => 'Negalima ištrinti kategoriją kol yra atsiliepimai. Ištrinkite visus kategorijos atsiliepimus.'
+        ],
     ],
     'users' => [
         'index' => 'Vartotojų sąrašas',
@@ -46,5 +49,10 @@ return [
     'reviews' => [
         'index' => 'Atsiliepimai',
         'edit' => 'Atsiliepimo redagavimas',
+    ],
+    'attributes' => [
+        'index' => 'Atributai',
+        'create' => 'Naujas atributas',
+        'edit' => 'Atributo redagavimas',
     ],
 ];

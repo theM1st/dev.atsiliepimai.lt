@@ -1,6 +1,7 @@
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,500);
 @import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+@import url('https://fonts.googleapis.com/css?family=Myriad Pro:400,700');
 
 // Variables
 @import "variables";
@@ -206,12 +207,18 @@
             margin-bottom: 25px;
         }
         .filter-holder {
-            float: right;
-            margin-top: 10px;
+            float: left;
+            margin-bottom: 10px;
+            margin-top: -10px;
             .bootstrap-select {
                 .btn {
                     height: 40px;
                 }
+            }
+            @include respond-to(sm) {
+                float: right;
+                margin-bottom: 0;
+                margin-top: 10px;
             }
         }
     }
@@ -290,8 +297,10 @@
     }
 }
 
+@import "popular_categories";
 @import "user_profile";
-@import "listing_reviews";
+@import "listings_review_list";
+@import "listings_review_listing";
 
 .pagination {
     & > li {
@@ -361,6 +370,9 @@ form .control-label {
 .btn-red {
     @include button(#ffffff, $primary-red);
 }
+.btn-green {
+    @include button(#ffffff, $fifth-green);
+}
 .btn-social {
     @extend .btn-third;
     position: relative;
@@ -376,6 +388,9 @@ form .control-label {
 }
 input.form-control {
     @extend .app-form-control;
+    &.input-sm {
+        height: 40px;
+    }
 }
 textarea.form-control {
     @extend .app-form-control;
@@ -388,6 +403,7 @@ textarea.form-control {
 }
 .bootstrap-select {
     &.form-control {
+        background-color: transparent;
         box-shadow: none;
         min-width: 100px !important;
         height: auto;
@@ -413,7 +429,7 @@ textarea.form-control {
                     bottom: none;
                     top: 4px dashed;
                 }
-                color: #ffffff !important;
+                color: #fff;
                 margin-top: -1px !important;
                 right: 4px !important;
             }

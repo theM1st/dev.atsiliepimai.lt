@@ -17,6 +17,10 @@ a:hover {
 .text-green {
     color: #00a65a !important;
 }
+
+.text-yellow {
+    color: #ffcc00 !important;
+}
 .admin-container {
     background-color: #ecf0f5;
     font-size: 14px;
@@ -40,9 +44,6 @@ a:hover {
 }
 .admin-container .admin-block .admin-body {
     padding: 20px;
-}
-.admin-container .admin-block .admin-body .btn-empty {
-    border-width: 2px;
 }
 .navbar-admin {
     height: 30px;
@@ -167,6 +168,10 @@ table.dataTable thead .sorting_desc::after {
 
 .categories-index .category-list ul li.inactive .text {
     color: #ff0000;
+}
+
+.categories-index .category-list ul li .popular {
+    margin-left: 10px;
 }
 
 .listings-index table tr td:nth-child(5) {

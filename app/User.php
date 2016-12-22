@@ -66,17 +66,6 @@ class User extends Authenticatable
             );
         }
     }
-    
-    public function getPicture($size='sm')
-    {
-        if (!$this->picture) {
-            return asset(
-                'assets/images/profile/'.($this->gender ? $this->gender : 'male').'/'.$size.'.png'
-            );
-        }
-
-        return '/' . $this->getUploadPath($size) . $this->picture;
-    }
 
     public function reviewVoted($reviewId)
     {
@@ -133,6 +122,11 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function getDefaultPictureAttribute()
+    {
+        return ($this->gender == 'female' ? 'female-' : '') . 'default.png';
     }
 
     public static function getProfileSections()

@@ -11,11 +11,8 @@ class ProfileController extends Controller
 {
     public function show($section)
     {
-        $user = Auth::user();
-
         return $this->display('profile.show', [
             'title' => trans('common.profile.sections.'.$section),
-            'user' => $user,
             'section' => $section,
         ]);
     }
@@ -28,7 +25,6 @@ class ProfileController extends Controller
 
         return $this->display('profile.edit', [
             'title' => trans('common.profile.sections.'.$section),
-            'user' => $user,
             'section' => $section,
         ]);
     }

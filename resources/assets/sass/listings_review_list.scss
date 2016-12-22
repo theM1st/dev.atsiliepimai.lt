@@ -1,13 +1,22 @@
-.listing-reviews {
+.listings-review-list {
   .review {
     border-bottom: 1px dashed #dfe2e6;
     padding-bottom: 25px;
     padding-top: 30px;
     .review-author-info {
-      text-align: center;
+      padding-bottom: 20px;
+      .author-picture {
+        display: inline-block;
+        max-width: 128px;
+        @include respond-to(sm) {
+          max-width: 100%;
+        }
+      }
       ul {
+        display: inline-block;
         margin-top: 15px;
         padding-left: 20px;
+        vertical-align: top;
         &> li {
           color: $secondary-color;
           font-family: $font-roboto;
@@ -22,6 +31,19 @@
             text-align: center;
             width: 30px;
           }
+        }
+
+      }
+    }
+    .review-attributes {
+      margin-bottom: 10px;
+      .badge {
+        font-family: $font-roboto;
+        font-weight: 400;
+        margin-right: 10px;
+        padding: 5px 7px;
+        &.main-badge {
+          background-color: $primary-green;
         }
       }
     }
@@ -38,20 +60,23 @@
     .review-info {
       font-family: $font-roboto;
       margin-top: 20px;
+      text-align: center;
       p {
         color: $secondary-color;
         display: inline-block;
         font-size: $font-standart-size;
         font-weight: 400;
         &.review-created, &.review-author-name {
-           span {
-             color: $primary-green;
-             font-weight: 700;
-           }
+          span {
+            color: $primary-green;
+            font-weight: 700;
+          }
         }
         &.review-created {
-          border-right: 1px solid $secondary-color;
           padding-right: 18px;
+          @include respond-to(sm) {
+            border-right: 1px solid $secondary-color;
+          }
         }
         &.review-author-name {
           padding-left: 18px;
@@ -68,28 +93,31 @@
           }
         }
       }
-    .review-voting {
-      font-size: $font-standart-size;
-      margin-top: 30px;
-      button {
-        display: inline-block;
+      .review-voting {
+        font-size: $font-standart-size;
+        margin-top: 30px;
+        button {
+          display: inline-block;
 
-        font-weight: 700;
-        span {
-          font-size: $font-base-size;
-          padding-right: 5px;
-        }
-        &.btn-like {
-           color: $primary-green;
-        }
-        &.btn-dislike {
+          font-weight: 700;
+          span {
+            font-size: $font-base-size;
+            padding-right: 5px;
+          }
+          &.btn-like {
+            color: $primary-green;
+          }
+          &.btn-dislike {
             color: $primary-red;
-        }
-        &:hover, &:focus {
-          text-decoration: none;
+          }
+          &:hover, &:focus {
+            text-decoration: none;
+          }
         }
       }
-    }
+      @include respond-to(sm) {
+        text-align: left;
+      }
     }
     h3 {
       color: $secondary-color;

@@ -9,6 +9,8 @@ use App\Category;
 use App\Country;
 use App\Listing;
 use App\Review;
+use App\Attribute;
+use App\AttributeOption;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -42,6 +44,12 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('country', Country::class);
         Route::model('listing', Listing::class);
         Route::model('review', Review::class);
+        Route::model('attribute', Attribute::class);
+        Route::model('attribute_option', AttributeOption::class);
+
+        Route::bind('category_slug', function($slug) {
+            return Category::where('slug', $slug)->first();
+        });
     }
 
     /**

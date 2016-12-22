@@ -21,8 +21,8 @@
                     paginate: {
                         first: "Pirmas",
                         last: "Paskutinis",
-                        next: "Senesnis",
-                        previous: "Naujesnis"
+                        next: "»",
+                        previous: "«"
                     }
                 }
             };

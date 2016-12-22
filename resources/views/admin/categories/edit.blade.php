@@ -10,8 +10,10 @@
             <div class="admin-body">
                 <div class="row">
                     <div class="col-md-7">
-                        {!! Former::open()->route('categories.update', $category->id)->method('put') !!}
-
+                        {!! Former::open_for_files()->route('categories.update', $category->id)->method('put') !!}
+                            <div class="form-group">
+                                <img src="{{ $category->getPicture() }}" alt="{{ $category->name }}" class="img-responsive">
+                            </div>
                             @include('admin.categories.form.elements')
 
                             {!! Former::actions()->first_lg_submit('common.update') !!}

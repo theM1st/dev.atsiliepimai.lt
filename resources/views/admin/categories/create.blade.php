@@ -10,7 +10,7 @@
             <div class="admin-body">
                 <div class="row">
                     <div class="col-md-7">
-                        {!! Former::open()->route('categories.store')->method('post') !!}
+                        {!! Former::open_for_files()->route('categories.store')->method('post') !!}
 
                             @include('admin.categories.form.elements')
 

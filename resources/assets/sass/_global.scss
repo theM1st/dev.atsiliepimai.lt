@@ -34,12 +34,15 @@ form .help-block {
 
 .img-circle {
   border-radius: 50%;
+  &.img-border-grey {
+    border: 2px solid $grey;
+  }
+  &.img-border-white {
+    border: 2px solid #fff;
+  }
 }
 
-.img-border-grey {
-  border: 2px solid $grey;
-  padding: 2px;
-}
+
 
 .app-form-control {
   background-color: white;

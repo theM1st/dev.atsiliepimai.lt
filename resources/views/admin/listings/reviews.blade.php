@@ -4,16 +4,15 @@
 
 @section('content')
 
-<div class="listing-reviews">
-    <div class="container">
-        <div class="admin-block listings-index">
-            {!! adminHeaderTitle($title) !!}
+<div class="container">
+    <div class="admin-block listings-reviews">
+        {!! adminHeaderTitle($title) !!}
 
-            <div class="admin-body">
-                <div class="row">
-                    <div class="col-sm-9">
-                        @include("listings.review.list", [ 'admin' => true ])
-                    </div>
+        <div class="admin-body">
+            @include("listings.review.listing")
+            <div class="row">
+                <div class="col-md-9">
+                    @include("listings.review.list", [ 'admin' => true ])
                 </div>
             </div>
         </div>

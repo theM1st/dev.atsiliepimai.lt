@@ -7,6 +7,9 @@ use App\Http\Requests\Admin\ReviewRequest;
 use App\Category;
 use App\Listing;
 use App\Review;
+use App\Attribute;
+use App\AttributeOption;
+use App\reviewAttributeOption;
 
 class ReviewsController extends AdminController
 {
@@ -24,23 +27,32 @@ class ReviewsController extends AdminController
     {
         $request->merge(['active' => $request->get('active', 0)]);
 
-        return $this->createAlertRedirect(Listing::class, $request->all());
+        return $this->createAlertRedirect(Listing::class, $request);
     }
 
     public function edit(Review $review)
     {
+        //dd($review->reviewAttributeOptions()->where('attribute_id', 11)->first()->option_id);
         \Former::populate($review);
 
+        foreach ($review->attributeOptions as $o) {
+            //dd($o->pivot);
+        }
+
+        //$r = $review->attributeOptions()->wherePivot('attribute_id', 11)->get();
+
         return $this->display($this->viewPath('edit'), [
-            'review' => $review
+            'review' => $review,
         ]);
     }
 
     public function update(Review $review, ReviewRequest $request)
     {
+        $review->saveOptions($request->only('attribute_option_id', 'option_value'));
+
         $request->merge(['active' => $request->get('active', 0)]);
 
-        return $this->saveAlertRedirect($review, $request->all(), 'back');
+        return $this->saveAlertRedirect($review, $request, 'back');
     }
 
     public function delete(Review $review)
@@ -56,5 +68,37 @@ class ReviewsController extends AdminController
     public function destroy(Review $review)
     {
         return $this->destroyAlertRedirect($review, 'back');
+    }
+
+    public function toggleOption(Review $review, $attributeId, $status)
+    {
+        $reviewAttributeOption = $review->getReviewAttributeOption($attributeId);
+
+        if ($status == 'cancel') {
+            $review->attributes()->detach($attributeId);
+
+            alert('Atsiliepimo atributo reikšmė ištrinta. Nepamirškite pasirinkti kitą.', 'success');
+        }
+
+        if ($status == 'accept') {
+            $attributeOption = new AttributeOption([
+                'option_name' => $reviewAttributeOption->pivot->option_value,
+            ]);
+
+            $option = Attribute::find($attributeId)->options()->save($attributeOption);
+
+            if ($option) {
+                /*reviewAttributeOption::where('review_id', $review->id)
+                    ->where('attribute_id', $attributeId)
+                    ->delete();*/
+                $review->attributes()->detach($attributeId);
+
+                $review->attributes()->attach($attributeId, [ 'attribute_option_id' => $option->id ]);
+
+                alert('Atsiliepimo atributo reikšmė sėkmingai įdėta į bendra sąrašą ir priskirta atsiliepimui.', 'success');
+            }
+        }
+
+        return $this->redirectRoutePath('back');
     }
 }

@@ -33,8 +33,9 @@ class CategoriesController extends AdminController
         $category = Category::find($request->get('parent_id'));
 
         $request->merge(['active' => $request->get('active', 0)]);
+        $request->merge(['popular' => $request->get('popular', 0)]);
 
-        if ($model = $this->createAlert(Category::class, $request->all())) {
+        if ($model = $this->createAlert(Category::class, $request)) {
             if ($category) {
                 $model->makeChildOf($category);
             }
@@ -58,8 +59,9 @@ class CategoriesController extends AdminController
         $parent = Category::find($request->get('parent_id'));
 
         $request->merge(['active' => $request->get('active', 0)]);
+        $request->merge(['popular' => $request->get('popular', 0)]);
 
-        $this->saveAlert($category, $request->all());
+        $this->saveAlert($category, $request);
 
         if (!$parent && !$category->isRoot()) {
             $category->makeRoot();
@@ -97,6 +99,10 @@ class CategoriesController extends AdminController
 
     public function destroy(Category $category)
     {
+        if ($category->reviews()->count() > 0) {
+            return $this->redirectRoutePath('index', 'admin.categories.destroy.fail');
+        }
+
         return $this->destroyAlertRedirect($category);
     }
 }

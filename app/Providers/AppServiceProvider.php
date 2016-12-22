@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use App\Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,8 @@ class AppServiceProvider extends ServiceProvider
         \Validator::extend('check_password', function ($attribute, $value, $parameters, $validator) {
             return \Hash::check($value, \Auth::user()->password);
         });
+
+        View::share('mainCategories', Category::getMainCategories());
     }
 
     /**

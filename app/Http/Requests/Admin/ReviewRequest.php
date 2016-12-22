@@ -27,6 +27,8 @@ class ReviewRequest extends FormRequest
             'review_title' => 'sometimes|required|min:10|max:80',
             'review_description' => 'sometimes|required|min:50',
             'rating' => 'sometimes|required|integer|min:1',
+            'option_id.*' => 'sometimes|required',
+            'option_value' => 'sometimes|required',
         ];
     }
 }

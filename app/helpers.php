@@ -90,6 +90,7 @@ if (!function_exists('adminRenderNode')) {
             ($node->active ? '<i class="fa fa-circle text-green"></i> ': '<i class="fa fa-circle text-red"></i> ') .
             '<span class="text">' . $node->name . '</span>' .
             '<small class="label label-default"><i class="fa fa-commenting"></i> ' . $node->reviews()->count() . '</small>' .
+            ($node->popular ? '<span class="popular" title="'.trans('common.form.category.popular').'"><i class="fa fa-free-code-camp text-red"></i></span>' : '') .
             $actions .
             '</div>';
 
@@ -144,7 +145,7 @@ if (!function_exists('categoriesHierarchyOptions')) {
 }
 
 if (!function_exists('starRating')) {
-    function starRating($rate=0, $size='sm') {
+    function starRating($rate=0, $size='sm', $class='') {
         $html = '<span class="empty-stars">';
 
         for ($i = 0; $i < 5; ++$i) {
@@ -164,7 +165,7 @@ if (!function_exists('starRating')) {
             $html .= '</span>';
         }
 
-        return '<div class="rating-container theme-krajee-fa rating-'.$size.'" title="'.$rate.' iš 5">'.
+        return '<div class="rating-container theme-krajee-fa rating-'.$size.' '.$class.'" title="'.$rate.' iš 5">'.
             '<div class="rating">'.$html.'</div>'.
             '</div>';
     }

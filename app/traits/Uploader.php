@@ -16,10 +16,24 @@ trait Uploader
     protected $uploadPath = "uploads";
 
     protected $imageConfig = array(
-        'lg' => array('width' => 256),
+        'lg' => array('width' => 512),
+        'md' => array('width' => 256),
         'sm' => array('width' => 128),
         'xs' => array('width' => 64),
     );
+
+    public function getPicture($size='sm')
+    {
+        $class = $this->getClass();
+
+        if (!$this->picture) {
+            return asset(
+                'assets/images/'.str_plural($class).'/'.$size.'/'.$this->defaultPicture
+            );
+        }
+
+        return '/' . $this->getUploadPath($size) . $this->picture;
+    }
 
     /**
      * Return upload path

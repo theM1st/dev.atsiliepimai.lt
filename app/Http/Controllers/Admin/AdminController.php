@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 abstract class AdminController extends Controller
 {
@@ -45,13 +46,13 @@ abstract class AdminController extends Controller
      * Create, flash success or error then redirect
      *
      * @param $class
-     * @param $data
+     * @param Request $request
      * @param string $path
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function createAlertRedirect($class, $data, $path = "index")
+    public function createAlertRedirect($class, Request $request, $path = "index")
     {
-        $this->createAlert($class, $data);
+        $this->createAlert($class, $request);
 
         return $this->redirectRoutePath($path);
     }
@@ -60,14 +61,14 @@ abstract class AdminController extends Controller
      * Save, flash success or error then redirect
      *
      * @param $model
-     * @param $data
+     * @param Request $request
      * @param string $path
      * @param array $args
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function saveAlertRedirect($model, $data, $path = "index", $args = [])
+    public function saveAlertRedirect($model, Request $request, $path = "index", $args = [])
     {
-        $this->saveAlert($model, $data);
+        $this->saveAlert($model, $request);
 
         return $this->redirectRoutePath($path, null, $args);
     }
@@ -90,18 +91,30 @@ abstract class AdminController extends Controller
 
     public function createAlert($class, $data)
     {
-        $model = $class::create($data);
+        $model = $class::create($data->all());
 
-        $model ?
-            alert(trans('admin.create.success'), 'success'):
+        if ($model) {
+            if ($data->hasFile('picture')) {
+                $model->picture = $model->upload($data->file('picture'));
+                $model->save();
+            }
+
+            alert(trans('admin.create.success'), 'success');
+        } else {
             alert(trans('admin.create.fail'), 'danger');
+        }
 
         return $model;
     }
 
     public function saveAlert($model, $data)
     {
-        $model->fill($data);
+        $fill = $data->all();
+        if ($data->hasFile('picture')) {
+            $fill['picture'] = $model->upload($data->file('picture'));
+        }
+
+        $model->fill($fill);
         ($saved = $model->save()) ?
             alert(trans('admin.update.success'), 'success'):
             alert(trans('admin.update.fail'), 'danger');

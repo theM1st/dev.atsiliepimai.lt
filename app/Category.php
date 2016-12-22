@@ -3,12 +3,15 @@
 namespace App;
 
 use Baum\Node;
+use App\Scopes\ActiveScope;
+use App\Traits\Uploader;
 
 /**
 * Category
 */
 class Category extends Node
 {
+    use Uploader;
 
     /**
     * Table name.
@@ -20,6 +23,15 @@ class Category extends Node
     public function listings()
     {
         return $this->hasMany('App\Listing');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        if (\Request::segment(1) != 'admin') {
+            static::addGlobalScope(new ActiveScope);
+        }
     }
 
     public function reviews()
@@ -35,6 +47,21 @@ class Category extends Node
         });
 
         return $reviews;
+    }
+
+    public function scopePopular($query)
+    {
+        return $query->where('popular', 1);
+    }
+
+    public function getDefaultPictureAttribute()
+    {
+        return 'default.jpg';
+    }
+
+    public static function getMainCategories()
+    {
+        return (Category::where('parent_id', null)->get());
     }
 
     //////////////////////////////////////////////////////////////////////////////
@@ -90,7 +117,7 @@ class Category extends Node
     // *
     // * @var array
     // */
-    // protected $guarded = array('id', 'parent_id', 'lft', 'rgt', 'depth');
+    protected $guarded = array('id', 'parent_id', 'lft', 'rgt', 'depth', 'MAX_FILE_SIZE');
 
     //
     // This is to support "scoping" which may allow to have multiple nested

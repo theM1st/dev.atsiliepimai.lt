@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\ActiveScope;
+use App\ReviewAttributeOption;
 
 class Listing extends Model
 {
@@ -33,9 +34,29 @@ class Listing extends Model
         return $this->hasMany('App\Review');
     }
 
+    public function attributes()
+    {
+        return $this->belongsToMany('App\Attribute');
+    }
+
+    public function getReviews($filter, $limit=3)
+    {
+        return $this->reviews()->filter($filter)->paginate($limit);
+    }
+
     public function lastReview()
     {
         return $this->reviews()->orderBy('created_at', 'desc')->first();
+    }
+
+    public function getMainAttribute()
+    {
+        return $this->attributes()->main()->first();
+    }
+
+    public function getSecondaryAttributes()
+    {
+        return $this->attributes()->secondary()->get();
     }
 
     public function scopeCategorized($query, Category $category = null)
@@ -47,5 +68,14 @@ class Listing extends Model
         $categoryIds = $category->getDescendantsAndSelf()->pluck('id');
 
         return $query->with('category')->whereIn('category_id', $categoryIds);
+    }
+
+    public function getReviewsByAttributeOption($option)
+    {
+        $reviews = $this->reviews->pluck('id');
+        
+        return ReviewAttributeOption::whereIn('review_id', $reviews)->where('option_id', $option->id)->get();
+
+        //return $query->with('category')->whereIn('category_id', $categoryIds);
     }
 }

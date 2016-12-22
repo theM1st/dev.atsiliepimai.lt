@@ -40,6 +40,10 @@ class EventServiceProvider extends ServiceProvider
             $category->slug = str_slug($category->name);
         });
 
+        Category::deleted(function($category) {
+            $category->deleteDirectory($category->getUploadPath());
+        });
+
         User::creating(function($user) {
             //$user->token = str_random(30);
         });

@@ -14,7 +14,7 @@
                         <div class="category-list sortable-list">
                             <ul>
                                 <li>
-                                    <div class="category-name">{{ trans('common.category.main') }}</div>
+                                    <div class="category-name">{{ trans('common.form.category.main') }}</div>
                                     <ul class="sortable">
                                         @foreach($categories as $node)
                                             {!! adminRenderNode($node) !!}

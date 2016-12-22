@@ -22,6 +22,8 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('listings.create') }}">{{ trans('admin.listings.create') }}</a></li>
                         <li><a href="{{ route('listings.index') }}">{{ trans('admin.listings.index') }}</a></li>
+                        <li><a href="{{ route('attributes.index') }}">{{ trans('admin.attributes.index') }}</a></li>
+                        <li><a href="{{ route('attributes.create') }}">{{ trans('admin.attributes.create') }}</a></li>
                     </ul>
                 </div>
             </li>

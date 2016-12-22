@@ -3,19 +3,22 @@
     <div class="filter-holder">
         {!!
             Former::select('sort')
-            ->options(['a', 'b'])
+            ->options(App\Review::getSortby())
             ->class('form-control selectpicker')
             ->title(trans('common.form.select'))
+            ->value('newest')
             ->label('')
         !!}
     </div>
 </div>
-<div class="review-list">
+<div class="listings-review-list">
     @foreach ($reviews as $r)
         <div class="review">
             <div class="row">
                 <div class="col-sm-3 review-author-info">
-                    <img src="{{ $r->user->getPicture() }}" alt="{{ $r->user->username }}" class="img-circle img-border-grey">
+                    <div class="author-picture">
+                        <img src="{{ $r->user->getPicture() }}" alt="{{ $r->user->username }}" class="img-circle img-border-grey img-responsive">
+                    </div>
                     <ul>
                         <li>
                             <span class="fa fa-comments-o" aria-hidden="true"></span>
@@ -32,6 +35,17 @@
                     </ul>
                 </div>
                 <div class="col-sm-9">
+                    @if ($r->attributeOptions)
+                        <div class="review-attributes">
+                            @foreach ($r->attributeOptions as $ao)
+                                @if ($ao['attribute_main'])
+                                    <span class="badge main-badge">{{ $ao['option_name'] }}</span>
+                                @else
+                                    <span class="badge">{{ $ao['attribute_title'] }}: {{ $ao['option_name'] }}</span>
+                                @endif
+                            @endforeach
+                        </div>
+                    @endif
                     <h3{{ !$r->active ? ' style=color:#f10028' : '' }}>
                         @if (!$r->active) <i class="fa fa-circle text-red"></i> @endif
                         {{ $r->review_title }}
@@ -74,12 +88,12 @@
             </div>
         </div>
     @endforeach
-    {{ $reviews->links() }}
+    {{ $reviews->appends(['sort' => Request::get('sort')])->links() }}
 </div>
 @section('scripts')
     <script>
-        $('#sort').on('changed.bs.select', function (e) {
-            alert('aaa');
+        $('#sort').on('changed.bs.select', function () {
+            location.href = '/{{ Request::path() }}?sort=' + $(this).val();
         });
     </script>
 @endsection

@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'PagesController@index');
+
+Route::get('c/{category_slug}', 'CategoriesController@show')
+    ->name('category.show');
 
 Auth::routes();
 //Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');

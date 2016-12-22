@@ -1,0 +1,39 @@
+.popular-categories {
+  .popular-categories-title {
+    border: 1px solid $light-grey;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    color: $text-dark-color;
+    font-size: 24px;
+    padding: 25px 30px;
+  }
+  .popular-category-list {
+    border-left: 1px solid $light-grey;
+    @extend .clearfix;
+    .popular-category {
+      border-color: $light-grey;
+      border-style: solid;
+      border-width: 0 1px 1px 0;
+      padding: 10px;
+      & > a {
+        color: $text-dark-color;
+        display: block;
+        .popular-category-container {
+          display: table;
+        }
+        .popular-category-picture {
+          display: table-cell;
+          vertical-align: middle;
+          > img {
+            max-width: 100px;
+          }
+        }
+        .popular-category-name {
+          display: table-cell;
+          vertical-align: middle;
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+}

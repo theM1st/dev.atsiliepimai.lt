@@ -30,10 +30,13 @@
                                     <span class="fa fa-caret-down" aria-hidden="true"></span>
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="categories-menu">
-                                    <li><a href="#">Actionįčįčęš</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li><a href="#">Separated link</a></li>
+                                    @foreach ($mainCategories as $c)
+                                    <li>
+                                        <a href="{{ route('category.show', $c->slug) }}">
+                                            {{ $c->name }}
+                                        </a>
+                                    </li>
+                                    @endforeach
                                 </ul>
                             </div>
                         </li>

@@ -28,7 +28,7 @@ class CountriesController extends AdminController
 
     public function store(CountryRequest $request)
     {
-        return $this->createAlertRedirect(Country::class, $request->all());
+        return $this->createAlertRedirect(Country::class, $request);
     }
 
     public function edit(Country $country)
@@ -42,7 +42,7 @@ class CountriesController extends AdminController
 
     public function update(Country $country, CountryRequest $request)
     {
-        return $this->saveAlertRedirect($country, $request->all());
+        return $this->saveAlertRedirect($country, $request);
     }
 
     public function move(Country $country, $position)

@@ -1,0 +1,198 @@
+.listings-review-listing {
+  .listing-info {
+    background-color: $secondary-green;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    min-height: 360px;
+    width: 100%;
+    .listing-info-summary {
+      background-color: $primary-green;
+      border-top-left-radius: 5px;
+      padding: 25px 0 20px 20px;
+      h4 {
+        color: #ffffff;
+        font-family: $font-myriad;
+        font-size: 35px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+      .rating {
+        margin-bottom: 5px;
+        .rating-container {
+          display: inline-block;
+        }
+        .reviews-count {
+          color: #ffffff;
+          display: inline-block;
+          font-family: $font-roboto;
+          font-size: $font-base-size + 2;
+          margin-left: 10px;
+        }
+      }
+      .feedback-container {
+        border-right: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 10px;
+        .feedback {
+          list-style-type: none;
+          margin: -6px 0;
+          padding-left: 0;
+          li {
+            color: #fff;
+            font-size: 18px;
+            line-height: 18px;
+            padding: 6px 0;
+            .title {
+              display: inline-block;
+              font-family: $font-myriad;
+              width: 80px;
+            }
+            .progress {
+              background-color: #fff;
+              border-radius: 0;
+              display: inline-block;
+              height: 8px;
+              margin: 0;
+              vertical-align: middle;
+              width: 95%;
+              @include respond-to(lg) {
+                width: 60%;
+              }
+              .progress-bar {
+                background-color: $yellow;
+              }
+            }
+            &::before {
+              content: "";
+              font-family: $font-awesome;
+              padding-right: 5px;
+            }
+          }
+        }
+      }
+      .listing-models {
+        font-family: $font-myriad;
+        .listing-models-title {
+          color: #fff;
+          font-size: 24px;
+          font-weight: 600;
+          margin-bottom: 4px;
+        }
+        p {
+          font-size: $font-base-size;
+          a {
+            color: #fff;
+            &:hover, &:focus {
+              text-decoration: underline;
+            }
+          }
+          span {
+            color: #fff;
+            font-size: $font-standart-size;
+            padding: 0 10px;
+          }
+        }
+      }
+    }
+    .listing-nav {
+      font-family: $font-myriad;
+      padding: 10px 5px 0 5px;
+      .nav-pills {
+        li {
+          float: none;
+          @include respond-to(md) {
+            float: left;
+          }
+          a {
+            color: #fff;
+            font-size: $font-base-size;
+            border-bottom: 7px solid transparent;
+            &:hover, &:focus {
+              background-color: transparent;
+              border-bottom: 7px solid $yellow;
+              border-radius: 0;
+            }
+            @include respond-to(lg) {
+              font-size: $font-base-size+2;
+            }
+          }
+        }
+      }
+    }
+    .listing-side {
+      padding-top: 25px;
+      h2 {
+        color: #fff;
+        font-family: $font-myriad;
+        font-size: $font-base-size;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        text-align: center;
+        @include respond-to(md) {
+          font-size: 35px;
+          text-align: left;
+        }
+      }
+      .listing-picture {
+        margin: 0 auto;
+        max-width: 170px;
+        position: relative;
+        img {
+          margin: 0 auto;
+          text-align: center;
+        }
+        .listing-rating {
+          background-color: $yellow;
+          border-radius: 50%;
+          color: #fff;
+          font-family: $font-myriad;
+          font-size: 30px;
+          font-weight: 700;
+          height: 68px;
+          line-height: 68px;
+          position: absolute;
+          right: 0;
+          text-align: center;
+          top: 0;
+          width: 68px;
+        }
+      }
+      .write-review, .ask-question {
+        margin: 20px 0;
+        text-align: center;
+        .btn {
+          width: 80%;
+        }
+      }
+      .ask-question {
+        .btn {
+          color: #fff;
+        }
+      }
+    }
+    .listing-filter {
+      padding: 10px 0;
+      text-align: center;
+      label {
+        color: #fff;
+        font-size: $font-base-size;
+        padding: 10px;
+      }
+      @include respond-to(md) {
+        text-align: left;
+      }
+      .bootstrap-select {
+        margin-top: -5px;
+        .btn {
+          color: #fff;
+        }
+        .bs-caret {
+          background: #fff;
+          .caret {
+            color: $secondary-green;
+          }
+        }
+      }
+    }
+  }
+}

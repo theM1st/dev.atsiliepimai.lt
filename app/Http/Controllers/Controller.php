@@ -13,6 +13,7 @@ class Controller extends BaseController
 
     public function display($path, $data = array())
     {
+        $data['user'] = \Auth::user();
         //$data['title'] = trim(strip_tags(adminHeaderTitle()) . ' - ' . trans('admin.control_management_system'), '- ');
 
         return view($path, $data);

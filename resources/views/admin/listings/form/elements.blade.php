@@ -16,4 +16,26 @@
 <div class="checkbox-container">
     {!! Former::checkbox('active')->class('icheck')->text('common.form.listing.active')->check() !!}
 </div>
+
+{!!
+    Former::select('attribute_id[]')
+    ->options($mainAttributes)
+    ->value($listing->attributes)
+    ->class('form-control selectpicker')
+    ->title(trans('common.form.select'))
+    ->label('common.form.listing.main_attribute')
+    ->help('Gali būti tik vienas pagrindinis atributas (Modeliai, karta ir t.t.)')
+!!}
+
+{!!
+    Former::select('attribute_id[]')
+    ->options($attributes)
+    ->value($listing->attributes)
+    ->class('form-control selectpicker')
+    ->multiple('')
+    ->title(trans('common.form.select'))
+    ->label('common.form.listing.another_attributes')
+    ->help('Galima pasirinkti keletą atributų, naudojamas kaip atsiliepimų filtras (Kėbulo tipas, kuro tipas...)')
+!!}
+
 <hr>

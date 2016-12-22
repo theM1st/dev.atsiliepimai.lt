@@ -224,6 +224,16 @@
     -webkit-text-stroke: 1px #ffcc00;
 }
 
+.rating-white .filled-stars {
+    color: #ffffff;
+    -webkit-text-stroke: 1px #ffffff;
+}
+
+.rating-white .empty-stars {
+    color: #1b9d48;
+    -webkit-text-stroke: 1px #ffffff;
+}
+
 .rating-xs {
     font-size: 14px;
 }

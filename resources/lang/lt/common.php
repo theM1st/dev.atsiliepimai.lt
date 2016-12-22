@@ -43,6 +43,8 @@ return [
             'select_category' => 'Pasirinkite tinkamą kategoriją',
             'listing_type' => 'Apie ką jūsų atsiliepimas?',
             'active' => 'Aktyvus',
+            'main_attribute' => 'Pagrindinis atributas',
+            'another_attributes' => 'Kiti atributai',
         ],
         'review' => [
             'title' => 'Atsiliepimo antraštė',
@@ -53,7 +55,41 @@ return [
             'description_help' => 'Minimaliai 50 simbolių',
             'rating' => 'Kaip įvertintumėte :name?',
             'active' => 'Aktyvus atsiliepimas',
-        ]
+            'cannot_find_my_option' => 'Negaliu rasti savo variantą',
+            'write_your_option' => 'Parašykite savo variantą',
+            'user_option' => 'Vartotojo įrašytas variantas',
+            'rating_values' => [
+                'excellent' => 'Puiku',
+                'good' => 'Gerai',
+                'ok' => 'Normalu',
+                'bad' => 'Blogai',
+                'terrible' => 'Baisu',
+            ],
+            'sortby' => [
+                'newest' => 'Naujesni',
+                'rating_high' => 'Aukščiausias įvertinimas',
+                'rating_low' => 'Žemiausias įvertinimas',
+                'helpful' => 'Labiausiai naudingi',
+                'oldest' => 'Senesni',
+            ]
+        ],
+        'category' => [
+            'main' => 'Pagrindinė',
+            'name' => 'Pavadinimas',
+            'description' => 'Kategorijos aprašymas (meta description)',
+            'parent' => 'Priklauso kategorijai',
+            'popular' => 'Populiari kategorija',
+            'active' => 'Aktyvuota',
+            'picture' => 'Nuotrauka',
+        ],
+        'attribute' => [
+            'main' => 'Pagrindinis atributas',
+            'name' => 'Atributo pavadinimas',
+            'name_help' => 'Tiklus pavadinimas. Matosi tik adminui, kad būtų paprasčiau rasti sąraše pvz. IPhone 6 modeliai, BMW 3 serijos karta ir t.t.',
+            'title' => 'Atributo antraštė',
+            'title_help' => 'Bendras pavadinimas, matosi vartotojui, pvz. Modeliai, karta ir t.t.',
+        ],
+        'picture_rules' => 'Nuotrauka turi būti .jpg, .gif arba .png formatu, mažiau nei 3MB.',
     ],
     'user' => [
         'email' => 'El. paštas',
@@ -73,7 +109,6 @@ return [
         'country' => 'Šalis',
         'place' => 'Vieta',
         'picture' => 'Nuotrauka',
-        'picture_rules' => 'Nuotrauka turi būti .jpg, .gif arba .png formatu, mažiau nei 3MB.',
         'gender' => 'Lytis',
         'male' => 'Vyras',
         'female' => 'Moteris',
@@ -81,12 +116,6 @@ return [
         'user_role' => 'Teisės',
         'admin' => 'Administratorius',
         'remember_me' => 'Prisiminti jūsų prisijungimo duomenis',
-    ],
-    'category' => [
-        'main' => 'Pagrindinė',
-        'name' => 'Pavadinimas',
-        'parent' => 'Priklauso kategorijai',
-        'active' => 'Aktyvuota',
     ],
     'profile' => [
         'name' => 'Profilis',

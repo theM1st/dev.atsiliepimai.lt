@@ -31,7 +31,7 @@ class UsersController extends AdminController
 
     public function store(UserRequest $request)
     {
-        return $this->createAlertRedirect(User::class, $request->all());
+        return $this->createAlertRedirect(User::class, $request);
     }
 
     public function edit(User $user, $section='About')
@@ -51,19 +51,13 @@ class UsersController extends AdminController
             return $this->redirectRoutePath('edit', 'admin.users.admin.update.fail', [$user->id]);
         }
 
-        $data = $request->all();
-
-        if ($request->hasFile('picture')) {
-            $data['picture'] = $user->upload($request->file('picture'));
-        }
-
         $user->setBirthday($request);
 
         if ($request->get('password')) {
-            $data['password'] = bcrypt($request->get('password'));
+            $request->merge(['password' => $request->get('password')]);
         }
 
-        return $this->saveAlertRedirect($user, $data, 'back');
+        return $this->saveAlertRedirect($user, $request, 'back');
     }
 
     public function delete(User $user)

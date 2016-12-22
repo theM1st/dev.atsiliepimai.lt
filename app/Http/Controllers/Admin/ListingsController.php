@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\ListingRequest;
 use App\Category;
 use App\Listing;
+use App\Attribute;
 use App\Review;
 
 class ListingsController extends AdminController
@@ -27,7 +28,9 @@ class ListingsController extends AdminController
 
         return $this->display($this->viewPath('create'), [
             'categories' => $categories,
-            'listing' => $listing
+            'listing' => $listing,
+            'mainAttributes' => Attribute::main()->pluck('name', 'id'),
+            'attributes' => Attribute::secondary()->pluck('name', 'id'),
         ]);
     }
 
@@ -35,18 +38,23 @@ class ListingsController extends AdminController
     {
         $request->merge(['active' => $request->get('active', 0)]);
 
-        return $this->createAlertRedirect(Listing::class, $request->all());
+        if ($model = $this->createAlert(Listing::class, $request)) {
+        }
+
+        return $this->redirectRoutePath();
     }
 
     public function edit(Listing $listing)
     {
         \Former::populate($listing);
-
+        //dd($listing->attributes()->where('main', 1)->first()->options->toArray());
         $categories = Category::all()->toHierarchy();
 
         return $this->display($this->viewPath('edit'), [
             'categories' => $categories,
-            'listing' => $listing
+            'listing' => $listing,
+            'mainAttributes' => Attribute::main()->pluck('name', 'id'),
+            'attributes' => Attribute::secondary()->pluck('name', 'id'),
         ]);
     }
 
@@ -54,7 +62,14 @@ class ListingsController extends AdminController
     {
         $request->merge(['active' => $request->get('active', 0)]);
 
-        return $this->saveAlertRedirect($listing, $request->all());
+        $saved = $this->saveAlert($listing, $request);
+
+        if ($saved) {
+            $attributes = $request->only('attribute_id');
+            $listing->attributes()->sync($attributes['attribute_id']);
+        }
+
+        return $this->redirectRoutePath('back');
     }
 
     public function delete(Listing $listing)
@@ -72,9 +87,9 @@ class ListingsController extends AdminController
         return $this->destroyAlertRedirect($listing);
     }
 
-    public function reviews(Listing $listing)
+    public function reviews(Listing $listing, Request $request, $slug=null)
     {
-        $reviews = $listing->reviews()->paginate(3);
+        $reviews = $listing->getReviews($request->only('sort'));
 
         return $this->display($this->viewPath('reviews'), [
             'listing' => $listing,

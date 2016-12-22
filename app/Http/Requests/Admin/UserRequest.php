@@ -24,8 +24,9 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->segment(2)) {
-            $emailUniqueRule = Rule::unique('users')->ignore($this->segment(2));
+        $segments = count($this->segments());
+        if ($this->segment($segments)) {
+            $emailUniqueRule = Rule::unique('users')->ignore($this->segment($segments));
         } else {
             $emailUniqueRule = Rule::unique('users');
         }
