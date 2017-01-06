@@ -9,11 +9,11 @@
                 </div>
                 <div class="col-md-3 col-sm-4 hidden-xs">
                     <div class="search">
-                        <form action="">
+                        <form action="{{ route('listing.search') }}">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Ieškokite atsiliepimų">
+                                <input type="text" name="q" class="form-control" placeholder="Ieškoti tarp produktų, paslaugų">
                                 <div class="input-group-btn">
-                                    <button class="btn" type="button">
+                                    <button class="btn" type="submit">
                                         <span class="fa fa-search" aria-hidden="true"></span>
                                     </button>
                                 </div>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="col-md-3 col-sm-4">
                     <div class="create-review">
-                        <a href="" class="btn btn-first btn-lg">Parašykite atsiliepimą</a>
+                        <a href="{{ route('listing.create') }}" class="btn btn-first btn-lg">Parašykite atsiliepimą</a>
                     </div>
                 </div>
             </div>

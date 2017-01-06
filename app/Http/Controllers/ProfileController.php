@@ -5,16 +5,25 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UserRequest;
 use App\User;
+use App\Scopes\ActiveScope;
 use Auth;
 
 class ProfileController extends Controller
 {
     public function show($section)
     {
-        return $this->display('profile.show', [
+        $user = Auth::user();
+
+        $viewData = [
             'title' => trans('common.profile.sections.'.$section),
             'section' => $section,
-        ]);
+        ];
+
+        if ($section == 'reviews') {
+            $viewData['reviews'] = $user->reviews()->latest()->withoutGlobalScope(ActiveScope::class)->get();
+        }
+
+        return $this->display('profile.show', $viewData);
     }
 
     public function edit($section)

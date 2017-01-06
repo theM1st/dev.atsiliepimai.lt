@@ -76,40 +76,67 @@ class Review extends Model
     {
         $this->attributes()->detach();
 
-        foreach ($data['attribute_option_id'] as $attributeId => $optionId) {
-            $optionValue = null;
-            
-            if (!$optionId) {
-                $optionId = null;
-                $optionValue = $data['option_value'][$attributeId];
-            }
+        if (is_array($data['attribute_option_id'])) {
+            foreach ($data['attribute_option_id'] as $attributeId => $optionId) {
+                $optionValue = null;
 
-            $this->attributes()->attach($attributeId, [
-                'attribute_option_id' => $optionId,
-                'option_value' => $optionValue,
-            ]);
+                if (!$optionId) {
+                    $optionId = null;
+                    $optionValue = $data['option_value'][$attributeId];
+                }
+
+                if ($optionId || $optionValue) {
+                    $this->attributes()->attach($attributeId, [
+                        'attribute_option_id' => $optionId,
+                        'option_value' => $optionValue,
+                    ]);
+                }
+            }
         }
+    }
+
+    public function getReviewAttribute($attributeId)
+    {
+        return $this->attributes()->where('attribute_id', $attributeId)->first();
     }
 
     public function getReviewAttributeOption($attributeId)
     {
-        //dd($this->attributes()->where('attribute_id', $attributeId)->first());
-        return $this->attributes()->where('attribute_id', $attributeId)->first();
+        return $this->attributeOptions()->where('attribute_option_review.attribute_id', $attributeId)->first();
     }
 
-    public function scopeFilter($query, $filter)
+    public function scopeFilter($query, $data)
     {
-        if (isset($filter['sort'])) {
-            switch($filter['sort']) {
-                case 'rating_high' : $query->orderBy('rating', 'desc'); break;
-                case 'rating_low' : $query->orderBy('rating', 'asc')->orderBy('created_at', 'desc'); break;
-                case 'helpful' : $query->orderBy('avg_votes', 'desc')->orderBy('created_at', 'desc'); break;
-                case 'oldest' : $query->orderBy('created_at', 'asc'); break;
-                default: $query->orderBy('created_at', 'desc');
-            }
+        $sort = isset($data['sort']) ? $data['sort'] : null;
 
+        if (isset($data['model'])) {
+            $temp = explode('-', $data['model']);
+            $optionId = end($temp);
+
+            $query->whereHas('attributeOptions', function ($query) use ($optionId) {
+                $query->where('attribute_option_id', $optionId);
+            });
         }
 
+        if (isset($data['filter'])) {
+            foreach ($data['filter'] as $optionId) {
+                if ($optionId) {
+                    $query->whereHas('attributeOptions', function ($query) use ($optionId) {
+                        $query->where('attribute_option_id', $optionId);
+                    });
+                }
+            }
+        }
+
+        switch($sort) {
+            case 'rating_high' : $query->orderBy('rating', 'desc'); break;
+            case 'rating_low' : $query->orderBy('rating', 'asc')->orderBy('created_at', 'desc'); break;
+            case 'helpful' : $query->orderBy('avg_votes', 'desc')->orderBy('created_at', 'desc'); break;
+            case 'oldest' : $query->orderBy('created_at', 'asc'); break;
+            default: $query->orderBy('created_at', 'desc');
+        }
+
+        //dd($query->toSql());
         return $query;
     }
 

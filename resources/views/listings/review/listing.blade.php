@@ -35,12 +35,14 @@
                                 <div class="listing-models">
                                     <div class="listing-models-title">{{ $mainAttribute->title }}</div>
                                     @foreach ($mainAttribute->options as $o)
-                                        {{--@if ($reviews = $listing->getReviewsByAttributeOption($o)->count()) --}}
-                                            <p>
-                                                <a href="{{ route('listings.reviews', [$listing->id, $o->slug]) }}">{{ $o->option_name }}</a>
-                                                {{--<span>({{ $reviews }})</span> --}}
+                                        @if ($reviews = $o->reviews($listing->id)->count())
+                                            <p class="{{ $model == $o->slug ? 'active' : '' }}">
+                                                <a href="{{ (!empty($admin) ? route('listings.reviews', [$listing->id, $o->slug]) : route('listing.show.model', [$listing->slug, $o->slug])) }}">
+                                                    {{ $o->option_name }}
+                                                </a>
+                                                <span>({{ $reviews }})</span>
                                             </p>
-                                        {{--  @endif --}}
+                                        @endif
                                     @endforeach
                                 </div>
                             @endif
@@ -54,11 +56,11 @@
                     <div class="col-lg-5">
                         <div class="listing-picture">
                             <div class="listing-rating">{{ $listing->avg_rating }}</div>
-                            <img class="img-responsive img-circle img-border-white" src="http://icons.iconarchive.com/icons/icons8/windows-8/256/City-No-Camera-icon.png" alt="demo">
+                            <img class="img-responsive img-circle img-border-white" src="{{ $listing->getPicture('md') }}" alt="{{ $listing->title }}">
                         </div>
                     </div>
                     <div class="col-lg-7">
-                        <div class="write-review"><a href="" class="btn btn-first btn-lg">Parašykite atsiliepimą</a></div>
+                        <div class="write-review"><a href="{{ route('review.create', $listing->slug) }}" class="btn btn-first btn-lg">Parašykite atsiliepimą</a></div>
                         <div class="ask-question"><a href="" class="btn btn-green btn-empty btn-lg">Užduokite klausimą</a></div>
                     </div>
                 </div>
@@ -68,24 +70,34 @@
             <div class="col-sm-7">
                 <div class="listing-nav">
                     <ul class="nav nav-pills">
-                        <li><a href="#">Atsiliepimai (77)</a></li>
+                        <li><a href="{{ route('listings.reviews', $listing->id) }}">Atsiliepimai ({{ $listing->reviews->count() }})</a></li>
                         <li><a href="#">Klausimai ir atsakymai</a></li>
-                        <li><a href="#">Produkto detalės</a></li>
+                        <li><a href="#listing-description">Produkto detalės</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-sm-5">
-                <div class="listing-filter">
-                    <label>Filtruoti pagal:</label>
-                    {!!
-                        Former::select('filter')
-                        ->options(App\Review::getSortby())
-                        ->class('form-control selectpicker')
-                        ->title(trans('common.form.select'))
-                        ->value('newest')
-                        ->label('')
-                    !!}
-                </div>
+                <?php $filters = $listing->getSecondaryAttributes(); ?>
+                @if ($filters->count())
+                    <div class="listing-filters">
+                        <form>
+                            <div class="filter-by">Filtruoti pagal:</div>
+                            @foreach ($filters as $f)
+                                <div class="filter">
+                                    {!!
+                                        Former::select("filter[$f->id]")
+                                        ->options($f->options->pluck('option_name', 'id')->prepend('Visi', ''))
+                                        ->class('form-control selectpicker')
+                                        ->title('Visi')
+                                        //->value($f->id)
+                                        ->label($f->title)
+                                    !!}
+                                </div>
+                            @endforeach
+                            <input type="hidden" name="sort" value="{{ Request::get('sort') }}">
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -64,6 +64,13 @@ class Category extends Node
         return (Category::where('parent_id', null)->get());
     }
 
+    public function getListings($filter, $limit = 20)
+    {
+        $data = Listing::categorized($this)->filter($filter)->paginate($limit);
+
+        return $data;
+    }
+
     //////////////////////////////////////////////////////////////////////////////
 
     //

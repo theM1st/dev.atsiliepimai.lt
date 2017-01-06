@@ -24,12 +24,14 @@ if (!function_exists('getTitle')) {
      *
      * @return string
      */
-    function getTitle($object = null, $property = "title")
+    function getTitle($object = null, $property = "name")
     {
         if (is_object($object) && isset($object->$property)) {
             return $object->$property;
         } elseif (is_string($object) && !empty($object)) {
             return $object;
+        } else {
+            return 'Produktų ir paslaugų atsiliepimai Lietuvoje';
         }
     }
 }
@@ -165,9 +167,9 @@ if (!function_exists('starRating')) {
             $html .= '</span>';
         }
 
-        return '<div class="rating-container theme-krajee-fa rating-'.$size.' '.$class.'" title="'.$rate.' iš 5">'.
-            '<div class="rating">'.$html.'</div>'.
-            '</div>';
+        return '<span class="rating-container theme-krajee-fa rating-'.$size.' '.$class.'" title="'.$rate.' iš 5">'.
+            '<span class="rating">'.$html.'</span>'.
+            '</span>';
     }
 }
 

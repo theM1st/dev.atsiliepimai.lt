@@ -9,10 +9,12 @@
         {!! adminHeaderTitle($title) !!}
 
         <div class="admin-body">
-            @include("listings.review.listing")
+            @include("listings.review.listing", [ 'admin' => true ])
             <div class="row">
                 <div class="col-md-9">
                     @include("listings.review.list", [ 'admin' => true ])
+
+                    @include("listings.review.description", [ 'admin' => true ])
                 </div>
             </div>
         </div>

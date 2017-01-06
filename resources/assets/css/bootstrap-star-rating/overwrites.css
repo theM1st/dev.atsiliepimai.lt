@@ -1,12 +1,22 @@
+.rating-container {
+    display: inline-block;
+}
+
+.rating-container .rating {
+    display: inline-block;
+}
+
 .rating-container .caption {
     margin-left: 20px;
     margin-top: -0.4em;
 }
+
 .rating-container .caption .label {
     font-size: 85%;
     font-weight: normal;
     position: relative;
 }
+
 .rating-container .caption .label::before {
     border-color: transparent #777777 transparent transparent;
     border-style: solid;
@@ -50,3 +60,4 @@
 .rating-md {
     font-size: 28px;
 }
+

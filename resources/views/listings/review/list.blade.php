@@ -19,6 +19,9 @@
                     <div class="author-picture">
                         <img src="{{ $r->user->getPicture() }}" alt="{{ $r->user->username }}" class="img-circle img-border-grey img-responsive">
                     </div>
+                    <div class="author-name">
+                        {{ $r->user->username }}
+                    </div>
                     <ul>
                         <li>
                             <span class="fa fa-comments-o" aria-hidden="true"></span>
@@ -35,13 +38,20 @@
                     </ul>
                 </div>
                 <div class="col-sm-9">
-                    @if ($r->attributeOptions)
+                    @if ($attributes = $r->attributes()->orderBy('main', 'desc')->get())
                         <div class="review-attributes">
-                            @foreach ($r->attributeOptions as $ao)
-                                @if ($ao['attribute_main'])
-                                    <span class="badge main-badge">{{ $ao['option_name'] }}</span>
-                                @else
-                                    <span class="badge">{{ $ao['attribute_title'] }}: {{ $ao['option_name'] }}</span>
+                            @foreach ($attributes as $a)
+                                @if ($attributeOption = $r->getReviewAttributeOption($a->id))
+                                    @if ($a->main)
+                                        <span class="badge main-badge">
+                                            {{ $attributeOption->option_name }}
+                                        </span>
+                                    @else
+                                        <span class="badge">
+                                            {{ $a->title }}:
+                                            {{ $attributeOption->option_name }}
+                                        </span>
+                                    @endif
                                 @endif
                             @endforeach
                         </div>
@@ -88,12 +98,16 @@
             </div>
         </div>
     @endforeach
-    {{ $reviews->appends(['sort' => Request::get('sort')])->links() }}
+    {{ $reviews->appends(['sort' => Request::get('sort'), 'filter' => Request::get('filter')])->links() }}
 </div>
 @section('scripts')
+    @parent
     <script>
         $('#sort').on('changed.bs.select', function () {
             location.href = '/{{ Request::path() }}?sort=' + $(this).val();
+        });
+        $('.filter select').on('changed.bs.select', function () {
+            $('.listing-filters form').submit();
         });
     </script>
 @endsection

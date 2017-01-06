@@ -28,6 +28,7 @@
           font-family: $font-roboto;
           font-size: $font-base-size + 2;
           margin-left: 10px;
+          vertical-align: top;
         }
       }
       .feedback-container {
@@ -89,7 +90,12 @@
           span {
             color: #fff;
             font-size: $font-standart-size;
-            padding: 0 10px;
+            padding: 0 2px;
+          }
+          &.active {
+            a {
+              text-decoration: underline;
+            }
           }
         }
       }
@@ -122,11 +128,13 @@
     .listing-side {
       padding-top: 25px;
       h2 {
+        border: none;
         color: #fff;
         font-family: $font-myriad;
         font-size: $font-base-size;
         font-weight: 700;
         margin: 0 0 10px 0;
+        padding: 0;
         text-align: center;
         @include respond-to(md) {
           font-size: 35px;
@@ -165,18 +173,31 @@
         }
       }
       .ask-question {
+        margin-bottom: 0;
         .btn {
           color: #fff;
         }
       }
     }
-    .listing-filter {
+    .listing-filters {
+      color: #fff;
+      font-size: $font-standart-size;
       padding: 10px 0;
       text-align: center;
-      label {
-        color: #fff;
-        font-size: $font-base-size;
-        padding: 10px;
+      .filter-by {
+        font-weight: bold;
+        padding: 14px 10px;
+      }
+      .filter {
+        label {
+          font-weight: 400;
+          padding: 10px;
+        }
+        .bootstrap-select {
+          .dropdown-toggle {
+            height: 40px;
+          }
+        }
       }
       @include respond-to(md) {
         text-align: left;
@@ -194,5 +215,10 @@
         }
       }
     }
+  }
+}
+.listing-description-container {
+  .listing-description {
+    margin-top: 20px;
   }
 }

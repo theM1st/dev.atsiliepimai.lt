@@ -32,15 +32,8 @@ class ReviewsController extends AdminController
 
     public function edit(Review $review)
     {
-        //dd($review->reviewAttributeOptions()->where('attribute_id', 11)->first()->option_id);
         \Former::populate($review);
-
-        foreach ($review->attributeOptions as $o) {
-            //dd($o->pivot);
-        }
-
-        //$r = $review->attributeOptions()->wherePivot('attribute_id', 11)->get();
-
+        
         return $this->display($this->viewPath('edit'), [
             'review' => $review,
         ]);
@@ -72,7 +65,7 @@ class ReviewsController extends AdminController
 
     public function toggleOption(Review $review, $attributeId, $status)
     {
-        $reviewAttributeOption = $review->getReviewAttributeOption($attributeId);
+        $reviewAttribute = $review->getReviewAttribute($attributeId);
 
         if ($status == 'cancel') {
             $review->attributes()->detach($attributeId);
@@ -82,7 +75,7 @@ class ReviewsController extends AdminController
 
         if ($status == 'accept') {
             $attributeOption = new AttributeOption([
-                'option_name' => $reviewAttributeOption->pivot->option_value,
+                'option_name' => $reviewAttribute->pivot->option_value,
             ]);
 
             $option = Attribute::find($attributeId)->options()->save($attributeOption);

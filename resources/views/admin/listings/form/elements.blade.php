@@ -38,4 +38,10 @@
     ->help('Galima pasirinkti keletą atributų, naudojamas kaip atsiliepimų filtras (Kėbulo tipas, kuro tipas...)')
 !!}
 
-<hr>
+{!!
+    Former::file('picture')
+        ->label('common.form.listing.picture')
+        ->class('file-control')
+        ->inlineHelp('common.form.picture_rules')
+        ->max(3, 'MB')
+!!}

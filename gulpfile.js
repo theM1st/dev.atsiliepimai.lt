@@ -42,7 +42,30 @@ elixir(function(mix) {
         ], 'resources/assets/js'
     ).copy([
             'node_modules/bootstrap-select/dist/js/i18n/defaults-lt_LT.js'
-        ], 'resources/assets/js/bootstrap-select/i18n');
+        ], 'resources/assets/js/bootstrap-select/i18n'
+    ).copy([
+            'node_modules/froala-editor/js/froala_editor.min.js',
+            'node_modules/froala-editor/js/froala_editor.pkgd.min.js',
+        ], 'public/js/froala-editor'
+    ).copy([
+            'node_modules/froala-editor/js/plugins/code_view.min.js',
+            'node_modules/froala-editor/js/plugins/code_beautifier.min.js',
+            'node_modules/froala-editor/js/plugins/link.min.js',
+            'node_modules/froala-editor/js/plugins/lists.min.js',
+            'node_modules/froala-editor/js/plugins/table.min.js',
+            'node_modules/froala-editor/js/plugins/colors.min.js',
+        ], 'public/js/froala-editor/plugins'
+    ).copy([
+            'node_modules/froala-editor/css/froala_editor.min.css',
+            'node_modules/froala-editor/css/froala_editor.pkgd.min.css',
+            'node_modules/froala-editor/css/froala_style.min.css',
+        ], 'public/css/froala-editor'
+    ).copy([
+            'node_modules/froala-editor/css/plugins/code_view.min.css',
+            'node_modules/froala-editor/css/plugins/table.min.css',
+            'node_modules/froala-editor/css/plugins/colors.min.css',
+        ], 'public/css/froala-editor/plugins'
+    );
 
     mix.sass([
         'app.scss'

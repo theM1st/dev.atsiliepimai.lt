@@ -20,6 +20,7 @@
 // Header element
 .header {
     background-color: $primary-green;
+    margin-bottom: 40px;
     .logo {
         display: block;
         padding: 5px 0;
@@ -47,7 +48,7 @@
             border: none;
             border-radius: 20px;
             color: #ffffff;
-            font-size: $font-standart-size;
+            font-size: $font-standart-size - 1;
             font-weight: 300;
             height: 36px;
             padding-left: 20px;
@@ -197,6 +198,7 @@
 
 // Main element
 .main {
+    padding-bottom: 50px;
     .inner-header {
         @extend .clearfix;
         @extend .h;
@@ -297,10 +299,148 @@
     }
 }
 
+@import "review_create";
+@import "listing_search";
 @import "popular_categories";
+@import "last_reviews";
 @import "user_profile";
 @import "listings_review_list";
 @import "listings_review_listing";
+@import "listing_questions_container";
+@import "category_navigation";
+
+.category-listings {
+    border-left: 1px dashed #dfe2e6;
+    .category-listings-header {
+        @extend .clearfix;
+        h4 {
+            float: left;
+            font-size: 24px;
+            font-weight: 300;
+            margin: 15px 0 20px 0;
+        }
+        .filter-holder {
+            float: right;
+        }
+    }
+}
+
+.listing-list {
+    .listing-item-container {
+        border-bottom: 1px dashed #dfe2e6;
+        padding: 30px 0;
+        .listing-item {
+            @extend .clearfix;
+            color: $secondary-color;
+            display: block;
+            &:hover {
+                text-decoration: none;
+            }
+            .listing-picture {
+                display: block;
+                float: left;
+                height: 118px;
+                width: 118px;
+                margin-right: 20px;
+            }
+            .listing-title {
+                display: block;
+                font-size: $font-base-size + 2;
+                font-weight: 700;
+                margin-bottom: 10px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            .listing-rating {
+                display: block;
+                .listing-review-count {
+                    color: #dedede;
+                    display: inline-block;
+                    font-weight: 700;
+                    margin-left: 5px;
+                    margin-top: 2px;
+                    vertical-align: top;
+                }
+            }
+            .listing-review {
+                display: block;
+                margin-left: 140px;
+            }
+        }
+        .btn-second {
+            color: $primary-green;
+            float: right;
+            font-size: $font-standart-size;
+            margin-top: 10px;
+            width: 90%;
+            @include respond-to(sm) {
+                margin: 0;
+                width: auto;
+            }
+        }
+    }
+}
+
+.listing-search {
+    h2 {
+        span {
+            color: $primary-green;
+        }
+    }
+}
+
+.recently-viewed-listings {
+    margin-top: 20px;
+    h5 {
+        margin-bottom: 15px !important;
+    }
+    .listing {
+        border-bottom: 2px solid #f2f1f1;
+        padding: 8px 0 5px 0;
+        position: relative;
+        & > a {
+            @extend .clearfix;
+            color: $secondary-color;
+            display: block;
+            margin-right: 20px;
+            .listing-picture {
+                display: block;
+                float: left;
+                height: 50px;
+                width: 50px;
+            }
+            .listing-container {
+                float: right;
+                .listing-title {
+                    font-size: $font-standart-size;
+                    font-weight: 700;
+                    margin: 5px 0 0 0;
+                }
+                .listing-rating {
+                    font-size: $font-standart-size;
+                    display: block;
+                    .listing-review-count {
+                        display: inline-block;
+                        font-size: $font-standart-size - 2;
+                        margin-top: 2px;
+                        vertical-align: top;
+                    }
+                }
+            }
+        }
+        .remove-item {
+            a {
+                color: $primary-red;
+                display: block;
+                height: 100%;
+            }
+            position: absolute;
+            right: 0;
+            top: 10px;
+        }
+    }
+}
 
 .pagination {
     & > li {

@@ -23,8 +23,8 @@
                                     ->help('common.form.review.title_help')
                             !!}
 
-                            @if ($review->mainAttribute)
-                                @include('admin.reviews.form.attribute_option', ['attribute' => $review->mainAttribute])
+                            @if ($attribute = $review->listing->getMainAttribute())
+                                @include('admin.reviews.form.attribute_option', ['attribute' => $attribute])
 {{--
                                 {!!
                                     Former::select('option_id['.$review->mainAttribute->id.']')
@@ -85,32 +85,6 @@
     <script>
         starRating($(".review-edit #rating"), { size: 'md' });
 
-        (function(form) {
-            var optId = form.find('[id^=attribute_option_id]');
 
-            if (parseInt(optId.val()) === 0) {
-                toggleOptionValue('show');
-            }
-
-            optId.change(function() {
-                if (parseInt($(this).val()) === 0) {
-                    toggleOptionValue('show');
-                } else {
-                    toggleOptionValue('hide');
-                }
-            });
-
-            function toggleOptionValue(a) {
-                var optValue = form.find('.attribute-option-value');
-                if (a == 'show') {
-                    optValue.show();
-                    optValue.find('[id^=option_value]').prop('disabled', false);
-                } else if (a == 'hide') {
-                    optValue.hide();
-                    optValue.find('[id^=option_value]').prop('disabled', true);
-                }
-            }
-
-        })($('#review-form'));
     </script>
 @endsection

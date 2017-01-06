@@ -86,7 +86,7 @@ class EventServiceProvider extends ServiceProvider
                     'review_title' => Request::get('review_title'),
                     'review_description' => Request::get('review_description'),
                     'rating' => Request::get('rating'),
-                    'active' => $listing->active,
+                    'active' => 0,
                     'user_id' => \Auth::user()->id,
                 ]);
                 $listing->reviews()->save($review);

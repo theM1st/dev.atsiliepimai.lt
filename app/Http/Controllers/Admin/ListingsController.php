@@ -7,7 +7,6 @@ use App\Http\Requests\Admin\ListingRequest;
 use App\Category;
 use App\Listing;
 use App\Attribute;
-use App\Review;
 
 class ListingsController extends AdminController
 {
@@ -66,7 +65,9 @@ class ListingsController extends AdminController
 
         if ($saved) {
             $attributes = $request->only('attribute_id');
-            $listing->attributes()->sync($attributes['attribute_id']);
+            if (!empty($attributes['attribute_id'][0])) {
+                $listing->attributes()->sync($attributes['attribute_id']);
+            }
         }
 
         return $this->redirectRoutePath('back');
@@ -87,14 +88,19 @@ class ListingsController extends AdminController
         return $this->destroyAlertRedirect($listing);
     }
 
-    public function reviews(Listing $listing, Request $request, $slug=null)
+    public function reviews(Listing $listing, Request $request, $model=null)
     {
-        $reviews = $listing->getReviews($request->only('sort'));
+        if ($model) {
+            $request->merge(['model' => $model]);
+        }
+
+        $reviews = $listing->getReviews($request->only('sort', 'model', 'filter'));
 
         return $this->display($this->viewPath('reviews'), [
             'listing' => $listing,
             'reviews' => $reviews,
-            'title' => sprintf('%s %s (%d)', $listing->title, trans('common.reviews'), count($listing->reviews))
+            'model' => $model,
+            'title' => sprintf('%s %s', $listing->title, trans('common.reviews'))
         ]);
     }
 }

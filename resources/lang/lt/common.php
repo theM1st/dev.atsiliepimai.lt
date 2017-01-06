@@ -37,14 +37,21 @@ return [
 
         ],
         'listing' => [
-            'title' => 'Pavadinimas',
+            'title' => 'Produkto/paslaugos pavadinimas',
             'title_help' => 'Ne daugiau nei 80 simbolių',
+            'description' => 'Produkto detalės',
             'suitable_category' => 'Tinkama kategorija',
             'select_category' => 'Pasirinkite tinkamą kategoriją',
             'listing_type' => 'Apie ką jūsų atsiliepimas?',
             'active' => 'Aktyvus',
             'main_attribute' => 'Pagrindinis atributas',
             'another_attributes' => 'Kiti atributai',
+            'picture' => 'Nuotrauka',
+            'sortby' => [
+                'newest' => 'Naujesni',
+                'rating_high' => 'Labiausi įvertinti',
+                'number_of_reviews' => 'Atsiliepimų kiekis',
+            ]
         ],
         'review' => [
             'title' => 'Atsiliepimo antraštė',
@@ -71,7 +78,17 @@ return [
                 'rating_low' => 'Žemiausias įvertinimas',
                 'helpful' => 'Labiausiai naudingi',
                 'oldest' => 'Senesni',
-            ]
+            ],
+            'create' => [
+                'success' => 'Ačiū, Jūsų atsiliepimas priimtas. Po sėkmingo patvirtinimo bus patalpintas portale.',
+                'fail' => 'Nepavyko išsaugoti atsiliepimą, bandykite vėliau.'
+            ],
+        ],
+        'question' => [
+            'create' => [
+                'success' => 'Ačiū, Jūsų klausimas priimtas.',
+                'fail' => 'Nepavyko išsaugoti atsiliepimą, bandykite vėliau.'
+            ],
         ],
         'category' => [
             'main' => 'Pagrindinė',
@@ -90,6 +107,9 @@ return [
             'title_help' => 'Bendras pavadinimas, matosi vartotojui, pvz. Modeliai, karta ir t.t.',
         ],
         'picture_rules' => 'Nuotrauka turi būti .jpg, .gif arba .png formatu, mažiau nei 3MB.',
+    ],
+    'listing' => [
+        'questions_answers' => 'Klausimai ir atsakymai'
     ],
     'user' => [
         'email' => 'El. paštas',
@@ -122,6 +142,7 @@ return [
         'settings' => 'Nustatymai',
         'sections' => [
             'me' => 'Mano profilis',
+            'reviews' => 'Atsiliepimai',
             'About' => 'Keisti aprašą',
             'Photo' => 'Keisti nuotrauką',
             'Address' => 'Keisti adresą',

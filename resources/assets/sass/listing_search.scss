@@ -1,0 +1,79 @@
+.listing-search {
+  margin-bottom: 40px;
+  .listing-search-container {
+    background: #1b9d48 url("../assets/images/green-bg.jpg") repeat scroll 0 0;
+    border-radius: 4px;
+    padding: 40px 20px;
+    @include respond-to(sm) {
+      padding: 140px 20px;
+    }
+  }
+}
+
+.listing-search-form {
+  margin: 0 auto;
+  width: 100%;
+  @include respond-to(sm) {
+    width: 80%;
+  }
+  @include respond-to(md) {
+    width: 720px;
+  }
+  .listing-search-title {
+    color: #ffffff;
+    font-size: 26px;
+    font-weight: 300;
+    margin-bottom: 20px;
+    text-align: center;
+    @include respond-to(md) {
+      font-size: 36px;
+    }
+  }
+  .input-group {
+    width: 100%;
+    .form-control {
+      border-radius: 26px !important;
+      font-size: $font-standart-size;
+      padding-right: 100px;
+      text-align: center;
+      @include respond-to(sm) {
+        font-size: 21px;
+      }
+    }
+    .input-group-btn {
+      position: absolute;
+      right: 88px;
+      top: 4px;
+      z-index: 10;
+      .btn-first {
+        border-radius: 30px;
+        font-size: 26px;
+        padding: 1px 10px;
+        width: 90px;
+      }
+    }
+  }
+}
+.listing-create {
+  .listing-search-form {
+    width: 100%;
+    label {
+      font-size: 22px;
+    }
+    .input-group {
+      .form-control {
+        height: 55px;
+      }
+      .input-group-btn {
+        right: 152px;
+        .btn-first {
+          font-size: $font-standart-size;
+          font-weight: 600;
+          padding: 12px 30px;
+          text-transform: uppercase;
+          width: 160px;
+        }
+      }
+    }
+  }
+}

@@ -3,11 +3,56 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\ReviewRequest;
+use App\Category;
+use App\Listing;
 use App\Review;
 use App\UserReviewVote;
+use Auth;
 
 class ReviewsController extends Controller
 {
+    public function create(Listing $listing)
+    {
+        $categories = Category::all()->toHierarchy();
+
+        return $this->display('reviews.create', [
+            'categories' => $categories,
+            'listing' => $listing,
+        ]);
+    }
+
+    public function store(Listing $listing, ReviewRequest $request)
+    {
+        $data = $request->all();
+
+        $data['user_id'] = Auth::user()->id;
+        $data['active'] = 0;
+
+        $review = new Review($data);
+
+        $saved = $listing->reviews()->save($review);
+
+        if ($saved) {
+            $review->saveOptions($request->only('attribute_option_id', 'option_value'));
+
+            alert(trans('common.form.review.create.success'), 'success');
+
+            return redirect()->route('profile.show', ['section' => 'reviews']);
+        } else {
+            alert(trans('common.form.reviews.create.fail'), 'danger');
+        }
+
+        return back();
+    }
+
+    public function edit(Review $review)
+    {
+        \Former::populate($review);
+
+        return $this->display('reviews.edit', []);
+    }
+
     public function vote(Review $review, Request $request)
     {
         if (!is_null($request->get('like'))) {

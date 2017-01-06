@@ -20,9 +20,17 @@ class AttributeOption extends Model
      */
     public $timestamps = false;
 
-    public function reviews()
+    public function reviews($listingId)
     {
-        return $this->belongsToMany('App\Review');
+        return $this->belongsToMany('App\Review')->where('listing_id', $listingId);
+    }
+
+    public static function attributeOptionBySlug($slug)
+    {
+        $data = explode('-', $slug);
+        $id = end($data);
+
+        return AttributeOption::find($id);
     }
     
     public function getSlugAttribute()

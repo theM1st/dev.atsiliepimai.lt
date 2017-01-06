@@ -16,6 +16,20 @@
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  */.theme-krajee-fa .star{font-size:1.1em}.theme-krajee-fa .caption{margin-top:-.2em}
 /*!
+ * Krajee Font Awesome Theme styling for bootstrap-star-rating.
+ * This file must be loaded after 'star-rating.css'.
+ *
+ * @see http://github.com/kartik-v/bootstrap-star-rating
+ * @author Kartik Visweswaran <kartikv2@gmail.com>
+ */
+.theme-krajee-fa .star {
+    font-size: 1.1em;
+}
+
+.theme-krajee-fa .caption {
+    margin-top: -0.2em;
+}
+/*!
  * bootstrap-star-rating v4.0.2
  * http://plugins.krajee.com/star-rating
  *
@@ -179,29 +193,25 @@
         display: none;
     }
 }
-/*!
- * Krajee Font Awesome Theme styling for bootstrap-star-rating.
- * This file must be loaded after 'star-rating.css'.
- *
- * @see http://github.com/kartik-v/bootstrap-star-rating
- * @author Kartik Visweswaran <kartikv2@gmail.com>
- */
-.theme-krajee-fa .star {
-    font-size: 1.1em;
+.rating-container {
+    display: inline-block;
 }
 
-.theme-krajee-fa .caption {
-    margin-top: -0.2em;
+.rating-container .rating {
+    display: inline-block;
 }
+
 .rating-container .caption {
     margin-left: 20px;
     margin-top: -0.4em;
 }
+
 .rating-container .caption .label {
     font-size: 85%;
     font-weight: normal;
     position: relative;
 }
+
 .rating-container .caption .label::before {
     border-color: transparent #777777 transparent transparent;
     border-style: solid;
@@ -245,4 +255,6 @@
 .rating-md {
     font-size: 28px;
 }
+
+
 /*# sourceMappingURL=star-rating.css.map */

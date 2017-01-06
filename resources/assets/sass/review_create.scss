@@ -1,0 +1,17 @@
+.review-create {
+  .listing-picture {
+    float: left;
+    width: 100px;
+  }
+  .listing-title {
+    float: left;
+    font-weight: bold;
+    margin: 30px 20px;
+  }
+  .listing-search {
+    display: block;
+    color: $primary-green;
+    font-weight: bold;
+    text-align: right;
+  }
+}

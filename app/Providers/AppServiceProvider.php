@@ -24,6 +24,13 @@ class AppServiceProvider extends ServiceProvider
         });
 
         View::share('mainCategories', Category::getMainCategories());
+/*
+        \DB::listen(function ($query) {
+            var_dump($query->sql);
+            var_dump($query->bindings);
+            // $query->bindings
+            // $query->time
+        });*/
     }
 
     /**

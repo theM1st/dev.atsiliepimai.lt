@@ -50,6 +50,21 @@ class User extends Authenticatable
         return $this->hasMany('App\UserReviewVote');
     }
 
+    public function viewedListings()
+    {
+        return $this->belongsToMany('App\Listing', 'user_listing_viewed')->withPivot('created_at')->withTimestamps();
+    }
+
+    public function questions()
+    {
+        return $this->hasMany('App\Question');
+    }
+
+    public function answers()
+    {
+        return $this->hasMany('App\Answer');
+    }
+
     /**
      * Set User birthday from request
      *
