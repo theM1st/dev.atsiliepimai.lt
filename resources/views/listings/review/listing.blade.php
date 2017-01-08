@@ -71,7 +71,7 @@
                 <div class="listing-nav">
                     <ul class="nav nav-pills">
                         <li><a href="{{ route('listings.reviews', $listing->id) }}">Atsiliepimai ({{ $listing->reviews->count() }})</a></li>
-                        <li><a href="#">Klausimai ir atsakymai</a></li>
+                        <li><a href="#listing-questions">Klausimai ir atsakymai</a></li>
                         <li><a href="#listing-description">Produkto detalės</a></li>
                     </ul>
                 </div>

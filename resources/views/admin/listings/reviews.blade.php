@@ -15,6 +15,8 @@
                     @include("listings.review.list", [ 'admin' => true ])
 
                     @include("listings.review.description", [ 'admin' => true ])
+
+                    @include("listings.question.list", [ 'admin' => true ])
                 </div>
             </div>
         </div>

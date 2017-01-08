@@ -50,6 +50,14 @@ return [
         'index' => 'Atsiliepimai',
         'edit' => 'Atsiliepimo redagavimas',
     ],
+    'questions' => [
+        'index' => 'Klausimai',
+        'edit' => 'Klausimo redagavimas',
+    ],
+    'answers' => [
+        'index' => 'Atsakymai',
+        'edit' => 'Atsakymo redagavimas',
+    ],
     'attributes' => [
         'index' => 'Atributai',
         'create' => 'Naujas atributas',

@@ -9,10 +9,18 @@ use App\Listing;
 use App\Review;
 use App\Attribute;
 use App\AttributeOption;
-use App\reviewAttributeOption;
 
 class ReviewsController extends AdminController
 {
+    public function index()
+    {
+        $reviews = Review::latest()->where('active', 0)->get();
+
+        return $this->display($this->viewPath(), [
+            'reviews' => $reviews
+        ]);
+    }
+
     public function create(Listing $listing)
     {
         $categories = Category::all()->toHierarchy();

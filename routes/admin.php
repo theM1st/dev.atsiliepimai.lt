@@ -8,6 +8,12 @@ Route::resource('reviews', 'ReviewsController');
 Route::get('reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
 Route::get('reviews/{review}/option/{attribute_id}/{status}', 'ReviewsController@toggleOption')->name('reviews.toggleOption');
 
+Route::resource('questions', 'QuestionsController');
+Route::get('questions/{question}/delete', 'QuestionsController@delete')->name('questions.delete');
+
+Route::resource('answers', 'AnswersController');
+Route::get('answers/{answer}/delete', 'AnswersController@delete')->name('answers.delete');
+
 Route::resource('categories', 'CategoriesController');
 Route::get('categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
 Route::get('categories/{category}/move/{position}', 'CategoriesController@move')

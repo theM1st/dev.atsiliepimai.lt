@@ -96,9 +96,12 @@ class ListingsController extends AdminController
 
         $reviews = $listing->getReviews($request->only('sort', 'model', 'filter'));
 
+        $questions = $listing->getQuestions($request->only('model'));
+
         return $this->display($this->viewPath('reviews'), [
             'listing' => $listing,
             'reviews' => $reviews,
+            'questions' => $questions,
             'model' => $model,
             'title' => sprintf('%s %s', $listing->title, trans('common.reviews'))
         ]);

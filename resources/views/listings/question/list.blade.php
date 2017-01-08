@@ -1,4 +1,4 @@
-<div class="listing-questions-container">
+<div class="listing-questions-container" id="listing-questions">
     <div class="inner-header">
         <h3>{{ trans('common.listing.questions_answers') }}</h3>
     </div>
@@ -38,6 +38,12 @@
                             {!! Former::actions()->first_submit('Siųsti atsakymą') !!}
                         {!! Former::close() !!}
                     </div>
+                    @if (!empty($admin))
+                        <div style="margin-top: -40px;text-align: right">
+                            <a href="{{ route('questions.edit', $q->id) }}" class="btn btn-link btn-sm">Redaguoti</a>
+                            <a href="{{ route('questions.delete', $q->id) }}" class="btn btn-link btn-sm" onclick="return actionModal(this)" data-method="get" data-size="modal-sm">Trinti</a>
+                        </div>
+                    @endif
 
                     @if ($q->answers->count() > 0)
                         <div class="question-answers-container">
@@ -51,6 +57,12 @@
                                         <div class="answer-info">
                                             <p class="answer-created"><span>{{ $a->user->username }}</span> atsakė į klausimą <span>{{ $a->created_at->format('Y.m.d') }}</span></p>
                                         </div>
+                                        @if (!empty($admin))
+                                            <div style="margin-top: -38px;text-align: right">
+                                                <a href="{{ route('answers.edit', $a->id) }}" class="btn btn-link btn-sm">Redaguoti</a>
+                                                <a href="{{ route('answers.delete', $a->id) }}" class="btn btn-link btn-sm" onclick="return actionModal(this)" data-method="get" data-size="modal-sm">Trinti</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 @endforeach
                             </div>

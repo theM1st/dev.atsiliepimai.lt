@@ -147,7 +147,7 @@ class User extends Authenticatable
     public static function getProfileSections()
     {
         return [
-            'profile' => ['me', 'reviews'],
+            'profile' => ['me', 'reviews', 'questions', 'answers'],
             'settings' => ['About', 'Photo', 'Address', 'Email', 'Password'],
         ];
     }

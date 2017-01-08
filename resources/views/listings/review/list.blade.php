@@ -27,10 +27,12 @@
                             <span class="fa fa-comments-o" aria-hidden="true"></span>
                             {{ count($r->user->reviews) .' '.transPlural('common.reviews_plural', count($r->user->reviews)) }}
                         </li>
-                        <li>
-                            <span class="fa fa-handshake-o" aria-hidden="true"></span>
-                            1 patarimas
-                        </li>
+                        @if (count($r->user->answers))
+                            <li>
+                                <span class="fa fa-handshake-o" aria-hidden="true"></span>
+                                {{ count($r->user->answers) .' '.transPlural('common.advices_plural', count($r->user->answers)) }}
+                            </li>
+                        @endif
                         <li>
                             <span class="fa fa-envelope" aria-hidden="true"></span>
                             Siųsti AŽ

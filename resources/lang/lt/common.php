@@ -23,6 +23,7 @@ return [
     'review' => 'Atsiliepimas',
     'reviews' => 'Atsiliepimai',
     'reviews_plural' => '{0} atsiliepimas|{1} atsiliepimai|{2} atsiliepimų',
+    'advices_plural' => '{0} patarimas|{1} patarimai|{2} patarimų',
     'last_review' => 'Paskutinis atsiliepimas',
     'rating' => 'Įvertinimas',
     'fail' => 'Atsiprašome, įvyko klaida. Bandykite vėliau',
@@ -143,6 +144,8 @@ return [
         'sections' => [
             'me' => 'Mano profilis',
             'reviews' => 'Atsiliepimai',
+            'questions' => 'Klausimai',
+            'answers' => 'Atsakymai',
             'About' => 'Keisti aprašą',
             'Photo' => 'Keisti nuotrauką',
             'Address' => 'Keisti adresą',

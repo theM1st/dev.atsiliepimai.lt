@@ -20,7 +20,6 @@
 // Header element
 .header {
     background-color: $primary-green;
-    margin-bottom: 40px;
     .logo {
         display: block;
         padding: 5px 0;
@@ -198,7 +197,7 @@
 
 // Main element
 .main {
-    padding-bottom: 50px;
+    padding: 40px 0 50px 0;
     .inner-header {
         @extend .clearfix;
         @extend .h;
