@@ -25,7 +25,7 @@
                     <ul class="nav navbar-nav" style="margin: 0 -10px">
                         <li>
                             <div class="dropdown">
-                                <a href="" class="nav-link" data-toggle="dropdown" id="categories-menu">
+                                <a href="" class="nav-link categories-menu-link" data-toggle="dropdown" id="categories-menu">
                                     Kategorijos
                                     <span class="fa fa-caret-down" aria-hidden="true"></span>
                                 </a>
@@ -40,6 +40,16 @@
                                 </ul>
                             </div>
                         </li>
+                        @if (\Auth::check())
+                            <li>
+                                <a href="{{ route('messages.index', 'inbox') }}" class="nav-link profile-messages-link">
+                                    <span class="fa fa-envelope-o" aria-hidden="true"></span>
+                                    @if ($messages = \Auth::user()->newMessages()->count())
+                                        <span class="label label-danger">{{ $messages }}</span>
+                                    @endif
+                                </a>
+                            </li>
+                        @endif
                         <li>
                             @if (\Auth::guest())
                                 <div class="dropdown">
@@ -54,11 +64,12 @@
                                 </div>
                             @else
                                 <div class="dropdown">
-                                    <a href="" class="nav-link" data-toggle="dropdown" id="user-menu">
+                                    <a href="" class="nav-link user-menu-link" data-toggle="dropdown" id="user-menu">
                                         <span class="username">{{ \Auth::user()->username }}</span>
                                         <span class="fa fa-caret-down" aria-hidden="true"></span>
                                     </a>
                                     <ul class="dropdown-menu user-dropdown-menu" aria-labelledby="user-menu">
+                                        <li><a href="{{ route('profile.show', 'me') }}">{{ trans('common.profile.sections.me') }}</a></li>
                                         <li><a href="{{ route('profile.edit', 'About') }}">{{ trans('common.profile.settings') }}</a></li>
                                         <li class="divider" role="separator"></li>
                                         <li>

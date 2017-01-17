@@ -21,7 +21,7 @@
         <dt>{{ trans('common.user.gender') }}:</dt>
         <dd>
             @if ($user->gender)
-                {{ $user->gender }}
+                {{ trans('common.user.'.$user->gender) }}
             @else
                 <a href="{{ route('profile.edit', 'About') }}">Nurodykite savo lytį</a>
             @endif

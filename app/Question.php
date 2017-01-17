@@ -33,6 +33,11 @@ class Question extends Model
         return $this->hasMany('App\Answer');
     }
 
+    public function censors()
+    {
+        return $this->morphMany('App\Censor', 'commentable');
+    }
+
     public function scopeFilter($query, $data)
     {
         if (isset($data['model'])) {

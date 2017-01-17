@@ -31,6 +31,11 @@ class Review extends Model
             ->withPivot('attribute_id', 'option_value');
     }
 
+    public function censors()
+    {
+        return $this->morphMany('App\Censor', 'commentable');
+    }
+
     protected static function boot()
     {
         parent::boot();

@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-lg-7">
                         <div class="write-review"><a href="{{ route('review.create', $listing->slug) }}" class="btn btn-first btn-lg">Parašykite atsiliepimą</a></div>
-                        <div class="ask-question"><a href="" class="btn btn-green btn-empty btn-lg">Užduokite klausimą</a></div>
+                        <div class="ask-question"><a href="#listing-questions" class="btn btn-green btn-empty btn-lg">Užduokite klausimą</a></div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', getTitle($category))
+@section('description', getDescription($category))
 
 @section('content')
     <section class="main-section category-show">

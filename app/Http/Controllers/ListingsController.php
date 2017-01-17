@@ -67,13 +67,13 @@ class ListingsController extends Controller
 
         $questions = $listing->getQuestions($request->only('model'));
 
-        if (\Auth::check()) {
-            \Auth::user()->viewedListings()->detach($listing->id);
-            \Auth::user()->viewedListings()->attach($listing->id);
-        }
+        $listing->setRecentViewed();
+
+        $similarListings = $listing->getSimilarListings();
 
         return $this->display('listings.show', [
             'listing' => $listing,
+            'similarListings' => $similarListings,
             'reviews' => $reviews,
             'questions' => $questions,
             'model' => $model,
@@ -96,14 +96,31 @@ class ListingsController extends Controller
 
     public function recentlyViewedRemove(Listing $listing)
     {
-        \Auth::user()->viewedListings()->detach($listing->id);
+        if (\Auth::check()) {
+            \Auth::user()->viewedListings()->detach($listing->id);
+        } else {
+            $recentViewed = \Cache::get('recentViewedListings');
+            
+            foreach ($recentViewed as $k => $item) {
+                if ($listing->id == $item->id) {
+                    $recentViewed->forget($k);
+                }
+            }
+
+            $expiresAt = \Carbon\Carbon::now()->addDays(30);
+            \Cache::put('recentViewedListings', $recentViewed, $expiresAt);
+        }
 
         return back();
     }
 
     public function recentlyViewedRemoveAll()
     {
-        \Auth::user()->viewedListings()->remove();
+        if (\Auth::check()) {
+            \Auth::user()->viewedListings()->remove();
+        } else {
+
+        }
 
         return back();
     }

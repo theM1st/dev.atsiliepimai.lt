@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Review;
+use App\Http\Requests\SendMessageRequest;
 use Illuminate\Http\Request;
+use App\Mail\sendMessage;
+use Illuminate\Support\Facades\Mail;
 use App\Category;
+use App\Page;
 
 class PagesController extends Controller
 {
@@ -19,5 +23,21 @@ class PagesController extends Controller
             'popularCategories' => $popularCategories,
             'lastReviews' => $lastReviews,
         ]);
+    }
+
+    public function show(Page $page)
+    {
+        return $this->display('pages.show', [
+            'page' => $page,
+        ]);
+    }
+
+    public function sendMessage(SendMessageRequest $request)
+    {
+        Mail::to(config('mail.from.address'))->send(new sendMessage($request->all()));
+
+        alert(trans('common.form.page.sendMessage.success'), 'success');
+
+        return back();
     }
 }

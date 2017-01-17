@@ -19,6 +19,10 @@ class ComposerServiceProvider extends ServiceProvider
             ['listings.show', 'profile.partials.me'], 'App\Http\ViewComposers\ListingsComposer'
         );
 
+        View::composer(
+            ['pages.menu.footer'], 'App\Http\ViewComposers\PagesComposer'
+        );
+
         // Using Closure based composers...
         View::composer('dashboard', function ($view) {
             //

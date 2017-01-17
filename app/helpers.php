@@ -36,6 +36,19 @@ if (!function_exists('getTitle')) {
     }
 }
 
+if (!function_exists('getDescription')) {
+    function getDescription($object = null, $property = "description")
+    {
+        if (is_object($object) && isset($object->$property)) {
+            return str_limit(strip_tags($object->$property), 160);
+        } elseif (is_string($object) && !empty($object)) {
+            return str_limit(strip_tags($object), 160);
+        } else {
+            return 'Atsiliepimai.lt tai yra projektas skirtas teikti vartotojų nuomones apie produktus, paslaugas Lietuvoje.';
+        }
+    }
+}
+
 if (!function_exists('adminHeaderTitle')) {
     /**
      * Return the header title for each page

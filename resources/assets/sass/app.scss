@@ -85,6 +85,7 @@
             color: #ffffff;
             display: block;
             padding: 10px 30px;
+            position: relative;
             .username {
                 display: inline-block;
                 width: auto;
@@ -100,6 +101,28 @@
             .fa-caret-down {
                 font-size: 18px;
                 margin-left: 2px;
+            }
+            .label {
+                font-family: $font-roboto;
+                font-size: 9px;
+                line-height: 0.9;
+                padding: 3px 3px;
+                position: absolute;
+                right: 5px;
+                text-align: center;
+                top: 30px;
+            }
+            &.profile-messages-link {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            &.categories-menu-link {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            &.user-menu-link {
+                padding-left: 10px;
+                padding-right: 10px;
             }
             &:hover {
               background-color: $secondary-green;
@@ -298,6 +321,40 @@
     }
 }
 
+.footer {
+    background-color: $primary-green;
+    padding: 20px 0;
+    .nav-pills {
+        & > li {
+            width: 45%;
+            @include respond-to(sm) {
+                width: 30%;
+            }
+            & > a {
+                color: #ffffff;
+                font-size: $font-standart-size;
+                &:focus, &:hover {
+                    background-color: transparent;
+                }
+            }
+        }
+    }
+    .copyright {
+        color: #ffffff;
+        float: none;
+        font-size: $font-standart-size;
+        line-height: 30px;
+        text-align: center;
+    }
+    @include respond-to(md) {
+        padding: 60px 0;
+        .copyright {
+            float: right;
+            text-align: left;
+        }
+    }
+}
+
 @import "review_create";
 @import "listing_search";
 @import "popular_categories";
@@ -307,6 +364,7 @@
 @import "listings_review_listing";
 @import "listing_questions_container";
 @import "category_navigation";
+@import "messages_index";
 
 .category-listings {
     border-left: 1px dashed #dfe2e6;
@@ -389,7 +447,7 @@
     }
 }
 
-.recently-viewed-listings {
+.recently-viewed-listings, .similar-listings {
     margin-top: 20px;
     h5 {
         margin-bottom: 15px !important;

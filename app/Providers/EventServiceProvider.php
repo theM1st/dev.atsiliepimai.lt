@@ -7,6 +7,7 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 use Illuminate\Support\Facades\Mail;
 use Request;
 use App\User;
+use App\Page;
 use App\Category;
 use App\Country;
 use App\Listing;
@@ -65,6 +66,24 @@ class EventServiceProvider extends ServiceProvider
             $user->deleteDirectory($user->getUploadPath());
         });
 
+        Page::creating(function($page) {
+            $position = Page::max('position')+1;
+
+            $page->position = $position;
+        });
+
+        Page::saving(function($page) {
+            $page->slug = str_slug($page->title);
+        });
+
+        Page::saved(function() {
+            Page::rebuild();
+        });
+
+        Page::deleted(function() {
+            Page::rebuild();
+        });
+
         Country::creating(function($country) {
             $position = Country::max('position')+1;
 
@@ -75,7 +94,7 @@ class EventServiceProvider extends ServiceProvider
             Country::rebuild();
         });
 
-        Country::deleted(function($country) {
+        Country::deleted(function() {
             Country::rebuild();
         });
 

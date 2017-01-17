@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'date' => 'Data',
     'created_date' => 'Sukūrimo data',
     'hello' => 'Sveiki',
     'all_rights_reserved' => 'Visos teisės saugomos',
@@ -27,6 +28,7 @@ return [
     'last_review' => 'Paskutinis atsiliepimas',
     'rating' => 'Įvertinimas',
     'fail' => 'Atsiprašome, įvyko klaida. Bandykite vėliau',
+    'show_censor_commentable' => 'Parodyti netinkamą turinį',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
@@ -91,6 +93,23 @@ return [
                 'fail' => 'Nepavyko išsaugoti atsiliepimą, bandykite vėliau.'
             ],
         ],
+        'page' => [
+            'title' => 'Pavadinimas',
+            'description' => 'Puslapio aprašymas (meta description)',
+            'content' => 'Puslapio turinys',
+            'active' => 'Aktyvus puslapis',
+            'sendMessage' => [
+                'success' => 'Ačiū, Jūsų žinutė išsiųsta.',
+            ],
+        ],
+        'censor' => [
+            'content' => 'Priežastis',
+            'commentable' => 'Netinkamas turinys',
+            'create' => [
+                'success' => 'Ačiū, Jūsų skundas priimtas.',
+                'fail' => 'Įvyko klaidą, bandykite vėliau.'
+            ],
+        ],
         'category' => [
             'main' => 'Pagrindinė',
             'name' => 'Pavadinimas',
@@ -99,6 +118,11 @@ return [
             'popular' => 'Populiari kategorija',
             'active' => 'Aktyvuota',
             'picture' => 'Nuotrauka',
+        ],
+        'message' => [
+            'title' => 'Žinutės tema',
+            'content' => 'Žinutė',
+            'send' => 'Siųsti žinutę',
         ],
         'attribute' => [
             'main' => 'Pagrindinis atributas',
@@ -121,6 +145,7 @@ return [
         'current_password' => 'Dabartinis slaptažodis',
         'current_password_help' => 'Prašom, įvesti dabartinį slaptažodį duomenų atnaujinimui',
         'name' => 'Vardas pavardė',
+        'your_first_name' => 'Jūsų vardas',
         'first_name' => 'Vardas',
         'last_name' => 'Pavardė',
         'birthday' => 'Gimimo data',
@@ -149,7 +174,7 @@ return [
             'About' => 'Keisti aprašą',
             'Photo' => 'Keisti nuotrauką',
             'Address' => 'Keisti adresą',
-            'Email' => 'El. paštas ir vartotojo slapyvardis',
+            'Email' => 'Keisti el. paštą',
             'Password' => 'Keisti slaptažodį',
         ],
         'form' => [
@@ -160,6 +185,12 @@ return [
             'success' => 'Jūsų nustatymai sėkmingai pakeisti',
             'fail' => 'Nepavyko pakeisti nustatymus'
         ],
+    ],
+    'messages' => [
+        'name' => 'Žinutės',
+        'create' => 'Rašyti žinutę',
+        'inbox' => 'Gautos',
+        'outbox' => 'Išsiųstos',
     ],
     'review_vote' => [
         'success' => 'Ačiū, jūsų balsas priimtas',

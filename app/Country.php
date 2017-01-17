@@ -31,8 +31,8 @@ class Country extends Model
         $countries = Country::getCountries();
 
         foreach ($countries as $k => $c) {
-            if ($k != $c->position) {
-                $c->position = $k;
+            if (($k+1) != $c->position) {
+                $c->position = ($k+1);
                 $c->save();
             }
         }

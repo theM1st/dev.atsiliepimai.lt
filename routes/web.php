@@ -24,8 +24,7 @@ Route::get('p/{listing_slug}/m/{attribute_option_slug}', 'ListingsController@sho
     ->name('listing.show.model');
 
 Route::get('p/{listing_slug}/recently-viewed-remove', 'ListingsController@recentlyViewedRemove')
-    ->name('listing.recently_viewed_remove')
-    ->middleware('auth');
+    ->name('listing.recently_viewed_remove');
 
 Route::get('p/all/recently-viewed-remove', 'ListingsController@recentlyViewedRemoveAll')
     ->name('listing.recently_viewed_remove_all')
@@ -43,12 +42,28 @@ Route::post('p/{listing_slug}/write-question', 'QuestionsController@store')
     ->name('question.store')
     ->middleware('auth');
 
+Route::get('p/{listing_slug}/censor/{commentable_type}/{commentable_id}', 'CensorsController@create')
+    ->name('censor.create')
+    ->middleware('auth');
+
+Route::post('censors', 'CensorsController@store')
+    ->name('censor.store')
+    ->middleware('auth');
+
 Route::post('q/{question}/write-answer', 'AnswersController@store')
     ->name('answer.store')
     ->middleware('auth');
 
 Route::get('search', 'ListingsController@search')
     ->name('listing.search');
+
+Route::group(['prefix' => 'page'], function () {
+    Route::get('{page_slug}', 'PagesController@show')
+        ->name('page.show');
+    
+    Route::post('sendMessage', 'PagesController@sendMessage')
+        ->name('page.sendMessage');
+});
 
 //Route::get('register/confirm/{token}', 'Auth\RegisterController@confirmEmail');
 
@@ -68,6 +83,26 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::put('{user}', 'ProfileController@update')->name('profile.update');
 });
 
+Route::group(['prefix' => 'messages', 'middleware' => 'auth'], function () {
+    Route::get('{section}', 'MessagesController@index')
+        ->name('messages.index')->where('section', '(inbox|outbox)');
+
+    Route::get('create/{user}', 'MessagesController@create')
+        ->name('messages.create');
+
+    Route::get('{section}/{message}', 'MessagesController@show')
+        ->name('messages.show');
+
+    Route::get('delete', 'MessagesController@delete')
+        ->name('messages.delete');
+
+    Route::post('store', 'MessagesController@store')
+        ->name('messages.store');
+
+    Route::delete('destroy', 'MessagesController@destroy')
+        ->name('messages.destroy');
+});
+
 Route::get('write-review', 'ListingsController@create')
     ->name('listing.create');
 
@@ -83,4 +118,10 @@ Route::post('reviews/{review}/vote', 'ReviewsController@vote')
     ->middleware('auth')
     ->name('reviews.vote');
 
-Route::get('/home', 'HomeController@index');
+Route::get('social/login/{provider}', 'SocialAuthController@login')
+    ->where('provider', '(facebook|google|linkedin)')
+    ->name('social.login');
+
+Route::get('social/facebookCallback', 'SocialAuthController@facebookCallback');
+Route::get('social/googleCallback', 'SocialAuthController@googleCallback');
+Route::get('social/linkedinCallback', 'SocialAuthController@linkedinCallback');

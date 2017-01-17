@@ -74,6 +74,49 @@ class Listing extends Model
         return $this->reviews()->orderBy('created_at', 'desc')->first();
     }
 
+    public function setRecentViewed()
+    {
+        if (\Auth::check()) {
+            \Auth::user()->viewedListings()->detach($this->id);
+            \Auth::user()->viewedListings()->attach($this->id);
+        } else {
+            $expiresAt = \Carbon\Carbon::now()->addDays(30);
+
+            $recentViewed = \Cache::get('recentViewedListings');
+
+            if (!$recentViewed) {
+                $recentViewed = collect();
+            }
+
+            $recentViewed->prepend($this);
+            $recentViewed = $recentViewed->unique()->take(10);
+
+            \Cache::put('recentViewedListings', $recentViewed, $expiresAt);
+        }
+    }
+
+    public function getSimilarListings()
+    {
+        $listings = $this->category->listings()->where('id', '!=', $this->id)->get();
+
+        if ($listings->count()) {
+            return $listings->shuffle()->take(5);
+        }
+
+        return null;
+    }
+
+    public static function recentViewed()
+    {
+        if (\Auth::check()) {
+            $data = \Auth::user()->viewedListings()->orderBy('pivot_created_at', 'desc')->get();
+        } else {
+            $data = \Cache::get('recentViewedListings');
+        }
+
+        return $data;
+    }
+
     public function scopeFilter($query, $data)
     {
         $sort = isset($data['sort']) ? $data['sort'] : null;

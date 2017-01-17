@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Notifications\MyOwnResetPassword as ResetPasswordNotification;
+use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\Traits\Uploader;
 use Carbon\Carbon;
 
@@ -65,6 +66,21 @@ class User extends Authenticatable
         return $this->hasMany('App\Answer');
     }
 
+    public function messagesIn()
+    {
+        return $this->hasMany('App\Message', 'recipient_id');
+    }
+
+    public function newMessages()
+    {
+        return $this->hasMany('App\Message', 'recipient_id')->where('new', 1);
+    }
+
+    public function messagesOut()
+    {
+        return $this->hasMany('App\Message', 'sender_id');
+    }
+
     /**
      * Set User birthday from request
      *
@@ -110,6 +126,55 @@ class User extends Authenticatable
         //$this->save();
     }
 
+    public static function createOrGetSocialUser(ProviderUser $providerUser, $provider)
+    {
+        $user = User::where('provider_name', $provider)->where('provider_uid', $providerUser->getId())->first();
+        
+        if ($user) {
+            return $user;
+        } else {
+            list($firstName, $lastName) = explode(' ', $providerUser->getName());
+
+            $user = User::whereEmail($providerUser->getEmail())->first();
+
+            if (!$user) {
+                $user = User::create([
+                    'provider_name' => $provider,
+                    'provider_uid' => $providerUser->getId(),
+                    'email' => $providerUser->getEmail(),
+                    'username' => ($providerUser->getNickname() ? $providerUser->getNickname() : $firstName),
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'verified' => 1,
+                ]);
+
+                if ($providerUser->getAvatar()) {
+                    $file = preg_replace('/\?.*/', '', $providerUser->getAvatar());
+
+                    $imageData = file_get_contents($file);
+
+                    $tmpFile = tempnam(sys_get_temp_dir(), 'Auth');
+                    $handle = fopen($tmpFile, "w");
+                    fwrite($handle, $imageData);
+                    fclose($handle);
+
+                    $user->saveFile(basename($file), $tmpFile);
+
+                    $user->picture = basename($file);
+
+                    $user->save();
+                }
+
+            } else {
+                $user->provider_name = $provider;
+                $user->provider_uid = $providerUser->getId();
+                $user->save();
+            };
+        }
+
+        return $user;
+    }
+
     public function setGenderAttribute($value)
     {
         $this->attributes['gender'] = ($value?$value:null);
@@ -149,6 +214,7 @@ class User extends Authenticatable
         return [
             'profile' => ['me', 'reviews', 'questions', 'answers'],
             'settings' => ['About', 'Photo', 'Address', 'Email', 'Password'],
+            'messages' => ['create', 'inbox', 'outbox'],
         ];
     }
 }

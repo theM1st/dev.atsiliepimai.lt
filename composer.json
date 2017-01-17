@@ -12,7 +12,8 @@
         "laravelcollective/html": "^5.3.0",
         "intervention/image": "^2.3",
         "kartik-v/bootstrap-star-rating": "@dev",
-        "paragonie/random_compat": "1.4.*"
+        "paragonie/random_compat": "1.4.*",
+        "laravel/socialite": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

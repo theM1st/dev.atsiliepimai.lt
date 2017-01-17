@@ -2,6 +2,7 @@
 
 namespace App\Http\ViewComposers;
 
+use App\Listing;
 use Illuminate\View\View;
 
 class ListingsComposer
@@ -20,11 +21,9 @@ class ListingsComposer
     {
         $html = '';
         
-        if (\Auth::check()) {
-            $viewedListings = \Auth::user()->viewedListings()->orderBy('pivot_created_at', 'desc')->get();
-            if ($viewedListings->count()) {
-                $html = view('listings.partials.recentlyViewedListings', [ 'listings' => $viewedListings ])->render();
-            }
+        $viewedListings = Listing::recentViewed();
+        if ($viewedListings->count()) {
+            $html = view('listings.partials.recentlyViewedListings', [ 'listings' => $viewedListings ])->render();
         }
 
         $view->with('recentlyViewedListings', $html);

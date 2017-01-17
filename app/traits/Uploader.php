@@ -59,23 +59,9 @@ trait Uploader
         // don't forget upload_max_filesize and post_max_size
         // memory_limit minimum 256M if file size ~3MB
 
-        $imageConfig = ($imageConfig ? $imageConfig : $this->imageConfig);
-
         $filename = $this->slugFilename($file);
 
-        $img = \Image::make($file->getRealPath());
-
-        foreach ($imageConfig as $size => $c) {
-            $dir = public_path($this->getUploadPath($size));
-
-            if (!file_exists($dir)) {
-                mkdir($dir, 0755, true);
-            } elseif ($remove) {
-                $this->deleteFiles($this->getUploadPath($size));
-            }
-
-            $img->fit($c['width'])->save($dir . $filename);
-        }
+        $this->saveFile($filename, $file->getRealPath(), $imageConfig, $remove);
 
         return $filename;
     }
@@ -90,6 +76,25 @@ trait Uploader
         $files = Storage::files($dir);
 
         Storage::delete($files);
+    }
+
+    public function saveFile($filename, $filePath, $imageConfig=null, $remove=true)
+    {
+        $imageConfig = ($imageConfig ? $imageConfig : $this->imageConfig);
+
+        $img = \Image::make($filePath);
+
+        foreach ($imageConfig as $size => $c) {
+            $dir = public_path($this->getUploadPath($size));
+
+            if (!file_exists($dir)) {
+                mkdir($dir, 0755, true);
+            } elseif ($remove) {
+                $this->deleteFiles($this->getUploadPath($size));
+            }
+
+            $img->fit($c['width'])->save($dir . $filename);
+        }
     }
 
     private function slugFilename($file)

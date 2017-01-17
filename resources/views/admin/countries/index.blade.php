@@ -15,7 +15,11 @@
                                 @foreach($countries as $c)
                                     <li class="clearfix country-name" data-id="{{ $c->id }}">
                                         <div>
-                                            {{ $c->name }}
+                                            <span class="sort-handle ui-sortable-handle">
+                                                <i class="fa fa-ellipsis-v"></i>
+                                                <i class="fa fa-ellipsis-v"></i>
+                                            </span>
+                                            <span class="text">{{ $c->name }}</span>
                                             {!!
                                                 Form::tools([
                                                     'edit' => route('countries.edit', $c->id),
@@ -38,9 +42,10 @@
     <script>
         (function(){
             $('.sortable').sortable({
+                handle: '.sort-handle',
                 update: function(event, ui) {
                     var url = '{{ route('countries.move', [':id', ':position']) }}';
-                    url = url.replace(':id', ui.item.data('id')).replace(':position', ui.item.index());
+                    url = url.replace(':id', ui.item.data('id')).replace(':position', ui.item.index()+1);
                     ajax(url, 'get');
                 }
             });

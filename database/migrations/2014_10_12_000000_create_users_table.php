@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('provider_name', 60)->nullable();
             $table->string('provider_uid')->nullable();
-            $table->string('email', 60)->nullable();
+            $table->string('email', 60)->unique()->nullable();
             $table->string('username', 60);
             $table->string('password')->nullable();
             $table->string('first_name', 60)->nullable();

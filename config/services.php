@@ -35,4 +35,21 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '1185278984858994',
+        'client_secret' => 'b89438934cbabfa5f30fa4b3da7ac8cc',
+        'redirect' => url('/').'/social/facebookCallback',
+    ],
+
+    'google' => [
+        'client_id' => '1053061296653-62d9au7j5iel0286chc5fahtjfmf2bou.apps.googleusercontent.com',
+        'client_secret' => 'OGXrifVlmYDpQZKXEgKNlMtI',
+        'redirect' => url('/').'/social/googleCallback',
+    ],
+
+    'linkedin' => [
+        'client_id' => '',
+        'client_secret' => '',
+        'redirect' => url('/').'/social/linkedinCallback',
+    ],
 ];

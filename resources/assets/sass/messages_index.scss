@@ -1,0 +1,36 @@
+.messages-index {
+  .messages-help-note {
+    @extend .clearfix;
+    .message-opened {
+      float: right;
+      margin-right: 20px;
+      margin-top: 2px;
+      .fa-envelope-open-o {
+        padding-left: 10px;
+      }
+    }
+    .message-closed {
+      float: right;
+      margin-top: 2px;
+      .fa-envelope-o {
+        padding-left: 10px;
+      }
+    }
+    margin-bottom: 20px;
+  }
+  .table {
+    font-family: $font-roboto;
+    tr {
+      th, td {
+        .icheckbox_square-green {
+          margin: 0;
+        }
+      }
+    }
+  }
+  .fa-envelope-o, .fa-envelope-open-o {
+    color: $primary-green;
+    font-size: $font-base-size+6;
+  }
+
+}

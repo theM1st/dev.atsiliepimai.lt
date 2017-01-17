@@ -64,3 +64,11 @@ $factory->define(App\AttributeOption::class, function (Faker\Generator $faker) {
         'option_name' => $faker->word,
     ];
 });
+
+$factory->define(App\Page::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->word,
+        'content' => $faker->paragraph,
+        'active' => true,
+    ];
+});

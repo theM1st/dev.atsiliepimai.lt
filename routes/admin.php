@@ -14,6 +14,11 @@ Route::get('questions/{question}/delete', 'QuestionsController@delete')->name('q
 Route::resource('answers', 'AnswersController');
 Route::get('answers/{answer}/delete', 'AnswersController@delete')->name('answers.delete');
 
+Route::resource('pages', 'PagesController');
+Route::get('pages/{page}/delete', 'PagesController@delete')->name('pages.delete');
+Route::get('pages/{page}/move/{position}', 'PagesController@move')
+    ->name('pages.move')->where(['position' => '[0-9]+']);
+
 Route::resource('categories', 'CategoriesController');
 Route::get('categories/{category}/delete', 'CategoriesController@delete')->name('categories.delete');
 Route::get('categories/{category}/move/{position}', 'CategoriesController@move')
@@ -34,3 +39,6 @@ Route::get('attributes/{attribute}/delete', 'AttributesController@delete')->name
 
 Route::resource('attribute_options', 'AttributeOptionsController');
 Route::get('attribute_options/{attribute_option}/delete', 'AttributeOptionsController@delete')->name('attribute_options.delete');
+
+Route::resource('censors', 'CensorsController');
+Route::get('censors/{censor}/delete', 'CensorsController@delete')->name('censors.delete');

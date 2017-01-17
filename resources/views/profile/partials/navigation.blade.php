@@ -35,3 +35,28 @@
         </ul>
     </nav>
 </div>
+<div class="profile-nav">
+    <h5>
+        <span>{{ trans('common.messages.name') }}</span>
+    </h5>
+    <nav>
+        <ul>
+            @if (isset($section) && $section == 'create')
+                <li>
+                    <a href="{{ route('messages.index', 'create') }}" class="active">
+                        {{ trans("common.messages.create") }}
+                    </a>
+                </li>
+            @endif
+            @foreach(App\User::getProfileSections()['messages'] as $s)
+                <li>
+                    @if ($s != 'create')
+                        <a href="{{ route('messages.index', $s) }}"@if(isset($section) && $section == $s) class="active"@endif>
+                            {{ trans("common.messages.$s") }}
+                        </a>
+                    @endif
+                </li>
+            @endforeach
+        </ul>
+    </nav>
+</div>

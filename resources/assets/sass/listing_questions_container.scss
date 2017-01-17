@@ -66,6 +66,17 @@
                   font-weight: 700;
                 }
               }
+              .answer-report {
+                float: right;
+                a {
+                  color: $secondary-color;
+                  span {
+                    color: $secondary-yellow;
+                    font-size: $font-base-size;
+                    padding-left: 5px;
+                  }
+                }
+              }
             }
           }
         }

@@ -5555,11 +5555,11 @@ button.close {
   .carousel-indicators {
     bottom: 20px; } }
 
-.clearfix:before, .main .inner-header:before, .popular-categories .popular-category-list:before, .category-listings .category-listings-header:before, .listing-list .listing-item-container .listing-item:before, .recently-viewed-listings .listing > a:before, .clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after {
+.clearfix:before, .main .inner-header:before, .popular-categories .popular-category-list:before, .messages-index .messages-help-note:before, .category-listings .category-listings-header:before, .listing-list .listing-item-container .listing-item:before, .recently-viewed-listings .listing > a:before, .similar-listings .listing > a:before, .clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .messages-index .messages-help-note:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after, .similar-listings .listing > a:after {
   content: " ";
   display: table; }
 
-.clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after {
+.clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .messages-index .messages-help-note:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after, .similar-listings .listing > a:after {
   clear: both; }
 
 .center-block {
@@ -6018,6 +6018,11 @@ body {
   font-size: 16px;
   font-weight: 400; }
 
+a {
+  color: #1b9d48; }
+  a:hover {
+    color: #127735; }
+
 hr {
   border: 1px solid #dfe2e6; }
 
@@ -6155,7 +6160,8 @@ form .help-block {
   .header .nav .nav-link {
     color: #ffffff;
     display: block;
-    padding: 10px 30px; }
+    padding: 10px 30px;
+    position: relative; }
     .header .nav .nav-link .username {
       display: inline-block;
       width: auto;
@@ -6170,6 +6176,24 @@ form .help-block {
     .header .nav .nav-link .fa-caret-down {
       font-size: 18px;
       margin-left: 2px; }
+    .header .nav .nav-link .label {
+      font-family: "Roboto", sans-serif;
+      font-size: 9px;
+      line-height: 0.9;
+      padding: 3px 3px;
+      position: absolute;
+      right: 5px;
+      text-align: center;
+      top: 30px; }
+    .header .nav .nav-link.profile-messages-link {
+      padding-left: 10px;
+      padding-right: 10px; }
+    .header .nav .nav-link.categories-menu-link {
+      padding-left: 15px;
+      padding-right: 15px; }
+    .header .nav .nav-link.user-menu-link {
+      padding-left: 10px;
+      padding-right: 10px; }
     .header .nav .nav-link:hover {
       background-color: #1b9044; }
     @media only screen and (min-width: 768px) {
@@ -6317,6 +6341,32 @@ form .help-block {
         z-index: 1; } }
     .main .main-section.auth-login .motorbike img, .main .main-section.auth-register .motorbike img {
       max-width: 600px; }
+
+.footer {
+  background-color: #1b9d48;
+  padding: 20px 0; }
+  .footer .nav-pills > li {
+    width: 45%; }
+    @media only screen and (min-width: 768px) {
+      .footer .nav-pills > li {
+        width: 30%; } }
+    .footer .nav-pills > li > a {
+      color: #ffffff;
+      font-size: 14px; }
+      .footer .nav-pills > li > a:focus, .footer .nav-pills > li > a:hover {
+        background-color: transparent; }
+  .footer .copyright {
+    color: #ffffff;
+    float: none;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center; }
+  @media only screen and (min-width: 992px) {
+    .footer {
+      padding: 60px 0; }
+      .footer .copyright {
+        float: right;
+        text-align: left; } }
 
 .review-create .listing-picture {
   float: left;
@@ -6560,7 +6610,8 @@ form .help-block {
   padding-bottom: 25px;
   padding-top: 30px; }
   .listings-review-list .review .review-author-info {
-    padding-bottom: 20px; }
+    padding-bottom: 20px;
+    text-align: center; }
     .listings-review-list .review .review-author-info .author-picture {
       display: inline-block;
       max-width: 128px; }
@@ -6568,8 +6619,7 @@ form .help-block {
         .listings-review-list .review .review-author-info .author-picture {
           max-width: 100%; } }
     .listings-review-list .review .review-author-info .author-name {
-      font-weight: bold;
-      margin-left: 30px; }
+      font-weight: bold; }
     .listings-review-list .review .review-author-info ul {
       display: inline-block;
       margin-top: 10px;
@@ -6582,6 +6632,8 @@ form .help-block {
         list-style: none;
         margin: 4px 0;
         text-align: left; }
+        .listings-review-list .review .review-author-info ul > li a {
+          color: #293f54; }
         .listings-review-list .review .review-author-info ul > li span {
           color: #f3c903;
           font-size: 20px;
@@ -6876,6 +6928,14 @@ form .help-block {
       .listing-questions-container .listing-questions .question .question-answers-container .question-answers .answer .answer-info .answer-created span {
         color: #1b9d48;
         font-weight: 700; }
+      .listing-questions-container .listing-questions .question .question-answers-container .question-answers .answer .answer-info .answer-report {
+        float: right; }
+        .listing-questions-container .listing-questions .question .question-answers-container .question-answers .answer .answer-info .answer-report a {
+          color: #293f54; }
+          .listing-questions-container .listing-questions .question .question-answers-container .question-answers .answer .answer-info .answer-report a span {
+            color: #f3c903;
+            font-size: 16px;
+            padding-left: 5px; }
   .listing-questions-container .listing-questions .question .listing-answer-form {
     background-color: #fdfdfd;
     border: 3px solid #f9f9f9;
@@ -6927,6 +6987,29 @@ form .help-block {
                 background-color: inherit; }
         .category-navigation > ul > li > ul > li.dropdown .dropdown-toggle {
           cursor: pointer; }
+
+.messages-index .messages-help-note {
+  margin-bottom: 20px; }
+  .messages-index .messages-help-note .message-opened {
+    float: right;
+    margin-right: 20px;
+    margin-top: 2px; }
+    .messages-index .messages-help-note .message-opened .fa-envelope-open-o {
+      padding-left: 10px; }
+  .messages-index .messages-help-note .message-closed {
+    float: right;
+    margin-top: 2px; }
+    .messages-index .messages-help-note .message-closed .fa-envelope-o {
+      padding-left: 10px; }
+
+.messages-index .table {
+  font-family: "Roboto", sans-serif; }
+  .messages-index .table tr th .icheckbox_square-green, .messages-index .table tr td .icheckbox_square-green {
+    margin: 0; }
+
+.messages-index .fa-envelope-o, .messages-index .fa-envelope-open-o {
+  color: #1b9d48;
+  font-size: 22px; }
 
 .category-listings {
   border-left: 1px dashed #dfe2e6; }
@@ -6985,42 +7068,42 @@ form .help-block {
 .listing-search h2 span {
   color: #1b9d48; }
 
-.recently-viewed-listings {
+.recently-viewed-listings, .similar-listings {
   margin-top: 20px; }
-  .recently-viewed-listings h5 {
+  .recently-viewed-listings h5, .similar-listings h5 {
     margin-bottom: 15px !important; }
-  .recently-viewed-listings .listing {
+  .recently-viewed-listings .listing, .similar-listings .listing {
     border-bottom: 2px solid #f2f1f1;
     padding: 8px 0 5px 0;
     position: relative; }
-    .recently-viewed-listings .listing > a {
+    .recently-viewed-listings .listing > a, .similar-listings .listing > a {
       color: #293f54;
       display: block;
       margin-right: 20px; }
-      .recently-viewed-listings .listing > a .listing-picture {
+      .recently-viewed-listings .listing > a .listing-picture, .similar-listings .listing > a .listing-picture {
         display: block;
         float: left;
         height: 50px;
         width: 50px; }
-      .recently-viewed-listings .listing > a .listing-container {
+      .recently-viewed-listings .listing > a .listing-container, .similar-listings .listing > a .listing-container {
         float: right; }
-        .recently-viewed-listings .listing > a .listing-container .listing-title {
+        .recently-viewed-listings .listing > a .listing-container .listing-title, .similar-listings .listing > a .listing-container .listing-title {
           font-size: 14px;
           font-weight: 700;
           margin: 5px 0 0 0; }
-        .recently-viewed-listings .listing > a .listing-container .listing-rating {
+        .recently-viewed-listings .listing > a .listing-container .listing-rating, .similar-listings .listing > a .listing-container .listing-rating {
           font-size: 14px;
           display: block; }
-          .recently-viewed-listings .listing > a .listing-container .listing-rating .listing-review-count {
+          .recently-viewed-listings .listing > a .listing-container .listing-rating .listing-review-count, .similar-listings .listing > a .listing-container .listing-rating .listing-review-count {
             display: inline-block;
             font-size: 12px;
             margin-top: 2px;
             vertical-align: top; }
-    .recently-viewed-listings .listing .remove-item {
+    .recently-viewed-listings .listing .remove-item, .similar-listings .listing .remove-item {
       position: absolute;
       right: 0;
       top: 10px; }
-      .recently-viewed-listings .listing .remove-item a {
+      .recently-viewed-listings .listing .remove-item a, .similar-listings .listing .remove-item a {
         color: #f10028;
         display: block;
         height: 100%; }

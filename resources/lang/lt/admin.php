@@ -36,6 +36,11 @@ return [
             ],
         ],
     ],
+    'pages' => [
+        'index' => 'Puslapiai',
+        'create' => 'Naujas puslapis',
+        'edit' => 'Puslapio redagavimas',
+    ],
     'countries' => [
         'index' => 'Šalys',
         'create' => 'Nauja šalis',
@@ -62,5 +67,8 @@ return [
         'index' => 'Atributai',
         'create' => 'Naujas atributas',
         'edit' => 'Atributo redagavimas',
+    ],
+    'censors' => [
+        'index' => 'Netinkamas turinys',
     ],
 ];

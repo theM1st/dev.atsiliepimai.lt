@@ -22,4 +22,9 @@ class Answer extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function censors()
+    {
+        return $this->morphMany('App\Censor', 'commentable');
+    }
 }

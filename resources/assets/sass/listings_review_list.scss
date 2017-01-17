@@ -5,6 +5,7 @@
     padding-top: 30px;
     .review-author-info {
       padding-bottom: 20px;
+      text-align: center;
       .author-picture {
         display: inline-block;
         max-width: 128px;
@@ -14,7 +15,6 @@
       }
       .author-name {
         font-weight: bold;
-        margin-left: 30px;
       }
       ul {
         display: inline-block;
@@ -28,6 +28,9 @@
           list-style: none;
           margin: 4px 0;
           text-align: left;
+          a {
+            color: $secondary-color;
+          }
           span {
             color: $secondary-yellow;
             font-size: 20px;

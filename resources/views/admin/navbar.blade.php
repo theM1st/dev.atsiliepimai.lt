@@ -20,8 +20,8 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{ route('listings.create') }}">{{ trans('admin.listings.create') }}</a></li>
                         <li><a href="{{ route('reviews.index') }}">Neaktyvuoti atsiliepimai</a></li>
+                        <li><a href="{{ route('listings.create') }}">{{ trans('admin.listings.create') }}</a></li>
                         <li><a href="{{ route('listings.index') }}">{{ trans('admin.listings.index') }}</a></li>
                         <li><a href="{{ route('attributes.index') }}">{{ trans('admin.attributes.index') }}</a></li>
                         <li><a href="{{ route('attributes.create') }}">{{ trans('admin.attributes.create') }}</a></li>
@@ -41,6 +41,22 @@
                     <ul class="dropdown-menu">
                         <li><a href="{{ route('categories.create') }}">{{ trans('admin.categories.create') }}</a></li>
                         <li><a href="{{ route('categories.index') }}">{{ trans('admin.categories.index') }}</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <div class="btn-group">
+                    <a href="{{ route('pages.index') }}">
+                        <span class="fa fa-file-o" aria-hidden="true"></span>
+                        {{ trans('admin.pages.index') }}
+                    </a>
+                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('pages.create') }}">{{ trans('admin.pages.create') }}</a></li>
+                        <li><a href="{{ route('pages.index') }}">{{ trans('admin.pages.index') }}</a></li>
                     </ul>
                 </div>
             </li>
@@ -75,6 +91,13 @@
                         <li><a href="{{ route('countries.index') }}">{{ trans('admin.countries.index') }}</a></li>
                     </ul>
                 </div>
+            </li>
+
+            <li>
+                <a href="{{ route('censors.index') }}">
+                    <span class="fa fa-ban" aria-hidden="true"></span>
+                    {{ trans('admin.censors.index') }}
+                </a>
             </li>
         </ul>
     </div>

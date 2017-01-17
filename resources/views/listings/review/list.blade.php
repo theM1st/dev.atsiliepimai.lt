@@ -13,7 +13,7 @@
 </div>
 <div class="listings-review-list">
     @foreach ($reviews as $r)
-        <div class="review">
+        <div class="review" id="review{{ $r->id }}">
             <div class="row">
                 <div class="col-sm-3 review-author-info">
                     <div class="author-picture">
@@ -35,7 +35,7 @@
                         @endif
                         <li>
                             <span class="fa fa-envelope" aria-hidden="true"></span>
-                            Siųsti AŽ
+                            <a href="{{ route('messages.create', $r->user->id) }}">Siųsti AŽ</a>
                         </li>
                     </ul>
                 </div>
@@ -71,11 +71,11 @@
                         <p class="review-author-name">Parašė: <span>{{ $r->user->username }}</span></p>
                         <p class="review-report">
                             Netinkamas atsiliepimas?
-                            <a href="#">Pranešk<span class="fa fa-flag"></span></a>
+                            <a href="{{ route('censor.create', [$r->listing->slug, 'review', $r->id]) }}">Pranešk<span class="fa fa-flag"></span></a>
                         </p>
                         <div class="review-voting">
                             @if (Auth::check() && Auth::user()->reviewVoted($r->id))
-                                <div><strong>Jus</strong> jau balsavote.</div>
+                                <div><strong>Jūs</strong> jau balsavote.</div>
                             @else
                                 {!! Former::open()->route('reviews.vote', $r->id)->method('post') !!}
                                     <button type="submit" class="btn btn-link btn-like" name="like">

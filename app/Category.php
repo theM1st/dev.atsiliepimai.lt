@@ -66,7 +66,7 @@ class Category extends Node
 
     public function getListings($filter, $limit = 20)
     {
-        $data = Listing::categorized($this)->filter($filter)->paginate($limit);
+        $data = Listing::categorized($this)->has('reviews')->filter($filter)->paginate($limit);
 
         return $data;
     }

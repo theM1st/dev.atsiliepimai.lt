@@ -12,6 +12,8 @@ use App\Review;
 use App\Attribute;
 use App\AttributeOption;
 use App\Answer;
+use App\Message;
+use App\Page;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -48,6 +50,8 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('attribute', Attribute::class);
         Route::model('attribute_option', AttributeOption::class);
         Route::model('answer', Answer::class);
+        Route::model('message', Message::class);
+        Route::model('page', Page::class);
 
         Route::bind('category_slug', function($slug) {
             return Category::where('slug', $slug)->first();
@@ -55,6 +59,10 @@ class RouteServiceProvider extends ServiceProvider
 
         Route::bind('listing_slug', function($slug) {
             return Listing::where('slug', $slug)->first();
+        });
+
+        Route::bind('page_slug', function($slug) {
+            return Page::where('slug', $slug)->first();
         });
     }
 

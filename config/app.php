@@ -181,6 +181,7 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
         Former\FormerServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
         'Baum\Providers\BaumServiceProvider',
     ],
 
@@ -232,7 +233,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Former' => 'Former\Facades\Former',
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
