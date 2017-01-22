@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', getTitle($listing, 'title'))
+@section('title', getTitle($listing->title . ' ' . ($model ? $model->option_name : '')))
 @section('description', getDescription($listing->lastReview()->review_description))
 
 @section('content')

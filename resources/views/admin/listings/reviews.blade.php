@@ -6,8 +6,6 @@
 
 <div class="container">
     <div class="admin-block listings-reviews">
-        {!! adminHeaderTitle($title) !!}
-
         <div class="admin-body">
             @include("listings.review.listing", [ 'admin' => true ])
             <div class="row">

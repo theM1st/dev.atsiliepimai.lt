@@ -15,7 +15,7 @@ trait Uploader
      */
     protected $uploadPath = "uploads";
 
-    protected $imageConfig = array(
+    protected $defaultConfig = array(
         'lg' => array('width' => 512),
         'md' => array('width' => 256),
         'sm' => array('width' => 128),
@@ -54,14 +54,14 @@ trait Uploader
         return trim($dir, '/') . '/';
     }
 
-    public function upload($file, $imageConfig=null, $remove=true)
+    public function upload($file, $remove=true)
     {
         // don't forget upload_max_filesize and post_max_size
         // memory_limit minimum 256M if file size ~3MB
 
         $filename = $this->slugFilename($file);
 
-        $this->saveFile($filename, $file->getRealPath(), $imageConfig, $remove);
+        $this->saveFile($filename, $file->getRealPath(), $remove);
 
         return $filename;
     }
@@ -78,13 +78,13 @@ trait Uploader
         Storage::delete($files);
     }
 
-    public function saveFile($filename, $filePath, $imageConfig=null, $remove=true)
+    public function saveFile($filename, $filePath, $remove=true)
     {
-        $imageConfig = ($imageConfig ? $imageConfig : $this->imageConfig);
-
-        $img = \Image::make($filePath);
+        $imageConfig = (isset($this->imageConfig) ? $this->imageConfig : $this->defaultConfig);
 
         foreach ($imageConfig as $size => $c) {
+            $img = \Image::make($filePath);
+
             $dir = public_path($this->getUploadPath($size));
 
             if (!file_exists($dir)) {
@@ -93,7 +93,13 @@ trait Uploader
                 $this->deleteFiles($this->getUploadPath($size));
             }
 
-            $img->fit($c['width'])->save($dir . $filename);
+            if (!empty($c['fit'])) {
+                $img->fit($c['width']);
+            } else {
+                $img->widen($c['width']);
+            }
+
+            $img->save($dir . $filename);
         }
     }
 

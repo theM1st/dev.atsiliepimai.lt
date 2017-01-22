@@ -1,0 +1,38 @@
+.page-show, .listing-description-container .listing-description  {
+  p {
+    font-family: $font-roboto;
+    line-height: 30px;
+    margin: 20px 0;
+  }
+
+  ul {
+    display: inline-block;
+    font-family: $font-roboto;
+    list-style-image: url("img/green-li-arrow.png");
+    margin-left: 15px;
+    padding: 0;
+    li {
+      display: list-item;
+      line-height: 30px;
+      margin: 0;
+    }
+  }
+
+  table {
+    @extend .table;
+    @extend .table-striped;
+    border-bottom: 10px solid #f2f1f1;
+    margin-top: 30px;
+    tr {
+      th {
+        background-color: #f0f0f0;
+        border: 0 none !important;
+        padding: 10px !important;
+      }
+      & > td {
+        border: 0 none !important;
+        padding: 10px !important;
+      }
+    }
+  }
+}

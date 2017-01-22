@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ListingRequest;
 use App\Category;
 use App\Listing;
+use App\AttributeOption;
 use Auth;
 
 class ListingsController extends Controller
@@ -70,6 +71,8 @@ class ListingsController extends Controller
         $listing->setRecentViewed();
 
         $similarListings = $listing->getSimilarListings();
+
+        $model = AttributeOption::attributeOptionBySlug($model);
 
         return $this->display('listings.show', [
             'listing' => $listing,

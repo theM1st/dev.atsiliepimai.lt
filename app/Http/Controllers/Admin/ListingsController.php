@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\ListingRequest;
 use App\Category;
 use App\Listing;
 use App\Attribute;
+use App\AttributeOption;
 
 class ListingsController extends AdminController
 {
@@ -97,6 +98,8 @@ class ListingsController extends AdminController
         $reviews = $listing->getReviews($request->only('sort', 'model', 'filter'));
 
         $questions = $listing->getQuestions($request->only('model'));
+
+        $model = AttributeOption::attributeOptionBySlug($model);
 
         return $this->display($this->viewPath('reviews'), [
             'listing' => $listing,

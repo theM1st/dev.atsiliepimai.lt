@@ -84,7 +84,7 @@
             @extend .a-decoration-none;
             color: #ffffff;
             display: block;
-            padding: 10px 30px;
+            padding: 30px 12px;
             position: relative;
             .username {
                 display: inline-block;
@@ -117,7 +117,7 @@
                 padding-right: 10px;
             }
             &.categories-menu-link {
-                padding-left: 15px;
+                padding-left: 10px;
                 padding-right: 15px;
             }
             &.user-menu-link {
@@ -128,13 +128,26 @@
               background-color: $secondary-green;
             }
             @include respond-to(sm) {
-                padding: 20px 13px;
+                padding-bottom: 20px;
+                padding-top: 20px;
+                &.profile-messages-link {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+                &.user-menu-link {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
             }
             @include respond-to(md) {
-                padding: 35px 11px;
+                padding-bottom: 32px;
+                padding-top: 32px;
             }
             @include respond-to(lg) {
-                padding: 35px 23px;
+                &.profile-messages-link, &.user-menu-link {
+                    padding-left: 12px;
+                    padding-right: 12px;
+                }
             }
         }
         .dropdown.open > .nav-link {
@@ -365,6 +378,7 @@
 @import "listing_questions_container";
 @import "category_navigation";
 @import "messages_index";
+@import "page_show";
 
 .category-listings {
     border-left: 1px dashed #dfe2e6;
@@ -465,10 +479,14 @@
                 display: block;
                 float: left;
                 height: 50px;
+                margin-right: 5px;
                 width: 50px;
+                .img-circle {
+                    height: 50px;
+                    width: 50px;
+                }
             }
             .listing-container {
-                float: right;
                 .listing-title {
                     font-size: $font-standart-size;
                     font-weight: 700;

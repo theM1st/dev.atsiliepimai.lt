@@ -41,11 +41,35 @@ form .help-block {
 
 .img-circle {
   border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
   &.img-border-grey {
     border: 2px solid $grey;
   }
   &.img-border-white {
     border: 2px solid #fff;
+  }
+  &.img-circle-xs {
+    background-color: #ffffff;
+    height: 64px;
+    width: 64px;
+  }
+  &.img-circle-sm {
+    background-color: #ffffff;
+    height: 128px;
+    width: 128px;
+  }
+  &.img-circle-md {
+    background-color: #ffffff;
+    height: 256px;
+    width: 256px;
+  }
+  img {
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    top: 0;
   }
 }
 

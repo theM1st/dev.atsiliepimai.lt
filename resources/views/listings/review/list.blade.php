@@ -11,7 +11,7 @@
         !!}
     </div>
 </div>
-<div class="listings-review-list">
+<div class="listings-review-list" id="reviews">
     @foreach ($reviews as $r)
         <div class="review" id="review{{ $r->id }}">
             <div class="row">
@@ -20,7 +20,9 @@
                         <img src="{{ $r->user->getPicture() }}" alt="{{ $r->user->username }}" class="img-circle img-border-grey img-responsive">
                     </div>
                     <div class="author-name">
-                        {{ $r->user->username }}
+                        <a href="{{ route('user.show', $r->user->id) }}">
+                            {{ $r->user->username }}
+                        </a>
                     </div>
                     <ul>
                         <li>
@@ -68,7 +70,6 @@
                     <div class="review-text">{{ $r->review_description }}</div>
                     <div class="review-info">
                         <p class="review-created">Atsiliepimas parašytas: <span>{{ $r->created_at->format('Y.m.d') }}</span></p>
-                        <p class="review-author-name">Parašė: <span>{{ $r->user->username }}</span></p>
                         <p class="review-report">
                             Netinkamas atsiliepimas?
                             <a href="{{ route('censor.create', [$r->listing->slug, 'review', $r->id]) }}">Pranešk<span class="fa fa-flag"></span></a>
@@ -76,15 +77,35 @@
                         <div class="review-voting">
                             @if (Auth::check() && Auth::user()->reviewVoted($r->id))
                                 <div><strong>Jūs</strong> jau balsavote.</div>
+                                @if ($positive = $r->positiveVotes->count())
+                                    <span class="btn-like">
+                                        <span class="fa fa-thumbs-up"></span>
+                                        Super, labai patiko
+                                        <span>({{ $positive }})</span>
+                                    </span>
+                                @endif
+                                @if ($negative = $r->negativeVotes->count())
+                                    <span class="btn-dislike">
+                                        <span class="fa fa-thumbs-down"></span>
+                                        Visai nepatiko
+                                        <span>({{ $negative }})</span>
+                                    </span>
+                                @endif
                             @else
                                 {!! Former::open()->route('reviews.vote', $r->id)->method('post') !!}
                                     <button type="submit" class="btn btn-link btn-like" name="like">
                                         <span class="fa fa-thumbs-up"></span>
                                         Super, labai patiko
+                                        @if ($positive = $r->positiveVotes->count())
+                                            <span>({{ $positive }})</span>
+                                        @endif
                                     </button>
                                     <button type="submit" class="btn btn-link btn-dislike" name="dislike">
                                         <span class="fa fa-thumbs-down"></span>
                                         Visai nepatiko
+                                        @if ($negative = $r->negativeVotes->count())
+                                            <span>({{ $negative }})</span>
+                                        @endif
                                     </button>
                                 {!! Former::close() !!}
                             @endif

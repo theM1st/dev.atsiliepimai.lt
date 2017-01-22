@@ -36,7 +36,7 @@
                                     <div class="listing-models-title">{{ $mainAttribute->title }}</div>
                                     @foreach ($mainAttribute->options as $o)
                                         @if ($reviews = $o->reviews($listing->id)->count())
-                                            <p class="{{ $model == $o->slug ? 'active' : '' }}">
+                                            <p class="{{ ($model && $model->slug == $o->slug) ? 'active' : '' }}">
                                                 <a href="{{ (!empty($admin) ? route('listings.reviews', [$listing->id, $o->slug]) : route('listing.show.model', [$listing->slug, $o->slug])) }}">
                                                     {{ $o->option_name }}
                                                 </a>
@@ -56,7 +56,9 @@
                     <div class="col-lg-5">
                         <div class="listing-picture">
                             <div class="listing-rating">{{ $listing->avg_rating }}</div>
-                            <img class="img-responsive img-circle img-border-white" src="{{ $listing->getPicture('md') }}" alt="{{ $listing->title }}">
+                            <span class="img-circle img-border-white img-circle-md">
+                                <img class="img-responsive" src="{{ $listing->getPicture('md') }}" alt="{{ $listing->title }}">
+                            </span>
                         </div>
                     </div>
                     <div class="col-lg-7">
@@ -70,9 +72,11 @@
             <div class="col-sm-7">
                 <div class="listing-nav">
                     <ul class="nav nav-pills">
-                        <li><a href="{{ route('listings.reviews', $listing->id) }}">Atsiliepimai ({{ $listing->reviews->count() }})</a></li>
+                        <li><a href="{{ route('listing.show', [ $listing->slug, '#reviews' ]) }}">Atsiliepimai ({{ $listing->reviews->count() }})</a></li>
                         <li><a href="#listing-questions">Klausimai ir atsakymai</a></li>
-                        <li><a href="#listing-description">Produkto detalės</a></li>
+                        @if ($listing->description)
+                            <li><a href="#listing-description">Produkto detalės</a></li>
+                        @endif
                     </ul>
                 </div>
             </div>

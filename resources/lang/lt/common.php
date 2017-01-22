@@ -29,6 +29,8 @@ return [
     'rating' => 'Įvertinimas',
     'fail' => 'Atsiprašome, įvyko klaida. Bandykite vėliau',
     'show_censor_commentable' => 'Parodyti netinkamą turinį',
+    'questions' => 'Klausimai',
+    'answers' => 'Atsakymai',
     'form' => [
         'select' => 'Pasirinkite',
         'sign_in' => 'Prisijungti',
@@ -162,6 +164,7 @@ return [
         'user_role' => 'Teisės',
         'admin' => 'Administratorius',
         'remember_me' => 'Prisiminti jūsų prisijungimo duomenis',
+        'created_at' => 'Prisijungė',
     ],
     'profile' => [
         'name' => 'Profilis',

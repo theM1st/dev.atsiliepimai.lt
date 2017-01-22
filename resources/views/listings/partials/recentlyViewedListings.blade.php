@@ -7,7 +7,9 @@
             <div class="listing">
                 <a href="{{ route('listing.show', $l->slug) }}">
                     <span class="listing-picture">
-                        <img src="{{ $l->getPicture('xs') }}" alt="" class="img-responsive img-circle img-border-grey">
+                        <span class="img-circle img-circle-xs img-border-grey">
+                            <img src="{{ $l->getPicture('xs') }}" alt="" class="img-responsive">
+                        </span>
                     </span>
                     <span class="listing-container">
                         <p class="listing-title">{{ str_limit($l->title, 25) }}</p>

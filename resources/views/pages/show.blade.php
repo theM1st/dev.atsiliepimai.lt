@@ -4,7 +4,7 @@
 @section('description', getDescription($page))
 
 @section('content')
-    <section class="main-section messages-index">
+    <section class="main-section page-show">
         <div class="container">
             <h2>{{ $page->title }}</h2>
 

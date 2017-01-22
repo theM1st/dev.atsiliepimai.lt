@@ -12,7 +12,9 @@
                     <div class="row">
                         <div class="col-md-5">
                             @if ($listing->getPicture())
-                                <img src="{{ $listing->getPicture() }}" alt="" class="img-responsive img-circle img-border-grey">
+                                <span class="img-circle img-circle-sm img-border-grey">
+                                    <img src="{{ $listing->getPicture() }}" alt="" class="img-responsive">
+                                </span>
                             @endif
 
                             @include('admin.listings.form.elements')

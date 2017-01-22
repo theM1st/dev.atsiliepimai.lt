@@ -19,6 +19,16 @@ class Review extends Model
         return $this->hasMany('App\UserReviewVote');
     }
 
+    public function positiveVotes()
+    {
+        return $this->hasMany('App\UserReviewVote')->where('vote', 1);
+    }
+
+    public function negativeVotes()
+    {
+        return $this->hasMany('App\UserReviewVote')->where('vote', -1);
+    }
+
     public function attributes()
     {
         return $this->belongsToMany('App\Attribute', 'attribute_option_review')

@@ -83,6 +83,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::put('{user}', 'ProfileController@update')->name('profile.update');
 });
 
+Route::get('profile/{user}.html', 'UsersController@show')
+    ->name('user.show');
+
 Route::group(['prefix' => 'messages', 'middleware' => 'auth'], function () {
     Route::get('{section}', 'MessagesController@index')
         ->name('messages.index')->where('section', '(inbox|outbox)');

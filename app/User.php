@@ -36,6 +36,13 @@ class User extends Authenticatable
         'birthday'
     ];
 
+    protected $imageConfig = array(
+        'lg' => array('width' => 512, 'fit' => true),
+        'md' => array('width' => 256, 'fit' => true),
+        'sm' => array('width' => 128, 'fit' => true),
+        'xs' => array('width' => 64, 'fit' => true),
+    );
+
     public function country()
     {
         return $this->belongsTo('App\Country');

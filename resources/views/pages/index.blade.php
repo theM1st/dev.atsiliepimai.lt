@@ -54,8 +54,8 @@
                         @foreach ($lastReviews as $r)
                             <div class="col-sm-6 col-md-3 last-review">
                                 <div class="last-review-info">
-                                    <span class="last-review-picture">
-                                        <img src="{{ $r->listing->getPicture('xs') }}" class="img-circle" alt="{{ $r->listing->title }}">
+                                    <span class="last-review-picture img-circle img-circle-xs">
+                                        <img src="{{ $r->listing->getPicture('xs') }}" class="img-responsive" alt="{{ $r->listing->title }}">
                                     </span>
                                     <span class="last-review-name">
                                         {{ str_limit($r->listing->title, 20) }}

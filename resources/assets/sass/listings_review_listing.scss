@@ -145,9 +145,9 @@
         margin: 0 auto;
         max-width: 170px;
         position: relative;
-        img {
-          margin: 0 auto;
-          text-align: center;
+        .img-circle-md {
+          max-height: 170px;
+          max-width: 170px;
         }
         .listing-rating {
           background-color: $yellow;
@@ -163,6 +163,7 @@
           text-align: center;
           top: 0;
           width: 68px;
+          z-index: 1;
         }
       }
       .write-review, .ask-question {

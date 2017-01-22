@@ -82,7 +82,6 @@
         &.review-created {
           padding-right: 18px;
           @include respond-to(sm) {
-            border-right: 1px solid $secondary-color;
           }
         }
         &.review-author-name {
@@ -105,21 +104,25 @@
         margin-top: 30px;
         button {
           display: inline-block;
-
-          font-weight: 700;
           span {
             font-size: $font-base-size;
             padding-right: 5px;
           }
-          &.btn-like {
-            color: $primary-green;
-          }
-          &.btn-dislike {
-            color: $primary-red;
-          }
           &:hover, &:focus {
             text-decoration: none;
           }
+        }
+        .btn-like {
+          color: $primary-green;
+          display: inline-block;
+          font-weight: 700;
+          padding: 6px 12px;
+        }
+        .btn-dislike {
+          color: $primary-red;
+          display: inline-block;
+          font-weight: 700;
+          padding: 6px 12px;
         }
       }
       @include respond-to(sm) {
