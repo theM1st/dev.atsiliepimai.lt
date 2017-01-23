@@ -7,26 +7,36 @@
   }
   & > ul {
     list-style-type: none;
+    margin-top: 20px;
     padding: 0;
     & > li {
       font-size: $font-standart-size;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       text-transform: uppercase;
       white-space: nowrap;
+      a {
+        display: block;
+        padding: 5px 0;
+        &.active {
+          background: $primary-green;
+          border: 2px solid $secondary-green;
+          color: #ffffff;
+          font-weight: normal;
+          padding: 5px 10px 5px 5px;
+          .fa-window-close {
+            font-size: 18px;
+            position: absolute;
+            right: 5px;
+          }
+        }
+      }
       & > ul {
         list-style-type: none;
         padding-left: 30px;
         & > li {
           margin-top: 10px;
           text-transform: capitalize;
-          a {
-            padding: 4px 6px;
-            &.active {
-              background: $primary-green !important;
-              color: #ffffff !important;
-              font-weight: normal;
-            }
-          }
+
           &.dropdown {
             & > .dropdown-menu {
               border: none;

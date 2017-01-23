@@ -20,8 +20,8 @@
                 <div class="row">
                     <div class="col-md-10 col-sm-9">
                         <a href="{{ route('listing.show', $l->slug) }}" class="listing-item">
-                            <span class="listing-picture">
-                                <img src="{{ $l->getPicture() }}" alt="" class="img-responsive img-circle img-border-grey">
+                            <span class="listing-picture img-circle img-circle-md img-border-grey">
+                                <img src="{{ $l->getPicture() }}" alt="" class="img-responsive">
                             </span>
                             <span class="listing-title">{{ $l->title }}</span>
                             <span class="listing-rating">

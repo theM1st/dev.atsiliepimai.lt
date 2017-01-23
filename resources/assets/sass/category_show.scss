@@ -1,0 +1,30 @@
+.category-show {
+  .category-list {
+    .category-container {
+      display: block;
+      text-align: center;
+      .category-picture {
+        display: block;
+        height: 128px;
+        margin: auto;
+        position: relative;
+
+        width: 128px;
+        & > img {
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+      .category-name {
+        display: block;
+        color: $text-color;
+        font-weight: bold;
+        margin: 10px 0;
+      }
+    }
+  }
+}

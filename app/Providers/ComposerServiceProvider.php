@@ -16,7 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     {
         // Using class based composers...
         View::composer(
-            ['listings.show', 'profile.partials.me'], 'App\Http\ViewComposers\ListingsComposer'
+            ['listings.show', 'profile.partials.me', 'categories.show'], 'App\Http\ViewComposers\ListingsComposer'
         );
 
         View::composer(

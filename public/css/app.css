@@ -7079,24 +7079,32 @@ form .help-block {
 
 .category-navigation > ul {
   list-style-type: none;
+  margin-top: 20px;
   padding: 0; }
   .category-navigation > ul > li {
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     white-space: nowrap; }
+    .category-navigation > ul > li a {
+      display: block;
+      padding: 5px 0; }
+      .category-navigation > ul > li a.active {
+        background: #1b9d48;
+        border: 2px solid #1b9044;
+        color: #ffffff;
+        font-weight: normal;
+        padding: 5px 10px 5px 5px; }
+        .category-navigation > ul > li a.active .fa-window-close {
+          font-size: 18px;
+          position: absolute;
+          right: 5px; }
     .category-navigation > ul > li > ul {
       list-style-type: none;
       padding-left: 30px; }
       .category-navigation > ul > li > ul > li {
         margin-top: 10px;
         text-transform: capitalize; }
-        .category-navigation > ul > li > ul > li a {
-          padding: 4px 6px; }
-          .category-navigation > ul > li > ul > li a.active {
-            background: #1b9d48 !important;
-            color: #ffffff !important;
-            font-weight: normal; }
         .category-navigation > ul > li > ul > li.dropdown > .dropdown-menu {
           border: none;
           box-shadow: none;
@@ -7162,6 +7170,28 @@ form .help-block {
   .page-show table tr > td, .listing-description-container .listing-description table tr > td {
     border: 0 none !important;
     padding: 10px !important; }
+
+.category-show .category-list .category-container {
+  display: block;
+  text-align: center; }
+  .category-show .category-list .category-container .category-picture {
+    display: block;
+    height: 128px;
+    margin: auto;
+    position: relative;
+    width: 128px; }
+    .category-show .category-list .category-container .category-picture > img {
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 0; }
+  .category-show .category-list .category-container .category-name {
+    display: block;
+    color: #3c3e40;
+    font-weight: bold;
+    margin: 10px 0; }
 
 .category-listings {
   border-left: 1px dashed #dfe2e6; }

@@ -14,6 +14,7 @@ class CategoriesController extends Controller
 
         return $this->display('categories.show', [
             'category' => $category,
+            'title' => ($category->getLevel() ? $category->name . ' kategorijos atsiliepimai' : $category->name),
             'listings' => $listings,
         ]);
     }
