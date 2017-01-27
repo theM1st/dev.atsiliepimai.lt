@@ -17,6 +17,10 @@ class MessagesController extends Controller
             'section' => $section,
             'user' => \Auth::user(),
         ];
+
+        $this->breadcrumbs->addCrumb(trans('common.messages.'.$section));
+
+        $viewData['breadcrumbs'] = $this->breadcrumbs;
         
         return $this->display('messages.index', $viewData);
     }
@@ -25,10 +29,13 @@ class MessagesController extends Controller
     {
         $section = 'create';
 
+        $this->breadcrumbs->addCrumb(trans('common.messages.'.$section));
+
         return $this->display('messages.index', [
             'title' => trans('common.messages.'.$section),
             'section' => $section,
-            'recipient' => $recipient
+            'recipient' => $recipient,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -45,6 +52,11 @@ class MessagesController extends Controller
 
     public function show($section, Message $message)
     {
+        $title = 'Žinutė ' . $message->title;
+
+        $this->breadcrumbs->addCrumb(trans('common.messages.'.$section), route('messages.index', $section));
+        $this->breadcrumbs->addCrumb($title);
+
         $section = 'show';
 
         if ($message->new) {
@@ -53,9 +65,10 @@ class MessagesController extends Controller
         }
 
         return $this->display('messages.index', [
-            'title' => $message->title,
+            'title' => $title,
             'section' => $section,
-            'message' => $message
+            'message' => $message,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

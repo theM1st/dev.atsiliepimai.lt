@@ -2,6 +2,7 @@
 
 @section('title', getTitle($title))
 @section('description', getDescription($category))
+@section('breadcrumbs', $breadcrumbs->render())
 
 @section('content')
     <section class="main-section category-show">
@@ -14,16 +15,6 @@
                     <div class="col-sm-9">
                         <div class="row category-list">
                             @foreach ($category->children as $c)
-                                <div class="col-md-3">
-                                    <a href="{{ route('category.show', $c->slug) }}" class="category-container">
-                                        <span class="category-picture">
-                                            <img src="{{ $c->getPicture() }}" class="img-responsive" alt="{{ $c->name }}">
-                                        </span>
-                                        <span class="category-name">
-                                            {{ $c->name }}
-                                        </span>
-                                    </a>
-                                </div>
                                 <div class="col-md-3">
                                     <a href="{{ route('category.show', $c->slug) }}" class="category-container">
                                         <span class="category-picture">

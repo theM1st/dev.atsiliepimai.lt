@@ -27,8 +27,11 @@ class PagesController extends Controller
 
     public function show(Page $page)
     {
+        $this->breadcrumbs->addCrumb($page->title, route('page.show', $page->slug));
+
         return $this->display('pages.show', [
             'page' => $page,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

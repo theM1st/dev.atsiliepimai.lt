@@ -60,7 +60,7 @@ Route::get('search', 'ListingsController@search')
 Route::group(['prefix' => 'page'], function () {
     Route::get('{page_slug}', 'PagesController@show')
         ->name('page.show');
-    
+
     Route::post('sendMessage', 'PagesController@sendMessage')
         ->name('page.sendMessage');
 });
@@ -94,6 +94,7 @@ Route::group(['prefix' => 'messages', 'middleware' => 'auth'], function () {
         ->name('messages.create');
 
     Route::get('{section}/{message}', 'MessagesController@show')
+        ->where('section', '(inbox|outbox)')
         ->name('messages.show');
 
     Route::get('delete', 'MessagesController@delete')

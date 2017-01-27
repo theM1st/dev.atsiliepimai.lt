@@ -14,8 +14,10 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
+        $title = trans('common.profile.sections.'.$section);
+
         $viewData = [
-            'title' => trans('common.profile.sections.'.$section),
+            'title' => $title,
             'section' => $section,
         ];
 
@@ -31,6 +33,10 @@ class ProfileController extends Controller
             $viewData['answers'] = $user->answers()->latest()->withoutGlobalScope(ActiveScope::class)->get();
         }
 
+        $this->breadcrumbs->addCrumb($title);
+
+        $viewData['breadcrumbs'] = $this->breadcrumbs;
+
         return $this->display('profile.show', $viewData);
     }
 
@@ -38,11 +44,18 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
+        $title = trans('common.profile.sections.'.$section);
+
         \Former::populate($user);
 
+        $this->breadcrumbs->addCrumb($title);
+
+        $viewData['breadcrumbs'] = $this->breadcrumbs;
+
         return $this->display('profile.edit', [
-            'title' => trans('common.profile.sections.'.$section),
+            'title' => $title,
             'section' => $section,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

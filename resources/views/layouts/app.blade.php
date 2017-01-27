@@ -24,6 +24,9 @@
         @include('header')
 
         <main class="main{{ (Request::segment(1) == 'admin' ? ' admin-container' : '') }}">
+            <div class="container hidden-xs">
+                @yield('breadcrumbs')
+            </div>
             @include('alert')
             @yield('content')
         </main>

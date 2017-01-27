@@ -74,12 +74,21 @@ class ListingsController extends Controller
 
         $model = AttributeOption::attributeOptionBySlug($model);
 
+        $categories = $listing->category->ancestorsAndSelf()->get();
+
+        foreach ($categories as $c) {
+            $this->breadcrumbs->addCrumb($c->name, route('category.show', $c->slug));
+        }
+
+        $this->breadcrumbs->addCrumb($listing->title, '');
+
         return $this->display('listings.show', [
             'listing' => $listing,
             'similarListings' => $similarListings,
             'reviews' => $reviews,
             'questions' => $questions,
             'model' => $model,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
@@ -91,9 +100,12 @@ class ListingsController extends Controller
             ->has('reviews')
             ->filter($filter)->paginate(20);
 
+        $this->breadcrumbs->addCrumb('Paieška');
+
         return $this->display('listings.search', [
             'q' => $request->get('q'),
-            'listings' => $listings
+            'listings' => $listings,
+            'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 

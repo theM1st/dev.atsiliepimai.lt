@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', getTitle($title))
+@section('breadcrumbs', $breadcrumbs->render())
 
 @section('content')
     <section class="main-section messages-index">

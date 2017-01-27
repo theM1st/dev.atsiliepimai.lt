@@ -183,6 +183,7 @@ return [
         Former\FormerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Baum\Providers\BaumServiceProvider',
+        'Creitive\Breadcrumbs\BreadcrumbsServiceProvider',
     ],
 
     /*
@@ -235,6 +236,7 @@ return [
         'Former' => 'Former\Facades\Former',
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Breadcrumbs' => 'Creitive\Breadcrumbs\Facades\Breadcrumbs',
     ],
 
 ];

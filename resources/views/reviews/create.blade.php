@@ -9,8 +9,8 @@
 
             <div class="row">
                 <div class="col-sm-8">
-                    <div class="listing-picture">
-                        <img src="{{ $listing->getPicture() }}" alt="" class="img-responsive img-circle img-border-grey">
+                    <div class="listing-picture img-circle img-circle-md img-border-grey">
+                        <img src="{{ $listing->getPicture() }}" alt="" class="img-responsive">
                     </div>
                     <div class="listing-title">
                         {{ $listing->title }}

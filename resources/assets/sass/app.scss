@@ -381,6 +381,21 @@
 @import "page_show";
 @import "category_show";
 
+.breadcrumbs {
+    @extend .breadcrumb;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    & > li {
+        & + li::before {
+            content: "»";
+            font-size: 20px;
+        }
+        & > a {
+            font-weight: 500;
+        }
+    }
+}
 
 .category-listings {
     border-left: 1px dashed #dfe2e6;

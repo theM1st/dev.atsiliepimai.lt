@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('title', getTitle('Paieška'))
+@section('breadcrumbs', $breadcrumbs->render())
 
 @section('content')
     <section class="main-section listing-search">

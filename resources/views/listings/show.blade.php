@@ -2,6 +2,7 @@
 
 @section('title', getTitle($listing->title . ' ' . ($model ? $model->option_name : '')))
 @section('description', getDescription($listing->lastReview()->review_description))
+@section('breadcrumbs', $breadcrumbs->render())
 
 @section('content')
     <section class="main-section listing-show">

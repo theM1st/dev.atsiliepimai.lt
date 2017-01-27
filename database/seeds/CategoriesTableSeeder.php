@@ -29,7 +29,14 @@ class CategoriesTableSeeder extends Seeder
                             [ 'name' => 'Portable Speakers', 'active' => 1, 'popular' => mt_rand(0,1) ],
                             [ 'name' => 'Computer Speakers', 'active' => 1, 'popular' => mt_rand(0,1) ],
                             [ 'name' => 'Docks', 'active' => 1, 'popular' => mt_rand(0,1) ]
-                        ]]
+                        ]],
+                    [ 'name' => 'Tablets', 'active' => 1, 'popular' => 0 ],
+                    [ 'name' => 'Printers', 'active' => 1, 'popular' => 0 ],
+                    [ 'name' => 'Headphones', 'active' => 1, 'popular' => 0 ],
+                    [ 'name' => 'Modems / Routers', 'active' => 1, 'popular' => 0 ],
+                    [ 'name' => 'Home Theatre', 'active' => 1, 'popular' => 0 ],
+                    [ 'name' => 'Phones', 'active' => 1, 'popular' => 0 ],
+                    [ 'name' => 'Blu-Ray & DVD Players', 'active' => 1, 'popular' => 0 ],
                 ]],
             [ 'name' => 'Cars', 'active' => 1, 'popular' => mt_rand(0,1) ],
             [ 'name' => 'Babies & Kids', 'active' => 1, 'popular' => mt_rand(0,1),

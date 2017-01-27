@@ -10,6 +10,15 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    
+    public $breadcrumbs; 
+
+    public function __construct()
+    {
+        $this->breadcrumbs = new \Creitive\Breadcrumbs\Breadcrumbs;
+        $this->breadcrumbs->setDivider(null);
+        $this->breadcrumbs->addCrumb('Pradinis', '/');
+    }
 
     public function display($path, $data = array())
     {
