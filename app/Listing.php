@@ -15,7 +15,7 @@ class Listing extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'listing_type', 'picture', 'active', 'category_id'];
+    protected $fillable = ['title', 'description', 'listing_type', 'picture', 'active', 'category_id', 'brand_value'];
 
     protected static function boot()
     {
@@ -44,6 +44,11 @@ class Listing extends Model
     public function attributes()
     {
         return $this->belongsToMany('App\Attribute');
+    }
+
+    public function brand()
+    {
+        return $this->belongsTo('App\Brand');
     }
 
     public static function getSortby()
@@ -127,6 +132,10 @@ class Listing extends Model
             default: $query->orderBy('created_at', 'desc');
         }
 
+        if (isset($data['brand']->id)) {
+            $query->where('brand_id', $data['brand']->id);
+        }
+
         return $query;
     }
 
@@ -143,6 +152,15 @@ class Listing extends Model
     public function getDefaultPictureAttribute()
     {
         return 'default.jpg';
+    }
+
+    public function getBrandValueAttribute()
+    {
+        if ($this->brand) {
+            return $this->brand->name;
+        }
+
+        return $this->attributes['brand_value'];
     }
 
     public function scopeCategorized($query, Category $category = null)

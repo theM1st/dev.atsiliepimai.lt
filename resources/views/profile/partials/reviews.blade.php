@@ -19,7 +19,7 @@
                     </td>
                     <td>{{ str_limit($r->review_title, 50) }}</td>
                     <td>
-                        @if ($r->listing->reviews->count() == 0)
+                        @if (count($r->listing->reviews) == 0)
                             <span>{{ str_limit($r->listing->title, 50) }}</span>
                         @else
                             <a href="{{ route('listing.show', $r->listing->slug) }}">{{ str_limit($r->listing->title, 50) }}</a>

@@ -39,7 +39,10 @@ return [
         'change_password' => 'Pakeisti slaptažodį',
         'country' => [
             'name' => 'Pavadinimas',
-
+        ],
+        'brand' => [
+            'name' => 'Pavadinimas',
+            'picture' => 'Nuotrauka',
         ],
         'listing' => [
             'title' => 'Produkto/paslaugos pavadinimas',
@@ -52,6 +55,9 @@ return [
             'main_attribute' => 'Pagrindinis atributas',
             'another_attributes' => 'Kiti atributai',
             'picture' => 'Nuotrauka',
+            'brand' => 'Gamintojas',
+            'brand_placeholder' => 'Pavyzdžiui: Samsung',
+            'brand_help' => 'Rekomenduojama nurodyti',
             'sortby' => [
                 'newest' => 'Naujesni',
                 'rating_high' => 'Labiausi įvertinti',

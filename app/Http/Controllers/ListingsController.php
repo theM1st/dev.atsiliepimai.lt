@@ -16,7 +16,7 @@ class ListingsController extends Controller
         $listings = null;
 
         if ($request->get('q')) {
-            $listings = Listing::where('title', 'like', '%' . $request->get('q') . '%')
+            $listings = Listing::has('reviews')->where('title', 'like', '%' . $request->get('q') . '%')
                 ->paginate(20);
         }
 

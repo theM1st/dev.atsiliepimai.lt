@@ -13,6 +13,7 @@ use App\Country;
 use App\Listing;
 use App\Review;
 use App\UserReviewVote;
+use App\Brand;
 use App\Mail\UserConfirm;
 
 class EventServiceProvider extends ServiceProvider
@@ -98,6 +99,16 @@ class EventServiceProvider extends ServiceProvider
             Country::rebuild();
         });
 
+        Listing::saving(function($listing) {
+            if (Request::get('brand_value')) {
+                $brand = Brand::where('slug', str_slug(Request::get('brand_value')))->first();
+                if ($brand) {
+                    $listing->brand_id = $brand->id;
+                    $listing->brand_value = null;
+                }
+            }
+        });
+
         Listing::created(function($listing) {
 
             if (Request::get('review_title')) {
@@ -135,6 +146,25 @@ class EventServiceProvider extends ServiceProvider
 
         UserReviewVote::created(function($reviewVote) {
             $this->reviewAvgVotes($reviewVote);
+        });
+
+        Brand::creating(function($brand) {
+            $position = Brand::max('position')+1;
+
+            $brand->position = $position;
+        });
+
+        Brand::saved(function($brand) {
+            $slug = str_slug($brand->name);
+
+            if ($slug != $brand->slug) {
+                $brand->slug = $slug;
+                $brand->save();
+            }
+        });
+
+        Brand::deleted(function($brand) {
+            $brand->listings()->update([ 'brand_id' => null ]);
         });
     }
 

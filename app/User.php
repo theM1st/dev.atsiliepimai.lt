@@ -8,6 +8,7 @@ use App\Notifications\MyOwnResetPassword as ResetPasswordNotification;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 use App\Traits\Uploader;
 use Carbon\Carbon;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -180,6 +181,19 @@ class User extends Authenticatable
         }
 
         return $user;
+    }
+
+    public static function isUserReview($reviewId)
+    {
+        if (!Auth::check()) {
+            return false;
+        }
+
+        if (Auth::user()->reviews()->where('id', $reviewId)->first()) {
+            return true;
+        }
+
+        return false;
     }
 
     public function setGenderAttribute($value)

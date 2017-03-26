@@ -36,6 +36,11 @@ return [
             ],
         ],
     ],
+    'brands' => [
+        'index' => 'Gamintojai',
+        'create' => 'Naujas gamintojas',
+        'edit' => 'Gamintojo redagavimas',
+    ],
     'pages' => [
         'index' => 'Puslapiai',
         'create' => 'Naujas puslapis',

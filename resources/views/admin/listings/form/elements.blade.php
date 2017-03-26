@@ -13,6 +13,22 @@
 
 {{ Form::categoriesHierarchy('category_id', $categories, old('category_id', $listing->category_id)) }}
 
+<div class="row">
+    <div class="col-sm-6">
+        {!!
+            Former::text('brand_value')->label('common.form.listing.brand')
+                ->placeholder('common.form.listing.brand_placeholder')
+                ->help('common.form.listing.brand_help')
+        !!}
+    </div>
+    @if ($listing->brand_value && !$listing->brand_id)
+        <div class="col-sm-6" style="padding-top: 35px;">
+            <a href="{{ route('listings.toggleBrand', [$listing->id, 'accept']) }}" class="btn btn-second btn-sm">Patvirtinti</a>
+            <a href="{{ route('listings.toggleBrand', [$listing->id, 'cancel']) }}" class="btn btn-red btn-sm">Atmesti</a>
+        </div>
+    @endif
+</div>
+
 <div class="checkbox-container">
     {!! Former::checkbox('active')->class('icheck')->text('common.form.listing.active')->check() !!}
 </div>

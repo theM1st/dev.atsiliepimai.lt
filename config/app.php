@@ -184,6 +184,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Baum\Providers\BaumServiceProvider',
         'Creitive\Breadcrumbs\BreadcrumbsServiceProvider',
+        Watson\Sitemap\SitemapServiceProvider::class,
     ],
 
     /*
@@ -237,6 +238,7 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Breadcrumbs' => 'Creitive\Breadcrumbs\Facades\Breadcrumbs',
+        'Sitemap' => Watson\Sitemap\Facades\Sitemap::class
     ],
 
 ];

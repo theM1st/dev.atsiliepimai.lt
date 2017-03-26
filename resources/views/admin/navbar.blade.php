@@ -47,6 +47,22 @@
 
             <li class="dropdown">
                 <div class="btn-group">
+                    <a href="{{ route('brands.index') }}">
+                        <span class="fa fa-trophy" aria-hidden="true"></span>
+                        {{ trans('admin.brands.index') }}
+                    </a>
+                    <a aria-expanded="false" aria-haspopup="true" role="button" data-toggle="dropdown" class="dropdown-toggle">
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{ route('brands.create') }}">{{ trans('admin.brands.create') }}</a></li>
+                        <li><a href="{{ route('brands.index') }}">{{ trans('admin.brands.index') }}</a></li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <div class="btn-group">
                     <a href="{{ route('pages.index') }}">
                         <span class="fa fa-file-o" aria-hidden="true"></span>
                         {{ trans('admin.pages.index') }}

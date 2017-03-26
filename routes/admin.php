@@ -3,6 +3,7 @@
 Route::resource('listings', 'ListingsController');
 Route::get('listings/{listing}/delete', 'ListingsController@delete')->name('listings.delete');
 Route::get('listings/{listing}/reviews/{attribute_option_slug?}', 'ListingsController@reviews')->name('listings.reviews');
+Route::get('listings/{listing}/toggleBrand/{status}', 'ListingsController@toggleBrand')->name('listings.toggleBrand');
 
 Route::resource('reviews', 'ReviewsController');
 Route::get('reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
@@ -13,6 +14,11 @@ Route::get('questions/{question}/delete', 'QuestionsController@delete')->name('q
 
 Route::resource('answers', 'AnswersController');
 Route::get('answers/{answer}/delete', 'AnswersController@delete')->name('answers.delete');
+
+Route::resource('brands', 'BrandsController');
+Route::get('brands/{brand}/delete', 'BrandsController@delete')->name('brands.delete');
+Route::get('brands/{brand}/move/{position}', 'BrandsController@move')
+    ->name('brands.move')->where(['position' => '[0-9]+']);
 
 Route::resource('pages', 'PagesController');
 Route::get('pages/{page}/delete', 'PagesController@delete')->name('pages.delete');

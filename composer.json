@@ -14,7 +14,8 @@
         "kartik-v/bootstrap-star-rating": "@dev",
         "paragonie/random_compat": "1.4.*",
         "laravel/socialite": "^2.0",
-        "creitive/laravel5-breadcrumbs": "^2.0"
+        "creitive/laravel5-breadcrumbs": "^2.0",
+        "watson/sitemap": "^2.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

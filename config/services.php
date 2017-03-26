@@ -38,18 +38,18 @@ return [
     'facebook' => [
         'client_id' => '606639046211281',
         'client_secret' => 'b485d29ca0a0eac3621781ed78eff68f',
-        'redirect' => url('/').'/social/facebookCallback',
+        'redirect' => env('APP_URL').'/social/facebookCallback',
     ],
 
     'google' => [
         'client_id' => '966588477442-n81448e0nn8pn2ntjgb4sgq96angi08g.apps.googleusercontent.com',
         'client_secret' => '03iz4l7gO41r2wPP8Y2afS9a',
-        'redirect' => url('/').'/social/googleCallback',
+        'redirect' => env('APP_URL').'/social/googleCallback',
     ],
 
     'linkedin' => [
         'client_id' => '786qcq3kddlf23',
         'client_secret' => 'SV8h74jAGmnJXLAy',
-        'redirect' => url('/').'/social/linkedinCallback',
+        'redirect' => env('APP_URL').'/social/linkedinCallback',
     ],
 ];

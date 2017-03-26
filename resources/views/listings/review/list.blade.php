@@ -91,7 +91,7 @@
                                         <span>({{ $negative }})</span>
                                     </span>
                                 @endif
-                            @else
+                            @elseif(!App\User::isUserReview($r->id))
                                 {!! Former::open()->route('reviews.vote', $r->id)->method('post') !!}
                                     <button type="submit" class="btn btn-link btn-like" name="like">
                                         <span class="fa fa-thumbs-up"></span>

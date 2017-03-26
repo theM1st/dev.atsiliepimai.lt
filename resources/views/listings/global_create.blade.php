@@ -22,6 +22,13 @@
                     ->help('common.form.listing.title_help')
             !!}
             {{ Form::categoriesHierarchy('category_id', $categories, old('category_id', $listing->category_id)) }}
+
+            {!!
+                Former::text('brand_value')->label('common.form.listing.brand')
+                    ->placeholder('common.form.listing.brand_placeholder')
+                    ->help('common.form.listing.brand_help')
+            !!}
+
             {!!
                 Former::text('rating')
                     ->label(trans('common.form.review.rating', ['name' => 'produktą/paslaugą']))

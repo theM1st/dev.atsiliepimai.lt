@@ -13,6 +13,7 @@
                     <tr>
                         <th nowrap>{{ trans('common.created_date') }}</th>
                         <th>{{ trans('common.product_service') }}</th>
+                        <th>{{ trans('common.form.category.parent') }}</th>
                         <th>{{ trans('common.last_review') }}</th>
                         <th>{{ trans('common.rating') }}</th>
                         <th>Atsiliepimų</th>
@@ -30,6 +31,7 @@
             dataSet.push([
                 '{{ $l->created_at->format('Y-m-d H:i') }}',
                 '{{ $l->title }}',
+                '{{ $l->category->name }}',
                 '{{ ($l->lastReview() ? $l->lastReview()->review_title : null) }}',
                 {
                     display: '{!! starRating($l->avg_rating) !!}',
@@ -53,7 +55,7 @@
         var dataTableOptions = {
             data: dataSet,
             order: [0, 'desc'],
-            cellObject: [3, 5]
+            cellObject: [4, 6]
         };
     </script>
 @endsection

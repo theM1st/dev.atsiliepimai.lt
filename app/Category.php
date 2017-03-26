@@ -25,6 +25,11 @@ class Category extends Node
         return $this->hasMany('App\Listing');
     }
 
+    public function brands()
+    {
+        return $this->hasManyThrough('App\Brand', 'App\Listing');
+    }
+
     protected static function boot()
     {
         parent::boot();
@@ -49,6 +54,11 @@ class Category extends Node
         return $reviews;
     }
 
+    public function reviews2()
+    {
+        return $this->hasManyThrough('App\Review', 'App\Listing');
+    }
+
     public function scopePopular($query)
     {
         return $query->where('popular', 1);
@@ -61,7 +71,7 @@ class Category extends Node
 
     public static function getMainCategories()
     {
-        return (Category::where('parent_id', null)->get());
+        return (Category::where('parent_id', null)->orderBy('name')->get());
     }
 
     public function getListings($filter, $limit = 20)

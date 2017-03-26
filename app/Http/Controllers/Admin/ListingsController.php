@@ -8,6 +8,7 @@ use App\Category;
 use App\Listing;
 use App\Attribute;
 use App\AttributeOption;
+use App\Brand;
 
 class ListingsController extends AdminController
 {
@@ -87,6 +88,30 @@ class ListingsController extends AdminController
     public function destroy(Listing $listing)
     {
         return $this->destroyAlertRedirect($listing);
+    }
+
+    public function toggleBrand(Listing $listing, $status)
+    {
+        if ($status == 'cancel') {
+            $listing->update([ 'brand_value' => null]);
+
+            alert('Produkto gamintojo reikšmė ištrinta.', 'success');
+        }
+
+        if ($status == 'accept') {
+            $brandSlug = str_slug($listing->brand_value);
+            $brand = Brand::where('slug', $brandSlug)->first();
+
+            if (!$brand) {
+                $brand = Brand::create([ 'name' => $listing->brand_value ]);
+                $listing->brand_id = $brand->id;
+                $listing->save();
+
+                alert('Produkto gamintojo reikšmė sėkmingai įdėta į bendra sąrašą ir priskirta produktui.', 'success');
+            }
+        }
+
+        return $this->redirectRoutePath('back');
     }
 
     public function reviews(Listing $listing, Request $request, $model=null)

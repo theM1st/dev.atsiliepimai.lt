@@ -14,6 +14,7 @@
                         <th nowrap>{{ trans('common.created_date') }}</th>
                         <th>{{ trans('common.product_service') }}</th>
                         <th>{{ trans('common.review') }}</th>
+                        <th>{{ trans('common.form.category.parent') }}</th>
                         <th>{{ trans('common.rating') }}</th>
                         <th>Parašė</th>
                         <th class="actions"></th>
@@ -30,6 +31,7 @@
                 '{{ $r->created_at->format('Y-m-d H:i') }}',
                 '{{ $r->listing->title }}',
                 '{{ $r->review_title }}',
+                '{{ $r->listing->category->name }}',
                 {
                     display: '{!! starRating($r->rating) !!}',
                     value: '{{ $r->rating }}'
@@ -47,7 +49,7 @@
         var dataTableOptions = {
             data: dataSet,
             order: [0, 'desc'],
-            cellObject: [3]
+            cellObject: [4]
         };
     </script>
 @endsection

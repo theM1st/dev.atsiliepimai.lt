@@ -7075,6 +7075,9 @@ form .help-block {
 .listing-questions-container .listing-question-form {
   margin-top: 30px; }
 
+.category-navigation .subcategory-list {
+  margin-bottom: 20px; }
+
 .category-navigation a {
   color: #293f54; }
   .category-navigation a.active {
@@ -7090,12 +7093,14 @@ form .help-block {
     text-transform: uppercase;
     white-space: nowrap; }
     .category-navigation > ul > li a {
-      display: block;
-      padding: 5px 0; }
+      display: inline-block;
+      padding: 5px 0;
+      position: relative; }
       .category-navigation > ul > li a.active {
         background: #1b9d48;
         border: 2px solid #1b9044;
         color: #ffffff;
+        display: block;
         font-weight: normal;
         padding: 5px 10px 5px 5px; }
         .category-navigation > ul > li a.active .fa-window-close {
@@ -7176,6 +7181,7 @@ form .help-block {
 
 .category-show .category-list .category-container {
   display: block;
+  height: 200px;
   text-align: center; }
   .category-show .category-list .category-container .category-picture {
     display: block;
@@ -7195,6 +7201,41 @@ form .help-block {
     color: #3c3e40;
     font-weight: bold;
     margin: 10px 0; }
+
+.category-show .all-category-list h3 {
+  margin: 20px 0; }
+
+.category-show .all-category-list .category-container {
+  border-right: 1px solid #f2f1f1;
+  font-size: 15px; }
+  .category-show .all-category-list .category-container a {
+    display: block; }
+  .category-show .all-category-list .category-container:last-child {
+    border: none; }
+
+.category-show .brand-list {
+  margin-top: 40px; }
+  .category-show .brand-list h3 {
+    margin: 20px 0; }
+    .category-show .brand-list h3 span {
+      color: #1b9d48; }
+  .category-show .brand-list .brand-container {
+    display: block;
+    margin: 10px 0;
+    text-align: center; }
+    .category-show .brand-list .brand-container .brand-picture {
+      display: block;
+      height: 128px;
+      margin: auto;
+      position: relative;
+      width: 128px; }
+      .category-show .brand-list .brand-container .brand-picture img {
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: 0; }
 
 .breadcrumbs {
   background-color: transparent;

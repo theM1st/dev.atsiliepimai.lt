@@ -2,6 +2,7 @@
   .category-list {
     .category-container {
       display: block;
+	  height: 200px;
       text-align: center;
       .category-picture {
         display: block;
@@ -24,6 +25,50 @@
         color: $text-color;
         font-weight: bold;
         margin: 10px 0;
+      }
+    }
+  }
+  .all-category-list {
+    h3 {
+      margin: 20px 0;
+    }
+    .category-container {
+      border-right: 1px solid #f2f1f1;
+      font-size: $font-standart-size+1;
+      a {
+        display: block;
+      }
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+  .brand-list {
+    margin-top: 40px;
+    h3 {
+      margin: 20px 0;
+      span {
+        color: $primary-green;
+      }
+    }
+    .brand-container {
+      display: block;
+      margin: 10px 0;
+      text-align: center;
+      .brand-picture {
+        display: block;
+        height: 128px;
+        margin: auto;
+        position: relative;
+        width: 128px;
+        img {
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
       }
     }
   }

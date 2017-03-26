@@ -14,6 +14,7 @@ use App\AttributeOption;
 use App\Answer;
 use App\Message;
 use App\Page;
+use App\Brand;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -54,15 +55,35 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('page', Page::class);
 
         Route::bind('category_slug', function($slug) {
-            return Category::where('slug', $slug)->first();
+            $item = Category::where('slug', $slug)->first();
+
+            if (!$item) abort(404);
+
+            return $item;
         });
 
         Route::bind('listing_slug', function($slug) {
-            return Listing::where('slug', $slug)->first();
+            $item = Listing::where('slug', $slug)->first();
+
+            if (!$item) abort(404);
+
+            return $item;
         });
 
         Route::bind('page_slug', function($slug) {
-            return Page::where('slug', $slug)->first();
+            $item = Page::where('slug', $slug)->first();
+
+            if (!$item) abort(404);
+
+            return $item;
+        });
+
+        Route::bind('brand_slug', function($slug) {
+            $item = Brand::where('slug', $slug)->first();
+
+            if (!$item) abort(404);
+
+            return $item;
         });
     }
 

@@ -22,7 +22,8 @@ class ListingsComposer
         $html = '';
         
         $viewedListings = Listing::recentViewed();
-        if ($viewedListings->count()) {
+
+        if ($viewedListings && $viewedListings->count()) {
             $html = view('listings.partials.recentlyViewedListings', [ 'listings' => $viewedListings ])->render();
         }
 
