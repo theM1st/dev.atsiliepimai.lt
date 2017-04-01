@@ -18,9 +18,11 @@
             </form>
             <br>
             @if ($q)
-                <div class="well">
+                <div class="well listing-create-global">
                     <strong>Nerandate ko ieškote?</strong>
-                    <a href="{{ route('listing.global_create') }}?name={{ $q }}" class="btn btn-second">Įdėti produktą/paslaugą ir parašyti atsiliepimą</a>
+                    <a href="{{ route('listing.global_create') }}?name={{ $q }}" class="btn btn-second">
+                        Įdėti produktą/paslaugą ir parašyti atsiliepimą
+                    </a>
                 </div>
             @endif
             @include('listings.partials.list', [ 'listings' => $listings ])

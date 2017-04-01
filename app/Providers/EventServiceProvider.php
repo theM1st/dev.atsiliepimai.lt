@@ -100,8 +100,17 @@ class EventServiceProvider extends ServiceProvider
         });
 
         Listing::saving(function($listing) {
-            if (Request::get('brand_value')) {
-                $brand = Brand::where('slug', str_slug(Request::get('brand_value')))->first();
+            if ($listing->listing_type == 'product') {
+                $listing->address = null;
+            }
+
+            if ($listing->listing_type == 'service') {
+                $listing->brand_id = null;
+                $listing->brand_value = null;
+            }
+
+            if ($listing->brand_value) {
+                $brand = Brand::where('slug', str_slug($listing->brand_value))->first();
                 if ($brand) {
                     $listing->brand_id = $brand->id;
                     $listing->brand_value = null;

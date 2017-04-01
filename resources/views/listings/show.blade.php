@@ -2,7 +2,9 @@
 
 @section('title', getTitle($listing->title . ' ' . ($model ? $model->option_name : '') . ' atsiliepimai '))
 @section('description', getDescription($listing->lastReview()->review_description))
-@section('breadcrumbs', $breadcrumbs->render())
+@section('breadcrumbs')
+    {!! $breadcrumbs->render() !!}
+@endsection
 
 @section('content')
     <section class="main-section listing-show">

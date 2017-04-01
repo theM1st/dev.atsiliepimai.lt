@@ -13,7 +13,7 @@
 
 {{ Form::categoriesHierarchy('category_id', $categories, old('category_id', $listing->category_id)) }}
 
-<div class="row">
+<div class="row brand-group-container" style="{{ $listing->listing_type == 'service' || old('listing_type') == 'service' ? 'display: none' : '' }}">
     <div class="col-sm-6">
         {!!
             Former::text('brand_value')->label('common.form.listing.brand')
@@ -27,6 +27,12 @@
             <a href="{{ route('listings.toggleBrand', [$listing->id, 'cancel']) }}" class="btn btn-red btn-sm">Atmesti</a>
         </div>
     @endif
+</div>
+
+<div class="address-group-container" style="{{ $listing->listing_type == 'product' || old('listing_type') == 'product' ? 'display: none' : '' }}">
+    {!!
+        Former::text('address')->label('common.form.listing.address')
+    !!}
 </div>
 
 <div class="checkbox-container">

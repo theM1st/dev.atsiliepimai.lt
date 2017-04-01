@@ -58,6 +58,7 @@ return [
             'brand' => 'Gamintojas',
             'brand_placeholder' => 'Pavyzdžiui: Samsung',
             'brand_help' => 'Rekomenduojama nurodyti',
+            'address' => 'Adresas',
             'sortby' => [
                 'newest' => 'Naujesni',
                 'rating_high' => 'Labiausi įvertinti',
@@ -121,6 +122,7 @@ return [
         'category' => [
             'main' => 'Pagrindinė',
             'name' => 'Pavadinimas',
+            'meta_title' => 'Antraštė (meta title)',
             'description' => 'Kategorijos aprašymas (meta description)',
             'parent' => 'Priklauso kategorijai',
             'popular' => 'Populiari kategorija',

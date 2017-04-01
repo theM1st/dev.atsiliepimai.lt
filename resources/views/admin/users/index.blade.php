@@ -48,9 +48,3 @@
 
 @include('admin.dataTables')
 
-@section('scripts')
-<script>
-    console.log('users.index')
-</script>
-@endsection
-

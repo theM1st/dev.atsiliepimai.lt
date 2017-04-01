@@ -14,7 +14,7 @@
                     ->radios([
                         trans('common.product') => ['value' => 'product'],
                         trans('common.service') => ['value' => 'service']
-                    ])
+                    ])->check('product')
             !!}
             {!!
                 Former::text('title')->label('common.form.listing.title')
@@ -23,12 +23,18 @@
             !!}
             {{ Form::categoriesHierarchy('category_id', $categories, old('category_id', $listing->category_id)) }}
 
+            <div class="brand-group-container">
             {!!
                 Former::text('brand_value')->label('common.form.listing.brand')
                     ->placeholder('common.form.listing.brand_placeholder')
                     ->help('common.form.listing.brand_help')
             !!}
-
+            </div>
+            <div class="address-group-container" style="display: none">
+                {!!
+                    Former::text('address')->label('common.form.listing.address')
+                !!}
+            </div>
             {!!
                 Former::text('rating')
                     ->label(trans('common.form.review.rating', ['name' => 'produktą/paslaugą']))
@@ -65,6 +71,7 @@
     <script src="{{ asset('js/star-rating.js') }}"></script>
 
     <script>
+        listingTypeToggle();
         starRating($(".listing-create #rating"), { size: 'md' });
     </script>
 @endsection

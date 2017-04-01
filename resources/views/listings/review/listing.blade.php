@@ -52,6 +52,9 @@
             </div>
             <div class="col-sm-5 listing-side">
                 <h2>{{ $listing->title }}</h2>
+                @if ($listing->address && $listing->listing_type == 'service')
+                    <div class="listing-address">{{ $listing->address }}</div>
+                @endif
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="listing-picture">

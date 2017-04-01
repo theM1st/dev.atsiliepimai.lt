@@ -24,6 +24,8 @@ class AttributesController extends AdminController
 
     public function store(AttributeRequest $request)
     {
+        $request->merge(['main' => $request->get('main', 0)]);
+
         return $this->createAlertRedirect(Attribute::class, $request);
     }
 
@@ -38,6 +40,8 @@ class AttributesController extends AdminController
 
     public function update(Attribute $attribute, AttributeRequest $request)
     {
+        $request->merge(['main' => $request->get('main', 0)]);
+
         $optionNames = $request->get('option_name');
         $optionIds = $request->get('option_id');
 

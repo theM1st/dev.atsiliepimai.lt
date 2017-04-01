@@ -53,6 +53,7 @@
     <script src="{{ asset('js/star-rating.js') }}"></script>
 
     <script>
+        listingTypeToggle();
         starRating($(".listings-create #rating"), { size: 'md' });
     </script>
 @endsection

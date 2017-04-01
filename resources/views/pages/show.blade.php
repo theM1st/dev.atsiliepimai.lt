@@ -2,7 +2,9 @@
 
 @section('title', getTitle($page, 'title'))
 @section('description', getDescription($page))
-@section('breadcrumbs', $breadcrumbs->render())
+@section('breadcrumbs')
+    {!! $breadcrumbs->render() !!}
+@endsection
 
 @section('content')
     <section class="main-section page-show">

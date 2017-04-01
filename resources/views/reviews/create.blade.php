@@ -42,7 +42,7 @@
                         ->title(trans('common.form.select'))
                         ->label($attribute->title)
                     !!}
-                    <div class="attribute-option-value" style="display: none">
+                    <div id="value_attribute_option_id{{ $attribute->id }}" style="display: none">
                         {!!
                             Former::text('option_value['.$attribute->id.']')
                                 ->disabled()
@@ -58,6 +58,27 @@
                         ->label('common.form.review.description')
                         ->help('common.form.review.description_help')
                 !!}
+
+                @if ($attributes = $listing->getSecondaryAttributes())
+                    @foreach ($attributes as $attribute)
+                        {!!
+                            Former::select('attribute_option_id['.$attribute->id.']')
+                            ->options(
+                                $attribute->options->pluck('option_name', 'id')->put(0, trans('common.form.review.cannot_find_my_option'))
+                            )
+                            ->class('form-control selectpicker')
+                            ->title(trans('common.form.select'))
+                            ->label($attribute->title)
+                        !!}
+                        <div id="value_attribute_option_id{{ $attribute->id }}" style="display: none">
+                            {!!
+                                Former::text('option_value['.$attribute->id.']')
+                                    ->disabled()
+                                    ->label('common.form.review.write_your_option')
+                            !!}
+                        </div>
+                    @endforeach
+                @endif
 
                 <hr>
                 {!! Former::actions()->first_lg_submit('Siųsti atsiliepimą') !!}
@@ -77,28 +98,31 @@
         starRating($(".review-create #rating"), { size: 'md' });
 
         (function(form) {
-            var optId = form.find('[id^=attribute_option_id]');
+            form.find('[id^=attribute_option_id]').each(function(){
+                var optId = $(this);
 
-            if (parseInt(optId.val()) === 0) {
-                toggleOptionValue('show');
-            }
+                var $optValue = $('#value_' + optId.attr('id').replace('[', '').replace(']', ''));
 
-            optId.change(function() {
-                if (parseInt($(this).val()) === 0) {
-                    toggleOptionValue('show');
-                } else {
-                    toggleOptionValue('hide');
+                if (parseInt(optId.val()) === 0) {
+                    toggleOptionValue('show', $optValue);
                 }
+
+                optId.change(function() {
+                    if (parseInt($(this).val()) === 0) {
+                        toggleOptionValue('show', $optValue);
+                    } else {
+                        toggleOptionValue('hide', $optValue);
+                    }
+                });
             });
 
-            function toggleOptionValue(a) {
-                var optValue = form.find('.attribute-option-value');
+            function toggleOptionValue(a, obj) {
                 if (a == 'show') {
-                    optValue.show();
-                    optValue.find('[id^=option_value]').prop('disabled', false);
+                    obj.show();
+                    obj.find('input').prop('disabled', false);
                 } else if (a == 'hide') {
-                    optValue.hide();
-                    optValue.find('[id^=option_value]').prop('disabled', true);
+                    obj.hide();
+                    obj.find('input').prop('disabled', true);
                 }
             }
 

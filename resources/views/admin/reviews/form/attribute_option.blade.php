@@ -11,8 +11,9 @@
     ->title(trans('common.form.select'))
     ->label($attribute->title)
 !!}
-@if ($review->getReviewAttributeOption($attribute->id))
-    @if ($optionValue = $review->getReviewAttributeOption($attribute->id)->pivot->option_value)
+
+@if ($review->getReviewAttribute($attribute->id))
+    @if ($optionValue = $review->getReviewAttribute($attribute->id)->pivot->option_value)
         <div class="attribute-option-value row">
             <div class="col-sm-7">
                 {!!

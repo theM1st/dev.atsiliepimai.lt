@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="google-site-verification" content="YOt8zkoH1_w5AanKz7tPByFCpN5Jg1NrA0xsaMwLMZY">
+    <meta name="google-site-verification" content="ZYCIg3E6VlWHfgXkVOzx1kLD7g83e1atV5VGshVI1Ac">
 
     <title>@yield('title') - {{ config('app.name') }}</title>
 

@@ -12,6 +12,12 @@
 !!}
 
 {!!
+    Former::text('meta_title')
+        ->label('common.form.category.meta_title')
+        ->inlineHelp('Antraštė reikalinga paieškos sistemoms pvz. Google ir t.t. Ilgis ne daugiau 100 simbolių.')
+!!}
+
+{!!
     Former::textarea('description')
         ->label('common.form.category.description')
         ->rows(2)

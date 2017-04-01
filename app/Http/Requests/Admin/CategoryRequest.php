@@ -25,6 +25,7 @@ class CategoryRequest extends FormRequest
     {
         return [
             'name' => 'required|max:60|unique:categories,name,'.$this->segment(3),
+            'meta_title' => 'max:100',
             'description' => 'min:50|max:200'
         ];
     }

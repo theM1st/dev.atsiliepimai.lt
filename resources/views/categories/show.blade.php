@@ -1,14 +1,22 @@
 @extends('layouts.app')
 
-@section('title', getTitle($title))
+@section('title')
+    @if($category->meta_title)
+        {{ getTitle($category->meta_title) }}
+    @else
+        {{ getTitle($title)}}
+@endif
+@endsection
 @section('description', getDescription($category))
-@section('breadcrumbs', $breadcrumbs->render())
+@section('breadcrumbs')
+{!! $breadcrumbs->render() !!}
+@endsection
 
 @section('content')
-    <section class="main-section category-show">
-        <div class="container">
-            <h2 class="product-title">
-                {{ $title }}
+<section class="main-section category-show">
+<div class="container">
+    <h2 class="product-title">
+        {{ $title }}
             </h2>
             @if ($category->getLevel() == 0 && !$brand->id)
                 <div class="row">

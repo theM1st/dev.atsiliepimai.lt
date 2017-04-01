@@ -29,7 +29,7 @@
                     <div class="col-sm-7">
                         {!! Former::open_for_files()->route('users.update', $user->id)->method('put') !!}
 
-                            @include("admin.users.partials.$section")
+                            @include("admin.users.partials.".strtolower($section))
 
                             <hr>
 

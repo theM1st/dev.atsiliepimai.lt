@@ -15,7 +15,10 @@ class Listing extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'listing_type', 'picture', 'active', 'category_id', 'brand_value'];
+    protected $fillable = [
+        'title', 'description', 'listing_type', 'picture',
+        'active', 'category_id', 'brand_value', 'address'
+    ];
 
     protected static function boot()
     {

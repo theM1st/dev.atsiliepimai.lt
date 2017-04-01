@@ -24,6 +24,7 @@ class CreateListingsTable extends Migration
             $table->integer('category_id')->unsigned();
             $table->integer('brand_id')->nullable()->unsigned()->index();
             $table->string('brand_value', 80)->nullable();
+            $table->string('address', 100)->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();
 

@@ -54,6 +54,8 @@
     <script type="text/javascript" src="{{ asset('js/froala-editor/plugins/colors.min.js') }}"></script>
     <script>
         $(function() {
+            listingTypeToggle();
+
             $('#description').froalaEditor({
                 heightMin: 300,
                 toolbarButtons: ['bold', 'italic', 'color', '|', 'indent', 'outdent', 'formatOL', 'formatUL', '|',

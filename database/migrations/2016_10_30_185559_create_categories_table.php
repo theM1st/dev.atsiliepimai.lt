@@ -26,6 +26,7 @@ class CreateCategoriesTable extends Migration {
             // Add needed columns here (f.ex: name, slug, path, etc.)
             $table->string('name', 60);
             $table->string('description', 255)->nullable();
+            $table->string('meta_title', 100)->nullable();
             $table->string('slug', 100)->unique();
             $table->string('picture')->nullable();
             $table->boolean('popular')->default(false);

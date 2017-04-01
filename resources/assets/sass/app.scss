@@ -20,24 +20,60 @@
 // Header element
 .header {
     background-color: $primary-green;
-    .logo {
+    .navbar-brand {
         display: block;
-        padding: 5px 0;
+        height: auto;
         text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
         @include respond-to(md) {
-            padding: 22px 0;
+            padding-top: 21px;
+            padding-bottom: 21px;
+        }
+        @include respond-to(lg) {
+            padding-top: 17px;
+            padding-bottom: 17px;
         }
         img {
-            width: 220px;
+            width: 150px;
+            @include respond-to(md) {
+                width: 160px;
+            }
+            @include respond-to(lg) {
+                width: 200px;
+            }
         }
     }
-    .search {
-        padding: 26px 0;
-        @include respond-to(sm) {
-            padding: 14px 0;
-        }
+    .navbar-toggle .icon-bar {
+        background-color: #ffffff;
+    }
+    .search-panel-toggle {
+        background-color: #3ABE69;
+        border-radius: 0;
+        color: #ffffff;
+        display: block;
+        float: right;
+        font-size: 18px;
+        padding: 11px 20px;
+        position: absolute;
+        right: 70px;
         @include respond-to(md) {
-            padding: 26px 0px;
+            display: none;
+        }
+    }
+    .search-panel {
+        background-color: #3ABE69;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        border: 0;
+        @include respond-to(md) {
+            background-color: transparent;
+            float: left;
+            margin: 0 5px;
+            padding: 20px 0;
+        }
+        @include respond-to(lg) {
+            width: 360px;
         }
         .input-group {
             width: 100%;
@@ -73,18 +109,20 @@
         }
     }
     .create-review {
-        padding: 6px 0;
+        padding: 10px 12px;
         text-align: center;
         @include respond-to(md) {
-            padding: 20px 0;
+            float: right;
+            padding: 14px 0;
         }
     }
-    .nav {
+    .navbar-nav {
+        margin: 0;
         .nav-link {
             @extend .a-decoration-none;
             color: #ffffff;
             display: block;
-            padding: 30px 12px;
+            padding: 10px 12px;
             position: relative;
             .username {
                 display: inline-block;
@@ -117,31 +155,20 @@
                 padding-right: 10px;
             }
             &.categories-menu-link {
-                padding-left: 10px;
-                padding-right: 15px;
             }
             &.user-menu-link {
                 padding-left: 10px;
                 padding-right: 10px;
+                @include only-to(sm) {
+                    display: none;
+                }
             }
             &:hover {
               background-color: $secondary-green;
             }
-            @include respond-to(sm) {
-                padding-bottom: 20px;
-                padding-top: 20px;
-                &.profile-messages-link {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-                &.user-menu-link {
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-            }
             @include respond-to(md) {
-                padding-bottom: 32px;
-                padding-top: 32px;
+                padding-bottom: 26px;
+                padding-top: 26px;
             }
             @include respond-to(lg) {
                 &.profile-messages-link, &.user-menu-link {
@@ -180,8 +207,16 @@
             }
         }
         .user-dropdown-menu {
-            @include respond-to(sm) {
-                min-width: 200px;
+            @include only-to(sm) {
+                background-color: $primary-green;
+                box-shadow: none;
+                display: block;
+                padding: 0;
+                position: static;
+                width: 100%;
+                li > a {
+                    padding: 10px 12px;
+                }
             }
         }
         .user-login-form {
