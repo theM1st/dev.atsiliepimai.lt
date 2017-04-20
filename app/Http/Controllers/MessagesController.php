@@ -6,15 +6,27 @@ use Illuminate\Http\Request;
 use App\Http\Requests\MessageRequest;
 use App\User;
 use App\Message;
+use App\MailSubject;
+use App\MailMessage;
+use App\MailBox;
 use Auth;
 
 class MessagesController extends Controller
 {
     public function index($section)
     {
+        $box = 'in';
+
+        if ($section == 'outbox') {
+            $box = 'out';
+        }
+
+        $messages = MailMessage::box($box)->get();
+
         $viewData = [
             'title' => trans('common.messages.'.$section),
             'section' => $section,
+            'messages' => $messages,
             'user' => \Auth::user(),
         ];
 
@@ -25,7 +37,7 @@ class MessagesController extends Controller
         return $this->display('messages.index', $viewData);
     }
 
-    public function create(User $recipient)
+    public function create(User $receiver)
     {
         $section = 'create';
 
@@ -34,42 +46,77 @@ class MessagesController extends Controller
         return $this->display('messages.index', [
             'title' => trans('common.messages.'.$section),
             'section' => $section,
-            'recipient' => $recipient,
+            'receiver' => $receiver,
             'breadcrumbs' => $this->breadcrumbs,
         ]);
     }
 
     public function store(MessageRequest $request)
     {
-        $user = Auth::user();
+        $data = $request->all();
+        $data['sender_id'] = Auth::user()->id;
 
-        $message = new Message($request->all());
+        $subject = MailSubject::create([ 'subject' => $request->get('subject') ]);
 
-        $user->messagesOut()->save($message);
+        $message = new MailMessage($data);
 
-        return redirect($request->redirect);
+        $subject->messages()->save($message);
+
+
+        return redirect()->route('messages.index', 'outbox');
     }
 
-    public function show($section, Message $message)
+    public function show($section, MailSubject $subject)
     {
-        $title = 'Žinutė ' . $message->title;
+        $box = 'in';
+
+        if ($section == 'outbox') {
+            $box = 'out';
+        }
+
+        $messages = MailMessage::box($box)->where('subject_id', $subject->id);
+
+        if ($messages->count() == 0) {
+            abort(404);
+        }
+
+        if ($box == 'in') {
+            $messages->update(['unread' => 0]);
+        }
+
+        $title = 'Žinutė ' . $subject->subject;
 
         $this->breadcrumbs->addCrumb(trans('common.messages.'.$section), route('messages.index', $section));
         $this->breadcrumbs->addCrumb($title);
 
         $section = 'show';
-
+/*
         if ($message->new) {
             $message->new = 0;
             $message->save();
         }
+*/
 
         return $this->display('messages.index', [
             'title' => $title,
             'section' => $section,
-            'message' => $message,
+            'subject' => $subject,
             'breadcrumbs' => $this->breadcrumbs,
+            'user' => Auth::user(),
+            'receiver' => ($box == 'in' ? $messages->get()[0]->sender : $messages->get()[0]->receiver),
         ]);
+    }
+
+    public function reply(MailSubject $subject, Request $request)
+    {
+        $data = $request->all();
+        $data['sender_id'] = Auth::user()->id;
+
+        $message = new MailMessage($data);
+
+        $subject->messages()->save($message);
+
+        return redirect()->route('messages.index', 'outbox');
     }
 
     public function delete()
@@ -83,7 +130,15 @@ class MessagesController extends Controller
 
     public function destroy(Request $request)
     {
-        Message::destroy($request->get('delete'));
+        $items = $request->get('delete');
+
+        foreach ($items as $box => $item) {
+            $subject = MailSubject::find($item);
+
+            $subject[0]->boxes()->where('box', $box)
+                ->where('user_id', Auth::user()->id)
+                ->delete();
+        }
 
         return back();
     }

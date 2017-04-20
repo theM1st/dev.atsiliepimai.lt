@@ -61,7 +61,10 @@ class User extends Authenticatable
 
     public function viewedListings()
     {
-        return $this->belongsToMany('App\Listing', 'user_listing_viewed')->withPivot('created_at')->withTimestamps();
+        return $this->belongsToMany('App\Listing', 'user_listing_viewed')
+            ->has('category')
+            ->withPivot('created_at')
+            ->withTimestamps();
     }
 
     public function questions()
@@ -74,19 +77,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Answer');
     }
 
-    public function messagesIn()
-    {
-        return $this->hasMany('App\Message', 'recipient_id');
-    }
-
     public function newMessages()
     {
-        return $this->hasMany('App\Message', 'recipient_id')->where('new', 1);
-    }
-
-    public function messagesOut()
-    {
-        return $this->hasMany('App\Message', 'sender_id');
+        return MailMessage::box('in')->where('unread', 1)->get()->count();
     }
 
     /**

@@ -5649,11 +5649,11 @@ button.close {
   .carousel-indicators {
     bottom: 20px; } }
 
-.clearfix:before, .main .inner-header:before, .popular-categories .popular-category-list:before, .messages-index .messages-help-note:before, .category-listings .category-listings-header:before, .listing-list .listing-item-container .listing-item:before, .recently-viewed-listings .listing > a:before, .similar-listings .listing > a:before, .clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .messages-index .messages-help-note:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after, .similar-listings .listing > a:after {
+.clearfix:before, .main .inner-header:before, .popular-categories .popular-category-list:before, .messages-index .messages-help-note:before, .mail-messages .message .message-info:before, .category-listings .category-listings-header:before, .listing-list .listing-item-container .listing-item:before, .recently-viewed-listings .listing > a:before, .similar-listings .listing > a:before, .clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .messages-index .messages-help-note:after, .mail-messages .message .message-info:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after, .similar-listings .listing > a:after {
   content: " ";
   display: table; }
 
-.clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .messages-index .messages-help-note:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after, .similar-listings .listing > a:after {
+.clearfix:after, .main .inner-header:after, .popular-categories .popular-category-list:after, .messages-index .messages-help-note:after, .mail-messages .message .message-info:after, .category-listings .category-listings-header:after, .listing-list .listing-item-container .listing-item:after, .recently-viewed-listings .listing > a:after, .similar-listings .listing > a:after {
   clear: both; }
 
 .center-block {
@@ -6335,10 +6335,12 @@ form .help-block {
         position: absolute;
         right: 5px;
         text-align: center;
-        top: 30px; }
+        top: 25px; }
       .header .navbar-nav .nav-link.profile-messages-link {
         padding-left: 10px;
         padding-right: 10px; }
+        .header .navbar-nav .nav-link.profile-messages-link .fa-envelope-o {
+          font-size: 20px; }
       .header .navbar-nav .nav-link.user-menu-link {
         padding-left: 10px;
         padding-right: 10px; }
@@ -6765,6 +6767,20 @@ form .help-block {
 .profile-edit .form-control:-ms-input-placeholder {
   color: #cacdd1; }
 
+.user-show .username {
+  font-weight: 700;
+  padding: 2px 5px; }
+
+.user-show .send-message span {
+  color: #f3c903;
+  font-size: 18px;
+  text-align: center;
+  width: 30px; }
+
+.user-show .send-message a {
+  color: #3c3e40;
+  font-size: 14px; }
+
 .listings-review-list .review {
   border-bottom: 1px dashed #dfe2e6;
   padding-bottom: 25px;
@@ -7028,12 +7044,14 @@ form .help-block {
       text-align: center; }
       .listings-review-listing .listing-info .listing-filters .filter-by {
         font-weight: bold;
-        padding: 14px 10px; }
-      .listings-review-listing .listing-info .listing-filters .filter label {
-        font-weight: 400;
-        padding: 10px; }
-      .listings-review-listing .listing-info .listing-filters .filter .bootstrap-select .dropdown-toggle {
-        height: 40px; }
+        padding: 0 10px 10px 10px; }
+      .listings-review-listing .listing-info .listing-filters .filter {
+        float: left; }
+        .listings-review-listing .listing-info .listing-filters .filter label {
+          font-weight: 400;
+          padding: 10px; }
+        .listings-review-listing .listing-info .listing-filters .filter .bootstrap-select .dropdown-toggle {
+          height: 40px; }
       @media only screen and (min-width: 992px) {
         .listings-review-listing .listing-info .listing-filters {
           text-align: left; } }
@@ -7171,6 +7189,7 @@ form .help-block {
           cursor: pointer; }
 
 .messages-index .messages-help-note {
+  font-size: 14px;
   margin-bottom: 20px; }
   .messages-index .messages-help-note .message-opened {
     float: right;
@@ -7185,13 +7204,82 @@ form .help-block {
       padding-left: 10px; }
 
 .messages-index .table, .messages-index .page-show table, .page-show .messages-index table, .messages-index .listing-description-container .listing-description table, .listing-description-container .listing-description .messages-index table {
-  font-family: "Roboto", sans-serif; }
-  .messages-index .table tr th .icheckbox_square-green, .messages-index .page-show table tr th .icheckbox_square-green, .page-show .messages-index table tr th .icheckbox_square-green, .messages-index .listing-description-container .listing-description table tr th .icheckbox_square-green, .listing-description-container .listing-description .messages-index table tr th .icheckbox_square-green, .messages-index .table tr td .icheckbox_square-green, .messages-index .page-show table tr td .icheckbox_square-green, .page-show .messages-index table tr td .icheckbox_square-green, .messages-index .listing-description-container .listing-description table tr td .icheckbox_square-green, .listing-description-container .listing-description .messages-index table tr td .icheckbox_square-green {
-    margin: 0; }
+  font-family: "Roboto", sans-serif;
+  font-size: 14px; }
+  .messages-index .table tr th, .messages-index .page-show table tr th, .page-show .messages-index table tr th, .messages-index .listing-description-container .listing-description table tr th, .listing-description-container .listing-description .messages-index table tr th, .messages-index .table tr td, .messages-index .page-show table tr td, .page-show .messages-index table tr td, .messages-index .listing-description-container .listing-description table tr td, .listing-description-container .listing-description .messages-index table tr td {
+    vertical-align: middle; }
+    .messages-index .table tr th .icheckbox_square-green, .messages-index .page-show table tr th .icheckbox_square-green, .page-show .messages-index table tr th .icheckbox_square-green, .messages-index .listing-description-container .listing-description table tr th .icheckbox_square-green, .listing-description-container .listing-description .messages-index table tr th .icheckbox_square-green, .messages-index .table tr td .icheckbox_square-green, .messages-index .page-show table tr td .icheckbox_square-green, .page-show .messages-index table tr td .icheckbox_square-green, .messages-index .listing-description-container .listing-description table tr td .icheckbox_square-green, .listing-description-container .listing-description .messages-index table tr td .icheckbox_square-green {
+      margin: 0; }
+    .messages-index .table tr th .user a, .messages-index .page-show table tr th .user a, .page-show .messages-index table tr th .user a, .messages-index .listing-description-container .listing-description table tr th .user a, .listing-description-container .listing-description .messages-index table tr th .user a, .messages-index .table tr td .user a, .messages-index .page-show table tr td .user a, .page-show .messages-index table tr td .user a, .messages-index .listing-description-container .listing-description table tr td .user a, .listing-description-container .listing-description .messages-index table tr td .user a {
+      color: #3c3e40; }
+      .messages-index .table tr th .user a .img-circle, .messages-index .page-show table tr th .user a .img-circle, .page-show .messages-index table tr th .user a .img-circle, .messages-index .listing-description-container .listing-description table tr th .user a .img-circle, .listing-description-container .listing-description .messages-index table tr th .user a .img-circle, .messages-index .table tr td .user a .img-circle, .messages-index .page-show table tr td .user a .img-circle, .page-show .messages-index table tr td .user a .img-circle, .messages-index .listing-description-container .listing-description table tr td .user a .img-circle, .listing-description-container .listing-description .messages-index table tr td .user a .img-circle {
+        height: 30px;
+        width: 30px; }
+    .messages-index .table tr th .subject.new, .messages-index .page-show table tr th .subject.new, .page-show .messages-index table tr th .subject.new, .messages-index .listing-description-container .listing-description table tr th .subject.new, .listing-description-container .listing-description .messages-index table tr th .subject.new, .messages-index .table tr td .subject.new, .messages-index .page-show table tr td .subject.new, .page-show .messages-index table tr td .subject.new, .messages-index .listing-description-container .listing-description table tr td .subject.new, .listing-description-container .listing-description .messages-index table tr td .subject.new {
+      font-weight: bold; }
+    .messages-index .table tr th .subject a, .messages-index .page-show table tr th .subject a, .page-show .messages-index table tr th .subject a, .messages-index .listing-description-container .listing-description table tr th .subject a, .listing-description-container .listing-description .messages-index table tr th .subject a, .messages-index .table tr td .subject a, .messages-index .page-show table tr td .subject a, .page-show .messages-index table tr td .subject a, .messages-index .listing-description-container .listing-description table tr td .subject a, .listing-description-container .listing-description .messages-index table tr td .subject a {
+      color: #3c3e40; }
 
-.messages-index .fa-envelope-o, .messages-index .fa-envelope-open-o {
+.messages-index .fa-envelope, .messages-index .fa-envelope-open-o {
   color: #1b9d48;
   font-size: 22px; }
+
+.mail-messages .message {
+  margin-bottom: 20px; }
+  .mail-messages .message .message-info {
+    font-family: "Myriad Pro", sans-serif;
+    font-size: 14px; }
+    .mail-messages .message .message-info .user {
+      font-weight: 600; }
+    .mail-messages .message .message-info .date {
+      color: #555555;
+      float: right;
+      padding: 0 10px; }
+  .mail-messages .message .img-circle {
+    float: left;
+    margin-top: 2px;
+    height: 40px;
+    width: 40px; }
+  .mail-messages .message .message-text {
+    border-radius: 5px;
+    position: relative;
+    padding: 5px 10px;
+    background: #eeeeee;
+    border: 1px solid #eeeeee;
+    margin: 5px 0 0 50px; }
+    .mail-messages .message .message-text::before, .mail-messages .message .message-text::after {
+      position: absolute;
+      right: 100%;
+      top: 15px;
+      border: solid transparent;
+      border-right-color: #eeeeee;
+      content: ' ';
+      height: 0;
+      width: 0;
+      pointer-events: none; }
+    .mail-messages .message .message-text::before {
+      border-width: 6px;
+      margin-top: -6px; }
+  .mail-messages .message.right .message-info .user {
+    float: right; }
+  .mail-messages .message.right .message-info .date {
+    float: left; }
+  .mail-messages .message.right .img-circle {
+    float: right; }
+  .mail-messages .message.right .message-text {
+    background: #f39c12;
+    border-color: #f39c12;
+    color: #fff;
+    margin-right: 50px;
+    margin-left: 0; }
+    .mail-messages .message.right .message-text::before, .mail-messages .message.right .message-text::after {
+      border-left-color: #f39c12;
+      border-right-color: transparent;
+      right: auto;
+      left: 100%; }
+    .mail-messages .message.right .message-text::after {
+      border-width: 5px;
+      margin-top: -5px; }
 
 .page-show p, .listing-description-container .listing-description p {
   font-family: "Roboto", sans-serif;

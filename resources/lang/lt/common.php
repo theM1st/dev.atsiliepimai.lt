@@ -43,6 +43,7 @@ return [
         'brand' => [
             'name' => 'Pavadinimas',
             'picture' => 'Nuotrauka',
+            'meta_title' => 'Antraštė (meta title)',
         ],
         'listing' => [
             'title' => 'Produkto/paslaugos pavadinimas',
@@ -93,6 +94,10 @@ return [
             ],
             'create' => [
                 'success' => 'Ačiū, Jūsų atsiliepimas priimtas. Po sėkmingo patvirtinimo bus patalpintas portale.',
+                'fail' => 'Nepavyko išsaugoti atsiliepimą, bandykite vėliau.'
+            ],
+            'update' => [
+                'success' => 'Ačiū, Jūsų atsiliepimas atnaujintas. Po sėkmingo patvirtinimo bus patalpintas portale.',
                 'fail' => 'Nepavyko išsaugoti atsiliepimą, bandykite vėliau.'
             ],
         ],

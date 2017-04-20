@@ -1,5 +1,6 @@
 <?php
 
+Route::get('listings/json', 'ListingsController@json')->name('listings.json');
 Route::resource('listings', 'ListingsController');
 Route::get('listings/{listing}/delete', 'ListingsController@delete')->name('listings.delete');
 Route::get('listings/{listing}/reviews/{attribute_option_slug?}', 'ListingsController@reviews')->name('listings.reviews');
@@ -8,6 +9,8 @@ Route::get('listings/{listing}/toggleBrand/{status}', 'ListingsController@toggle
 Route::resource('reviews', 'ReviewsController');
 Route::get('reviews/{review}/delete', 'ReviewsController@delete')->name('reviews.delete');
 Route::get('reviews/{review}/option/{attribute_id}/{status}', 'ReviewsController@toggleOption')->name('reviews.toggleOption');
+Route::get('reviews/{review}/move', 'ReviewsController@move')->name('reviews.move');
+Route::post('reviews/{review}/move', 'ReviewsController@postMove')->name('reviews.postMove');
 
 Route::resource('questions', 'QuestionsController');
 Route::get('questions/{question}/delete', 'QuestionsController@delete')->name('questions.delete');

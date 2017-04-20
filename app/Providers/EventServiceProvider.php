@@ -14,6 +14,8 @@ use App\Listing;
 use App\Review;
 use App\UserReviewVote;
 use App\Brand;
+use App\MailMessage;
+use App\MailBox;
 use App\Mail\UserConfirm;
 
 class EventServiceProvider extends ServiceProvider
@@ -175,13 +177,26 @@ class EventServiceProvider extends ServiceProvider
         Brand::deleted(function($brand) {
             $brand->listings()->update([ 'brand_id' => null ]);
         });
+
+        MailMessage::created(function($message) {
+            $item = new MailBox;
+            $item->user_id = $message->sender_id;
+            $item->box = 'out';
+            $item->message_id = $message->id;
+            $item->save();
+
+            $item = new MailBox;
+            $item->user_id = $message->receiver_id;
+            $item->box = 'in';
+            $item->message_id = $message->id;
+            $item->save();
+        });
     }
 
     private function listingAvgRating($review)
     {
         if ($review->listing) {
-            $review->listing->avg_rating = $review->listing->reviews()->where('active', 1)->avg('rating');
-            $review->listing->save();
+            $review->listing->updateAvgRating();
         }
     }
 

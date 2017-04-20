@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\Admin\UserRequest;
 use App\User;
+use App\Review;
 use App\Scopes\ActiveScope;
 use Auth;
 
@@ -80,5 +81,22 @@ class ProfileController extends Controller
             alert(trans('common.profile.update.fail'), 'danger');
 
         return back();
+    }
+
+    public function editReview(Review $review)
+    {
+        $title = trans('common.profile.sections.reviews');
+
+        $this->breadcrumbs->addCrumb($title);
+
+        \Former::populate($review);
+
+        return $this->display('profile.editReview', [
+            'title' => $title,
+            'section' => 'reviews',
+            'breadcrumbs' => $this->breadcrumbs,
+            'review' => $review,
+            'listing' => $review->listing,
+        ]);
     }
 }

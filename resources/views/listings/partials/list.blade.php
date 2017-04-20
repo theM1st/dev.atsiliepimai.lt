@@ -32,7 +32,7 @@
                             </span>
                             <span class="listing-review">
                                 <strong>Paskutinis atsiliepimas:</strong>
-                                {{ $l->lastReview()->review_description }}
+                                {{ str_limit($l->lastReview()->review_description, 190) }}
                             </span>
                         </a>
                     </div>

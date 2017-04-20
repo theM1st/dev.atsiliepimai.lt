@@ -52,13 +52,14 @@ return [
         'edit' => 'Šalies redagavimas',
     ],
     'listings' => [
-        'index' => 'Atsiliepimai',
+        'index' => 'Produktai/Paslaugos',
         'create' => 'Parašyti atsiliepimą',
         'edit' => 'Produkto/Paslaugos redagavimas',
     ],
     'reviews' => [
         'index' => 'Atsiliepimai',
         'edit' => 'Atsiliepimo redagavimas',
+        'move' => 'Perkelti atsiliepimą į kitą produktą/paslaugą',
     ],
     'questions' => [
         'index' => 'Klausimai',

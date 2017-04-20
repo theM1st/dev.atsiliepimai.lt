@@ -1,6 +1,7 @@
 .messages-index {
   .messages-help-note {
     @extend .clearfix;
+    font-size: 14px;
     .message-opened {
       float: right;
       margin-right: 20px;
@@ -20,17 +21,114 @@
   }
   .table {
     font-family: $font-roboto;
+    font-size: 14px;
     tr {
       th, td {
+        vertical-align: middle;
         .icheckbox_square-green {
           margin: 0;
+        }
+        .user {
+          a {
+            color: $text-color;
+            .img-circle {
+              height: 30px;
+              width: 30px;
+            }
+          }
+        }
+        .subject {
+          &.new {
+            font-weight: bold;
+          }
+          a {
+            color: $text-color;
+          }
         }
       }
     }
   }
-  .fa-envelope-o, .fa-envelope-open-o {
+  .fa-envelope, .fa-envelope-open-o {
     color: $primary-green;
     font-size: $font-base-size+6;
   }
 
+}
+
+.mail-messages {
+  .message {
+    margin-bottom: 20px;
+    .message-info {
+      font-family: $font-myriad;
+      font-size: 14px;
+      @extend .clearfix;
+      .user {
+        font-weight: 600;
+      }
+      .date {
+        color: $gray;
+        float: right;
+        padding: 0 10px;
+      }
+    }
+    .img-circle {
+      float: left;
+      margin-top: 2px;
+      height: 40px;
+      width: 40px;
+    }
+    .message-text {
+      border-radius: 5px;
+      position: relative;
+      padding: 5px 10px;
+      background: $gray-lighter;
+      border: 1px solid $gray-lighter;
+      margin: 5px 0 0 50px;
+      &::before, &::after {
+        position: absolute;
+        right: 100%;
+        top: 15px;
+        border: solid transparent;
+        border-right-color: $gray-lighter;
+        content: ' ';
+        height: 0;
+        width: 0;
+        pointer-events: none;
+      }
+      &::before {
+        border-width: 6px;
+        margin-top: -6px;
+      }
+    }
+    &.right {
+      .message-info {
+        .user {
+          float: right;
+        }
+        .date {
+          float: left;
+        }
+      }
+      .img-circle {
+        float: right;
+      }
+      .message-text {
+        background: #f39c12;
+        border-color: #f39c12;
+        color: #fff;
+        margin-right: 50px;
+        margin-left: 0;
+        &::before, &::after {
+          border-left-color: #f39c12;
+          border-right-color: transparent;
+          right: auto;
+          left: 100%;
+        }
+        &::after {
+          border-width: 5px;
+          margin-top: -5px;
+        }
+      }
+    }
+  }
 }

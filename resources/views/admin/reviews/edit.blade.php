@@ -25,26 +25,6 @@
 
                             @if ($attribute = $review->listing->getMainAttribute())
                                 @include('admin.reviews.form.attribute_option', ['attribute' => $attribute])
-{{--
-                                {!!
-                                    Former::select('option_id['.$review->mainAttribute->id.']')
-                                    ->options(
-                                        $review->mainAttribute->options->pluck('option_name', 'id')->put(0, trans('common.form.review.cannot_find_my_option'))
-                                    )
-                                    ->class('form-control selectpicker')
-                                    ->title(trans('common.form.select'))
-                                    ->label($review->mainAttribute->title)
-                                !!}
---}}
-{{--
-                                <div class="attribute-option-value" style="display: none">
-                                {!!
-                                    Former::text('option_value['.$review->mainAttribute->id.']')
-                                        ->disabled()
-                                        ->label('common.form.review.write_your_option')
-                                !!}
-                                </div>
---}}
                             @endif
 
                             {!!
@@ -66,7 +46,17 @@
                             </div>
 
                             <hr>
-                            {!! Former::actions()->first_lg_submit('common.update') !!}
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    {!! Former::actions()->first_lg_submit('common.update') !!}
+                                </div>
+                                <div class="col-sm-3">
+                                    <a href="{{ route('reviews.move', $review->id) }}" class="btn-link btn-lg btn">
+                                        {{ trans('admin.reviews.move') }}
+                                    </a>
+                                </div>
+                            </div>
+
 
                         {!! Former::close() !!}
                     </div>

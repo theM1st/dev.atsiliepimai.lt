@@ -36,7 +36,7 @@
                     display: '{!! starRating($r->rating) !!}',
                     value: '{{ $r->rating }}'
                 },
-                '{{ $r->user->username }}',
+                '{{ $r->user ? $r->user->username : '' }}',
                 '{!!
                     Form::tools([
                         'edit' => route('reviews.edit', [$r->id]),

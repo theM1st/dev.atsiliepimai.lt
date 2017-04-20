@@ -28,7 +28,7 @@
                     <td>{!! starRating($r->rating) !!}</td>
                     <td>{{ $r->created_at->format('Y-m-d') }}</td>
                     <td>
-
+                        <a href="{{ route('profile.editReview', $r->id) }}" class="btn btn-link">Redaguoti</a>
                     </td>
                 </tr>
             @endforeach

@@ -219,6 +219,37 @@ function listingTypeToggle() {
     });
 }
 
+(function(form) {
+    form.find('[id^=attribute_option_id]').each(function(){
+        var optId = $(this);
+
+        var $optValue = $('#value_' + optId.attr('id').replace('[', '').replace(']', ''));
+
+        if (parseInt(optId.val()) === 0) {
+            toggleOptionValue('show', $optValue);
+        }
+
+        optId.change(function() {
+            if (parseInt($(this).val()) === 0) {
+                toggleOptionValue('show', $optValue);
+            } else {
+                toggleOptionValue('hide', $optValue);
+            }
+        });
+    });
+
+    function toggleOptionValue(a, obj) {
+        if (a == 'show') {
+            obj.show();
+            obj.find('input').prop('disabled', false);
+        } else if (a == 'hide') {
+            obj.hide();
+            obj.find('input').prop('disabled', true);
+        }
+    }
+
+})($('#review-form'));
+
 function guidGenerator() {
     var S4 = function() {
             return (((1+Math.random())*0x10000)|0).toString(16).substring(1);

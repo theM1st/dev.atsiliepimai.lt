@@ -148,11 +148,14 @@
                 position: absolute;
                 right: 5px;
                 text-align: center;
-                top: 30px;
+                top: 25px;
             }
             &.profile-messages-link {
                 padding-left: 10px;
                 padding-right: 10px;
+                .fa-envelope-o {
+                    font-size: 20px;
+                }
             }
             &.categories-menu-link {
             }

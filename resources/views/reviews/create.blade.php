@@ -22,63 +22,7 @@
             </div>
             <hr>
             {!! Former::open()->route('review.store', $listing->slug)->method('post')->id('review-form') !!}
-                {!!
-                    Former::text('rating')
-                        ->label(trans('common.form.review.rating', ['name' => $listing->title]))
-                !!}
-                {!!
-                    Former::text('review_title')->label('common.form.review.title')
-                        ->placeholder('common.form.review.title_placeholder')
-                        ->help('common.form.review.title_help')
-                !!}
-
-                @if ($attribute = $listing->getMainAttribute())
-                    {!!
-                        Former::select('attribute_option_id['.$attribute->id.']')
-                        ->options(
-                            $attribute->options->pluck('option_name', 'id')->put(0, trans('common.form.review.cannot_find_my_option'))
-                        )
-                        ->class('form-control selectpicker')
-                        ->title(trans('common.form.select'))
-                        ->label($attribute->title)
-                    !!}
-                    <div id="value_attribute_option_id{{ $attribute->id }}" style="display: none">
-                        {!!
-                            Former::text('option_value['.$attribute->id.']')
-                                ->disabled()
-                                ->label('common.form.review.write_your_option')
-                        !!}
-                    </div>
-                @endif
-
-                {!!
-                    Former::textarea('review_description')
-                        ->rows(4)
-                        ->placeholder('common.form.review.description_placeholder')
-                        ->label('common.form.review.description')
-                        ->help('common.form.review.description_help')
-                !!}
-
-                @if ($attributes = $listing->getSecondaryAttributes())
-                    @foreach ($attributes as $attribute)
-                        {!!
-                            Former::select('attribute_option_id['.$attribute->id.']')
-                            ->options(
-                                $attribute->options->pluck('option_name', 'id')->put(0, trans('common.form.review.cannot_find_my_option'))
-                            )
-                            ->class('form-control selectpicker')
-                            ->title(trans('common.form.select'))
-                            ->label($attribute->title)
-                        !!}
-                        <div id="value_attribute_option_id{{ $attribute->id }}" style="display: none">
-                            {!!
-                                Former::text('option_value['.$attribute->id.']')
-                                    ->disabled()
-                                    ->label('common.form.review.write_your_option')
-                            !!}
-                        </div>
-                    @endforeach
-                @endif
+                @include('reviews.form.elements')
 
                 <hr>
                 {!! Former::actions()->first_lg_submit('Siųsti atsiliepimą') !!}
@@ -96,36 +40,5 @@
 
     <script>
         starRating($(".review-create #rating"), { size: 'md' });
-
-        (function(form) {
-            form.find('[id^=attribute_option_id]').each(function(){
-                var optId = $(this);
-
-                var $optValue = $('#value_' + optId.attr('id').replace('[', '').replace(']', ''));
-
-                if (parseInt(optId.val()) === 0) {
-                    toggleOptionValue('show', $optValue);
-                }
-
-                optId.change(function() {
-                    if (parseInt($(this).val()) === 0) {
-                        toggleOptionValue('show', $optValue);
-                    } else {
-                        toggleOptionValue('hide', $optValue);
-                    }
-                });
-            });
-
-            function toggleOptionValue(a, obj) {
-                if (a == 'show') {
-                    obj.show();
-                    obj.find('input').prop('disabled', false);
-                } else if (a == 'hide') {
-                    obj.hide();
-                    obj.find('input').prop('disabled', true);
-                }
-            }
-
-        })($('#review-form'));
     </script>
 @endsection

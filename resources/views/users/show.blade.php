@@ -7,8 +7,13 @@
         <div class="container">
             <h2>{{ $thisUser->username . ' profilis' }}</h2>
             <div class="row">
-                <div class="col-sm-3 col-md-2">
+                <div class="col-sm-3 col-md-2 text-center">
                     <img src="{{ $thisUser->getPicture() }}" alt="{{ $thisUser->username }}" class="img-responsive img-circle img-border-grey">
+                    <div class="username">{{ $thisUser->username }}</div>
+                    <div class="send-message">
+                        <span class="fa fa-envelope" aria-hidden="true"></span>
+                        <a href="{{ route('messages.create', $thisUser->id) }}">Siųsti AŽ</a>
+                    </div>
                 </div>
                 <div class="col-sm-6 col-md-7">
                     <dl class="dl-horizontal">
@@ -39,7 +44,6 @@
                         <th>Atsiliepimas</th>
                         <th>Produktas/Paslauga</th>
                         <th>Įvertinimas</th>
-
                     </tr>
                     </thead>
                     <tbody>

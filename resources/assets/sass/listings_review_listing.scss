@@ -193,9 +193,10 @@
       text-align: center;
       .filter-by {
         font-weight: bold;
-        padding: 14px 10px;
+        padding: 0 10px 10px 10px;
       }
       .filter {
+        float: left;
         label {
           font-weight: 400;
           padding: 10px;

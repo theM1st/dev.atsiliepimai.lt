@@ -134,4 +134,11 @@ class ListingsController extends AdminController
             'title' => sprintf('%s %s', $listing->title, trans('common.reviews'))
         ]);
     }
+
+    public function json()
+    {
+        $listings = Listing::where('title', 'like', '%' . request()->get('term') . '%')->get();
+
+        return $listings;
+    }
 }

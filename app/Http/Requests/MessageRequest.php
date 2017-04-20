@@ -24,10 +24,9 @@ class MessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'content' => 'required',
-            'redirect' => 'required',
-            'recipient_id' => 'required|int',
+            'subject' => 'required',
+            'body' => 'required|min:50',
+            'receiver_id' => 'required|int',
         ];
     }
 }

@@ -19,6 +19,7 @@ class ReviewsController extends Controller
         return $this->display('reviews.create', [
             'categories' => $categories,
             'listing' => $listing,
+            'review' => new Review,
         ]);
     }
 
@@ -46,11 +47,19 @@ class ReviewsController extends Controller
         return back();
     }
 
-    public function edit(Review $review)
+    public function update(Review $review, ReviewRequest $request)
     {
-        \Former::populate($review);
+        $review->saveOptions($request->only('attribute_option_id', 'option_value'));
 
-        return $this->display('reviews.edit', []);
+        $request->merge(['active' => 0]);
+
+        $review->fill($request->all());
+
+        $review->save();
+
+        alert(trans('common.form.review.update.success'), 'success');
+
+        return redirect()->route('profile.show', 'reviews');
     }
 
     public function vote(Review $review, Request $request)

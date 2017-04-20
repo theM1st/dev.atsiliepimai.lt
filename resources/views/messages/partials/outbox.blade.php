@@ -9,22 +9,35 @@
                     <input type="checkbox" class="icheck">
                 </th>
                 <th>Data</th>
-                <th>Gavėjo vardas</th>
-                <th>Žinutė</th>
+                <th>Gavėjas</th>
+                <th>Tema</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($user->messagesOut as $m)
+            @foreach ($messages as $m)
                 <tr>
                     <td class="text-center">
-                        <input type="checkbox" class="icheck" name="delete[]" value="{{ $m->id }}">
+                        <input type="checkbox" class="icheck" name="delete[out][]" value="{{ $m->subject->id }}">
                     </td>
                     <td>{{ $m->created_at->format('Y-m-d H:i') }}</td>
-                    <td>{{ $m->recipient->username }}</td>
-                    <td>{{ $m->title }}</td>
+                    <td>
+                        <div class="user">
+                            <a href="{{ route('user.show', $m->sender_id) }}">
+                                <img src="{{ $m->receiver->getPicture() }}" alt="" class="img-responsive img-circle img-border-grey">
+                                {{ $m->receiver->username }}
+                            </a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="subject">
+                            <a href="{{ route('messages.show', [$section, $m->subject->id]) }}">
+                                {{ str_limit($m->subject->subject, 50) }}
+                            </a>
+                        </div>
+                    </td>
                     <td class="text-center">
-                        <a href="{{ route('messages.show', [$section, $m->id]) }}">Rodyti</a>
+                        <a href="{{ route('messages.show', [$section, $m->subject->id]) }}">Skaityti</a>
                     </td>
                 </tr>
             @endforeach

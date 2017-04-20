@@ -56,7 +56,7 @@
                         <a href="{{ route('messages.index', 'inbox') }}" class="nav-link profile-messages-link">
                             <span class="fa fa-envelope-o hidden-sm hidden-xs" aria-hidden="true"></span>
                             <span class="visible-sm visible-xs">Žinutės</span>
-                            @if ($messages = \Auth::user()->newMessages()->count())
+                            @if ($messages = \Auth::user()->newMessages())
                                 <span class="label label-danger">{{ $messages }}</span>
                             @endif
                         </a>

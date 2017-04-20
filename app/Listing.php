@@ -63,7 +63,7 @@ class Listing extends Model
         ];
     }
 
-    public function getReviews($filter, $limit=3)
+    public function getReviews($filter, $limit=10)
     {
         $data = $this->reviews()->filter($filter)->paginate($limit);
 
@@ -88,15 +88,18 @@ class Listing extends Model
             \Auth::user()->viewedListings()->detach($this->id);
             \Auth::user()->viewedListings()->attach($this->id);
         } else {
-            $expiresAt = \Carbon\Carbon::now()->addDays(30);
+            $expiresAt = \Carbon\Carbon::now()->addDays(10);
 
-            $recentViewed = \Cache::get('recentViewedListings');
+            $recentViewed = \Cache::get('recentViewedListings'.request()->ip());
 
             if (!$recentViewed) {
                 $recentViewed = collect();
             }
 
-            $recentViewed->prepend($this);
+            if ($recentViewed->where('id', $this->id)->count() == 0) {
+                $recentViewed->prepend($this);
+            }
+
             $recentViewed = $recentViewed->unique()->take(10);
 
             \Cache::put('recentViewedListings', $recentViewed, $expiresAt);
@@ -105,10 +108,14 @@ class Listing extends Model
 
     public function getSimilarListings()
     {
-        $listings = $this->category->listings()->where('id', '!=', $this->id)->get();
+        if ($this->category) {
+            $listings = $this->category->listings()
+                ->has('reviews')
+                ->where('id', '!=', $this->id)->get();
 
-        if ($listings->count()) {
-            return $listings->shuffle()->take(5);
+            if ($listings->count()) {
+                return $listings->shuffle()->take(5);
+            }
         }
 
         return null;
@@ -117,12 +124,24 @@ class Listing extends Model
     public static function recentViewed()
     {
         if (\Auth::check()) {
-            $data = \Auth::user()->viewedListings()->orderBy('pivot_created_at', 'desc')->get();
+            $data = \Auth::user()->viewedListings()
+                ->orderBy('pivot_created_at', 'desc')
+                ->limit(10)
+                ->get();
         } else {
             $data = \Cache::get('recentViewedListings');
         }
 
         return $data;
+    }
+
+    public function updateAvgRating()
+    {
+        $this->avg_rating = $this->reviews()->where('active', 1)->avg('rating');
+
+        $this->save();
+
+        return $this->avg_rating;
     }
 
     public function scopeFilter($query, $data)

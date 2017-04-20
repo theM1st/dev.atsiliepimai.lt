@@ -71,6 +71,31 @@ class ReviewsController extends AdminController
         return $this->destroyAlertRedirect($review, 'back');
     }
 
+    public function move(Review $review)
+    {
+        return $this->display($this->viewPath('move'), [
+            'review' => $review,
+        ]);
+    }
+
+    public function postMove(Review $review, Request $request)
+    {
+        $this->validate($request, [
+            'listing_id' => 'required',
+            'old_listing_id' => 'required',
+        ]);
+
+        $listing = Listing::findOrFail($request->listing_id);
+
+        $review->listing_id = $listing->id;
+
+        $return = $this->saveAlertRedirect($review, $request, 'edit', [$review->id]);
+
+        Listing::find($request->old_listing_id)->updateAvgRating();
+
+        return $return;
+    }
+
     public function toggleOption(Review $review, $attributeId, $status)
     {
         $reviewAttribute = $review->getReviewAttribute($attributeId);

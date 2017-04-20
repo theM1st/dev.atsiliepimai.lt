@@ -72,3 +72,17 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
         'active' => true,
     ];
 });
+
+$factory->define(App\MailSubject::class, function (Faker\Generator $faker) {
+    return [
+        'subject' => str_limit($faker->sentence, 25),
+    ];
+});
+
+$factory->define(App\MailMessage::class, function (Faker\Generator $faker) {
+    return [
+        'body' => $faker->paragraph,
+        'sender_id' => 1,
+        'receiver_id' => 2
+    ];
+});

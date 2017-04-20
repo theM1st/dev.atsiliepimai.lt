@@ -81,6 +81,17 @@ class Category extends Node
         return $data;
     }
 
+    public function getTitleAttribute()
+    {
+        $title = ($this->meta_title) ? $this->meta_title : $this->name;
+
+        if ($this->getLevel()) {
+            $title .= ' kategorijos atsiliepimai';
+        }
+
+        return $title;
+    }
+
     //////////////////////////////////////////////////////////////////////////////
 
     //

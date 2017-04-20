@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\MailSubject;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use App\User;
@@ -15,6 +16,7 @@ use App\Answer;
 use App\Message;
 use App\Page;
 use App\Brand;
+use App\Scopes\ActiveScope;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -51,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::model('attribute', Attribute::class);
         Route::model('attribute_option', AttributeOption::class);
         Route::model('answer', Answer::class);
-        Route::model('message', Message::class);
+        Route::model('subject', MailSubject::class);
         Route::model('page', Page::class);
 
         Route::bind('category_slug', function($slug) {
@@ -84,6 +86,17 @@ class RouteServiceProvider extends ServiceProvider
             if (!$item) abort(404);
 
             return $item;
+        });
+
+        Route::bind('user_review', function($reviewId) {
+            $review = \Auth::user()->reviews()
+                ->withoutGlobalScope(ActiveScope::class)
+                ->where('id', $reviewId)
+                ->first();
+
+            if (!$review) abort(404);
+
+            return $review;
         });
     }
 

@@ -14,9 +14,9 @@ class UsersController extends Controller
     {
         return $this->display('users.show', [
             'thisUser' => $user,
-            'reviews' => $user->reviews()->latest()->withoutGlobalScope(ActiveScope::class)->get(),
-            'questions' => $user->questions()->latest()->withoutGlobalScope(ActiveScope::class)->get(),
-            'answers' => $user->answers()->latest()->withoutGlobalScope(ActiveScope::class)->get(),
+            'reviews' => $user->reviews()->latest()->get(),
+            'questions' => $user->questions()->latest()->get(),
+            'answers' => $user->answers()->latest()->get(),
         ]);
     }
 }

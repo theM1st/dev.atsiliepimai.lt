@@ -86,9 +86,8 @@
             <div class="col-sm-5">
                 <?php $filters = $listing->getSecondaryAttributes(); ?>
                 @if ($filters->count())
-                    <div class="listing-filters">
+                    <div class="listing-filters clearfix">
                         <form>
-                            <div class="filter-by">Filtruoti pagal:</div>
                             @foreach ($filters as $f)
                                 <div class="filter">
                                     {!!

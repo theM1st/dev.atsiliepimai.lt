@@ -37,12 +37,11 @@ Route::get('p/{listing_slug}', 'ListingsController@show')
 Route::get('p/{listing_slug}/m/{attribute_option_slug}', 'ListingsController@show')
     ->name('listing.show.model');
 
+Route::get('p/all/recently-viewed-remove', 'ListingsController@recentlyViewedRemoveAll')
+    ->name('listing.recently_viewed_remove_all');
+
 Route::get('p/{listing_slug}/recently-viewed-remove', 'ListingsController@recentlyViewedRemove')
     ->name('listing.recently_viewed_remove');
-
-Route::get('p/all/recently-viewed-remove', 'ListingsController@recentlyViewedRemoveAll')
-    ->name('listing.recently_viewed_remove_all')
-    ->middleware('auth');
 
 Route::get('p/{listing_slug}/parasyti-atsiliepima', 'ReviewsController@create')
     ->name('review.create')
@@ -50,6 +49,10 @@ Route::get('p/{listing_slug}/parasyti-atsiliepima', 'ReviewsController@create')
 
 Route::post('p/{listing_slug}/parasyti-atsiliepima', 'ReviewsController@store')
     ->name('review.store')
+    ->middleware('auth');
+
+Route::put('reviews/{user_review}', 'ReviewsController@update')
+    ->name('review.update')
     ->middleware('auth');
 
 Route::post('p/{listing_slug}/write-question', 'QuestionsController@store')
@@ -87,6 +90,8 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
         ->name('profile.editAbout');
 });
 */
+
+
 Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
     Route::get('/{section}', 'ProfileController@show')
         ->name('profile.show')->where('section', '(me|reviews|questions|answers)');
@@ -95,6 +100,9 @@ Route::group(['prefix' => 'profile', 'middleware' => 'auth'], function () {
         ->name('profile.edit')->where('section', '(About|Photo|Address|Email|Password)');
 
     Route::put('{user}', 'ProfileController@update')->name('profile.update');
+
+    Route::get('reviews/{user_review}/edit', 'ProfileController@editReview')
+        ->name('profile.editReview');
 });
 
 Route::get('profile/{user}.html', 'UsersController@show')
@@ -107,9 +115,13 @@ Route::group(['prefix' => 'messages', 'middleware' => 'auth'], function () {
     Route::get('create/{user}', 'MessagesController@create')
         ->name('messages.create');
 
-    Route::get('{section}/{message}', 'MessagesController@show')
+    Route::get('{section}/{subject}', 'MessagesController@show')
         ->where('section', '(inbox|outbox)')
         ->name('messages.show');
+
+    Route::post('{subject}/reply', 'MessagesController@reply')
+        ->where('section', '(inbox|outbox)')
+        ->name('messages.reply');
 
     Route::get('delete', 'MessagesController@delete')
         ->name('messages.delete');

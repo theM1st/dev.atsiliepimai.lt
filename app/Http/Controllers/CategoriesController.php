@@ -36,12 +36,23 @@ class CategoriesController extends Controller
             $childrenCategories = $category->children->sortBy('name')->all();
         }
 
-        $listingsWithBrand = Listing::categorized($category)->has('brand')
-            ->groupBy('brand_id')->get();
+        $listingsWithBrand = Listing::categorized($category)
+            ->has('brand')
+            ->has('reviews')
+            ->groupBy('brand_id')
+            ->get()->sortBy(function($listing) {
+                return $listing->brand->listings->count();
+            }, SORT_REGULAR, true)->take(12);
+
+        $title = $category->title;
+
+        if ($brand->id) {
+            $title = $brand->title . ' - ' . $title;
+        }
 
         return $this->display('categories.show', [
             'category' => $category,
-            'title' => ($category->getLevel() ? $category->name . ' kategorijos atsiliepimai' : $category->name),
+            'title' => $title,
             'listings' => $listings,
             'childrenCategories' => $childrenCategories,
             'listingsWithBrand' => $listingsWithBrand,

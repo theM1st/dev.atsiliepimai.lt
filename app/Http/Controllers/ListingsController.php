@@ -122,7 +122,7 @@ class ListingsController extends Controller
                 }
             }
 
-            $expiresAt = \Carbon\Carbon::now()->addDays(30);
+            $expiresAt = \Carbon\Carbon::now()->addDays(10);
             \Cache::put('recentViewedListings', $recentViewed, $expiresAt);
         }
 
@@ -132,10 +132,10 @@ class ListingsController extends Controller
     public function recentlyViewedRemoveAll()
     {
         if (\Auth::check()) {
-            \Auth::user()->viewedListings()->remove();
-        } else {
-
+            \Auth::user()->viewedListings()->detach();
         }
+
+        \Cache::forget('recentViewedListings');
 
         return back();
     }
