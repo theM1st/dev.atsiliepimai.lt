@@ -23,7 +23,10 @@ class ProfileController extends Controller
         ];
 
         if ($section == 'reviews') {
-            $viewData['reviews'] = $user->reviews()->latest()->withoutGlobalScope(ActiveScope::class)->get();
+            $viewData['reviews'] = $user->reviews()
+                ->latest()
+                ->withTrashed()
+                ->withoutGlobalScope(ActiveScope::class)->get();
         }
 
         if ($section == 'questions') {

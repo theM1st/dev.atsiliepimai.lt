@@ -22,7 +22,9 @@ class CreateReviewsTable extends Migration
             $table->integer('listing_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->boolean('active')->default(true);
+            $table->text('admin_note')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->index(['listing_id', 'active']);
             $table->index(['user_id', 'active']);

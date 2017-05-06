@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\ActiveScope;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Review extends Model
 {
+    use SoftDeletes;
+
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that are mass assignable.
      *

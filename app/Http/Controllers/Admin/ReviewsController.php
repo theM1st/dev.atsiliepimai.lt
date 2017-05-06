@@ -66,9 +66,19 @@ class ReviewsController extends AdminController
         ];
     }
 
-    public function destroy(Review $review)
+    public function destroy(Review $review, Request $request)
     {
-        return $this->destroyAlertRedirect($review, 'back');
+        $permanently = false;
+        if ($request->get('permanently_delete')) {
+            $permanently = true;
+        }
+
+        if ($request->get('admin_note')) {
+            $review->admin_note = $request->get('admin_note');
+            $review->save();
+        }
+        
+        return $this->destroyAlertRedirect($review, 'back', $permanently);
     }
 
     public function move(Review $review)

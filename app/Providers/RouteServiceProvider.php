@@ -91,6 +91,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('user_review', function($reviewId) {
             $review = \Auth::user()->reviews()
                 ->withoutGlobalScope(ActiveScope::class)
+                ->withTrashed()
                 ->where('id', $reviewId)
                 ->first();
 

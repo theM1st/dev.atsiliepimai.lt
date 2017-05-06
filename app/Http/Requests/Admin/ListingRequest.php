@@ -24,10 +24,10 @@ class ListingRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:5|max:80',
+            'title' => 'required|min:4|max:80',
             'listing_type' => 'required|in:product,service',
-            'review_title' => 'sometimes|required|min:10|max:80',
-            'review_description' => 'sometimes|required|min:50',
+            'review_title' => 'sometimes|required|min:4|max:80',
+            'review_description' => 'sometimes|required|min:125',
             'rating' => 'sometimes|required|integer|min:1',
             'category_id' => 'required|integer',
         ];

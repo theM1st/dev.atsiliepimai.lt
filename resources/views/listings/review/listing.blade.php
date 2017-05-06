@@ -75,7 +75,11 @@
             <div class="col-sm-7">
                 <div class="listing-nav">
                     <ul class="nav nav-pills">
-                        <li><a href="{{ route('listing.show', [ $listing->slug, '#reviews' ]) }}">Atsiliepimai ({{ $listing->reviews->count() }})</a></li>
+                        <li>
+                            <a href="#reviews">
+                                Atsiliepimai ({{ $listing->reviews->count() }})
+                            </a>
+                        </li>
                         <li><a href="#listing-questions">Klausimai ir atsakymai</a></li>
                         @if ($listing->description)
                             <li><a href="#listing-description">Produkto detalės</a></li>

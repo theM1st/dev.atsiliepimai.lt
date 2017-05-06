@@ -12,10 +12,23 @@
         <tbody>
             @foreach ($reviews as $r)
                 <tr>
-                    <td>
-                        <div class="label{{ $r->active ? '  label-success' : ' label-warning' }}">
-                            {{ $r->active ? 'Aktyvuotas' : 'Tvirtinamas' }}
-                        </div>
+                    <td class="text-center">
+                        @if ($r->trashed())
+                            <div class="label label-danger">
+                                Netinkamas
+                            </div>
+                            @if ($r->admin_note)
+                                <a href="#" data-toggle="popover" title="Administratoriaus komentaras"
+                                   data-placement="top"
+                                   data-content="{{ $r->admin_note }}" style="font-size: 13px">
+                                    Kodel?
+                                </a>
+                            @endif
+                        @else
+                            <div class="label{{ $r->active ? '  label-success' : ' label-warning' }}">
+                                {{ $r->active ? 'Aktyvuotas' : 'Tvirtinamas' }}
+                            </div>
+                        @endif
                     </td>
                     <td>{{ str_limit($r->review_title, 50) }}</td>
                     <td>
@@ -31,7 +44,15 @@
                         <a href="{{ route('profile.editReview', $r->id) }}" class="btn btn-link">Redaguoti</a>
                     </td>
                 </tr>
+
             @endforeach
         </tbody>
     </table>
 </div>
+@section('scripts')
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover();
+        });
+    </script>
+@endsection

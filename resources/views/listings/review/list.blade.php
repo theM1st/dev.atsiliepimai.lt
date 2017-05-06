@@ -113,7 +113,7 @@
                         @if (!empty($admin))
                             <div style="margin-top: 20px;text-align: right">
                                 <a href="{{ route('reviews.edit', $r->id) }}" class="btn btn-second btn-sm">Redaguoti</a>
-                                <a href="{{ route('reviews.delete', $r->id) }}" class="btn btn-red btn-sm" onclick="return actionModal(this)" data-method="get" data-size="modal-sm">Trinti</a>
+                                <a href="{{ route('reviews.delete', $r->id) }}" class="btn btn-red btn-sm" onclick="return actionModal(this)" data-method="get">Trinti</a>
                             </div>
                         @endif
                     </div>

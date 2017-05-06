@@ -24,8 +24,8 @@ class ReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            'review_title' => 'sometimes|required|min:10|max:80',
-            'review_description' => 'sometimes|required|min:50',
+            'review_title' => 'sometimes|required|min:4|max:80',
+            'review_description' => 'sometimes|required|min:125',
             'rating' => 'sometimes|required|integer|min:1',
             'attribute_option_id.*' => 'sometimes|required',
             'option_value' => 'sometimes|required',

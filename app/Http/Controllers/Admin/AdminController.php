@@ -78,13 +78,20 @@ abstract class AdminController extends Controller
      *
      * @param $model
      * @param string $path
+     * @param bool $permanently
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function destroyAlertRedirect($model, $path = "index")
+    public function destroyAlertRedirect($model, $path = "index", $permanently=false)
     {
-        $model->delete() ?
-            alert(trans('admin.delete.success'), 'success'):
-            alert(trans('admin.delete.fail'), 'danger');
+        if ($permanently) {
+            $model->forceDelete() ?
+                alert(trans('admin.delete.success'), 'success') :
+                alert(trans('admin.delete.fail'), 'danger');
+        } else {
+            $model->delete() ?
+                alert(trans('admin.delete.success'), 'success') :
+                alert(trans('admin.delete.fail'), 'danger');
+        }
 
         return $this->redirectRoutePath($path);
     }

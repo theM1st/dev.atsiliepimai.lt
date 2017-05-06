@@ -57,6 +57,8 @@ class ReviewsController extends Controller
 
         $review->save();
 
+        $review->restore();
+
         alert(trans('common.form.review.update.success'), 'success');
 
         return redirect()->route('profile.show', 'reviews');
