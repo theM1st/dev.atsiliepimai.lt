@@ -41,6 +41,9 @@
                                 @endforeach
                             @endif
 
+                            {!! Former::text('review_pros')->label('common.form.review.pros')->placeholder('common.form.review.pros_placeholder') !!}
+                            {!! Former::text('review_cons')->label('common.form.review.cons')->placeholder('common.form.review.cons_placeholder') !!}
+
                             <div class="checkbox-container">
                                 {!! Former::checkbox('active')->class('icheck')->text('common.form.review.active') !!}
                             </div>

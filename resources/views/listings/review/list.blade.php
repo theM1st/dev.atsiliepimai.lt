@@ -42,7 +42,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-9">
-                    @if ($attributes = $r->attributes()->orderBy('main', 'desc')->get())
+                    @if ($attributes = $r->attributes->sortByDesc('main')->all())
                         <div class="review-attributes">
                             @foreach ($attributes as $a)
                                 @if ($attributeOption = $r->getReviewAttributeOption($a->id))
@@ -68,6 +68,18 @@
                         {!! starRating($r->rating) !!}
                     </div>
                     <div class="review-text">{{ $r->review_description }}</div>
+                    @if ($r->review_pros)
+                        <div class="review-pros">
+                            <span class="fa fa-plus-circle"></span>
+                            {{ $r->review_pros }}
+                        </div>
+                    @endif
+                    @if ($r->review_cons)
+                        <div class="review-cons">
+                            <span class="fa fa-minus-circle"></span>
+                            {{ $r->review_cons }}
+                        </div>
+                    @endif
                     <div class="review-info">
                         <p class="review-created">Atsiliepimas parašytas: <span>{{ $r->created_at->format('Y.m.d') }}</span></p>
                         <p class="review-report">

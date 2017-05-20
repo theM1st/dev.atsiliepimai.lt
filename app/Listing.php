@@ -65,21 +65,34 @@ class Listing extends Model
 
     public function getReviews($filter, $limit=10)
     {
-        $data = $this->reviews()->filter($filter)->paginate($limit);
+        $data = $this->reviews()
+            ->with('user.reviews')
+            ->with('user.answers')
+            ->with('positiveVotes')
+            ->with('negativeVotes')
+            ->with('listing')
+            ->with('attributes')
+            ->with('attributeOptions')
+            ->filter($filter)
+            ->paginate($limit);
 
         return $data;
     }
 
     public function getQuestions($filter)
     {
-        $data = $this->questions()->latest()->filter($filter)->get();
+        $data = $this->questions()
+            ->with('user')
+            ->with('answers')
+            ->latest()
+            ->filter($filter)->get();
 
         return $data;
     }
 
     public function lastReview()
     {
-        return $this->reviews()->orderBy('created_at', 'desc')->first();
+        return $this->reviews->sortBy('created_at')->last();
     }
 
     public function setRecentViewed()
@@ -125,6 +138,7 @@ class Listing extends Model
     {
         if (\Auth::check()) {
             $data = \Auth::user()->viewedListings()
+                ->withCount('reviews')
                 ->orderBy('pivot_created_at', 'desc')
                 ->limit(10)
                 ->get();

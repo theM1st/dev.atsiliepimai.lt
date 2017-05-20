@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="col-sm-5 listing-side">
-                <h2>{{ $listing->title }}</h2>
+                <h1>{{ $listing->title }}</h1>
                 @if ($listing->address && $listing->listing_type == 'service')
                     <div class="listing-address">{{ $listing->address }}</div>
                 @endif

@@ -63,6 +63,15 @@
       font-family: $font-roboto;
       font-weight: 300;
       line-height: 1.5em;
+      margin-bottom: 20px;
+    }
+    .review-pros {
+      color: $primary-green;
+      margin-bottom: 10px;
+    }
+    .review-cons {
+      color: $primary-red;
+      margin-bottom: 10px;
     }
     .review-info {
       font-family: $font-roboto;

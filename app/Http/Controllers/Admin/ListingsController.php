@@ -14,7 +14,9 @@ class ListingsController extends AdminController
 {
     public function index()
     {
-        $listings = Listing::all();
+        $listings = Listing::with('category')
+            ->with('reviews')
+            ->take(500)->get();
 
         //dd($listings[0]->reviews()->first()->review_title);
 

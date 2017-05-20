@@ -16,7 +16,14 @@ class Review extends Model
      *
      * @var array
      */
-    protected $fillable = ['review_title', 'review_description', 'rating', 'active', 'user_id'];
+    protected $fillable = [
+        'review_title',
+        'review_description',
+        'review_pros',
+        'review_cons',
+        'rating',
+        'active',
+        'user_id'];
 
     public function votes()
     {
@@ -121,7 +128,9 @@ class Review extends Model
 
     public function getReviewAttributeOption($attributeId)
     {
-        return $this->attributeOptions()->where('attribute_option_review.attribute_id', $attributeId)->first();
+        return $this->attributeOptions
+            ->where('attribute_option_review.attribute_id', $attributeId)
+            ->first();
     }
 
     public function scopeFilter($query, $data)

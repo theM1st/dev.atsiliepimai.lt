@@ -16,7 +16,7 @@
                         <span class="listing-rating">
                             {!! starRating($l->avg_rating, 'xs') !!}
                                 <span class="listing-review-count">
-                                ({{ count($l->reviews) . ' ' . transPlural('common.reviews_plural', count($l->reviews)) }})
+                                ({{ $l->reviews_count . ' ' . transPlural('common.reviews_plural', $l->reviews_count) }})
                             </span>
                         </span>
                     </span>

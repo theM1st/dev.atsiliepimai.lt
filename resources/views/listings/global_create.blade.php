@@ -54,6 +54,9 @@
                     ->help('common.form.review.description_help')
             !!}
 
+            {!! Former::text('review_pros')->label('common.form.review.pros')->placeholder('common.form.review.pros_placeholder') !!}
+            {!! Former::text('review_cons')->label('common.form.review.cons')->placeholder('common.form.review.cons_placeholder') !!}
+
             <hr>
 
             {!! Former::actions()->first_lg_submit('Siųsti atsiliepimą') !!}

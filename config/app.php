@@ -185,6 +185,7 @@ return [
         'Baum\Providers\BaumServiceProvider',
         'Creitive\Breadcrumbs\BreadcrumbsServiceProvider',
         Watson\Sitemap\SitemapServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*

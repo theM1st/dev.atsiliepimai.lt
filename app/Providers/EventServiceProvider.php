@@ -126,6 +126,8 @@ class EventServiceProvider extends ServiceProvider
                 $review = new Review([
                     'review_title' => Request::get('review_title'),
                     'review_description' => Request::get('review_description'),
+                    'review_pros' => Request::get('review_pros'),
+                    'review_cons' => Request::get('review_cons'),
                     'rating' => Request::get('rating'),
                     'active' => 0,
                     'user_id' => \Auth::user()->id,

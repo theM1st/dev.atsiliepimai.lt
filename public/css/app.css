@@ -6832,7 +6832,14 @@ form .help-block {
     font-size: 16px;
     font-family: "Roboto", sans-serif;
     font-weight: 300;
-    line-height: 1.5em; }
+    line-height: 1.5em;
+    margin-bottom: 20px; }
+  .listings-review-list .review .review-pros {
+    color: #1b9d48;
+    margin-bottom: 10px; }
+  .listings-review-list .review .review-cons {
+    color: #f10028;
+    margin-bottom: 10px; }
   .listings-review-list .review .review-info {
     font-family: "Roboto", sans-serif;
     margin-top: 20px;
@@ -6989,7 +6996,7 @@ form .help-block {
               font-size: 18px; } }
     .listings-review-listing .listing-info .listing-side {
       padding-top: 25px; }
-      .listings-review-listing .listing-info .listing-side h2 {
+      .listings-review-listing .listing-info .listing-side h1 {
         border: none;
         color: #fff;
         font-family: "Myriad Pro", sans-serif;
@@ -6999,7 +7006,7 @@ form .help-block {
         padding: 0;
         text-align: center; }
         @media only screen and (min-width: 992px) {
-          .listings-review-listing .listing-info .listing-side h2 {
+          .listings-review-listing .listing-info .listing-side h1 {
             font-size: 35px;
             text-align: left; } }
       .listings-review-listing .listing-info .listing-side .listing-address {
