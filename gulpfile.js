@@ -82,6 +82,7 @@ elixir(function(mix) {
         'bootstrap-select.min.js',
         'bootstrap-select/i18n/defaults-lt_LT.js',
         'icheck.js',
+        'jquery.form.min.js',
         'app.js'
     ], 'public/js/app.js');
 

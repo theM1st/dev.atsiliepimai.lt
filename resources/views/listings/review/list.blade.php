@@ -104,7 +104,7 @@
                                     </span>
                                 @endif
                             @elseif(!App\User::isUserReview($r->id))
-                                {!! Former::open()->route('reviews.vote', $r->id)->method('post') !!}
+                                {!! Former::open()->route('reviews.vote', $r->id)->method('post')->class('review-vote-form') !!}
                                     <button type="submit" class="btn btn-link btn-like" name="like">
                                         <span class="fa fa-thumbs-up"></span>
                                         Super, labai patiko

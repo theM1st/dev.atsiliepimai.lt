@@ -79,10 +79,8 @@ class ReviewsController extends Controller
             'vote' => $v
         ]);
 
-        ($review->votes()->save($vote)) ?
-            alert(trans('common.review_vote.success'), 'success'):
-            alert(trans('common.fail'), 'danger');
-
-        return back();
+        return ($review->votes()->save($vote)) ?
+            response()->json(['success' => trans('common.review_vote.success')]):
+            response()->json(['success' => trans('common.fail')]);
     }
 }

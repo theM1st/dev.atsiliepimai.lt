@@ -11,8 +11,15 @@ $().ready(function(){
         radioClass: 'iradio_square-green',
         increaseArea: '20%'
     });
-});
 
+    $('.review-vote-form').ajaxForm({
+        dataType:  'json',
+        success: function(response, statusText, xhr, $form) {
+            $form.parent()
+                .html('<div class="alert alert-success">'+response.success+'</div>');
+        }
+    });
+});
 
 function actionModal(o) {
     var o = $(o);
@@ -38,33 +45,6 @@ function actionModal(o) {
             ajaxForm(this, true);
         });
     });
-/*
-     $.ajax({
-         type: dataMethod,
-         url: url,
-         data: data,
-         dataType: 'json',
-         processData: false,
-         contentType: false,
-         error: function(response){
-             var errors = response.responseJSON;
-             var errorsHtml = '<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">Klaida</h4></div><div class="modal-body"><div class="alert alert-danger">';
-
-             $.each(errors, function( key, value ) {
-                 errorsHtml += '<div>' + value[0]  '</div>'; //showing only the first error.
-             });
-
-             errorsHtml += '</div></div>';
-
-             modal.setContent(errorsHtml);
-         }
-     }).success(function(response){
-         modal.setContent(response.html);
-         $('.ajax-form').bind('submit', function(e) {
-             e.preventDefault();
-             ajaxForm(this, true);
-         });
-     });*/
 
     return false;
 }
