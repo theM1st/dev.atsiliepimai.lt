@@ -89,6 +89,7 @@ class ListingsController extends Controller
             'questions' => $questions,
             'model' => $model,
             'breadcrumbs' => $this->breadcrumbs,
+            'categories' => $categories,
         ]);
     }
 

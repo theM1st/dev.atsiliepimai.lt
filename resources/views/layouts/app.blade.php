@@ -9,7 +9,7 @@
 
     <title>@yield('title') - {{ config('app.name') }}</title>
 
-    <meta name="description" content="@yield('description')">
+    <meta name="description" content="@yield('description', 'Raskite atsiliepimus apie prekes ir paslaugas vienoje vietoje | Ateik, skaityk, palik savo atsiliepimą jau dabar!')">
 
     @include('styles')
     <script>

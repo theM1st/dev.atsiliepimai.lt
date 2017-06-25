@@ -16,6 +16,7 @@ class ListingsController extends AdminController
     {
         $listings = Listing::with('category')
             ->with('reviews')
+            ->latest()
             ->take(500)->get();
 
         //dd($listings[0]->reviews()->first()->review_title);

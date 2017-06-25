@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', getTitle($listing->title . ' ' . ($model ? $model->option_name : '') . ' atsiliepimai '))
+@section('title', getTitle($listing->title . ($model ? ' ' . $model->option_name : '') . ($categories->count() ? ' - ' . $categories->last()->name : '') . ' kategorijos atsiliepimai'))
 @section('description', getDescription($listing->lastReview()->review_description))
 @section('breadcrumbs')
     {!! $breadcrumbs->render() !!}

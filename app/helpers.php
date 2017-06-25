@@ -42,9 +42,9 @@ if (!function_exists('getDescription')) {
         if (is_object($object) && isset($object->$property)) {
             return str_limit(strip_tags($object->$property), 160);
         } elseif (is_string($object) && !empty($object)) {
-            return str_limit(strip_tags($object), 160);
+            return trim(str_limit(strip_tags($object), 160));
         } else {
-            return 'Atsiliepimai.lt tai yra projektas skirtas teikti vartotojų nuomones apie produktus, paslaugas Lietuvoje.';
+            return 'Raskite atsiliepimus apie prekes ir paslaugas vienoje vietoje | Ateik, skaityk, palik savo atsiliepimą jau dabar!';
         }
     }
 }
